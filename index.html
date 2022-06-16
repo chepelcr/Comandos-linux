@@ -55,9 +55,8 @@
                             <!-- Utilidades -->
                             <a class="nav-link" data-bs-toggle="tooltip" title="Utilidades" role="button"
                                 onclick="mostrar_utilidades()">
-                                Utilidades
                                 <!--Icono de utilidad -->
-                                <i class="fas fa-cogs"></i>
+                                <i class="fas fa-cogs"></i> Utilidades
                             </a>
                         </li>
 
@@ -65,14 +64,18 @@
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tooltip" title="Ejemplos" role="button"
                                 onclick="mostrar_ejemplo()">
-                                Ejemplos
                                 <!--Icono de ejemplo -->
-                                <i class="fas fa-book"></i>
+                                <i class="fas fa-book"></i> Ejemplos
                             </a>
                         </li>
 
+                        <!-- Seguridad Informatica -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Seguridad Informatica</a>
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Seguridad Informática" role="button"
+                                onclick="mostrar_seguridad()">
+                                <!--Icono de seguridad -->
+                                <i class="fas fa-shield-alt"></i> Seguridad Informática
+                            </a>
                         </li>
 
                         <li class="nav-item">
@@ -214,6 +217,35 @@
 
                         <div class="collapse ejemplo" id="ejemplo_compresion">
                             <div class="terminal-compresion"></div>
+                        </div>
+
+                        <!-- Asignar permisos -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Permisos de archivos y carpetas
+
+                                    <div class="btn-group w-10">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-warning copiar btn-block" id="copiar_permisos"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-warning btn-block" data-bs-toggle="tooltip"
+                                            title="Ver ejemplo" role="button" onclick="ejemplo('permisos')">
+                                            <!-- Icono de code -->
+                                            <i class="fa-solid fa-key"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_permisos">
+                            <div class="terminal-permisos"></div>
                         </div>
                     </div>
                 </div>
@@ -594,50 +626,6 @@
             '#Agregar usuarios adicionales' + '\n' +
             'sudo htpasswd /etc/phpmyadmin/.htpasswd [additionaluser]';
 
-            /*
-            gzip nombreArchivo: Comprime un archivo en formato .gz sustituyendo el archivo original.
-gzip nombreArchivo > /Ruta_especifica: Comprime un archivo en una ubicación específica.
-	-c: Conserva el archivo original.
-	-r: Compresión recursiva (Solo archivos individuales)
-	-v: Muestra la taza de compresión en la salida.
-	-rl: Permite consultar la taza de compresión de un archivo.
-
-gunzip -l archivo.gz: Permite ver la taza de compresión de un archivo.
-
-zcat: Permite ver el contenido de un archivo comprimido.
-	-f: Permite ver el contenido de un archivo no comprimido.
-
-gunzip | bunzip2 [nombreArchivo/Carpeta] = gzip -d [nombreArchivo/Carpeta]: Descomprime un archivo.
-
-bzip2 [nombreArchivo/carpeta]: Comprime archivos o carpetas (.bz2)
-bzip2 carpeta/* carpeta/carpeta_dentro/*: Comprime todos los archivos que se encuentran en una carpeta.
-	-l: Muestra el radio de compresión.
-	-v: Ver la compresión en la terminal.
-	-d: Aplica la descompresión.
-
-bzcat: Ver el contenido de un archivo comprimido .bz2
-
-xz [nombreArchivo/Carpeta]: Crea un archivo comprimido .xz
-xzcat: Permite ver los contenidos de un archivo .xz
-unxz [nombreArchivo/Carpeta]: Descomprimir un archivo
-tar -cf  NombreArchivo/Carpeta.tar [NombreArchivo/Carpeta]
-	-c: Crear un archivo
-	-v: Mostrar lo que está haciendo.
-	-f NombreArchivo/Carpeta.tar: Especificar el nombre del archivo tar.
-	-t: Mostrar el contenido del archivo tar.
-	-z: Crear un archivo tar comprimido (.gz).
-	-j: Crear un archivo tar comprimido (.bz2).
-	-x: Extraer los datos de un archivo
-	-r: Añadir un archivo/carpeta a un archivo existente.
-	-C Carpeta_Destino: Permite elegir la carpeta donde se extraen los archivos.
-
-
-zip [nombreArchivo].zip [nombreCarpeta]/*: Comprime los archivos de una carpeta.
-	-r: Indica que se debe usar recursividad.
-
-unzip -l [nombreArchivo].zip: Lista los archivos dentro de un zip.
-unzip [nombreArchivo].zip: Extrae los archivos comprimidos.*/
-
 txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato .gz sustituyendo el archivo original.' + '\n' +
             'gzip nombreArchivo > /Ruta_especifica: Comprime un archivo en una ubicación específica.' + '\n' +
             '   -c: Conserva el archivo original.' + '\n' +
@@ -681,6 +669,66 @@ txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato
             '#' + '\n' +
             'unzip [nombreArchivo].zip: Extrae los archivos comprimidos.';
 
+txt_ejemplo_instalacion[7] = '#Ver id de usuario y grupos a los que pertenece el usuario activo.' + '\n' +
+            'id' + '\n' +
+            '#' + '\n' +
+            '#Grupos a los que pertenece el usuario activo o un usuario específico.' + '\n' +
+            'groups' + '\n' +
+            '#' + '\n' +
+            '#Ver los grupos que tiene el sistema.' + '\n' +
+            'cat etc/group' + '\n' +
+            '#' + '\n' +
+            '#Permite cambiar de usuario.' + '\n' +
+            'su [opciones] [usuario]' + '\n' +
+            '	- | -l | --login: Cargar todo el entorno del usuario' + '\n' +
+            '#' + '\n' +
+            '#Cambiar el dueño de un archivo o carpeta.' + '\n' +
+            'chown [usuario]:[grupo] [opciones] [nombreArchivo/Carpeta]' + '\n' +
+            '	-R: Cambia los permisos de manera recursiva.' + '\n' +
+            '#' + '\n' +
+            '#Cambiar el grupo dueño de un archivo' + '\n' +
+            'chgrp [grupo] [nombreArchivo/Carpeta]' + '\n' +
+            '#' + '\n' +
+            '#Ver las propiedades de los archivos listados' + '\n' +
+            'ls -l' + '\n' +
+            '#' + '\n' +
+            '[-][rwx][r-x][r-x] [USUARIO] [GRUPO] [FECHA] [NOMBRE_ ARCHIVO]' + '\n' +
+            '	Primer campo: tipo de archivo' + '\n' +
+            '	Segundo campo: Permisos de usuario (u)' + '\n' +
+            '	Tercer campo: Permisos de grupo (g)' + '\n' +
+            '	Cuarto espacio: Otros (o)' + '\n' +
+            'lectura: r = 4' + '\n' +
+            'Escritura: w = 2' + '\n' +
+            'Ejecución: x = 1' + '\n' +
+            'Total: rwx = 7' + '\n' +
+            '#' + '\n' +
+            'Group Symbol		Operation Symbol			        Permission Symbol   	    Value' + '\n' +
+            'u (user owner)		+ (add the permission)			        r (read)                  4' + '\n' +
+            'g (group owner)		= (specify the exact permission)	w (write)                 2' + '\n' +
+            'o (others)			- (remove the permission)		        x (execute)               1' + '\n' +
+            'a (all)									                s (setgid)' + '\n' +
+            '									                        t (sticky bit)' + '\n' +
+            '#' + '\n' +
+            '#Cambiar permisos a un archivo o directorio.' + '\n' +
+            'chmod MODE FILE...' + '\n' +
+            '#' + '\n' +
+            '#Quitar los permisos de lectura para otros usuarios.' + '\n' +
+            'chmod o-r FILE...' + '\n' +
+            '#' + '\n' +
+            '#Agregar permisos de lectura y escritura a otros usuarios.' + '\n' +
+            'chmod o+rw FILE...' + '\n' +
+            '#' + '\n' +
+            '#Asignar permisos de setgid para el grupo a una carpeta.' + '\n' +
+            'chmod g+s [DIRECTORY...]' + '\n' +
+            '#' + '\n' +
+            '#Asignar propiedad de sticky bit a otros usuarios.' + '\n' +
+            'chmod o+t [DIRECTORY...]' + '\n' +
+            '#' + '\n' +
+            '#Cambiar los permisos a un directorio.' + '\n' +
+            'chmod [[#u][#g][#o]] = [###] DIRECTORY...' + '\n' +
+            '#' + '\n' +
+            '#Solo los miembros del grupo y el usuario dueño pueden ver el archivo.' + '\n' +
+            'chmod 770 DIRECTORY...';
 
 
         //On document ready
@@ -694,6 +742,10 @@ txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato
         /**Mostrar ejemplo */
         function mostrar_ejemplo() {
             if (elemento != 'ejemplo') {
+                if(elemento == 'utilidades') {
+                    mostrar_utilidades();
+                }
+
                 //Collapse todos los .ejemplo
                 $('.ejemplo').collapse('hide');
 
@@ -707,6 +759,9 @@ txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato
                 //Ocultar el collapse de ejemplo
                 $('#ejemplo').collapse('hide');
 
+                //Ocultar el boton de copiar
+                $('.copiar').hide();
+
                 elemento = null;
             }
         }
@@ -714,11 +769,18 @@ txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato
         /**Mostrar las utilidades */
         function mostrar_utilidades() {
             if (elemento != 'utilidades') {
+                if(elemento == 'ejemplo') {
+                    mostrar_ejemplo();
+                }
+
                 //Collapse todos los .ejemplo
                 $('.ejemplo').collapse('hide');
 
                 //Mostrar el collapse de utilidades
                 $('#utilidades').collapse('show');
+
+                //Ocultar el boton de copiar
+                $('.copiar').hide();
 
                 elemento = 'utilidades';
             }
@@ -743,10 +805,6 @@ txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato
             }
 
             else {
-                if (elemento != 'ejemplo') {
-                    mostrar_ejemplo();
-                }
-
                 //Cerrar todos los ejemplos
                 $('.ejemplo').collapse('hide');
 
@@ -893,7 +951,25 @@ txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato
 
                         texto_copiar = txt_compresion;
                         break;
-                        
+
+                    case 'permisos':
+                        // Limpiar el elemento
+                        $('.terminal-permisos').empty();
+
+                        var txt_permisos = txt_ejemplo_instalacion[7];
+
+                        CodeMirror(document.querySelector('.terminal-permisos'), {
+                            lineNumbers: true,
+                            tabSize: 2,
+                            value: txt_permisos,
+
+                            mode: 'shell',
+                            theme: 'monokai'
+                        });
+
+                        texto_copiar = txt_permisos;
+                        break;
+
                 }
 
                 ejemplo_activo = nombre_ejemplo;
