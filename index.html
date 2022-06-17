@@ -30,6 +30,9 @@
 
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Icono de la pagina -->
+    <link rel="shortcut icon" href="logo.png">
 </head>
 
 </html>
@@ -81,8 +84,13 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                        <!-- Informacion de la charla -->
+                        <li class="nav-item"  data-bs-toggle="tooltip" title="Información de la charla">
+                            <a class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#info_charla">
+                                <!--Icono de informacion -->
+                                <i class="fas fa-info-circle"></i>
+                                Información
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -487,6 +495,35 @@
                     </div>
                     
                     <div class="collapse" id="seguridad">
+                        <!-- Desactivar ingreso remoto -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Desactivar ingreso remoto
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_ingreso"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('ingreso')">
+                                            <!-- Icono de ingreso -->
+                                            <i class="fa-solid fa-sign-in-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_ingreso">
+                            <div class="terminal-ingreso"></div>
+                        </div>
+
                         <!-- Ejemplo de instalación de Firewall -->
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -522,11 +559,69 @@
                         <div class="collapse ejemplo" id="ejemplo_firewall">
                             <div class="terminal-firewall"></div>
                         </div>
+
+                        <!-- Ataques de fuerza bruta -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Ataques de fuerza bruta
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_fuerza"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('fuerza')">
+                                            <!-- Icono de fuerza -->
+                                            <i class="fa-solid fa-user-secret"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_fuerza">
+                            <div class="terminal-fuerza"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de informacion de la charla -->
+            <div class="modal fade border-info" id="info_charla" tabindex="-1" role="dialog" aria-labelledby="info_charla"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="info_charla">Comandos básicos de Linux</h4>
+                            <button type="button" disabled class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-brands fa-linux"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body bg-secondary">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="logo.png" alt="Logo" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <h5>
+                                <i class="fa-solid fa-user-tie"></i> José Pablo Campos Solano
+                            </h5>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" title="Iniciar" data-bs-dismiss="modal">Iniciar</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <footer class="container-fluid pt-3">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 rounded">
             <div class="container-fluid">
@@ -539,19 +634,42 @@
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Paquetes</a>
+                            <!-- Utilidades -->
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Utilidades" role="button"
+                                onclick="mostrar_utilidades()">
+                                <!--Icono de utilidad -->
+                                <i class="fas fa-cogs"></i>
+                                Utilidades
+                            </a>
                         </li>
 
+                        <!-- Ejemplos -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Archivos</a>
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Ejemplos" role="button"
+                                onclick="mostrar_ejemplo()">
+                                <!--Icono de ejemplo -->
+                                <i class="fas fa-book"></i>
+                                Ejemplos
+                            </a>
                         </li>
 
+                        <!-- Seguridad Informatica -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Texto</a>
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Seguridad Informática" role="button"
+                                onclick="mostrar_seguridad()">
+                                <!--Icono de seguridad -->
+                                <i class="fas fa-shield-alt"></i>
+                                Seguridad Informática
+                            </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Seguridad informatica</a>
+                        <!-- Informacion de la charla -->
+                        <li class="nav-item"  data-bs-toggle="tooltip" title="Información de la charla">
+                            <a class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#info_charla">
+                                <!--Icono de informacion -->
+                                <i class="fas fa-info-circle"></i>
+                                Información
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -707,21 +825,7 @@
                         'sudo chmod -R 775 /var/www/html' + '\n';
 
                         
-                        txt_ejemplo_instalacion [10] = '#Nos aseguramos de que el usuario root no se pueda conectar remotamente, esto con el' + '\n' +
-                        '#objetivo de elimiar superficies de ataque ya que el usuario root existe en' + '\n' +
-                        '#todos los linux y es común que sea sujeto de ataques de fuerza bruta' + '\n' +
-                        '#' + '\n' +
-                        'sudo vi /etc/ssh/sshd_config' + '\n' +
-                        '#Modificamos la directiva deseada' + '\n' +
-                        'PermitRootLogin no' + '\n' +
-                        '#' + '\n' +
-                        '#guardamos y cerramos el archivo con :wq! y reiniciamos el servicio de ssh' + '\n' +
-                        'sudo systemctl restart sshd' + '\n' +
-                        '#' + '\n' +
-                        '#Si perdemos la conexión simplemente volvemos a iniciar sesion como se hizo' + '\n' +
-                        '#anteriromente' + '\n' +
-                        '#' + '\n' +
-                        '#Utilizaremos el comando iptables para crear un firewall básico de seguridad.' + '\n' +
+                        txt_ejemplo_instalacion [10] = '#Utilizaremos el comando iptables para crear un firewall básico de seguridad.' + '\n' +
                         '#' + '\n' +
                         '#Lo primero que haremos antes de instalar es verificar que el sistema está' + '\n' +
                         '#actualizado' + '\n' +
@@ -760,8 +864,23 @@
                         '#' + '\n' +
                         '#Ejecutamos el siguiente comando para que las reglas sean permanetes' + '\n' +
                         'sudo netfilter-persistent save' + '\n' +
+                        '#' + '\n';
+
+        txt_ejemplo_instalacion [11] = '#Nos aseguramos de que el usuario root no se pueda conectar remotamente, esto con el' + '\n' +
+                        '#objetivo de elimiar superficies de ataque ya que el usuario root existe en' + '\n' +
+                        '#todos los linux y es común que sea sujeto de ataques de fuerza bruta' + '\n' +
                         '#' + '\n' +
-                        '#Instalamos fail2ban para agregar una capa extra de protección contra ataques' + '\n' +
+                        'sudo vi /etc/ssh/sshd_config' + '\n' +
+                        '#Modificamos la directiva deseada' + '\n' +
+                        'PermitRootLogin no' + '\n' +
+                        '#' + '\n' +
+                        '#guardamos y cerramos el archivo con :wq! y reiniciamos el servicio de ssh' + '\n' +
+                        'sudo systemctl restart sshd' + '\n' +
+                        '#' + '\n' +
+                        '#Si perdemos la conexión simplemente volvemos a iniciar sesion como se hizo' + '\n' +
+                        '#anteriromente' + '\n';
+
+        txt_ejemplo_instalacion [12] = '#Instalamos fail2ban para agregar una capa extra de protección contra ataques' + '\n' +
                         '#de fuerza bruta y DOS -  DDOS.' + '\n' +
                         'sudo apt install fail2ban' + '\n' +
                         'sudo cp -a /etc/fail2ban/jail.conf /etc/fail2ban/jail.local' + '\n' +
@@ -776,8 +895,6 @@
                         '#si se desea saber más, puede leer el manual del comando.' + '\n' +
                         'man fail2ban' + '\n';
 
-                         
-
                         
         // On document ready
         $(document).ready(function () {
@@ -785,6 +902,10 @@
             $('.copiar').hide();
 
             activar_tooltips();
+
+            //Bootstrap 5.2
+            //Mostrar el modal info_charla
+            $('#info_charla').modal('show');
         });
 
         /**Mostrar ejemplo */
@@ -1081,7 +1202,41 @@
                         texto_copiar = txt_firewall;
                         break;
 
+                    case 'ingreso':
+                        // Limpiar el elemento
+                        $('.terminal-ingreso').empty();
 
+                        var txt_ingreso = txt_ejemplo_instalacion[11];
+
+                        CodeMirror(document.querySelector('.terminal-ingreso'), {
+                            lineNumbers: true,
+                            tabSize: 2,
+                            value: txt_ingreso,
+
+                            mode: 'shell',
+                            theme: 'monokai'
+                        });
+
+                        texto_copiar = txt_ingreso;
+                        break;
+
+                    case 'fuerza':
+                        // Limpiar el elemento
+                        $('.terminal-fuerza').empty();
+
+                        var txt_fuerza = txt_ejemplo_instalacion[12];
+
+                        CodeMirror(document.querySelector('.terminal-fuerza'), {
+                            lineNumbers: true,
+                            tabSize: 2,
+                            value: txt_fuerza,
+
+                            mode: 'shell',
+                            theme: 'monokai'
+                        });
+
+                        texto_copiar = txt_fuerza;
+                        break;
                 }
 
                 ejemplo_activo = nombre_ejemplo;
