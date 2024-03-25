@@ -1,0 +1,75 @@
+<div class="card text-white border-danger">
+    <div class="card-header d-flex justify-content-between">
+        <h4>Seguridad Informática</h4>
+        <div class="d-grid gap-2 col-1">
+            <!-- Botón para ver -->
+            <button class="btn btn-danger disabled" data-bs-toggle="tooltip" role="button"
+                    title="Seguridad Informática">
+                <!-- Icono de seguridad -->
+                <i class="fa-solid fa-lock"></i>
+
+            </button>
+        </div>
+    </div>
+
+    <div class="card-body" id="seguridad">
+        <div class="row row-cols-md-1 row-cols-sm-2 g-3">
+            <!-- Desactivar ingreso remoto -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Ingreso remoto</h5>
+
+                        <div class="d-grid gap-2 col-2">
+                            <!-- Botón para ver ejemplo -->
+                            <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                    title="Mostrar ejemplo" role="button" onclick="ejemplo('ingreso')">
+                                <!-- Icono de ingreso -->
+                                <i class="fa-solid fa-sign-in-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ataques de fuerza bruta -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Fuerza bruta</h5>
+
+                        <div class="d-grid gap-2 col-2">
+                            <!-- Botón para ver ejemplo -->
+                            <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                    title="Mostrar ejemplo" role="button" onclick="ejemplo('fuerza')">
+                                <!-- Icono de fuerza -->
+                                <i class="fa-solid fa-user-secret"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Firewall -->
+            <div class="col col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Firewall</h5>
+
+                        <div class="d-grid gap-2 col-2">
+                            <!-- Botón para ver ejemplo -->
+                            <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                    title="Ver ejemplo" role="button" onclick="ejemplo('firewall')">
+                                <!-- Icono de Fire -->
+                                <i class="fa-solid fa-fire"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

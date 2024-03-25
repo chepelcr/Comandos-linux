@@ -1,0 +1,50 @@
+<!-- Modal de compartir la pagina -->
+<div class="modal fade border-info" id="modal_compartir" tabindex="-1" role="dialog"
+     aria-labelledby="title_compartir"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="title_compartir">
+                    <!-- Icono de compartir -->
+                    <i class="fas fa-share-alt"></i>
+                    Compartir página
+                    </h4>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                        title="Cerrar"
+                        aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body bg-secondary">
+                <div class="row">
+                    <!-- Imagen con el código QR de la página -->
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="dist/img/comandos.png" alt="Código QR de la página"
+                                 class="w-50 mb-3">
+                        </div>
+                    </div>
+
+                    <!-- Terminal para dirección web de la página -->
+                    <div class="col-md-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="fas fa-globe"></i>
+                            </span>
+                            <input type="text" class="form-control plaintext" id="direccion_web" disabled
+                                   aria-label="Dirección web">
+                            <button class="btn btn-dark" type="button" data-bs-toggle="tooltip"
+                                    title="Copiar dirección web"
+                                    onclick="copiar_direccion()">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

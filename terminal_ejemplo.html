@@ -1,0 +1,34 @@
+<div class="modal fade border-info" id="modal_terminal" tabindex="-1" role="dialog"
+     aria-labelledby="title_terminal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="title_terminal"></h4>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                        title="Cerrar"
+                        aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body bg-secondary">
+                <div class="row">
+                    <!-- Terminal -->
+                    <div class="col-md-12">
+                        <div class="terminal" id="terminal_ejemplos"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <!-- Boton para copiar el texto -->
+                <button class="btn btn-primary" id="copiar_texto" data-bs-toggle="tooltip" title="Copiar" role="button"
+                        onclick="copiar_texto()">
+                    <i class="fa-solid fa-copy"></i>
+                    <span id="copiar_texto_texto">Copiar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
