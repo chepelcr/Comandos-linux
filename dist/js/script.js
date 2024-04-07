@@ -270,7 +270,7 @@ txt_ejemplo_instalacion[11] = '# Nos aseguramos de que el usuario root no se pue
     'PermitRootLogin no' + '\n' +
     '# ' + '\n' +
     '# guardamos y cerramos el archivo con :wq! y reiniciamos el servicio de ssh' + '\n' +
-    'sudo systemctl restart sshd' + '\n' +
+    'sudo systemctl restart ssh' + '\n' +
     '# ' + '\n' +
     '# Si perdemos la conexión simplemente volvemos a iniciar sesion como se hizo' + '\n' +
     '# anteriromente' + '\n';
@@ -430,7 +430,7 @@ function mostrar_seguridad() {
 }
 
 /** Mostrar el ejemplo de la instalación de paquetes */
-function ejemplo(nombre_ejemplo = '') {
+function ejemplo(nombre_ejemplo = '', taller = false) {
     if (ejemplo_activo == nombre_ejemplo) {
         ejemplo_activo = '';
         texto_copiar = '';
@@ -575,23 +575,37 @@ function ejemplo(nombre_ejemplo = '') {
         }
 
         if (texto_copiar != null && texto_copiar != '') {
-            CodeMirror(document.querySelector('#terminal_ejemplos'), {
-                lineNumbers: true,
-                value: texto_copiar,
-                mode: 'shell',
-                theme: 'monokai',
-                readOnly: true,
-                autoRefresh: true,
-                viewportMargin: Infinity,
-            });
+            if(taller){
+                console.log('Taller');
 
-            icono = '<i class="fa-xs ' + icono + '"></i>';
+                CodeMirror(document.querySelector('#terminal_' + nombre_ejemplo), {
+                    lineNumbers: true,
+                    value: texto_copiar,
+                    mode: 'shell',
+                    theme: 'monokai',
+                    readOnly: true,
+                    autoRefresh: true,
+                    viewportMargin: Infinity,
+                });
+            } else {
+                CodeMirror(document.querySelector('#terminal_ejemplos'), {
+                    lineNumbers: true,
+                    value: texto_copiar,
+                    mode: 'shell',
+                    theme: 'monokai',
+                    readOnly: true,
+                    autoRefresh: true,
+                    viewportMargin: Infinity,
+                });
 
-            //Colocar el título al modal
-            $('#title_terminal').html(icono + ' ' + title);
+                icono = '<i class="fa-xs ' + icono + '"></i>';
 
-            //Mostrar el modal_terminal
-            $('#modal_terminal').modal('show');
+                //Colocar el título al modal
+                $('#title_terminal').html(icono + ' ' + title);
+
+                //Mostrar el modal_terminal
+                $('#modal_terminal').modal('show');
+            }
 
             ejemplo_activo = nombre_ejemplo;
         }

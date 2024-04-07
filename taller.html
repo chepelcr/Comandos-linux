@@ -2,7 +2,7 @@
 <div class="modal fade border-info" id="taller_linux" tabindex="-1" role="dialog"
      aria-labelledby="title_workshop"
      aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="title_workshop">
@@ -14,6 +14,23 @@
                         aria-label="Close">
                     <i class="fas fa-times"></i>
                 </button>
+            </div>
+
+            <div class="modal-body bg-secondary">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-7" include-html="contenido.html">
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <iframe src="https://ssh.jcampos.me" class="w-100" style="height:80vh"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

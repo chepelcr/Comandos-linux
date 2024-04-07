@@ -41,3 +41,7 @@ F
 conceptos_basicos.html,e/1/e1c4789b7c89bcf5c4ea9a1faca6dbdeaf3710ad
 ;
 taller.html,e/7/e783f56ab30bf3735dd43d4ad4d57037fc37bdad
+>
+contenido.html,7/a/7a103af727df439f93f6e7fa197aa97eb6c81d9d
+>
+old_index.html,2/6/26a27f88b5b1f38ddda0d877aa0719d110fc25d5

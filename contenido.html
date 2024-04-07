@@ -1,0 +1,47 @@
+<!-- Utilidades -->
+<div class="card text-white">
+    <div class="card-header d-flex justify-content-between">
+        <h5>Conexión al servidor</h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-12">
+                <div class="accordion" id="connection_task">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="user_head">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#user_collapse" ,
+                                    onclick="ejemplo('crear_usuario', true)"
+                                    aria-expanded="false" aria-controls="user_collapse">
+                                1. Crear usuario en el servidor
+                            </button>
+                        </h2>
+                        <div id="user_collapse" class="accordion-collapse collapse"
+                             aria-labelledby="user_head" data-bs-parent="#connection_task">
+                            <div class="accordion-body">
+                                <div class="terminal" id="terminal_crear_usuario"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="ingreso_head">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#ingreso_collapse" ,
+                                    onclick="ejemplo('ingreso', true)"
+                                    aria-expanded="false" aria-controls="ingreso_collapse">
+                                2. Desactivar ingreso como usuario root
+                            </button>
+                        </h2>
+                        <div id="ingreso_collapse" class="accordion-collapse collapse"
+                             aria-labelledby="ingreso_head" data-bs-parent="#connection_task">
+                            <div class="accordion-body">
+                                <div class="terminal" id="terminal_ingreso"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
