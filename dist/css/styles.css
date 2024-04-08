@@ -11,6 +11,7 @@
 }
 
 .cm-s-monokai.CodeMirror,
-.CodeMirror-linenumber {
+.CodeMirror-linenumber,
+.CodeMirror-linenumbers {
     background: #0E1928 !important;
 }
