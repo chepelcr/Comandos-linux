@@ -1,42 +1,171 @@
-<!-- Utilidades -->
-<div class="card text-white">
-    <div class="card-header d-flex justify-content-between">
-        <h5>Conexión al servidor</h5>
-    </div>
-    <div class="card-body">
-        <div class="row g-3">
-            <div class="col-md-12">
-                <div class="accordion" id="connection_task">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="user_head">
-                            <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#user_collapse" ,
-                                    onclick="ejemplo('crear_usuario', true)"
-                                    aria-expanded="false" aria-controls="user_collapse">
-                                1. Crear usuario en el servidor
-                            </button>
-                        </h2>
-                        <div id="user_collapse" class="accordion-collapse collapse"
-                             aria-labelledby="user_head" data-bs-parent="#connection_task">
-                            <div class="accordion-body">
-                                <div class="terminal" id="terminal_crear_usuario"></div>
+<div class="row g-3 row-cols-1" id="full-task">
+    <div class="col">
+        <!-- Conexión al servidor -->
+        <div class="card text-white">
+            <div class="card-header d-flex justify-content-between">
+                <h5>Conexión al servidor</h5>
+                <div class="col-2 d-grid gap-2">
+                    <button class="btn btn-accent btn-block" data-bs-toggle="tooltip"
+                            title="Mostrar" role="button" onclick="mostrar('connection')">
+                        <!-- Icono de conexión -->
+                        <i class="fa-solid fa-network-wired"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body collapse">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="accordion" id="connection_task">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="user_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#user_collapse"
+                                            onclick="ejemplo('crear_usuario', true)"
+                                            aria-expanded="false" aria-controls="user_collapse">
+                                        1. Crear usuario en el servidor
+                                    </button>
+                                </h2>
+                                <div id="user_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="user_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_crear_usuario"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="ingreso_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#ingreso_collapse"
+                                            onclick="ejemplo('ingreso', true)"
+                                            aria-expanded="false" aria-controls="ingreso_collapse">
+                                        2. Desactivar ingreso como usuario root
+                                    </button>
+                                </h2>
+                                <div id="ingreso_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="ingreso_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_ingreso"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="ingreso_head">
-                            <button class="accordion-button collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#ingreso_collapse" ,
-                                    onclick="ejemplo('ingreso', true)"
-                                    aria-expanded="false" aria-controls="ingreso_collapse">
-                                2. Desactivar ingreso como usuario root
-                            </button>
-                        </h2>
-                        <div id="ingreso_collapse" class="accordion-collapse collapse"
-                             aria-labelledby="ingreso_head" data-bs-parent="#connection_task">
-                            <div class="accordion-body">
-                                <div class="terminal" id="terminal_ingreso"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Seguridad del servidor -->
+    <div class="col">
+        <div class="card text-white">
+            <div class="card-header d-flex justify-content-between">
+                <h5>Seguridad del servidor</h5>
+            </div>
+            <div class="card-body collapse">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="accordion" id="security_task">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="firewall_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#firewall_collapse"
+                                            onclick="ejemplo('firewall', true)"
+                                            aria-expanded="false" aria-controls="firewall_collapse">
+                                        3. Configurar firewall
+                                    </button>
+                                </h2>
+                                <div id="firewall_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="firewall_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_firewall"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="force_attack_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#force_attack_collapse"
+                                            onclick="ejemplo('fuerza', true)"
+                                            aria-expanded="false" aria-controls="force_attack_collapse">
+                                        4. Proteger contra ataques de fuerza bruta
+                                    </button>
+                                </h2>
+                                <div id="force_attack_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="force_attack_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_fuerza"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuración de servicios -->
+    <div class="col">
+        <div class="card text-white">
+            <div class="card-header d-flex justify-content-between">
+                <h5>Configuración de servicios</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="accordion" id="service_task">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="apache_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#apache_collapse"
+                                            onclick="ejemplo('apache', true)"
+                                            aria-expanded="false" aria-controls="apache_collapse">
+                                        5. Configurar servidor Apache
+                                    </button>
+                                </h2>
+                                <div id="apache_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="apache_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_apache"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="mysql_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#mysql_collapse"
+                                            onclick="ejemplo('mysql', true)"
+                                            aria-expanded="false" aria-controls="mysql_collapse">
+                                        6. Configurar MySQL
+                                    </button>
+                                </h2>
+                                <div id="mysql_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="mysql_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_mysql"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="php_head">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#php_collapse"
+                                            onclick="ejemplo('php', true)"
+                                            aria-expanded="false" aria-controls="php_collapse">
+                                        7. Configurar PHP
+                                    </button>
+                                </h2>
+                                <div id="php_collapse" class="accordion-collapse collapse"
+                                     aria-labelledby="php_head" data-bs-parent="#full-task">
+                                    <div class="accordion-body">
+                                        <div class="terminal" id="terminal_php"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,3 +174,4 @@
         </div>
     </div>
 </div>
+

@@ -16,9 +16,9 @@ const Toast = Swal.mixin({
 });
 
 
-let txt_ejemplo_instalacion = [];
+let example_txt = [];
 
-txt_ejemplo_instalacion[0] = '# LAMP' + '\n' +
+example_txt[0] = '# LAMP' + '\n' +
     '# Un servidor  "LAMP" es un conjunto de un sistema operativo mas software' + '\n' +
     '# adicional de código abierto, que permiten a dicho servidor alojar' + '\n' +
     '# sitios web dinámicos y/o aplicaciones web.' + '\n' +
@@ -36,7 +36,7 @@ txt_ejemplo_instalacion[0] = '# LAMP' + '\n' +
     '# Accedemos en un browser ' + '\n' +
     'http://ip_server_remoto (Se puede usar comando "ip a" para ver su IP si la olvido)';
 
-txt_ejemplo_instalacion[1] = '# Instalación de servidor de base de datos' + '\n' +
+example_txt[1] = '# Instalación de servidor de base de datos' + '\n' +
     'sudo apt install mariadb-server' + '\n' + '# \n' + '# Agregar el repositorio de php' + '\n' +
     'sudo add-apt-repository ppa:ondrej/php' + '\n' + '# \n' +
     '# Instalamos php y las dependencias recomendadas para que php pueda' + '\n' +
@@ -46,17 +46,17 @@ txt_ejemplo_instalacion[1] = '# Instalación de servidor de base de datos' + '\n
     'sudo apt install -y php8.1-mysqli php8.1-pdo  php8.1-sqlite3 php8.1-ctype php8.1-fileinfo php8.1-zip php8.1-exif' + '\n' +
     'sudo apt install php8.1-{cli,fpm,common,intl,tidy,soap,bcmath,xmlrpc}';
 
-txt_ejemplo_instalacion[2] = '# Procedemos a crear un usuario y lo agregamos al grupo sudo' +
+example_txt[2] = '# Procedemos a crear un usuario y lo agregamos al grupo sudo' +
     '\n' + 'adduser sysadmin && usermod -a -G sudo sysadmin';
 
-txt_ejemplo_instalacion[3] = '# Si no se ha corrido todavía, Lo primero que debemos hacer es correr el' +
+example_txt[3] = '# Si no se ha corrido todavía, Lo primero que debemos hacer es correr el' +
     '\n' + '# siguiente comando en la terminal:' + '\n' +
     'sudo mysql_secure_installation' + '\n' + '# ' + '\n' +
     '# Si todavía no se ha configurado el password del usuario root de mysql' + '\n' +
-    '# se procede a configurarlo  y se da si a todas las demas opciones solicitadas.' + '\n' +
+    '# se procede a configurarlo  y se da si a todas las otras opciones solicitadas.' + '\n' +
     '# ' + '\n' +
     '# Una vez completado el comando anterior se procede a ingresar a la consola de mysql,' + '\n' +
-    '# la opcion -u indica el usuario y -p para' + '\n' +
+    '# la opción -u indica el usuario y -p para' + '\n' +
     '# solicitar el password interactivamente.' + '\n' +
     'sudo mysql -u root -p' + '\n' +
     '# Usamos el password de ubuntu_sysadmin o el que acabamos de crear para la base de datos' + '\n' +
@@ -76,7 +76,7 @@ txt_ejemplo_instalacion[3] = '# Si no se ha corrido todavía, Lo primero que deb
     '# salir' + '\n' +
     'exit;';
 
-txt_ejemplo_instalacion[4] = '# Crear un nuevo archivo con VI.' +
+example_txt[4] = '# Crear un nuevo archivo con VI.' +
     '\n' + 'vi [nombreArchivo]' +
     '\n' + '# ' +
     '\n' + '# Tutorial de vim en español (Otros idiomas disponibles).' +
@@ -86,7 +86,7 @@ txt_ejemplo_instalacion[4] = '# Crear un nuevo archivo con VI.' +
     '\n' + 'i: Entrar al modo de edición en el cursor' +
     '\n' + 'I: Entrar al modo edición al inicio de la linea.' +
     '\n' + '# ' +
-    '\n' + 'a: Insertar justo despues del cursor.' +
+    '\n' + 'a: Insertar justo después del cursor.' +
     '\n' + 'A: Insertar al final de la linea' +
     '\n' + '# ' +
     '\n' + 'O: Insertar una linea hacia arriba.' +
@@ -95,8 +95,8 @@ txt_ejemplo_instalacion[4] = '# Crear un nuevo archivo con VI.' +
     '\n' + 'k: Una linea hacia arriba.' +
     '\n' + 'o: Insertar una linea al final del documento.' +
     '\n' + '# ' +
-    '\n' + 'l: Caracter a la derecha.' +
-    '\n' + 'h: Caracter a la izquierda.' +
+    '\n' + 'l: Carácter a la derecha.' +
+    '\n' + 'h: Carácter a la izquierda.' +
     '\n' + 'w: Inicio de la palabra de adelante' +
     '\n' + 'b: Inicio de la palabra anterior.' +
     '\n' + '# ' +
@@ -144,7 +144,7 @@ txt_ejemplo_instalacion[4] = '# Crear un nuevo archivo con VI.' +
     '\n' + 'CTRL + v: Seleccionar un bloque de lineas.' +
     '\n' + '# ' +
     '\n' + '<>: Tab hacia la izquierda o derecha.' +
-    '\n' + 'CRTL + g: Ver informacion de la ubicación del cursor.' +
+    '\n' + 'CRTL + g: Ver información de la ubicación del cursor.' +
     '\n' + 'CTRL + w: Cambiar de un archivo a otro.' +
     '\n' + 'esc: Salir de cualquier modo.' +
     '\n' + '# ' +
@@ -157,13 +157,13 @@ txt_ejemplo_instalacion[4] = '# Crear un nuevo archivo con VI.' +
     '\n' + '# #Variables para el editor predeterminado al final del archivo .bashrc';
 
 /*#instalar phpmyadmin*/
-txt_ejemplo_instalacion[5] = '# Instalar phpmyadmin' + '\n' + 'sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl' + '\n' + '# ' + '\n' + '# modificar la seguridad de phpmyadmin' + '\n' + 'sudo vi /etc/apache2/conf-available/phpmyadmin.conf' + '\n' + '# ' + '\n' + '# Agregar "AllowOverride All" en el <Directory /usr/share/phpmyadmin>' + '\n' + '<Directory /usr/share/phpmyadmin>' + '\n' + '    Options FollowSymLinks' + '\n' + '    DirectoryIndex index.php' + '\n' + '    AllowOverride All' + '\n' + '# ' + '\n' + '# Reiniciar el servicio' + '\n' + 'sudo systemctl restart apache2' + '\n' + '# ' + '\n' + '# Crear el archivo de configuracion de inicio' + '\n' + 'sudo vi /usr/share/phpmyadmin/.htaccess' + '\n' + '# ' + '\n' + '# Agregar estas lineas' + '\n' + 'AuthType Basic  -> Tipo de autenticacion' + '\n' + 'AuthName "Restricted Files"' + '\n' + 'AuthUserFile /etc/phpmyadmin/.htpasswd' + '\n' + 'Require valid-user' + '\n' + '# ' + '\n' + '# Crear el archivo de contrasenia' + '\n' + 'sudo htpasswd -c /etc/phpmyadmin/.htpasswd [username]' + '\n' + '# ' + '\n' + '# Agregar usuarios adicionales' + '\n' + 'sudo htpasswd /etc/phpmyadmin/.htpasswd [additionaluser]';
+example_txt[5] = '# Instalar phpmyadmin' + '\n' + 'sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl' + '\n' + '# ' + '\n' + '# modificar la seguridad de phpmyadmin' + '\n' + 'sudo vi /etc/apache2/conf-available/phpmyadmin.conf' + '\n' + '# ' + '\n' + '# Agregar "AllowOverride All" en el <Directory /usr/share/phpmyadmin>' + '\n' + '<Directory /usr/share/phpmyadmin>' + '\n' + '    Options FollowSymLinks' + '\n' + '    DirectoryIndex index.php' + '\n' + '    AllowOverride All' + '\n' + '# ' + '\n' + '# Reiniciar el servicio' + '\n' + 'sudo systemctl restart apache2' + '\n' + '# ' + '\n' + '# Crear el archivo de configuración de inicio' + '\n' + 'sudo vi /usr/share/phpmyadmin/.htaccess' + '\n' + '# ' + '\n' + '# Agregar estas lineas' + '\n' + 'AuthType Basic  -> Tipo de autenticación' + '\n' + 'AuthName "Restricted Files"' + '\n' + 'AuthUserFile /etc/phpmyadmin/.htpasswd' + '\n' + 'Require valid-user' + '\n' + '# ' + '\n' + '# Crear el archivo de contraseña' + '\n' + 'sudo htpasswd -c /etc/phpmyadmin/.htpasswd [username]' + '\n' + '# ' + '\n' + '# Agregar usuarios adicionales' + '\n' + 'sudo htpasswd /etc/phpmyadmin/.htpasswd [additionaluser]';
 
-txt_ejemplo_instalacion[6] = 'gzip nombreArchivo: Comprime un archivo en formato .gz sustituyendo el archivo original.' + '\n' + 'gzip nombreArchivo > /Ruta_especifica: Comprime un archivo en una ubicación específica.' + '\n' + '   -c: Conserva el archivo original.' + '\n' + '   -r: Compresión recursiva (Solo archivos individuales)' + '\n' + '   -v: Muestra la taza de compresión en la salida.' + '\n' + '   -rl: Permite consultar la taza de compresión de un archivo.' + '\n' + '# ' + '\n' + 'gunzip -l archivo.gz: Permite ver la taza de compresión de un archivo.' + '\n' + '# ' + '\n' + 'zcat: Permite ver el contenido de un archivo comprimido.' + '\n' + '   -f: Permite ver el contenido de un archivo no comprimido.' + '\n' + '# ' + '\n' + 'gunzip | bunzip2 [nombreArchivo/Carpeta] = gzip -d [nombreArchivo/Carpeta]: Descomprime un archivo.' + '\n' + '# ' + '\n' + 'bzip2 [nombreArchivo/carpeta]: Comprime archivos o carpetas (.bz2)' + '\n' + '   -l: Muestra el radio de compresión.' + '\n' + '   -v: Ver la compresión en la terminal.' + '\n' + '   -d: Aplica la descompresión.' + '\n' + '# ' + '\n' + 'bzcat: Ver el contenido de un archivo comprimido .bz2' + '\n' + '# ' + '\n' + 'xz [nombreArchivo/Carpeta]: Crea un archivo comprimido .xz' + '\n' + '# ' + '\n' + 'unxz [nombreArchivo/Carpeta]: Descomprimir un archivo' + '\n' + '# ' + '\n' + 'tar -cf  NombreArchivo/Carpeta.tar [NombreArchivo/Carpeta]' + '\n' + '   -c: Crear un archivo' + '\n' + '   -v: Mostrar lo que está haciendo.' + '\n' + '   -f NombreArchivo/Carpeta.tar: Especificar el nombre del archivo tar.' + '\n' + '   -t: Mostrar el contenido del archivo tar.' + '\n' + '   -z: Crear un archivo tar comprimido (.gz).' + '\n' + '   -j: Crear un archivo tar comprimido (.bz2).' + '\n' + '   -x: Extraer los datos de un archivo' + '\n' + '   -r: Añadir un archivo/carpeta a un archivo existente.' + '\n' + '   -C Carpeta_Destino: Permite elegir la carpeta donde se extraen los archivos.' + '\n' + '# ' + '\n' + 'zip [nombreArchivo].zip [nombreCarpeta]/*: Comprime los archivos de una carpeta.' + '\n' + '   -r: Indica que se debe usar recursividad.' + '\n' + '# ' + '\n' + 'unzip -l [nombreArchivo].zip: Lista los archivos dentro de un zip.' + '\n' + '# ' + '\n' + 'unzip [nombreArchivo].zip: Extrae los archivos comprimidos.';
+example_txt[6] = 'gzip nombreArchivo: Comprime un archivo en formato .gz sustituyendo el archivo original.' + '\n' + 'gzip nombreArchivo > /Ruta_especifica: Comprime un archivo en una ubicación específica.' + '\n' + '   -c: Conserva el archivo original.' + '\n' + '   -r: Compresión recursiva (Solo archivos individuales)' + '\n' + '   -v: Muestra la taza de compresión en la salida.' + '\n' + '   -rl: Permite consultar la taza de compresión de un archivo.' + '\n' + '# ' + '\n' + 'gunzip -l archivo.gz: Permite ver la taza de compresión de un archivo.' + '\n' + '# ' + '\n' + 'zcat: Permite ver el contenido de un archivo comprimido.' + '\n' + '   -f: Permite ver el contenido de un archivo no comprimido.' + '\n' + '# ' + '\n' + 'gunzip | bunzip2 [nombreArchivo/Carpeta] = gzip -d [nombreArchivo/Carpeta]: Descomprime un archivo.' + '\n' + '# ' + '\n' + 'bzip2 [nombreArchivo/carpeta]: Comprime archivos o carpetas (.bz2)' + '\n' + '   -l: Muestra el radio de compresión.' + '\n' + '   -v: Ver la compresión en la terminal.' + '\n' + '   -d: Aplica la descompresión.' + '\n' + '# ' + '\n' + 'bzcat: Ver el contenido de un archivo comprimido .bz2' + '\n' + '# ' + '\n' + 'xz [nombreArchivo/Carpeta]: Crea un archivo comprimido .xz' + '\n' + '# ' + '\n' + 'unxz [nombreArchivo/Carpeta]: Descomprimir un archivo' + '\n' + '# ' + '\n' + 'tar -cf  NombreArchivo/Carpeta.tar [NombreArchivo/Carpeta]' + '\n' + '   -c: Crear un archivo' + '\n' + '   -v: Mostrar lo que está haciendo.' + '\n' + '   -f NombreArchivo/Carpeta.tar: Especificar el nombre del archivo tar.' + '\n' + '   -t: Mostrar el contenido del archivo tar.' + '\n' + '   -z: Crear un archivo tar comprimido (.gz).' + '\n' + '   -j: Crear un archivo tar comprimido (.bz2).' + '\n' + '   -x: Extraer los datos de un archivo' + '\n' + '   -r: Añadir un archivo/carpeta a un archivo existente.' + '\n' + '   -C Carpeta_Destino: Permite elegir la carpeta donde se extraen los archivos.' + '\n' + '# ' + '\n' + 'zip [nombreArchivo].zip [nombreCarpeta]/*: Comprime los archivos de una carpeta.' + '\n' + '   -r: Indica que se debe usar recursividad.' + '\n' + '# ' + '\n' + 'unzip -l [nombreArchivo].zip: Lista los archivos dentro de un zip.' + '\n' + '# ' + '\n' + 'unzip [nombreArchivo].zip: Extrae los archivos comprimidos.';
 
-txt_ejemplo_instalacion[7] = '# Ver id de usuario y grupos a los que pertenece el usuario activo.' + '\n' + 'id' + '\n' + '# ' + '\n' + '# Grupos a los que pertenece el usuario activo o un usuario específico.' + '\n' + 'groups' + '\n' + '# ' + '\n' + '# Ver los grupos que tiene el sistema.' + '\n' + 'cat etc/group' + '\n' + '# ' + '\n' + '# Permite cambiar de usuario.' + '\n' + 'su [opciones] [usuario]' + '\n' + '	- | -l | --login: Cargar todo el entorno del usuario' + '\n' + '# ' + '\n' + '# Cambiar el dueño de un archivo o carpeta.' + '\n' + 'chown [usuario]:[grupo] [opciones] [nombreArchivo/Carpeta]' + '\n' + '	-R: Cambia los permisos de manera recursiva.' + '\n' + '# ' + '\n' + '# Cambiar el grupo dueño de un archivo' + '\n' + 'chgrp [grupo] [nombreArchivo/Carpeta]' + '\n' + '# ' + '\n' + '# Ver las propiedades de los archivos listados' + '\n' + 'ls -l' + '\n' + '# ' + '\n' + '[-][rwx][r-x][r-x] [USUARIO] [GRUPO] [FECHA] [NOMBRE_ ARCHIVO]' + '\n' + '	Primer campo: tipo de archivo' + '\n' + '	Segundo campo: Permisos de usuario (u)' + '\n' + '	Tercer campo: Permisos de grupo (g)' + '\n' + '	Cuarto espacio: Otros (o)' + '\n' + 'lectura: r = 4' + '\n' + 'Escritura: w = 2' + '\n' + 'Ejecución: x = 1' + '\n' + 'Total: rwx = 7' + '\n' + '# ' + '\n' + 'Group Symbol		Operation Symbol			        Permission Symbol   	    Value' + '\n' + 'u (user owner)		+ (add the permission)			        r (read)                  4' + '\n' + 'g (group owner)		= (specify the exact permission)	w (write)                 2' + '\n' + 'o (others)			- (remove the permission)		        x (execute)               1' + '\n' + 'a (all)									                s (setgid)' + '\n' + '									                        t (sticky bit)' + '\n' + '# ' + '\n' + '# Cambiar permisos a un archivo o directorio.' + '\n' + 'chmod MODE FILE...' + '\n' + '# ' + '\n' + '# Quitar los permisos de lectura para otros usuarios.' + '\n' + 'chmod o-r FILE...' + '\n' + '# ' + '\n' + '# Agregar permisos de lectura y escritura a otros usuarios.' + '\n' + 'chmod o+rw FILE...' + '\n' + '# ' + '\n' + '# Asignar permisos de setgid para el grupo a una carpeta.' + '\n' + 'chmod g+s [DIRECTORY...]' + '\n' + '# ' + '\n' + '# Asignar propiedad de sticky bit a otros usuarios.' + '\n' + 'chmod o+t [DIRECTORY...]' + '\n' + '# ' + '\n' + '# Cambiar los permisos a un directorio.' + '\n' + 'chmod [[#u][#g][#o]] = [###] DIRECTORY...' + '\n' + '# ' + '\n' + '# Solo los miembros del grupo y el usuario dueño pueden ver el archivo.' + '\n' + 'chmod 770 DIRECTORY...';
+example_txt[7] = '# Ver id de usuario y grupos a los que pertenece el usuario activo.' + '\n' + 'id' + '\n' + '# ' + '\n' + '# Grupos a los que pertenece el usuario activo o un usuario específico.' + '\n' + 'groups' + '\n' + '# ' + '\n' + '# Ver los grupos que tiene el sistema.' + '\n' + 'cat etc/group' + '\n' + '# ' + '\n' + '# Permite cambiar de usuario.' + '\n' + 'su [opciones] [usuario]' + '\n' + '	- | -l | --login: Cargar todo el entorno del usuario' + '\n' + '# ' + '\n' + '# Cambiar el dueño de un archivo o carpeta.' + '\n' + 'chown [usuario]:[grupo] [opciones] [nombreArchivo/Carpeta]' + '\n' + '	-R: Cambia los permisos de manera recursiva.' + '\n' + '# ' + '\n' + '# Cambiar el grupo dueño de un archivo' + '\n' + 'chgrp [grupo] [nombreArchivo/Carpeta]' + '\n' + '# ' + '\n' + '# Ver las propiedades de los archivos listados' + '\n' + 'ls -l' + '\n' + '# ' + '\n' + '[-][rwx][r-x][r-x] [USUARIO] [GRUPO] [FECHA] [NOMBRE_ ARCHIVO]' + '\n' + '	Primer campo: tipo de archivo' + '\n' + '	Segundo campo: Permisos de usuario (u)' + '\n' + '	Tercer campo: Permisos de grupo (g)' + '\n' + '	Cuarto espacio: Otros (o)' + '\n' + 'lectura: r = 4' + '\n' + 'Escritura: w = 2' + '\n' + 'Ejecución: x = 1' + '\n' + 'Total: rwx = 7' + '\n' + '# ' + '\n' + 'Group Symbol		Operation Symbol			        Permission Symbol   	    Value' + '\n' + 'u (user owner)		+ (add the permission)			        r (read)                  4' + '\n' + 'g (group owner)		= (specify the exact permission)	w (write)                 2' + '\n' + 'o (others)			- (remove the permission)		        x (execute)               1' + '\n' + 'a (all)									                s (setgid)' + '\n' + '									                        t (sticky bit)' + '\n' + '# ' + '\n' + '# Cambiar permisos a un archivo o directorio.' + '\n' + 'chmod MODE FILE...' + '\n' + '# ' + '\n' + '# Quitar los permisos de lectura para otros usuarios.' + '\n' + 'chmod o-r FILE...' + '\n' + '# ' + '\n' + '# Agregar permisos de lectura y escritura a otros usuarios.' + '\n' + 'chmod o+rw FILE...' + '\n' + '# ' + '\n' + '# Asignar permisos de setgid para el grupo a una carpeta.' + '\n' + 'chmod g+s [DIRECTORY...]' + '\n' + '# ' + '\n' + '# Asignar propiedad de sticky bit a otros usuarios.' + '\n' + 'chmod o+t [DIRECTORY...]' + '\n' + '# ' + '\n' + '# Cambiar los permisos a un directorio.' + '\n' + 'chmod [[#u][#g][#o]] = [###] DIRECTORY...' + '\n' + '# ' + '\n' + '# Solo los miembros del grupo y el usuario dueño pueden ver el archivo.' + '\n' + 'chmod 770 DIRECTORY...';
 
-txt_ejemplo_instalacion[8] = '# Terminal CLI (Command Line Interface)'
+example_txt[8] = '# Terminal CLI (Command Line Interface)'
     + '\n' + '# '
     + '\n' + '#  - crtl + r: Buscar comandos anteriores'
     + '\n' + '#  - ctrl + a: Inicio de linea.'
@@ -204,7 +204,7 @@ txt_ejemplo_instalacion[8] = '# Terminal CLI (Command Line Interface)'
     + '\n' + '# Limpiar el historial.'
     + '\n' + 'history -c';
 
-txt_ejemplo_instalacion[9] = '# Moverse hacia la carpeta /let/www/html' + '\n' +
+example_txt[9] = '# Moverse hacia la carpeta /let/www/html' + '\n' +
     'cd /let/www/html' + '\n' +
     '# Descargar nextcloud a esta ubicación y descomprimir' + '\n' +
     'sudo wget -c https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip' + '\n' +
@@ -220,7 +220,7 @@ txt_ejemplo_instalacion[9] = '# Moverse hacia la carpeta /let/www/html' + '\n' +
     'sudo chmod -R 775 /let/www/html' + '\n';
 
 
-txt_ejemplo_instalacion[10] = '# Utilizaremos el comando iptables para crear un firewall básico de seguridad.' + '\n' +
+example_txt[10] = '# Utilizaremos el comando iptables para crear un firewall básico de seguridad.' + '\n' +
     '# ' + '\n' +
     '# Lo primero que haremos antes de instalar es verificar que el sistema está' + '\n' +
     '# actualizado' + '\n' +
@@ -228,14 +228,14 @@ txt_ejemplo_instalacion[10] = '# Utilizaremos el comando iptables para crear un 
     '# Si ahy actualizaciones pendientes las revisamos y las instalamos' + '\n' +
     'sudo apt upgrade' + '\n' +
     '# ' + '\n' +
-    '# Notese que apt update compara las versiones de los programas instalados en' + '\n' +
-    '# nuestro server con respceto al las disponibles en los repositorios' + '\n' +
+    '# Nótese que apt update compara las versiones de los programas instalados en' + '\n' +
+    '# nuestro server con respecto al las disponibles en los repositorios' + '\n' +
     '# configurados en el archivo /etc/apt/sources.list o en los archivos dentro de' + '\n' +
     '# la carpeta /etc/apt/sources.list.d/' + '\n' +
     '# ' + '\n' +
-    '# Instalamos nmap que es una herramiento de monitores de puertos de red y mucho mas' + '\n' +
+    '# Instalamos nmap que es una herramienta de monitores de puertos de red y mucho mas' + '\n' +
     'sudo apt install nmap' + '\n' +
-    '# Se instala chkrootkit y rkhunter para moniterear el server de posibles rootkits' + '\n' +
+    '# Se instala chkrootkit y rkhunter para monitorear el server de posibles rootkits' + '\n' +
     'sudo apt install rkhunter chkrootkit' + '\n' +
     '# Instalamos iptables' + '\n' +
     'sudo apt install iptables' + '\n' +
@@ -245,8 +245,8 @@ txt_ejemplo_instalacion[10] = '# Utilizaremos el comando iptables para crear un 
     '# Nos aseguramos de estar en $HOME ejecutando cd sin argumentos' + '\n' +
     'cd' + '\n' +
     '# ' + '\n' +
-    '# Descargamos el script con los comandos para implemntar el firewall ' + '\n' +
-    'wget -c https://1drv.ms/u/s!AqLuj9KHIzF-ha99fdcLENb3h-dDLA?e=rerjjW' + '\n' +
+    '# Descargamos el script con los comandos para implementar el firewall ' + '\n' +
+    'wget -c https://linux.jcampos.me/public/files/firewall-iptables.sh' + '\n' +
     '# ' + '\n' +
     '# Lo ejecutamos como superusuario' + '\n' +
     'sudo bash firewall-iptables.sh' + '\n' +
@@ -257,12 +257,12 @@ txt_ejemplo_instalacion[10] = '# Utilizaremos el comando iptables para crear un 
     '# Nos preguntará si guardamos las reglas actuales a los archivos ' + '\n' +
     '# /etc/iptables/rules.v4 y /etc/iptables/rules.v6, le decimos que si' + '\n' +
     '# ' + '\n' +
-    '# Ejecutamos el siguiente comando para que las reglas sean permanetes' + '\n' +
+    '# Ejecutamos el siguiente comando para que las reglas sean permanentes' + '\n' +
     'sudo netfilter-persistent save' + '\n' +
     '# ' + '\n';
 
-txt_ejemplo_instalacion[11] = '# Nos aseguramos de que el usuario root no se pueda conectar remotamente, esto con el' + '\n' +
-    '# objetivo de elimiar superficies de ataque ya que el usuario root existe en' + '\n' +
+example_txt[11] = '# Nos aseguramos de que el usuario root no se pueda conectar remotamente, esto con el' + '\n' +
+    '# objetivo de eliminar superficies de ataque ya que el usuario root existe en' + '\n' +
     '# todos los linux y es común que sea sujeto de ataques de fuerza bruta' + '\n' +
     '# ' + '\n' +
     'sudo vi /etc/ssh/sshd_config' + '\n' +
@@ -272,10 +272,10 @@ txt_ejemplo_instalacion[11] = '# Nos aseguramos de que el usuario root no se pue
     '# guardamos y cerramos el archivo con :wq! y reiniciamos el servicio de ssh' + '\n' +
     'sudo systemctl restart ssh' + '\n' +
     '# ' + '\n' +
-    '# Si perdemos la conexión simplemente volvemos a iniciar sesion como se hizo' + '\n' +
-    '# anteriromente' + '\n';
+    '# Si perdemos la conexión simplemente volvemos a iniciar sesión como se hizo' + '\n' +
+    '# anteriormente' + '\n';
 
-txt_ejemplo_instalacion[12] = '# Instalamos fail2ban para agregar una capa extra de protección contra ataques' + '\n' +
+example_txt[12] = '# Instalamos fail2ban para agregar una capa extra de protección contra ataques' + '\n' +
     '# de fuerza bruta y DOS -  DDOS.' + '\n' +
     'sudo apt install fail2ban' + '\n' +
     'sudo cp -a /etc/fail2ban/jail.conf /etc/fail2ban/jail.local' + '\n' +
@@ -286,11 +286,11 @@ txt_ejemplo_instalacion[12] = '# Instalamos fail2ban para agregar una capa extra
     '# Reiniciamos el servicio de fail2ban' + '\n' +
     'sudo systemctl restart fail2ban' + '\n' +
     '# ' + '\n' +
-    '# fail2ban se puede configurar no solo apra proteger accesos a través de ssh pero' + '\n' +
+    '# fail2ban se puede configurar no solo para proteger accesos a través de ssh pero' + '\n' +
     '# si se desea saber más, puede leer el manual del comando.' + '\n' +
     'man fail2ban' + '\n';
 
-txt_ejemplo_instalacion[13] = '# Administración de paquetes.' +
+example_txt[13] = '# Administración de paquetes.' +
     '\n' + 'apt-get' +
     '\n \n' + '# Obtener una lista actualizada de estos repositorios de Internet.' +
     '\n' + 'sudo apt-get update' +
@@ -305,7 +305,7 @@ txt_ejemplo_instalacion[13] = '# Administración de paquetes.' +
     '\n' + '   --purge: Elimina los archivos de configuración de un paquete de software.';
 
 
-txt_ejemplo_instalacion[14] = '# Dirige por defecto al directorio home del usuario' + '\n' +
+example_txt[14] = '# Dirige por defecto al directorio home del usuario' + '\n' +
     'cd' + '\n' +
     '# ' + '\n' +
     '# Vuelve a la carpeta anterior.' + '\n' +
@@ -351,7 +351,7 @@ txt_ejemplo_instalacion[14] = '# Dirige por defecto al directorio home del usuar
     '# Renombra un archivo.' + '\n' +
     'mv [nombreArchivo] [nuevoNombre]' + '\n' +
     '# ' + '\n' +
-    '# Crea un archivo vacio.' + '\n' +
+    '# Crea un archivo vacío.' + '\n' +
     'touch [nombreArchivo]' + '\n' +
     '# ' + '\n' +
     '# Elimina un archivo.' + '\n' +
@@ -367,7 +367,7 @@ txt_ejemplo_instalacion[14] = '# Dirige por defecto al directorio home del usuar
     '        -m: Crea una carpeta con permisos de solo lectura.' + '\n' +
     '        -v: Muestra el nombre del directorio que se crea.' + '\n' +
     '# ' + '\n' +
-    '# Elimina un directorio si esta vacio.' + '\n' +
+    '# Elimina un directorio si esta vacío.' + '\n' +
     'rmdir [nombreDirectorio]' + '\n' +
     '        -i: Pregunta antes de eliminar un directorio.' + '\n' +
     '        -p: Elimina un directorio con otro dentro.' + '\n' +
@@ -406,7 +406,7 @@ txt_ejemplo_instalacion[14] = '# Dirige por defecto al directorio home del usuar
     '# Mostrar cualquier archivo que no comienza con D o P.' + '\n' +
     'echo /etc/[^DP]*' + '\n';
 
-txt_ejemplo_instalacion[15] = '# Conectarse al servidor SSH con un usuario específico' +
+example_txt[15] = '# Conectarse al servidor SSH con un usuario específico' +
     '\n' + '# ' +
     '\n' + 'ssh [user]@[IP]' +
     '\n' + '#' +
@@ -446,7 +446,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
 
         switch (nombre_ejemplo) {
             case 'apache':
-                texto_copiar = txt_ejemplo_instalacion[0];
+                texto_copiar = example_txt[0];
 
                 icono = "fa-brands fa-html5";
                 title = "Servidor Apache";
@@ -454,7 +454,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'php':
-                texto_copiar = txt_ejemplo_instalacion[1];
+                texto_copiar = example_txt[1];
 
                 icono = "fa-brands fa-php";
                 title = "PHP";
@@ -462,7 +462,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'crear_usuario':
-                texto_copiar = txt_ejemplo_instalacion[2];
+                texto_copiar = example_txt[2];
 
                 icono = "fa-solid fa-user-plus";
                 title = "Crear usuario";
@@ -470,7 +470,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'mysql':
-                texto_copiar = txt_ejemplo_instalacion[3];
+                texto_copiar = example_txt[3];
 
                 icono = "fa-brands fa-mysql";
                 title = "Servidor MySQL";
@@ -478,7 +478,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'vi':
-                texto_copiar = txt_ejemplo_instalacion[4];
+                texto_copiar = example_txt[4];
 
                 icono = "fa-solid fa-file-code";
                 title = "Editor de texto VI";
@@ -486,7 +486,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'phpmyadmin':
-                texto_copiar = txt_ejemplo_instalacion[5];
+                texto_copiar = example_txt[5];
 
                 icono = "fa-brands fa-php";
                 title = "Administrador de MySQL";
@@ -494,7 +494,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'paquetes':
-                texto_copiar = txt_ejemplo_instalacion[13];
+                texto_copiar = example_txt[13];
 
                 icono = "fa-solid fa-box";
                 title = "Gestión de paquetes";
@@ -502,7 +502,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'compresion':
-                texto_copiar = txt_ejemplo_instalacion[6];
+                texto_copiar = example_txt[6];
 
                 icono = "fa-solid fa-file-archive";
                 title = "Compresión de archivos";
@@ -510,7 +510,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'permisos':
-                texto_copiar = txt_ejemplo_instalacion[7];
+                texto_copiar = example_txt[7];
 
                 icono = "fa-solid fa-user-lock";
                 title = "Manejo de permisos";
@@ -518,7 +518,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'cli':
-                texto_copiar = txt_ejemplo_instalacion[8];
+                texto_copiar = example_txt[8];
 
                 icono = "fa-solid fa-terminal";
                 title = "Linea de comandos CLI";
@@ -526,7 +526,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'obtener':
-                texto_copiar = txt_ejemplo_instalacion[9];
+                texto_copiar = example_txt[9];
 
                 icono = "fa-solid fa-download";
                 title = "Descargar página de ejemplo";
@@ -534,7 +534,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'firewall':
-                texto_copiar = txt_ejemplo_instalacion[10];
+                texto_copiar = example_txt[10];
 
                 icono = "fa-solid fa-shield-alt";
                 title = "Firewall";
@@ -542,7 +542,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'ingreso':
-                texto_copiar = txt_ejemplo_instalacion[11];
+                texto_copiar = example_txt[11];
 
                 icono = "fa-solid fa-sign-in-alt";
                 title = "Ingreso remoto";
@@ -550,7 +550,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'fuerza':
-                texto_copiar = txt_ejemplo_instalacion[12];
+                texto_copiar = example_txt[12];
 
                 icono = "fa-solid fa-user-secret";
                 title = "Ataques de fuerza bruta";
@@ -558,7 +558,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'gestion_archivos':
-                texto_copiar = txt_ejemplo_instalacion[14];
+                texto_copiar = example_txt[14];
 
                 icono = "fa-solid fa-file";
                 title = "Gestión de archivos";
@@ -566,7 +566,7 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
                 break;
 
             case 'ssh':
-                texto_copiar = txt_ejemplo_instalacion[15];
+                texto_copiar = example_txt[15];
 
                 icono = "fa-solid fa-server";
                 title = "Ingreso remoto SSH";
