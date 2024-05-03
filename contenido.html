@@ -1,51 +1,114 @@
-<div class="row g-3 row-cols-1" id="full-task">
-    <div class="col">
-        <!-- Conexión al servidor -->
-        <div class="card text-white">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Conexión al servidor</h5>
-                <div class="col-2 d-grid gap-2">
-                    <button class="btn btn-accent btn-block" data-bs-toggle="tooltip"
-                            title="Mostrar" role="button" onclick="mostrar('connection')">
-                        <!-- Icono de conexión -->
-                        <i class="fa-solid fa-network-wired"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body collapse">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="accordion" id="connection_task">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="user_head">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#user_collapse"
-                                            onclick="ejemplo('crear_usuario', true)"
-                                            aria-expanded="false" aria-controls="user_collapse">
-                                        1. Crear usuario en el servidor
-                                    </button>
-                                </h2>
-                                <div id="user_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="user_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_crear_usuario"></div>
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3" id="full-task">
+            <div class="col-md-12">
+                <!-- Conexión al servidor -->
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Conexión al servidor</h5>
+                        <div class="col-2 d-grid gap-2" title="Conexión al servidor" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true"
+                                    role="button">
+                                <!-- Icono de conexión -->
+                                <i class="fa-solid fa-network-wired"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="connection_task">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="user_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#user_collapse"
+                                                    onclick="ejemplo('crear_usuario', true)"
+                                                    aria-expanded="false" aria-controls="user_collapse">
+                                                1. Crear usuario en el servidor
+                                            </button>
+                                        </h2>
+                                        <div id="user_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="user_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_crear_usuario"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="ingreso_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#ingreso_collapse"
+                                                    onclick="ejemplo('ingreso', true)"
+                                                    aria-expanded="false" aria-controls="ingreso_collapse">
+                                                2. Desactivar ingreso como usuario root
+                                            </button>
+                                        </h2>
+                                        <div id="ingreso_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="ingreso_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_ingreso"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="ingreso_head">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#ingreso_collapse"
-                                            onclick="ejemplo('ingreso', true)"
-                                            aria-expanded="false" aria-controls="ingreso_collapse">
-                                        2. Desactivar ingreso como usuario root
-                                    </button>
-                                </h2>
-                                <div id="ingreso_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="ingreso_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_ingreso"></div>
+            </div>
+
+            <!-- Seguridad del servidor -->
+            <div class="col-md-12">
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Seguridad del servidor</h5>
+
+                        <div class="col-2 d-grid gap-2" title="Seguridad del servidor" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true"
+                                    role="button">
+                                <!-- Icono de seguridad -->
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="security_task">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="firewall_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#firewall_collapse"
+                                                    onclick="ejemplo('firewall', true)"
+                                                    aria-expanded="false" aria-controls="firewall_collapse">
+                                                3. Configurar firewall
+                                            </button>
+                                        </h2>
+                                        <div id="firewall_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="firewall_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_firewall"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="force_attack_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#force_attack_collapse"
+                                                    onclick="ejemplo('fuerza', true)"
+                                                    aria-expanded="false" aria-controls="force_attack_collapse">
+                                                4. Proteger contra ataques de fuerza bruta
+                                            </button>
+                                        </h2>
+                                        <div id="force_attack_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="force_attack_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_fuerza"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -53,50 +116,92 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+            <!-- Configuración de servicios -->
+            <div class="col-md-12">
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Configuración de servicios</h5>
 
-    <!-- Seguridad del servidor -->
-    <div class="col">
-        <div class="card text-white">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Seguridad del servidor</h5>
-            </div>
-            <div class="card-body collapse">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="accordion" id="security_task">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="firewall_head">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#firewall_collapse"
-                                            onclick="ejemplo('firewall', true)"
-                                            aria-expanded="false" aria-controls="firewall_collapse">
-                                        3. Configurar firewall
-                                    </button>
-                                </h2>
-                                <div id="firewall_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="firewall_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_firewall"></div>
+                        <div class="col-2 d-grid gap-2" title="Configuración de servicios" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true"
+                                    role="button">
+                                <!-- Icono de servicios -->
+                                <i class="fa-solid fa-cogs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="service_task">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="apache_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#apache_collapse"
+                                                    onclick="ejemplo('apache', true)"
+                                                    aria-expanded="false" aria-controls="apache_collapse">
+                                                5. Configurar servidor Apache
+                                            </button>
+                                        </h2>
+                                        <div id="apache_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="apache_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_apache"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="force_attack_head">
-                                    <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#force_attack_collapse"
-                                            onclick="ejemplo('fuerza', true)"
-                                            aria-expanded="false" aria-controls="force_attack_collapse">
-                                        4. Proteger contra ataques de fuerza bruta
-                                    </button>
-                                </h2>
-                                <div id="force_attack_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="force_attack_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_fuerza"></div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="mysql_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#mysql_collapse"
+                                                    onclick="ejemplo('mysql', true)"
+                                                    aria-expanded="false" aria-controls="mysql_collapse">
+                                                6. Configurar MySQL
+                                            </button>
+                                        </h2>
+                                        <div id="mysql_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="mysql_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_mysql"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="php_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#php_collapse"
+                                                    onclick="ejemplo('php', true)"
+                                                    aria-expanded="false" aria-controls="php_collapse">
+                                                7. Configurar PHP
+                                            </button>
+                                        </h2>
+                                        <div id="php_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="php_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_php"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PHPMyAdmin -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="phpmyadmin_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#phpmyadmin_collapse"
+                                                    onclick="ejemplo('phpmyadmin', true)"
+                                                    aria-expanded="false" aria-controls="phpmyadmin_collapse">
+                                                8. Configurar PHPMyAdmin
+                                            </button>
+                                        </h2>
+                                        <div id="phpmyadmin_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="phpmyadmin_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_phpmyadmin"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,66 +209,77 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Configuración de servicios -->
-    <div class="col">
-        <div class="card text-white">
-            <div class="card-header d-flex justify-content-between">
-                <h5>Configuración de servicios</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="accordion" id="service_task">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="apache_head">
-                                    <button class="accordion-button bg-dark collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#apache_collapse"
-                                            onclick="ejemplo('apache', true)"
-                                            aria-expanded="false" aria-controls="apache_collapse">
-                                        5. Configurar servidor Apache
-                                    </button>
-                                </h2>
-                                <div id="apache_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="apache_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_apache"></div>
+            <!-- Instalación de sitio web -->
+            <div class="col">
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Instalación de sitio web</h5>
+
+                        <div class="col-2 d-grid gap-2" title="Instalación de sitio web" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true"
+                                    role="button">
+                                <!-- Icono de sitio web -->
+                                <i class="fa-solid fa-globe"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="web_task">
+                                    <!-- Descargar sitio web -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="download_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#download_collapse"
+                                                    onclick="ejemplo('descargar', true)"
+                                                    aria-expanded="false" aria-controls="download_collapse">
+                                                9. Descargar sitio web
+                                            </button>
+                                        </h2>
+                                        <div id="download_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="download_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_descargar"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="mysql_head">
-                                    <button class="accordion-button bg-dark collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#mysql_collapse"
-                                            onclick="ejemplo('mysql', true)"
-                                            aria-expanded="false" aria-controls="mysql_collapse">
-                                        6. Configurar MySQL
-                                    </button>
-                                </h2>
-                                <div id="mysql_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="mysql_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_mysql"></div>
+                                    <!-- Configurar sitio web -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="config_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#config_collapse"
+                                                    onclick="ejemplo('configurar', true)"
+                                                    aria-expanded="false" aria-controls="config_collapse">
+                                                10. Configurar sitio web
+                                            </button>
+                                        </h2>
+                                        <div id="config_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="config_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_configurar"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="php_head">
-                                    <button class="accordion-button bg-dark collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#php_collapse"
-                                            onclick="ejemplo('php', true)"
-                                            aria-expanded="false" aria-controls="php_collapse">
-                                        7. Configurar PHP
-                                    </button>
-                                </h2>
-                                <div id="php_collapse" class="accordion-collapse collapse"
-                                     aria-labelledby="php_head" data-bs-parent="#full-task">
-                                    <div class="accordion-body">
-                                        <div class="terminal" id="terminal_php"></div>
+                                    <!-- Opcional: Instalar certificado SSL -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="ssl_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#ssl_collapse"
+                                                    onclick="ejemplo('ssl', true)"
+                                                    aria-expanded="false" aria-controls="ssl_collapse">
+                                                11. Instalar certificado SSL (Opcional)
+                                            </button>
+                                        </h2>
+                                        <div id="ssl_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="ssl_head" data-bs-parent="#full-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_ssl"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -3106,6 +3106,13 @@ fieldset:disabled .btn {
   border-color: #4C542B;
   box-shadow: rgba(208, 230, 117, 0.2) 0px 0px 12px;
 }
+
+.btn-accent:disabled {
+  color: #4C542B;
+  background-color: #D0E675;
+  border-color: #D0E675;
+}
+
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
   background-color: #2f4d6c;

@@ -36,8 +36,7 @@ example_txt[0] = '# LAMP' + '\n' +
     '# Accedemos en un browser ' + '\n' +
     'http://ip_server_remoto (Se puede usar comando "ip a" para ver su IP si la olvido)';
 
-example_txt[1] = '# Instalación de servidor de base de datos' + '\n' +
-    'sudo apt install mariadb-server' + '\n' + '# \n' + '# Agregar el repositorio de php' + '\n' +
+example_txt[1] = '# \n' + '# Agregar el repositorio de php' + '\n' +
     'sudo add-apt-repository ppa:ondrej/php' + '\n' + '# \n' +
     '# Instalamos php y las dependencias recomendadas para que php pueda' + '\n' +
     '# interactuar con el webserver y la base de datos ' + '\n' +
@@ -49,7 +48,9 @@ example_txt[1] = '# Instalación de servidor de base de datos' + '\n' +
 example_txt[2] = '# Procedemos a crear un usuario y lo agregamos al grupo sudo' +
     '\n' + 'adduser sysadmin && usermod -a -G sudo sysadmin';
 
-example_txt[3] = '# Si no se ha corrido todavía, Lo primero que debemos hacer es correr el' +
+example_txt[3] = '# Instalación de servidor de base de datos' + '\n' +
+    'sudo apt install mariadb-server' + '\n' +
+    '# Si no se ha corrido todavía, Lo primero que debemos hacer es correr el' +
     '\n' + '# siguiente comando en la terminal:' + '\n' +
     'sudo mysql_secure_installation' + '\n' + '# ' + '\n' +
     '# Si todavía no se ha configurado el password del usuario root de mysql' + '\n' +
@@ -415,6 +416,120 @@ example_txt[15] = '# Conectarse al servidor SSH con un usuario específico' +
     '\n' + '#' +
     '\n' + 'ssh -l [user] [IP]';
 
+example_txt[16] = '# Moverse hacia la carpeta /var/www/html' +
+    '\n' + 'cd /var/www/html' +
+    '\n' + '# Descargar nextcloud a esta ubicación y descomprimir' +
+    '\n' + 'sudo scp [user]@[host]:nombre_archivo.zip' +
+    '\n' + '#' +
+    '\n' + '# O mediante wget' +
+    '\n' + 'sudo wget -c https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip' +
+    '\n' + '#' +
+    '\n' + '# Listamos el contenido de la carpeta para ver el archivo descargado' +
+    '\n' + '#' +
+    '\n' + 'ls -l' +
+    '\n' + '#' +
+    '\n' + 'sudo unzip nombre_archivo.zip' +
+    '\n' + '#' +
+    '\n' + 'sudo unzip nextcloud-21.0.1.zip' +
+    '\n' + '#' +
+    '\n' + '# Otorgar permisos a las carpetas' +
+    '\n' + 'sudo chown -R www-data:www-data /var/www/html; sudo chmod -R 775 /var/www/html';
+
+example_txt[17] = '# Lo primero que hacemos es crear el virtual host para nuestro server usando como' +
+'\n' + '# plantilla el virtualhost por defecto para http' +
+'\n' + '# Primero accedemos a /etc/apache2/apache2.conf' +
+'\n' + 'sudo vim /etc/apache2/apache2.conf' +
+'\n' + '# y cambiamos' +
+'\n' + '#' +
+'\n' + '#' +
+'\n' + '#' +
+'\n' + '<Directory /var/www/>' +
+'\n' + '        Options FollowSymLinks Indexes' +
+'\n' + '        AllowOverride None' +
+'\n' + '        Require all granted' +
+'\n' + '</Directory>' +
+'\n' + '# ' +
+'\n' + '# a ' +
+'\n' + '#' +
+'\n' + '<Directory /var/www/>' +
+'\n' + '        Options FollowSymLinks' +
+'\n' + '        AllowOverride None' +
+'\n' + '        Require all granted' +
+'\n' + '</Directory>' +
+'\n' + '#' +
+'\n' + '# Nótese que lo único que hacemos es remover la directiva Indexes a la carpeta /var/www/' +
+'\n' + '#' +
+'\n' + '# Luego copiamos el virtualhost que viene por defecto para realizar nuestras personalizaciones' +
+'\n' + '#' +
+'\n' + 'sudo cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/nextcloud.conf' +
+'\n' + '#' +
+'\n' + '# Se procede a cambiar la directiva DocumentRoot a /var/www/html/nextcloud en /etc/apache2/sites-available/nextcloud.conf' +
+'\n' + 'sudo vi /etc/apache2/sites-available/nextcloud.conf' +
+'\n' + '# Debemos cambiar la directiva DocumentRoot y agregar las directiva <Directory > </Directory> para que queden de la siguiente manera:' +
+'\n' + '#' +
+'\n' + '	DocumentRoot /var/www/html/nextcloud' +
+'\n' + '	ErrorLog ${APACHE_LOG_DIR}/nextcloud.error' +
+'\n' + '	CustomLog ${APACHE_LOG_DIR}/nextcloud.access combined' +
+'\n' +
+'\n' + '        <Directory /var/www/html/nextcloud/>' +
+'\n' + '		Require all granted' +
+'\n' + '		Options FollowSymlinks MultiViews' +
+'\n' + '		AllowOverride All' +
+'\n' +
+'\n' + '		<IfModule mod_dav.c>' +
+'\n' + '			Dav off' +
+'\n' + '		</IfModule>' +
+'\n' +
+'\n' + '		SetEnv HOME /var/www/html/nextcloud' +
+'\n' + '		SetEnv HTTP_HOME /var/www/html/nextcloud' +
+'\n' + '		Satisfy Any' +
+'\n' + '	</Directory>' +
+'\n' + '# Guardar archivo con las teclas Escape mas  :wq!' +
+'\n' + '#' +
+'\n' + '#' +
+'\n' + '# Deshabilitamos el sitio activado por defecto' +
+'\n' + 'sudo a2dissite 000-default.conf' +
+'\n' + 'sudo rm /var/www/html/index.html' +
+'\n' + '#' +
+'\n' + '# Activamos nuestro sitio y activamos los modulos requeridos' +
+'\n' + 'sudo a2ensite nextcloud.conf' +
+'\n' + 'a2enmod rewrite headers env dir mime setenvif ssl' +
+'\n' + '# Reiniciamos el servicio de apache' +
+'\n' + 'sudo systemctl restart apache2' +
+'\n' + '#' +
+'\n' + '# Ahora procedemos a realizar la configuración de nextcloud, necesitaremos la base de datos con el usuario autorizado a usarla y la contraseña y deberemos' +
+'\n' + '# configurar un usuario administrativo para nextcloud, para esto volvemos a acceder a nuestro server a travez del navegador:' +
+'\n' + '# http://IP-SERVER-REMOTO' +
+'\n' + '#';
+
+example_txt[18] = '# Configuración de HTTPS' +
+'\n' + 'sudo apt install openssl; sudo a2enmod ssl; systemctl restart apache2' +
+'\n' + '# Configuración de apache para permitir la reescritura de direcciones' +
+'\n' + 'sudo vi /etc/apache2/apache2.conf' +
+'\n' + '#' +
+'\n' + '# Agregar las siguientes lineas al final del archivo' +
+'\n' + '#' +
+'\n' + '<Directory /var/www/html>' +
+'\n' + '	AllowOverride All' +
+'\n' + '</Directory>' +
+'\n' + '#' +
+'\n' + '# Instalar el core de snap' +
+'\n' + 'sudo snap install core; sudo snap refresh core' +
+'\n' + '#' +
+'\n' + '# Instalar certbot' +
+'\n' + 'sudo snap install --classic certbot' +
+'\n' + '#' +
+'\n' + '# Agregar certbot a la linea de comandos' +
+'\n' + 'sudo ln -s /snap/bin/certbot /usr/bin/certbot' +
+'\n' + '#' +
+'\n' + '# Instalar certificado' +
+'\n' + 'sudo certbot --apache' +
+'\n' + '#' +
+'\n' + '# Es posible renovar el certificado, pero este proceso se realiza automáticamente' +
+'\n' + 'sudo certbot renew --dry-run' +
+'\n' + '#' +
+'\n' + '# Ya se ha configurado el servidor en https';
+
 /** Mostrar la información del collapse de seguridad */
 function mostrar_seguridad() {
     if (elemento != 'seguridad') {
@@ -570,6 +685,30 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
 
                 icono = "fa-solid fa-server";
                 title = "Ingreso remoto SSH";
+
+                break;
+
+            case 'descargar':
+                texto_copiar = example_txt[16];
+
+                icono = "fa-solid fa-download";
+                title = "Descargar archivos";
+
+                break;
+
+            case 'configurar':
+                texto_copiar = example_txt[17];
+
+                icono = "fa-solid fa-cog";
+                title = "Configurar aplicación web";
+
+                break;
+
+            case 'ssl':
+                texto_copiar = example_txt[18];
+
+                icono = "fa-solid fa-lock";
+                title = "SSL";
 
                 break;
         }

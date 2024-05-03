@@ -1,0 +1,72 @@
+<!-- Modal de bienvenida -->
+<div class="modal fade border-info" id="modal_bienvenida" tabindex="-1" role="dialog" aria-labelledby="title_welcome"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="title_welcome">
+                    <!-- Icono de bienvenida -->
+                    <i class="fa-solid fa-handshake"></i> Taller de Linux
+                </h4>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                        title="Cerrar"
+                        aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body bg-secondary">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Imagen de bienvenida -->
+                            <img src="dist/img/linux.jpg" alt="Imagen de bienvenida" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#perfil" data-bs-toggle="modal">Vamos!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="perfil" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="perfilModalLabel">¿Quién soy Yo?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Foto de perfil -->
+                        <img src="dist/img/perfil.jpg" alt="Foto de perfil"
+                             class="img-fluid rounded-circle">
+                    </div>
+                    <div class="col-md-8">
+                        <!-- Información del perfil -->
+                        <h2>José Pablo Campos Solano</h2>
+                        <p><strong>Correo electrónico:</strong> chepelcr@outlook.com</p>
+                        <p><strong>Ocupación:</strong> Desarrollador Web</p>
+                        <p><strong>Biografía:</strong> Soy un desarrollador de aplicaciones web e infraestructura en
+                            la
+                            nube de AWS. En 2022 finalicé mis estudios en Bachillerato en Informática Empresarial en
+                            la
+                            Universidad de Costa Rica, y en 2023 me certifiqué como Arquitecto de Soluciones de AWS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#modal_compartir" data-bs-toggle="modal">Iniciar
+                    taller
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

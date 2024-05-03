@@ -21,8 +21,6 @@ C
 dist/css/styles.css,6/8/68424b9346341396f0a8c14c7f806c623c57c79c
 >
 compartir.html,2/8/2813c156f5d8a55b68b1b7be3da91c277b2f97a7
-A
-files/firewall.sh,2/8/28ca98f96ce2d8072f5fce05245861ad003f3a6a
 ?
 utilidades.html,f/4/f49407681810f336f65341e413cc159cd0d05b68
 9
@@ -45,3 +43,7 @@ F
 contenido.html,7/a/7a103af727df439f93f6e7fa197aa97eb6c81d9d
 >
 old_index.html,2/6/26a27f88b5b1f38ddda0d877aa0719d110fc25d5
+>
+quien_soy.html,f/1/f1b62fb3d897dab147524fec4c0563a0118a28f3
+;
+perfil.html,a/d/adb6b6d87dbf73c25412f0b5e2c529e3687b2735
