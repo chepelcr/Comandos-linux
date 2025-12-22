@@ -1,0 +1,221 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3" id="git-task">
+            <!-- Configuración inicial -->
+            <div class="col-md-12">
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Configuración inicial</h5>
+                        <div class="col-2 d-grid gap-2" title="Configuración inicial" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true" role="button">
+                                <i class="fa-solid fa-gear"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="git_config_task">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_install_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_install_collapse"
+                                                    onclick="ejemplo('git_instalacion', true)"
+                                                    aria-expanded="false" aria-controls="git_install_collapse">
+                                                1. Instalación de Git
+                                            </button>
+                                        </h2>
+                                        <div id="git_install_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_install_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_instalacion"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_config_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_config_collapse"
+                                                    onclick="ejemplo('git_configuracion', true)"
+                                                    aria-expanded="false" aria-controls="git_config_collapse">
+                                                2. Configuración inicial
+                                            </button>
+                                        </h2>
+                                        <div id="git_config_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_config_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_configuracion"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_ssh_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_ssh_collapse"
+                                                    onclick="ejemplo('git_ssh', true)"
+                                                    aria-expanded="false" aria-controls="git_ssh_collapse">
+                                                3. Autenticación SSH con GitHub
+                                            </button>
+                                        </h2>
+                                        <div id="git_ssh_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_ssh_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_ssh"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comandos básicos -->
+            <div class="col-md-12">
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Comandos de Git</h5>
+                        <div class="col-2 d-grid gap-2" title="Comandos de Git" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true" role="button">
+                                <i class="fa-solid fa-terminal"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="git_commands_task">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_basic_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_basic_collapse"
+                                                    onclick="ejemplo('git_basicos', true)"
+                                                    aria-expanded="false" aria-controls="git_basic_collapse">
+                                                4. Comandos básicos
+                                            </button>
+                                        </h2>
+                                        <div id="git_basic_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_basic_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_basicos"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_remote_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_remote_collapse"
+                                                    onclick="ejemplo('git_remotos', true)"
+                                                    aria-expanded="false" aria-controls="git_remote_collapse">
+                                                5. Sincronización con GitHub
+                                            </button>
+                                        </h2>
+                                        <div id="git_remote_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_remote_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_remotos"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_branch_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_branch_collapse"
+                                                    onclick="ejemplo('git_ramas', true)"
+                                                    aria-expanded="false" aria-controls="git_branch_collapse">
+                                                6. Trabajar con ramas
+                                            </button>
+                                        </h2>
+                                        <div id="git_branch_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_branch_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_ramas"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comandos avanzados -->
+            <div class="col-md-12">
+                <div class="card text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5>Comandos avanzados</h5>
+                        <div class="col-2 d-grid gap-2" title="Comandos avanzados" data-bs-toggle="tooltip">
+                            <button class="btn btn-accent btn-block" disabled aria-disabled="true" role="button">
+                                <i class="fa-solid fa-toolbox"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="accordion" id="git_advanced_task">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_useful_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_useful_collapse"
+                                                    onclick="ejemplo('git_utiles', true)"
+                                                    aria-expanded="false" aria-controls="git_useful_collapse">
+                                                7. Comandos útiles adicionales
+                                            </button>
+                                        </h2>
+                                        <div id="git_useful_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_useful_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_utiles"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_errors_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_errors_collapse"
+                                                    onclick="ejemplo('git_errores', true)"
+                                                    aria-expanded="false" aria-controls="git_errors_collapse">
+                                                8. Errores comunes y soluciones
+                                            </button>
+                                        </h2>
+                                        <div id="git_errors_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_errors_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_errores"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="git_optional_head">
+                                            <button class="accordion-button bg-dark collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#git_optional_collapse"
+                                                    onclick="ejemplo('git_opcionales', true)"
+                                                    aria-expanded="false" aria-controls="git_optional_collapse">
+                                                9. Configuraciones opcionales
+                                            </button>
+                                        </h2>
+                                        <div id="git_optional_collapse" class="accordion-collapse collapse"
+                                             aria-labelledby="git_optional_head" data-bs-parent="#git-task">
+                                            <div class="accordion-body">
+                                                <div class="terminal" id="terminal_git_opcionales"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -530,6 +530,246 @@ example_txt[18] = '# Configuración de HTTPS' +
 '\n' + '#' +
 '\n' + '# Ya se ha configurado el servidor en https';
 
+/* Git y GitHub - Guía para Estudiantes (separado en secciones) */
+
+// 1. Instalación de Git
+example_txt[19] = '# Instalación de Git' +
+'\n' + '# ' +
+'\n' + '# En macOS (usando Homebrew)' +
+'\n' + 'brew install git' +
+'\n' + '# ' +
+'\n' + '# O descarga desde https://git-scm.com/download/mac' +
+'\n' + '# ' +
+'\n' + '# En Ubuntu/Debian' +
+'\n' + 'sudo apt update' +
+'\n' + 'sudo apt install git' +
+'\n' + '# ' +
+'\n' + '# En Windows' +
+'\n' + '# Descarga Git Bash desde https://git-scm.com/download/win' +
+'\n' + '# ' +
+'\n' + '# Verificar instalación' +
+'\n' + 'git --version' +
+'\n' + '# Debería mostrar algo como: git version 2.43.0';
+
+// 2. Configuración inicial
+example_txt[20] = '# Configuración inicial (obligatoria antes de tu primer commit)' +
+'\n' + '# ' +
+'\n' + '# Tu nombre completo (aparecerá en cada commit)' +
+'\n' + 'git config --global user.name "Tu Nombre Completo"' +
+'\n' + '# ' +
+'\n' + '# Tu email (DEBE ser el mismo que usas en GitHub)' +
+'\n' + 'git config --global user.email "tu@email.com"' +
+'\n' + '# ' +
+'\n' + '# Establecer la rama principal como "main" (estándar moderno)' +
+'\n' + 'git config --global init.defaultBranch main' +
+'\n' + '# ' +
+'\n' + '# Ver toda tu configuración' +
+'\n' + 'git config --list' +
+'\n' + '# ' +
+'\n' + '# ¿Qué significa --global?' +
+'\n' + '# Aplica la configuración a todos tus proyectos.' +
+'\n' + '# Sin esta bandera, solo aplicaría al proyecto actual.';
+
+// 3. Autenticación SSH con GitHub
+example_txt[21] = '# Conectar tu computadora con GitHub (Autenticación SSH)' +
+'\n' + '# SSH te permite comunicarte con GitHub sin escribir tu contraseña cada vez.' +
+'\n' + '# ' +
+'\n' + '# Paso 1: Generar tu clave SSH' +
+'\n' + 'ssh-keygen -t ed25519 -C "tu@email.com"' +
+'\n' + '# Presiona Enter para usar la ubicación por defecto (~/.ssh/id_ed25519)' +
+'\n' + '# Puedes dejar la contraseña vacía o agregar una para mayor seguridad' +
+'\n' + '# ' +
+'\n' + '# Paso 2: Iniciar el agente SSH' +
+'\n' + 'eval "$(ssh-agent -s)"' +
+'\n' + '# ' +
+'\n' + '# Paso 3: Agregar tu clave privada al agente' +
+'\n' + 'ssh-add ~/.ssh/id_ed25519' +
+'\n' + '# ' +
+'\n' + '# Paso 4: Copiar tu clave pública' +
+'\n' + 'cat ~/.ssh/id_ed25519.pub' +
+'\n' + '# Copia TODO el texto (empieza con ssh-ed25519 y termina con tu email)' +
+'\n' + '# ' +
+'\n' + '# Paso 5: Agregar la clave en GitHub' +
+'\n' + '# Ve a GitHub > Settings > SSH and GPG keys > New SSH key' +
+'\n' + '# Title: Un nombre descriptivo (ej: "Mi MacBook")' +
+'\n' + '# Key type: Authentication Key' +
+'\n' + '# Key: Pega tu clave pública' +
+'\n' + '# ' +
+'\n' + '# Paso 6: Verificar la conexión' +
+'\n' + 'ssh -T git@github.com' +
+'\n' + '# Si todo está bien, verás:' +
+'\n' + '# Hi tu-usuario! You have successfully authenticated...';
+
+// 4. Comandos básicos
+example_txt[22] = '# Comandos básicos de Git' +
+'\n' + '# ' +
+'\n' + '# Inicializa Git en la carpeta actual (crea la carpeta oculta .git)' +
+'\n' + 'git init' +
+'\n' + '# ' +
+'\n' + '# Descarga una copia completa de un repositorio de GitHub' +
+'\n' + 'git clone git@github.com:usuario/repositorio.git' +
+'\n' + '# ' +
+'\n' + '# Muestra qué archivos han cambiado' +
+'\n' + 'git status' +
+'\n' + '# ' +
+'\n' + '# Agregar un archivo específico al staging' +
+'\n' + 'git add nombre-archivo.txt' +
+'\n' + '# ' +
+'\n' + '# Agregar todos los archivos modificados' +
+'\n' + 'git add .' +
+'\n' + '# ' +
+'\n' + '# Agregar todos los archivos de una carpeta' +
+'\n' + 'git add carpeta/' +
+'\n' + '# ' +
+'\n' + '# Hacer un commit (una "fotografía" de tu código)' +
+'\n' + 'git commit -m "Descripción breve de los cambios"' +
+'\n' + '# ' +
+'\n' + '# Buenos mensajes de commit:' +
+'\n' + '# ✓ "Agrega función de login con validación"' +
+'\n' + '# ✓ "Corrige error en cálculo de promedio"' +
+'\n' + '# ✗ "Cambios"' +
+'\n' + '# ✗ "asdfgh"' +
+'\n' + '# ' +
+'\n' + '# Ver historial de commits (compacto)' +
+'\n' + 'git log --oneline' +
+'\n' + '# ' +
+'\n' + '# Ver historial con gráfico de ramas' +
+'\n' + 'git log --oneline --graph';
+
+// 5. Sincronización con GitHub
+example_txt[23] = '# Sincronización con GitHub' +
+'\n' + '# ' +
+'\n' + '# Primero, crea un repositorio vacío en GitHub (sin README ni .gitignore)' +
+'\n' + '# ' +
+'\n' + '# Agrega GitHub como repositorio remoto llamado "origin"' +
+'\n' + 'git remote add origin git@github.com:tu-usuario/tu-repositorio.git' +
+'\n' + '# ' +
+'\n' + '# Verifica que se agregó correctamente' +
+'\n' + 'git remote -v' +
+'\n' + '# ' +
+'\n' + '# Subir tus cambios a GitHub (primera vez)' +
+'\n' + 'git push -u origin main' +
+'\n' + '# ' +
+'\n' + '# Subir cambios (después de la primera vez)' +
+'\n' + 'git push' +
+'\n' + '# ' +
+'\n' + '# Descargar y fusionar cambios del repositorio remoto' +
+'\n' + 'git pull origin main' +
+'\n' + '# ' +
+'\n' + '# O simplemente (si ya configuraste upstream)' +
+'\n' + 'git pull';
+
+// 6. Trabajar con ramas
+example_txt[24] = '# Trabajar con ramas (branches)' +
+'\n' + '# Las ramas te permiten trabajar en nuevas funcionalidades' +
+'\n' + '# sin afectar el código principal.' +
+'\n' + '# ' +
+'\n' + '# Ver todas las ramas (* indica la rama actual)' +
+'\n' + 'git branch' +
+'\n' + '# ' +
+'\n' + '# Crear una nueva rama' +
+'\n' + 'git branch nombre-rama' +
+'\n' + '# ' +
+'\n' + '# Cambiar a otra rama' +
+'\n' + 'git switch nombre-rama' +
+'\n' + '# ' +
+'\n' + '# Crear y cambiar en un solo comando' +
+'\n' + 'git switch -c nombre-nueva-rama' +
+'\n' + '# ' +
+'\n' + '# Fusionar una rama con la actual' +
+'\n' + 'git merge nombre-rama' +
+'\n' + '# ' +
+'\n' + '# Eliminar una rama (después de fusionarla)' +
+'\n' + 'git branch -d nombre-rama' +
+'\n' + '# ' +
+'\n' + '# Flujo típico:' +
+'\n' + '# 1. Creas una rama: git switch -c nueva-funcion' +
+'\n' + '# 2. Haces tus cambios y commits' +
+'\n' + '# 3. Regresas a main: git switch main' +
+'\n' + '# 4. Fusionas tu rama: git merge nueva-funcion' +
+'\n' + '# 5. Eliminas la rama: git branch -d nueva-funcion';
+
+// 7. Comandos útiles
+example_txt[25] = '# Comandos útiles adicionales' +
+'\n' + '# ' +
+'\n' + '# Ver diferencias en archivos modificados (antes de add)' +
+'\n' + 'git diff' +
+'\n' + '# ' +
+'\n' + '# Ver diferencias en el staging (después de add)' +
+'\n' + 'git diff --staged' +
+'\n' + '# ' +
+'\n' + '# Descartar cambios en un archivo (volver a la última versión)' +
+'\n' + 'git checkout -- nombre-archivo.txt' +
+'\n' + '# ' +
+'\n' + '# Quitar un archivo del staging (después de git add)' +
+'\n' + 'git restore --staged nombre-archivo.txt' +
+'\n' + '# ' +
+'\n' + '# Guardar cambios temporalmente sin hacer commit' +
+'\n' + 'git stash' +
+'\n' + '# ' +
+'\n' + '# Recuperar los cambios guardados' +
+'\n' + 'git stash pop' +
+'\n' + '# ' +
+'\n' + '# Ver quién modificó cada línea de un archivo' +
+'\n' + 'git blame nombre-archivo.txt' +
+'\n' + '# ' +
+'\n' + '# Ejemplo de archivo .gitignore:' +
+'\n' + '# node_modules/' +
+'\n' + '# vendor/' +
+'\n' + '# .DS_Store' +
+'\n' + '# .env' +
+'\n' + '# *.log' +
+'\n' + '# .idea/' +
+'\n' + '# .vscode/';
+
+// 8. Errores comunes y soluciones
+example_txt[26] = '# Errores comunes y soluciones' +
+'\n' + '# ' +
+'\n' + '# Error: "Permission denied (publickey)"' +
+'\n' + '# Solución: Tu clave SSH no está configurada. Revisa el paso de SSH.' +
+'\n' + '# ' +
+'\n' + '# Error: "failed to push some refs"' +
+'\n' + '# Solución: Hay cambios en GitHub que no tienes. Ejecuta:' +
+'\n' + 'git pull' +
+'\n' + '# ' +
+'\n' + '# Error: "merge conflict"' +
+'\n' + '# Solución: Dos personas modificaron la misma línea.' +
+'\n' + '# Abre el archivo, busca los marcadores <<<<<<<' +
+'\n' + '# Edita manualmente y haz un nuevo commit.' +
+'\n' + '# ' +
+'\n' + '# Hice commit pero olvidé un archivo' +
+'\n' + 'git add archivo-olvidado.txt' +
+'\n' + 'git commit --amend --no-edit' +
+'\n' + '# ' +
+'\n' + '# Quiero deshacer el último commit (manteniendo los cambios)' +
+'\n' + 'git reset --soft HEAD~1';
+
+// 9. Configuraciones opcionales
+example_txt[27] = '# Configuraciones opcionales recomendadas' +
+'\n' + '# ' +
+'\n' + '# Editor por defecto para mensajes de commit' +
+'\n' + 'git config --global core.editor "code --wait"  # VS Code' +
+'\n' + 'git config --global core.editor "nano"          # Nano' +
+'\n' + '# ' +
+'\n' + '# Colores en la terminal' +
+'\n' + 'git config --global color.ui auto' +
+'\n' + '# ' +
+'\n' + '# Alias útiles (atajos)' +
+'\n' + 'git config --global alias.st status' +
+'\n' + 'git config --global alias.co checkout' +
+'\n' + 'git config --global alias.br branch' +
+'\n' + 'git config --global alias.cm "commit -m"' +
+'\n' + '# ' +
+'\n' + '# Con estos alias puedes escribir:' +
+'\n' + '# git st  en lugar de  git status' +
+'\n' + '# git co  en lugar de  git checkout' +
+'\n' + '# ' +
+'\n' + '# Firma de commits (opcional - agrega insignia "Verified")' +
+'\n' + 'git config --global gpg.format ssh' +
+'\n' + 'git config --global user.signingkey ~/.ssh/id_ed25519.pub' +
+'\n' + 'git config --global commit.gpgsign true' +
+'\n' + '# Luego agrega la misma clave SSH en GitHub como Signing Key';
+
 /** Mostrar la información del collapse de seguridad */
 function mostrar_seguridad() {
     if (elemento != 'seguridad') {
@@ -709,6 +949,78 @@ function ejemplo(nombre_ejemplo = '', taller = false) {
 
                 icono = "fa-solid fa-lock";
                 title = "SSL";
+
+                break;
+
+            case 'git_instalacion':
+                texto_copiar = example_txt[19];
+
+                icono = "fa-solid fa-download";
+                title = "Instalación de Git";
+
+                break;
+
+            case 'git_configuracion':
+                texto_copiar = example_txt[20];
+
+                icono = "fa-solid fa-gear";
+                title = "Configuración inicial";
+
+                break;
+
+            case 'git_ssh':
+                texto_copiar = example_txt[21];
+
+                icono = "fa-solid fa-key";
+                title = "Autenticación SSH";
+
+                break;
+
+            case 'git_basicos':
+                texto_copiar = example_txt[22];
+
+                icono = "fa-solid fa-terminal";
+                title = "Comandos básicos";
+
+                break;
+
+            case 'git_remotos':
+                texto_copiar = example_txt[23];
+
+                icono = "fa-brands fa-github";
+                title = "Sincronización con GitHub";
+
+                break;
+
+            case 'git_ramas':
+                texto_copiar = example_txt[24];
+
+                icono = "fa-solid fa-code-branch";
+                title = "Trabajar con ramas";
+
+                break;
+
+            case 'git_utiles':
+                texto_copiar = example_txt[25];
+
+                icono = "fa-solid fa-toolbox";
+                title = "Comandos útiles";
+
+                break;
+
+            case 'git_errores':
+                texto_copiar = example_txt[26];
+
+                icono = "fa-solid fa-bug";
+                title = "Errores comunes";
+
+                break;
+
+            case 'git_opcionales':
+                texto_copiar = example_txt[27];
+
+                icono = "fa-solid fa-sliders";
+                title = "Configuraciones opcionales";
 
                 break;
         }

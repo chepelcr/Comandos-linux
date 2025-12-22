@@ -30,6 +30,11 @@
     height: 85vh;
 }
 
+.h-git-lab {
+    overflow-y: scroll;
+    height: 85vh;
+}
+
 /**Modificar scroll para .scroll_vertical*/
 .scroll_vertical::-webkit-scrollbar {
   width: 10px;
