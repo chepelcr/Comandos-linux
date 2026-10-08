@@ -72,7 +72,7 @@ async function guestCredentials(config: PublicApiConfig, signal?: AbortSignal): 
   }
   const c = result.Credentials;
   memoryCredentials = { accessKeyId: c.AccessKeyId, secretKey: c.SecretKey, sessionToken: c.SessionToken, expiration: c.Expiration * 1000 };
-  
+
   return memoryCredentials;
 }
 
@@ -121,4 +121,3 @@ export async function signedPublicGet(config: PublicApiConfig, path: string, ini
     },
   });
 }
-

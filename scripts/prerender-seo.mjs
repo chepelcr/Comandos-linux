@@ -75,7 +75,7 @@ try{
  await writeFile(resolve(output,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${xml}\n</urlset>\n`);
  await writeFile(resolve(output,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
  await writeFile(resolve(output,'.nojekyll'),'');
- await writeFile(resolve(output,'curriculum-release.json'),await readFile('src/generated/curriculum-release.json')); 
+ await writeFile(resolve(output,'curriculum-release.json'),await readFile('src/generated/curriculum-release.json'));
  console.log(`Prerendered ${paths.length} public pages and ${privatePaths.length} noindex account pages; generated sitemap, robots.txt and social preview.`);
 }finally{
  await browser?.close();
