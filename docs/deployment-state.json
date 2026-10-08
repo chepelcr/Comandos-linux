@@ -24,6 +24,6 @@
   "EmailRepository": "https://github.com/chepelcr/linux-lab-cognito-templates",
   "EmailFunction": "linux-lab-emails-Function-CryKg4xLBTUv",
   "EmailEnabled": true,
-  "EmailRecipientPolicy": "explicit-verified-ses-email-identities",
+  "EmailRecipientPolicy": "aws-managed-production-delivery",
   "EmailSender": "Linux Lab <linux-lab@jcampos.dev>"
 }

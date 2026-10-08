@@ -34,8 +34,8 @@ Frontend configuration is public. Never put AWS credentials or client secrets in
 Progression is stored in private S3 JSON objects behind the Cognito JWT API, with
 ETag conditional writes. Guest data stays local. Ask the learner to choose local or
 online progress before replacing either differing, nonempty copy on sign-in.
-Branded Cognito emails are enabled only for explicitly verified SES email identities.
-SES currently has production access, so the Lambda enforces the recipient restriction.
+SES production access is approved. AWS manages sender identities and delivery; do not
+restrict students to registered SES recipient identities. Keep Cognito email verification.
 Backend and email sources are private independent repositories in ignored backend/
 and emails/ folders. See docs/repositories.md. Never commit their contents here.
 Use the shared Select component for themed dropdowns and keyboard support.

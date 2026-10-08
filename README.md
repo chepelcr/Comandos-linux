@@ -48,10 +48,9 @@ Pages 404/session-storage fallback. Backend and email CI use their own narrow
 OIDC roles and main-only deployment environments.
 
 Eight responsive ES/EN templates cover verification, recovery and invitations.
-Branded delivery is enabled only for explicitly verified SES **email identities**.
-Cognito's signup and message hooks enforce that restriction even though SES has
-production access. Unregistered or pending identities cannot register or receive
-course messages. The app explains the current enrollment restriction.
+SES production access is approved. AWS manages sender identities and delivery;
+students can register with any valid email and verify ownership through Cognito.
+Branded ES/EN messages remain active without an app recipient allowlist.
 
 ## Temporary Linux laboratories
 

@@ -120,3 +120,12 @@ verification, irrespective of SES production-access status. Deployed resolver ch
 passed all eight variants and both eligibility branches. Actual unapproved signup
 was rejected before account creation; no mail was sent by these verification checks.
 The new repositories use immutable OIDC subjects from GitHub's repository metadata.
+
+## SES production delivery — October 8, 2026
+
+Supersedes the earlier verified-recipient policy above: PACIFIC-PROD / us-east-1
+reports ProductionAccessEnabled=true, SendingEnabled=true and HEALTHY enforcement.
+The app recipient allowlist and Cognito PreSignUp guard are removed. AWS manages
+SES identities/delivery, while Cognito still verifies account email ownership.
+All eight branded ES/EN templates remain enabled. Live verification invokes the
+resolver with synthetic recipients and checks the pool wiring without sending mail.

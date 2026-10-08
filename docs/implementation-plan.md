@@ -2,7 +2,7 @@
 
 Current repository boundaries supersede the original monorepo paths below:
 backend/ and emails/ are ignored independent private checkouts. See
-[repositories.md](repositories.md) for owners, CI and the verified-recipient email policy.
+[repositories.md](repositories.md) for owners, CI and the AWS-managed production email delivery.
 
 Prepared October 7, 2026; revised after browser-Linux research. Status: planning complete; application migration, AWS
 templates, and deployment workflow remain implementation work. Workspace UI UX Pro
