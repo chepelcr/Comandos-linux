@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comandos Basicos de Linux</title>
+
+    <!-- JQuery 3.60 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap dist/css -->
+    <link rel="stylesheet" href="dist/css/bootstrap.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/3e7bda16db.js" crossorigin="anonymous"></script>
+
+    <!-- Code Mirror-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Icono de la pagina -->
+    <link rel="shortcut icon" href="dist/img/logo.png">
+</head>
+
+</html>
+</link>
+<script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
+</head>
+
+<body>
+    <header class="container-fluid pt-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Comandos básicos de Linux</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <!-- Utilidades -->
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Utilidades" role="button"
+                                onclick="mostrar_utilidades()">
+                                <!--Icono de utilidad -->
+                                <i class="fas fa-cogs"></i>
+                                Utilidades
+                            </a>
+                        </li>
+
+                        <!-- Ejemplos -->
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Ejemplos" role="button"
+                                onclick="mostrar_ejemplo()">
+                                <!--Icono de ejemplo -->
+                                <i class="fas fa-book"></i>
+                                Ejemplos
+                            </a>
+                        </li>
+
+                        <!-- Seguridad Informatica -->
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Seguridad Informática" role="button"
+                                onclick="mostrar_seguridad()">
+                                <!--Icono de seguridad -->
+                                <i class="fas fa-shield-alt"></i>
+                                Seguridad Informática
+                            </a>
+                        </li>
+
+                        <!-- Informacion de la charla -->
+                        <li class="nav-item"  data-bs-toggle="tooltip" title="Información de la charla">
+                            <a class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#info_charla">
+                                <!--Icono de informacion -->
+                                <i class="fas fa-info-circle"></i>
+                                Información
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container p-5">
+        <div class="row">
+            <!-- Utilidades -->
+            <div class="col-md-12">
+                <div class="card text-white bg-warning">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3>Utilidades</h3>
+                        <div class="btn-group col-2">
+                            <!-- Boton para ver -->
+                            <button class="btn btn-warning" data-bs-toggle="tooltip" role="button" title="Ver subtemas"
+                                onclick="mostrar_utilidades()">
+                                <!-- Icono de cogs -->
+                                <i class="fa-solid fa-cogs"></i>
+
+                            </button>
+                        </div>
+                    </div>
+                    <div class="collapse" id="utilidades">
+                        <!-- Linea de Comandos CLI-->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Linea de Comandos CLI
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-warning copiar" id="copiar_cli" data-bs-toggle="tooltip"
+                                            title="Copiar" role="button" onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-warning" data-bs-toggle="tooltip" title="Ver ejemplo"
+                                            role="button" onclick="ejemplo('cli')">
+                                            <!-- Icono de code -->
+                                            <i class="fa-solid fa-terminal"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_cli">
+                            <div class="terminal-cli"></div>
+                        </div>
+
+                        <!-- Gestion de carpetas y archivos -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Gestion de carpetas y archivos en Linux
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-warning copiar btn-block" id="copiar_gestion_archivos"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-warning btn-block" data-bs-toggle="tooltip"
+                                            title="Ver ejemplo" role="button" onclick="ejemplo('gestion_archivos')">
+                                            <!-- Icono de code -->
+                                            <i class="fa-solid fa-folder-open"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_gestion_archivos">
+                            <div class="terminal-gestion_archivos"></div>
+                        </div>
+
+                        <!-- Crear un usuario -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Crear un usuario en Linux
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-warning copiar btn-block" id="copiar_crear_usuario"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-warning btn-block" data-bs-toggle="tooltip"
+                                            title="Ver ejemplo" role="button" onclick="ejemplo('crear_usuario')">
+                                            <!-- Icono de code -->
+                                            <i class="fa-solid fa-arrows-down-to-people"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_crear_usuario">
+                            <div class="terminal-crear_usuario"></div>
+                        </div>
+
+                        <!-- Instalacion de paquetes -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Instalación de paquetes
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-warning copiar btn-block" id="copiar_paquetes"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-warning btn-block" data-bs-toggle="tooltip"
+                                            title="Ver ejemplo" role="button" onclick="ejemplo('paquetes')">
+                                            <!-- Icono de paquetes -->
+                                            <i class="fa-solid fa-box-archive"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_paquetes">
+                            <div class="terminal-paquetes"></div>
+                        </div>
+
+                        <!-- Asignar permisos -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Permisos de archivos y carpetas
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-warning copiar" id="copiar_permisos"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-warning" data-bs-toggle="tooltip" title="Ver ejemplo"
+                                            role="button" onclick="ejemplo('permisos')">
+                                            <!-- Icono de code -->
+                                            <i class="fa-solid fa-key"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_permisos">
+                            <div class="terminal-permisos"></div>
+                        </div>
+
+                        <!-- Herramientas -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="accordion" id="herramientas">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                aria-expanded="false" aria-controls="collapseOne">
+                                                Herramientas
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse"
+                                            aria-labelledby="headingOne" data-bs-parent="#herramientas">
+                                            <div class="accordion-body">
+                                                <!-- Editor de texto -->
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            Editor de texto VI
+
+                                                            <div class="btn-group col-2">
+                                                                <!-- Copiar ejemplo -->
+                                                                <button class="btn btn-warning copiar" id="copiar_vi" data-bs-toggle="tooltip"
+                                                                    title="Copiar" role="button" onclick="copiar_texto()">
+                                                                    <i class="fa-solid fa-copy"></i>
+                                                                </button>
+
+                                                                <!-- Boton para ver ejemplo -->
+                                                                <button class="btn btn-warning" data-bs-toggle="tooltip" title="Ver ejemplo"
+                                                                    role="button" onclick="ejemplo('vi')">
+                                                                    <!-- Icono de code -->
+                                                                    <i class="fa-solid fa-font"></i>
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="collapse ejemplo" id="ejemplo_vi">
+                                                    <div class="terminal-vi"></div>
+                                                </div>
+
+                                                <!-- Compresion de archivos-->
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <div class="d-flex justify-content-between">
+                                                            Compresión de archivos
+
+                                                            <div class="btn-group col-2">
+                                                                <!-- Copiar ejemplo -->
+                                                                <button class="btn btn-warning copiar btn-block" id="copiar_compresion"
+                                                                    data-bs-toggle="tooltip" title="Copiar" role="button"
+                                                                    onclick="copiar_texto()">
+                                                                    <i class="fa-solid fa-copy"></i>
+                                                                </button>
+
+                                                                <!-- Boton para ver ejemplo -->
+                                                                <button class="btn btn-warning btn-block" data-bs-toggle="tooltip"
+                                                                    title="Ver ejemplo" role="button" onclick="ejemplo('compresion')">
+                                                                    <!-- Icono de code -->
+                                                                    <i class="fa-solid fa-compress"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="collapse ejemplo" id="ejemplo_compresion">
+                                                    <div class="terminal-compresion"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplos -->
+            <div class="col-md-12 pt-3">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3>Ejemplos</h3>
+                        <div class="btn-group col-2">
+                            <!-- Boton para ver -->
+                            <button class="btn btn-primary" data-bs-toggle="tooltip" role="button"
+                                title="Ver informacion" onclick="mostrar_ejemplo()">
+                                <!-- Icono de libro -->
+                                <i class="fa-solid fa-book"></i>
+                                
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="ejemplo">
+                        <!-- Servidor Apache -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Servidor Apache
+
+                                    <div class="btn-group  col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_apache"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Ver ejemplo" role="button" onclick="ejemplo('apache')">
+                                            <!-- Icono de HTML -->
+                                            <i class="fa-brands fa-html5"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_apache">
+                            <div class="terminal-apache"></div>
+                        </div>
+
+                        <!-- PHP -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    PHP
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_php"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('php')">
+                                            <!-- Icono de code -->
+                                            <i class="fa-solid fa-code"></i>
+
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_php">
+                            <div class="terminal-php"></div>
+                        </div>
+
+                        <!-- MySQL -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    MySQL
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_mysql"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('mysql')">
+                                            <!-- Icono de base de datos -->
+                                            <i class="fa-solid fa-database"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_mysql">
+                            <div class="terminal-mysql"></div>
+                        </div>
+
+                        <!-- PHPMyAdmin -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    PHPMyAdmin
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_phpmyadmin"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('phpmyadmin')">
+                                            <!-- Icono de base de datos -->
+                                            <i class="fa-solid fa-database"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_phpmyadmin">
+                            <div class="terminal-phpmyadmin"></div>
+                        </div>
+
+                        <!-- Obtener archivo de internet -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Descargar Nextcloud
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-primary copiar btn-block" id="copiar_obtener"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-primary btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('obtener')">
+                                            <!-- Icono de base de datos -->
+                                            <i class="fa-solid fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_obtener">
+                            <div class="terminal-obtener"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seguridad -->
+            <div class="col-md-12 pt-3">
+                <div class="card text-white bg-danger">
+                    <div class="card-header d-flex justify-content-between">
+                        <h3>Seguridad</h3>
+                        <div class="btn-group col-2">
+                            <!-- Boton para ver -->
+                            <button class="btn btn-danger" data-bs-toggle="tooltip" role="button"
+                                title="Ver informacion" onclick="mostrar_seguridad()">
+                                <!-- Icono de seguridad -->
+                                <i class="fa-solid fa-lock"></i>
+                                
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="collapse" id="seguridad">
+                        <!-- Desactivar ingreso remoto -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Desactivar ingreso remoto
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-danger copiar btn-block" id="copiar_ingreso"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('ingreso')">
+                                            <!-- Icono de ingreso -->
+                                            <i class="fa-solid fa-sign-in-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_ingreso">
+                            <div class="terminal-ingreso"></div>
+                        </div>
+
+                        <!-- Firewall -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Firewall
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-danger copiar btn-block" id="copiar_firewall"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!--Boton para descargar archivo -->
+                                        <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                            title="Descargar archivo" role="button" onclick="descargar_archivo('https://1drv.ms/u/s!AqLuj9KHIzF-ha99fdcLENb3h-dDLA?e=rerjjW')">
+                                            <!-- Icono de descargar -->
+                                            <i class="fa-solid fa-download"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                            title="Ver ejemplo" role="button" onclick="ejemplo('firewall')">
+                                            <!-- Icono de Fire -->
+                                            <i class="fa-solid fa-fire"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_firewall">
+                            <div class="terminal-firewall"></div>
+                        </div>
+
+                        <!-- Ataques de fuerza bruta -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    Ataques de fuerza bruta
+
+                                    <div class="btn-group col-2">
+                                        <!-- Copiar ejemplo -->
+                                        <button class="btn btn-danger copiar btn-block" id="copiar_fuerza"
+                                            data-bs-toggle="tooltip" title="Copiar" role="button"
+                                            onclick="copiar_texto()">
+                                            <i class="fa-solid fa-copy"></i>
+                                        </button>
+
+                                        <!-- Boton para ver ejemplo -->
+                                        <button class="btn btn-danger btn-block" data-bs-toggle="tooltip"
+                                            title="Mostrar ejemplo" role="button" onclick="ejemplo('fuerza')">
+                                            <!-- Icono de fuerza -->
+                                            <i class="fa-solid fa-user-secret"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="collapse ejemplo" id="ejemplo_fuerza">
+                            <div class="terminal-fuerza"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de informacion de la charla -->
+            <div class="modal fade border-info" id="info_charla" tabindex="-1" role="dialog" aria-labelledby="info_charla"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="info_charla">Comandos básicos de Linux</h4>
+                            <button type="button" disabled class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-brands fa-linux"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body bg-secondary">
+                            <div class="row">
+                                <!-- Imagen de la charla -->
+                                <div class="col-md-8">
+                                    <img src="dist/img/logo.png" alt="Logo" class="img-fluid">
+                                </div>
+                                
+                                <!-- Imagen de acceso al sitio -->
+                                <div class="col-md-4" data-bs-toggle="tooltip" title="Escanea para acceder">
+                                    <img src="dist/img/comandos.png" alt="Acceso" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <h5>
+                                <i class="fa-solid fa-user-tie" data-bs-toggle="tooltip" title="José Pablo Campos Solano"></i>
+                            </h5>
+                            <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" title="Iniciar" data-bs-dismiss="modal">Iniciar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid pt-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2 rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Comandos básicos de Linux</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <!-- Utilidades -->
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Utilidades" role="button"
+                                onclick="mostrar_utilidades()">
+                                <!--Icono de utilidad -->
+                                <i class="fas fa-cogs"></i>
+                                Utilidades
+                            </a>
+                        </li>
+
+                        <!-- Ejemplos -->
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Ejemplos" role="button"
+                                onclick="mostrar_ejemplo()">
+                                <!--Icono de ejemplo -->
+                                <i class="fas fa-book"></i>
+                                Ejemplos
+                            </a>
+                        </li>
+
+                        <!-- Seguridad Informatica -->
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tooltip" title="Seguridad Informática" role="button"
+                                onclick="mostrar_seguridad()">
+                                <!--Icono de seguridad -->
+                                <i class="fas fa-shield-alt"></i>
+                                Seguridad Informática
+                            </a>
+                        </li>
+
+                        <!-- Informacion de la charla -->
+                        <li class="nav-item"  data-bs-toggle="tooltip" title="Información de la charla">
+                            <a class="nav-link" role="button" data-bs-toggle="modal" data-bs-target="#info_charla">
+                                <!--Icono de informacion -->
+                                <i class="fas fa-info-circle"></i>
+                                Información
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </footer>
+
+    <script src="dist/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,763 @@
+{
+  "schemaVersion": 1,
+  "status": "pre-migration baseline; not migrated course data",
+  "pages": [
+    {
+      "source": "body.html",
+      "sha256": "1977291fdb0d75d1849256f7f29a044c8931afc95486c5c2b9152454f225ae43",
+      "headings": [
+        "Ejemplos"
+      ],
+      "includes": [
+        "conceptos_basicos.html",
+        "seguridad.html",
+        "utilidades.html",
+        "ejemplos.html",
+        "curso.html",
+        "compartir.html",
+        "introduccion.html",
+        "terminal_ejemplo.html",
+        "taller.html",
+        "git_taller.html",
+        "perfil.html"
+      ],
+      "exampleIds": [],
+      "anchors": [],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "compartir.html",
+      "sha256": "8478ba7d0bb7fa295624ceef5241116dfbe458c16e4eb3ca4655e2d75e921b3b",
+      "headings": [
+        "Ingresar al taller"
+      ],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [
+        "modal_compartir",
+        "title_compartir",
+        "direccion_web"
+      ],
+      "links": [],
+      "images": [
+        "dist/img/comandos.png"
+      ],
+      "iframes": []
+    },
+    {
+      "source": "conceptos_basicos.html",
+      "sha256": "f685a42ac56d8e288221ec8ba6025a2d95d62e7999dcc0eae21df1c25aba466a",
+      "headings": [
+        "Conceptos básicos",
+        "¿Que es Linux?",
+        "Linea de Comandos CLI",
+        "Conexión SSH",
+        "Crear usuario",
+        "Instalación de Paquetes"
+      ],
+      "includes": [],
+      "exampleIds": [
+        "cli",
+        "ssh",
+        "crear_usuario",
+        "paquetes"
+      ],
+      "anchors": [],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "contenido.html",
+      "sha256": "fc9e5706edb3ef16e486a1f1afc24ad3d0494c38fb31c2bac7fa043a7e52b011",
+      "headings": [
+        "Conexión al servidor",
+        "1. Crear usuario en el servidor",
+        "2. Desactivar ingreso como usuario root",
+        "Seguridad del servidor",
+        "3. Configurar firewall",
+        "4. Proteger contra ataques de fuerza bruta",
+        "Configuración de servicios",
+        "5. Configurar servidor Apache",
+        "6. Configurar MySQL",
+        "7. Configurar PHP",
+        "8. Configurar PHPMyAdmin",
+        "Instalación de sitio web",
+        "9. Descargar sitio web",
+        "10. Configurar sitio web",
+        "11. Instalar certificado SSL (Opcional)"
+      ],
+      "includes": [],
+      "exampleIds": [
+        "crear_usuario",
+        "ingreso",
+        "firewall",
+        "fuerza",
+        "apache",
+        "mysql",
+        "php",
+        "phpmyadmin",
+        "descargar",
+        "configurar",
+        "ssl"
+      ],
+      "anchors": [
+        "full-task",
+        "connection_task",
+        "user_head",
+        "user_collapse",
+        "terminal_crear_usuario",
+        "ingreso_head",
+        "ingreso_collapse",
+        "terminal_ingreso",
+        "security_task",
+        "firewall_head",
+        "firewall_collapse",
+        "terminal_firewall",
+        "force_attack_head",
+        "force_attack_collapse",
+        "terminal_fuerza",
+        "service_task",
+        "apache_head",
+        "apache_collapse",
+        "terminal_apache",
+        "mysql_head",
+        "mysql_collapse",
+        "terminal_mysql",
+        "php_head",
+        "php_collapse",
+        "terminal_php",
+        "phpmyadmin_head",
+        "phpmyadmin_collapse",
+        "terminal_phpmyadmin",
+        "web_task",
+        "download_head",
+        "download_collapse",
+        "terminal_descargar",
+        "config_head",
+        "config_collapse",
+        "terminal_configurar",
+        "ssl_head",
+        "ssl_collapse",
+        "terminal_ssl"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "curso.html",
+      "sha256": "67c955987552e06d1a87ab19f778889199145791846809ad8bd9e71e1c200054",
+      "headings": [
+        "Material para estudiantes",
+        "Linux Unhatched",
+        "Certificaciones",
+        "GitHub Developer Pack for Students"
+      ],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [
+        "info_curso",
+        "title_curso"
+      ],
+      "links": [
+        "https://www.netacad.com/es/courses/os-it/ndg-linux-unhatched",
+        "https://learn.microsoft.com/es-mx/training/student-hub/certifications",
+        "https://education.github.com/students"
+      ],
+      "images": [
+        "dist/img/NDG_logo.png",
+        "dist/img/microsoft.png",
+        "dist/img/github-student.png"
+      ],
+      "iframes": []
+    },
+    {
+      "source": "ejemplos.html",
+      "sha256": "04a3fa6420d047f95912bb20719563164b773ec0b15cf24b23092511a0b0a7a2",
+      "headings": [
+        "Herramientas"
+      ],
+      "includes": [],
+      "exampleIds": [
+        "apache",
+        "php",
+        "mysql",
+        "phpmyadmin"
+      ],
+      "anchors": [],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "footer.html",
+      "sha256": "d0c118bab7281f20d169251b7a2310bd61c5bfd51241ea46361ce284d742e688",
+      "headings": [],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [],
+      "links": [
+        "https://www.facebook.com/jpgrowing",
+        "https://www.twitch.tv/jp_growing",
+        "https://twitter.com/chepelcr",
+        "https://www.linkedin.com/in/jose-pablo-campos/",
+        "https://github.com/chepelcr"
+      ],
+      "images": [
+        "dist/img/linux.png"
+      ],
+      "iframes": []
+    },
+    {
+      "source": "git_contenido.html",
+      "sha256": "f8e8115a41f053d87971c4b7baca2e777e84105e115c97b6ff6c53a14052f855",
+      "headings": [
+        "Configuración inicial",
+        "1. Instalación de Git",
+        "2. Configuración inicial",
+        "3. Autenticación SSH con GitHub",
+        "Comandos de Git",
+        "4. Comandos básicos",
+        "5. Sincronización con GitHub",
+        "6. Trabajar con ramas",
+        "Comandos avanzados",
+        "7. Comandos útiles adicionales",
+        "8. Errores comunes y soluciones",
+        "9. Configuraciones opcionales"
+      ],
+      "includes": [],
+      "exampleIds": [
+        "git_instalacion",
+        "git_configuracion",
+        "git_ssh",
+        "git_basicos",
+        "git_remotos",
+        "git_ramas",
+        "git_utiles",
+        "git_errores",
+        "git_opcionales"
+      ],
+      "anchors": [
+        "git-task",
+        "git_config_task",
+        "git_install_head",
+        "git_install_collapse",
+        "terminal_git_instalacion",
+        "git_config_head",
+        "git_config_collapse",
+        "terminal_git_configuracion",
+        "git_ssh_head",
+        "git_ssh_collapse",
+        "terminal_git_ssh",
+        "git_commands_task",
+        "git_basic_head",
+        "git_basic_collapse",
+        "terminal_git_basicos",
+        "git_remote_head",
+        "git_remote_collapse",
+        "terminal_git_remotos",
+        "git_branch_head",
+        "git_branch_collapse",
+        "terminal_git_ramas",
+        "git_advanced_task",
+        "git_useful_head",
+        "git_useful_collapse",
+        "terminal_git_utiles",
+        "git_errors_head",
+        "git_errors_collapse",
+        "terminal_git_errores",
+        "git_optional_head",
+        "git_optional_collapse",
+        "terminal_git_opcionales"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "git_taller.html",
+      "sha256": "1cbcc7438d1a653cd74514977f28c3e81f99f1d08421d2f1b7e98888269be8fd",
+      "headings": [
+        "Git y GitHub - Guía para Estudiantes"
+      ],
+      "includes": [
+        "git_contenido.html"
+      ],
+      "exampleIds": [],
+      "anchors": [
+        "taller_git",
+        "title_git_workshop"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "index.html",
+      "sha256": "f56914860a23b2f39a7cb696e7c94df2a3e7d6bc0a1c95a87e164d44471220c2",
+      "headings": [],
+      "includes": [
+        "nav.html",
+        "body.html",
+        "footer.html"
+      ],
+      "exampleIds": [],
+      "anchors": [],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "introduccion.html",
+      "sha256": "e41626a7faa864fc6d95276ee49db118bfe5f6e9de537606995e45f618078b56",
+      "headings": [
+        "¿Que es Linux?"
+      ],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [
+        "info_linux",
+        "title_linux"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "nav.html",
+      "sha256": "57e87ef809638164f005da4446324050731346900b2cd148a54020491a5f1834",
+      "headings": [],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [
+        "nav_linux"
+      ],
+      "links": [
+        "#"
+      ],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "old_index.html",
+      "sha256": "6df70eadb62a466e8f94ed68ead632633539aa35c1b593609a5fbb8317698361",
+      "headings": [
+        "Utilidades",
+        "Herramientas",
+        "Ejemplos",
+        "Seguridad",
+        "Comandos básicos de Linux",
+        ""
+      ],
+      "includes": [],
+      "exampleIds": [
+        "cli",
+        "gestion_archivos",
+        "crear_usuario",
+        "paquetes",
+        "permisos",
+        "vi",
+        "compresion",
+        "apache",
+        "php",
+        "mysql",
+        "phpmyadmin",
+        "obtener",
+        "ingreso",
+        "firewall",
+        "fuerza"
+      ],
+      "anchors": [
+        "navbarColor02",
+        "utilidades",
+        "copiar_cli",
+        "ejemplo_cli",
+        "copiar_gestion_archivos",
+        "ejemplo_gestion_archivos",
+        "copiar_crear_usuario",
+        "ejemplo_crear_usuario",
+        "copiar_paquetes",
+        "ejemplo_paquetes",
+        "copiar_permisos",
+        "ejemplo_permisos",
+        "herramientas",
+        "headingOne",
+        "collapseOne",
+        "copiar_vi",
+        "ejemplo_vi",
+        "copiar_compresion",
+        "ejemplo_compresion",
+        "ejemplo",
+        "copiar_apache",
+        "ejemplo_apache",
+        "copiar_php",
+        "ejemplo_php",
+        "copiar_mysql",
+        "ejemplo_mysql",
+        "copiar_phpmyadmin",
+        "ejemplo_phpmyadmin",
+        "copiar_obtener",
+        "ejemplo_obtener",
+        "seguridad",
+        "copiar_ingreso",
+        "ejemplo_ingreso",
+        "copiar_firewall",
+        "ejemplo_firewall",
+        "copiar_fuerza",
+        "ejemplo_fuerza",
+        "info_charla",
+        "info_charla",
+        "navbarColor02"
+      ],
+      "links": [
+        "#",
+        "#"
+      ],
+      "images": [
+        "dist/img/logo.png",
+        "dist/img/comandos.png"
+      ],
+      "iframes": []
+    },
+    {
+      "source": "perfil.html",
+      "sha256": "369914dc74e1fb01d71a19f7f40c16b9669d93ed23facc32980a5d6ae9556255",
+      "headings": [
+        "Taller de Linux",
+        "¿Quién soy Yo?",
+        "José Pablo Campos Solano"
+      ],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [
+        "modal_bienvenida",
+        "title_welcome",
+        "perfil",
+        "perfilModalLabel"
+      ],
+      "links": [],
+      "images": [
+        "dist/img/linux.jpg",
+        "dist/img/perfil.jpg"
+      ],
+      "iframes": []
+    },
+    {
+      "source": "seguridad.html",
+      "sha256": "7ad1f517cf3df69bc2abcc888d1c11d79b1547ca446d7267e465c78499abd4c2",
+      "headings": [
+        "Seguridad Informática",
+        "Ingreso remoto",
+        "Fuerza bruta",
+        "Firewall"
+      ],
+      "includes": [],
+      "exampleIds": [
+        "ingreso",
+        "fuerza",
+        "firewall"
+      ],
+      "anchors": [
+        "seguridad"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "taller.html",
+      "sha256": "a7ea6c331de32be2025c603b9430696a3d276f0653fd0b6b8ea5eb634729e5bd",
+      "headings": [
+        "Taller de Linux para ejecución de aplicaciones web en PHP"
+      ],
+      "includes": [
+        "contenido.html"
+      ],
+      "exampleIds": [],
+      "anchors": [
+        "taller_linux",
+        "title_workshop"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": [
+        "https://ssh.jcampos.me"
+      ]
+    },
+    {
+      "source": "terminal_ejemplo.html",
+      "sha256": "feb3615e674083cc7fca1b2f869d8bc2b20d17930dcb291f3d5d61aa6b859e11",
+      "headings": [
+        ""
+      ],
+      "includes": [],
+      "exampleIds": [],
+      "anchors": [
+        "modal_terminal",
+        "title_terminal",
+        "terminal_ejemplos",
+        "copiar_texto",
+        "copiar_texto_texto"
+      ],
+      "links": [],
+      "images": [],
+      "iframes": []
+    },
+    {
+      "source": "utilidades.html",
+      "sha256": "bba748c45fbf00a92eaf7f42b2696527d6278a73f2878a1cc3d1b325a6b43539",
+      "headings": [
+        "Utilidades"
+      ],
+      "includes": [],
+      "exampleIds": [
+        "gestion_archivos",
+        "permisos",
+        "vi",
+        "compresion"
+      ],
+      "anchors": [],
+      "links": [],
+      "images": [],
+      "iframes": []
+    }
+  ],
+  "examples": [
+    {
+      "id": "apache",
+      "legacyIndex": 0,
+      "titleEs": "Servidor Apache",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "php",
+      "legacyIndex": 1,
+      "titleEs": "PHP",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "crear_usuario",
+      "legacyIndex": 2,
+      "titleEs": "Crear usuario",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "mysql",
+      "legacyIndex": 3,
+      "titleEs": "Servidor MySQL",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "vi",
+      "legacyIndex": 4,
+      "titleEs": "Editor de texto VI",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "phpmyadmin",
+      "legacyIndex": 5,
+      "titleEs": "Administrador de MySQL",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "paquetes",
+      "legacyIndex": 13,
+      "titleEs": "Gestión de paquetes",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "compresion",
+      "legacyIndex": 6,
+      "titleEs": "Compresión de archivos",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "permisos",
+      "legacyIndex": 7,
+      "titleEs": "Manejo de permisos",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "cli",
+      "legacyIndex": 8,
+      "titleEs": "Linea de comandos CLI",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "obtener",
+      "legacyIndex": 9,
+      "titleEs": "Descargar página de ejemplo",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "firewall",
+      "legacyIndex": 10,
+      "titleEs": "Firewall",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "ingreso",
+      "legacyIndex": 11,
+      "titleEs": "Ingreso remoto",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "fuerza",
+      "legacyIndex": 12,
+      "titleEs": "Ataques de fuerza bruta",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "gestion_archivos",
+      "legacyIndex": 14,
+      "titleEs": "Gestión de archivos",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "ssh",
+      "legacyIndex": 15,
+      "titleEs": "Ingreso remoto SSH",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "descargar",
+      "legacyIndex": 16,
+      "titleEs": "Descargar archivos",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "configurar",
+      "legacyIndex": 17,
+      "titleEs": "Configurar aplicación web",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "ssl",
+      "legacyIndex": 18,
+      "titleEs": "SSL",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_instalacion",
+      "legacyIndex": 19,
+      "titleEs": "Instalación de Git",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_configuracion",
+      "legacyIndex": 20,
+      "titleEs": "Configuración inicial",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_ssh",
+      "legacyIndex": 21,
+      "titleEs": "Autenticación SSH",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_basicos",
+      "legacyIndex": 22,
+      "titleEs": "Comandos básicos",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_remotos",
+      "legacyIndex": 23,
+      "titleEs": "Sincronización con GitHub",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_ramas",
+      "legacyIndex": 24,
+      "titleEs": "Trabajar con ramas",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_utiles",
+      "legacyIndex": 25,
+      "titleEs": "Comandos útiles",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_errores",
+      "legacyIndex": 26,
+      "titleEs": "Errores comunes",
+      "source": "dist/js/script.js"
+    },
+    {
+      "id": "git_opcionales",
+      "legacyIndex": 27,
+      "titleEs": "Configuraciones opcionales",
+      "source": "dist/js/script.js"
+    }
+  ],
+  "assets": [
+    {
+      "source": "dist/img/NDG_logo.png",
+      "sha256": "52c5ca5a00013e66413876554abf8b17eec9b726803c130ea28ca5885d43d2e7"
+    },
+    {
+      "source": "dist/img/comandos.png",
+      "sha256": "864ff97b8d526a03a00158b354571d56139946d628fb557f193ae5e47b6f690b"
+    },
+    {
+      "source": "dist/img/github-student.png",
+      "sha256": "a64038716bf134f45e809ff86b9611fb97e41bbd2ccfa3181da73cf164d3c200"
+    },
+    {
+      "source": "dist/img/linux.jpg",
+      "sha256": "076c46beffba48e9d793edfeb62b8b4f2de8d496664daa51bcb37869c229d82c"
+    },
+    {
+      "source": "dist/img/linux.png",
+      "sha256": "6ef38c960ce9019e5f2a0d08fca6a60930267128c25d583d6426141fcfae9264"
+    },
+    {
+      "source": "dist/img/logo.png",
+      "sha256": "5a3fa79083d4373afec2d4ab32c55ae9d2b900e1e5fb29e1af3b9cfeb92ff712"
+    },
+    {
+      "source": "dist/img/microsoft.png",
+      "sha256": "4bad04d35478f23907ff0e6433a492400840cec4fbd6a487752dd5bdcbbca029"
+    },
+    {
+      "source": "dist/img/perfil.jpg",
+      "sha256": "0f8276d89117d071024ca424776d2d2ef7c2b1372cccf70b0c7ae50055ceeeae"
+    }
+  ],
+  "otherSources": [
+    {
+      "source": "dist/js/script.js",
+      "sha256": "382e9dcecf956d2174fe7a439e62aa4a372186472caed2541da7918bc787b176"
+    },
+    {
+      "source": "dist/js/load_page.js",
+      "sha256": "f831ec0c20f68900492da80be1ac2d8f440e2752a68a78363e14eac375597976"
+    },
+    {
+      "source": "public/files/firewall.sh",
+      "sha256": "ecb8af946b3de7ef66847c875f1c6b2b1bd54cad881e222afc9850f5cc7a21c5"
+    },
+    {
+      "source": "server ngnix webssh.sh",
+      "sha256": "1f656ed3d1d9a7cc33bb5148a741e307283a939b5e581a10ec6ae3caac394b30"
+    },
+    {
+      "source": "CNAME",
+      "sha256": "b6051c4854692a1ad9a1a5029831656b6480e22189e7709b12a552687405c49b"
+    }
+  ],
+  "scriptUrls": [
+    "http://IP-SERVER-REMOTO",
+    "http://ip_server_remoto",
+    "https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip",
+    "https://git-scm.com/download/mac",
+    "https://git-scm.com/download/win",
+    "https://linux.jcampos.dev/files/firewall.sh",
+    "https://linux.jcampos.dev/public/files/firewall-iptables.sh"
+  ]
+}
