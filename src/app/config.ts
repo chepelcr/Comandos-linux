@@ -8,4 +8,4 @@ export const config = {
   logout: env.VITE_AUTH_LOGOUT_URI || `${location.origin}${import.meta.env.BASE_URL}`,
   api: env.VITE_API_BASE_URL || '',
 };
-export const authConfigured = Boolean(config.pool && config.client && config.domain);
+export const authConfigured = Boolean(config.pool && config.client);

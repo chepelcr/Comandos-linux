@@ -71,3 +71,31 @@ body,.panel,.course-card,.source-document{transition:background-color var(--moti
 @media(prefers-reduced-motion:reduce){.header,.footer{transition:none!important}.motion-veil{display:none}}
 
 .motion-veil.full-screen{z-index:1000}
+
+/* Keep the brand and all mobile actions on one header row; the menu opens below. */
+@media(max-width:800px){
+ .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;padding:12px 16px}
+ .header-inner>.brand{grid-column:1;grid-row:1;white-space:nowrap;min-width:0;font-size:22px}
+ .header-inner>.brand .brand-icon{display:none}
+ .header-tools{grid-column:2;grid-row:1;gap:8px;margin:0}
+ .header-tools .icon-button,.header-tools .account-link,.header-inner>.menu-toggle{width:44px;height:44px;min-width:44px;min-height:44px;padding:10px;margin:0}
+ .header-tools .account-link span{display:none}
+ .header-tools .account-link svg{display:block}
+ .header-inner>.menu-toggle{grid-column:3;grid-row:1}
+ .header-inner>.nav{grid-column:1/-1;grid-row:2;width:auto}
+}
+@media(max-width:360px){.header-inner{padding-inline:12px;gap:6px}.header-tools{gap:6px}.header-inner>.brand{font-size:20px}}
+.signin-panel{max-width:500px}.register-panel input{width:100%;font-size:16px}
+.auth-alternatives{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--border);margin-top:8px}
+.auth-alternatives button{color:var(--primary);background:transparent;border-color:transparent;margin:0!important;padding:10px 0}
+.account-page .register-panel .actions{gap:12px}.account-page .register-panel button{margin:0}
+
+/* On phones the footer follows the workspace in document flow. */
+@media(max-width:800px){
+ .learning-shell{height:auto;min-height:100dvh;display:block;overflow:visible}
+ .learning-shell>.header{position:sticky;top:0}
+ .learning-shell main{height:calc(100dvh - var(--header-height,69px))}
+ .learning-shell .lesson-content{overscroll-behavior:auto}
+ .footer,.learning-shell .footer{position:static}
+ .lab-drawer-trigger{bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+}

@@ -2,11 +2,11 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { Hub } from 'aws-amplify/utils';
 import { useTranslation } from 'react-i18next';
 import { points } from '../services/progress';
-import { config, authConfigured } from './config';
+import { config } from './config';
 import i18n, { stored, persist } from './i18n';
 import { empty, merge, sanitize, type Progress } from '../services/progress';
-import { currentStudent, freshToken, login, logout, type Student } from './auth';
-const AppContext = createContext({} as { user: Student | null; progress: Progress; update: (fn: (p: Progress) => Progress) => void; sync: () => Promise<void>; status: string; authError: string; signIn: (signup?: boolean) => void; signOut: () => void; closingSession: boolean; reset: () => Promise<void>; deleteAccount: () => Promise<void> });
+import { currentStudent, freshToken, logout, type Student } from './auth';
+const AppContext = createContext({} as { user: Student | null; progress: Progress; update: (fn: (p: Progress) => Progress) => void; sync: () => Promise<void>; status: string; authError: string; signOut: () => void; closingSession: boolean; reset: () => Promise<void>; deleteAccount: () => Promise<void> });
 export const useApp = () => useContext(AppContext);
 function read(key: string) { try { return sanitize(JSON.parse(stored(key, '{}'))); } catch { return empty(); } }
 export function Providers({ children }: { children: ReactNode }) {
@@ -40,8 +40,7 @@ export function Providers({ children }: { children: ReactNode }) {
     };
     void load();
     const cancel = Hub.listen('auth', ({payload}) => {
-      if(payload.event === 'signedIn' || payload.event === 'signInWithRedirect') void load();
-      if(payload.event === 'signInWithRedirect_failure') setAuthError(String(payload.data?.error || 'Sign-in failed'));
+      if(payload.event === 'signedIn') { setAuthError(''); void load(); }
     });
     return () => { disposed=true;cancel(); };
   }, []);
@@ -98,7 +97,6 @@ export function Providers({ children }: { children: ReactNode }) {
     }catch{setStatus('choiceFailed');}finally{setChoosing(false);}
   };
   return <AppContext value={{ user, progress, update, sync, status, authError, closingSession,
-    signIn: (signup = false) => { if(authConfigured) void login(signup, document.documentElement.lang).catch(e=>setAuthError(String(e))); },
     signOut: () => { if(signingOut.current)return;signingOut.current=true;setClosingSession(true);setAuthError('');void (async()=>{try{await logout();needsChoice.current=true;setChoice(null);generation.current++;setUser(null);setProgress(read('progress:guest'));setStatus('guest');setAuthError('');}catch(e){setAuthError(String(e));}finally{signingOut.current=false;setClosingSession(false);}})(); },
     reset: async () => { const next = user ? await request('DELETE') : undefined; clear(next); },
     deleteAccount: async () => { const {endActiveLab}=await import('../services/labs');await endActiveLab();await request('DELETE', { deleteAccount: true }); clear();const {signOut}=await import('aws-amplify/auth');await signOut(); setUser(null); setProgress(read('progress:guest')); },

@@ -77,7 +77,7 @@
   "accountTitle": "Tu aprendizaje, contigo.",
   "accountDescription": "Crea una cuenta para guardar tu progreso y continuar desde otro dispositivo.",
   "authUnavailable": "Las cuentas todavía no están configuradas en este entorno. Puedes aprender como invitado.",
-  "privacy": "Tu terminal permanece en tu dispositivo. Solo sincronizamos progreso y preferencias.",
+  "privacy": "Tu laboratorio es privado y temporal. El progreso del curso y tus preferencias se sincronizan con tu cuenta.",
   "labTitle": "Un espacio para probar.",
   "labDescription": "Linux real. Paquetes precargados. Cada comando deja un resultado que puedes explorar.",
   "boot": "Iniciar Linux",
@@ -184,5 +184,18 @@
   "pagesPracticeNote": "Realiza esta ruta en tu computadora con internet y GitHub. El laboratorio Linux permanece aislado. Descarga el starter, revisa el código y publica desde tu cuenta.",
   "pagesStarter": "Descargar starter React",
   "pagesWorkflow": "Descargar workflow de Pages",
-  "pagesDocs": "Guía oficial de GitHub Pages"
+  "pagesDocs": "Guía oficial de GitHub Pages",
+  "signInDescription": "Qué bueno verte. Inicia sesión para sincronizar tu progreso.",
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "resetPassword": "Restablecer contraseña",
+  "resetPasswordDescription": "Ingresa el correo de tu cuenta para recibir un código de recuperación.",
+  "sendResetCode": "Enviar código de recuperación",
+  "enterAuthCode": "Ingresa el código de verificación para continuar.",
+  "newPassword": "Nueva contraseña",
+  "updatePassword": "Guardar contraseña",
+  "backToSignIn": "Volver al inicio de sesión",
+  "passwordUpdated": "Contraseña actualizada. Inicia sesión con tu nueva contraseña.",
+  "invalidCredentials": "El correo o la contraseña son incorrectos. Inténtalo de nuevo.",
+  "authRateLimit": "Demasiados intentos. Espera un momento e inténtalo de nuevo.",
+  "authStepUnavailable": "Este método de inicio de sesión requiere ayuda. Contacta a la administración del curso."
 }

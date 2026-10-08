@@ -96,3 +96,8 @@ React starter with its own GitHub Pages artifact workflow. See
 Use `npm run course:package` to refresh the downloadable starter and workflow;
 production builds do this automatically. Students deploy from their own connected
 computer and GitHub account; the isolated Linux lab keeps its no-internet policy.
+
+Sign-in, signup, email confirmation and password recovery run inside the course UI
+through Amplify Auth. The public Cognito client allows SRP and refresh-token flows.
+API browser preflight routes are anonymous; course data and lab operations still
+require verified access tokens. EC2 launches only from the explicit Start lab action.

@@ -39,3 +39,7 @@ Verification: frontend and backend tests plus email resolver suites cover all ei
 template variants. Live verification invokes the resolver with synthetic recipients
 and checks Cognito CustomMessage/SES configuration without sending mail. Inbox
 delivery requires an explicitly chosen test recipient.
+
+The frontend uses native Amplify Auth forms with SRP; hosted Cognito redirects are
+not part of the student flow. Backend Cognito and API templates own SRP client
+settings and anonymous OPTIONS preflight routes, while all data/lab methods require JWT.

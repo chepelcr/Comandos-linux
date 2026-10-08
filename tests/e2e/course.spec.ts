@@ -45,7 +45,8 @@ test('legacy lab bookmarks lead to inline lesson labs; about is curated',async({
 test('learning workspace only scrolls its lesson; mobile lab is an accessible drawer',async({page,isMobile})=>{
  await page.addInitScript(()=>{localStorage.setItem('locale','en');localStorage.setItem('theme','dark');});
  await page.goto('/learn/legacy/apache');await expect(page.getByRole('heading',{level:1})).toHaveText('Apache web server');
- expect(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight)).toBe(true);
+ if(!isMobile)expect(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight)).toBe(true);
+ else { const footer=await page.locator('.footer').boundingBox();expect(footer!.y).toBeGreaterThanOrEqual(await page.evaluate(()=>innerHeight)-1); }
  await page.locator('.route-enter').evaluate(el=>Promise.all(el.getAnimations().map(animation=>animation.finished)));
  const before=await page.locator('.outline').boundingBox();const header=await page.locator('.header').boundingBox();
  await page.locator('.lesson-content').evaluate(el=>{el.scrollTop=el.scrollHeight;});

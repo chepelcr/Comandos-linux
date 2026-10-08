@@ -129,3 +129,19 @@ The app recipient allowlist and Cognito PreSignUp guard are removed. AWS manages
 SES identities/delivery, while Cognito still verifies account email ownership.
 All eight branded ES/EN templates remain enabled. Live verification invokes the
 resolver with synthetic recipients and checks the pool wiring without sending mail.
+
+## Mobile header, native authentication and lab preflight
+
+The phone header keeps the brand, flag, theme, account and menu on one row at
+320/375/390/768px with 44px action targets. Mobile lesson footers follow the
+workspace in document flow. Desktop lesson/sidebar/terminal layout stays fixed.
+
+Amplify SRP sign-in, recovery, email confirmation and challenges use in-app forms.
+The hosted redirect configuration/listener is removed from the frontend. A disposable
+Cognito account with email sending suppressed verified native browser SRP login,
+S3 progress sync, GET /labs and account deletion. Visiting a lesson sent no lab POST.
+
+The reported lab-status error was reproduced as HTTP 401 on the browser OPTIONS
+preflight: authenticated ANY routes also caught OPTIONS. Explicit anonymous OPTIONS
+routes for /me, /labs and /labs/{proxy+} now return 204. All actual data/compute routes
+retain JWT authorization. See [AWS CORS guidance](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html).

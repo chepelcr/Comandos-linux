@@ -15,6 +15,14 @@ describe('persistent account lab UI',()=>{
   mocks.request.mockResolvedValue({available:true,session:{id:'lab',route:'modern',state:'running'}});
   container=document.createElement('div');document.body.append(container);root=createRoot(container);await render();await render();expect(container.textContent).toContain('modern');
  });
+ it('only provisions a lab after the student explicitly starts it',async()=>{
+  mocks.request.mockResolvedValue({available:true,session:null});
+  container=document.createElement('div');document.body.append(container);root=createRoot(container);await render();await render();
+  expect(mocks.request).toHaveBeenCalledTimes(1);expect(mocks.request).toHaveBeenCalledWith();
+  mocks.request.mockResolvedValueOnce({session:{id:'new-lab',route:'modern',state:'running'}});
+  await act(async()=>container.querySelector('button')!.click());
+  expect(mocks.request).toHaveBeenLastCalledWith('','POST',{route:'modern'});
+ });
  it('does not resurrect a lab from a late start response after logout',async()=>{
   let finish:(value:unknown)=>void=()=>{};mocks.request.mockResolvedValueOnce({available:true,session:null}).mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve;}));
   container=document.createElement('div');document.body.append(container);root=createRoot(container);await render();

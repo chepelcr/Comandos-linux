@@ -77,7 +77,7 @@
   "accountTitle": "Your learning, with you.",
   "accountDescription": "Create an account to save progress and continue from another device.",
   "authUnavailable": "Accounts are not configured in this environment yet. You can learn as a guest.",
-  "privacy": "Your terminal stays on your device. We only sync progress and preferences.",
+  "privacy": "Your lab is private and temporary. Your course progress and preferences sync with your account.",
   "labTitle": "A place to try things.",
   "labDescription": "Real Linux. Preloaded packages. Every command leaves a result you can explore.",
   "boot": "Start Linux",
@@ -184,5 +184,18 @@
   "pagesPracticeNote": "Follow this path on your own computer with internet and GitHub. The Linux lab remains isolated. Download the starter, review its code and publish from your account.",
   "pagesStarter": "Download React starter",
   "pagesWorkflow": "Download Pages workflow",
-  "pagesDocs": "Official GitHub Pages guide"
+  "pagesDocs": "Official GitHub Pages guide",
+  "signInDescription": "Welcome back. Sign in to sync your course progress.",
+  "forgotPassword": "Forgot your password?",
+  "resetPassword": "Reset password",
+  "resetPasswordDescription": "Enter your account email to receive a recovery code.",
+  "sendResetCode": "Send recovery code",
+  "enterAuthCode": "Enter the verification code to continue.",
+  "newPassword": "New password",
+  "updatePassword": "Save password",
+  "backToSignIn": "Back to sign in",
+  "passwordUpdated": "Password updated. Sign in with your new password.",
+  "invalidCredentials": "The email or password is incorrect. Please try again.",
+  "authRateLimit": "Too many attempts. Wait a moment and try again.",
+  "authStepUnavailable": "This sign-in method needs administrator assistance. Please contact the course administrator."
 }
