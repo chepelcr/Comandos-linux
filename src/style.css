@@ -99,3 +99,14 @@ body,.panel,.course-card,.source-document{transition:background-color var(--moti
  .footer,.learning-shell .footer{position:static}
  .lab-drawer-trigger{bottom:calc(20px + env(safe-area-inset-bottom,0px))}
 }
+
+/* Animate both menu directions; collapsed links leave the keyboard order immediately. */
+.nav-links{display:contents}
+@media(max-width:800px){
+ .header-inner{row-gap:0}
+ .header-inner>.nav{display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;transform:translateY(-8px);transition:grid-template-rows var(--motion-menu) var(--motion-ease),opacity 350ms ease,transform var(--motion-menu) var(--motion-ease),visibility 0s var(--motion-menu)}
+ .header-inner>.nav.open{display:grid;grid-template-rows:1fr;opacity:1;visibility:visible;transform:translateY(0);animation:none;transition-delay:0s}
+ .nav-links{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+ .nav-links>a:first-child{margin-top:12px}
+ .nav-links>a{flex-shrink:0}
+}

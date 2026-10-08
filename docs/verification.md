@@ -145,3 +145,8 @@ The reported lab-status error was reproduced as HTTP 401 on the browser OPTIONS
 preflight: authenticated ANY routes also caught OPTIONS. Explicit anonymous OPTIONS
 routes for /me, /labs and /labs/{proxy+} now return 204. All actual data/compute routes
 retain JWT authorization. See [AWS CORS guidance](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html).
+
+Mobile navigation now animates expansion and collapse, removes hidden links from
+keyboard focus immediately, and respects reduced motion. The profile sync failure
+was the same rejected OPTIONS preflight; native browser GET/POST /me now passes
+through the authenticated backend controller/service/S3 repository.

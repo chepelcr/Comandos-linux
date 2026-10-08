@@ -495,3 +495,11 @@ connected computer / GitHub account, not the isolated EC2 lab. Original content 
 mapped. About now appears in the navbar; its mission card uses the full content width.
 The original favicon is restored byte-for-byte. Desktop outlines retain their full
 lesson lists with independent scrolling, including short/tablet-width viewports.
+
+### Current account component mapping
+
+- `src/features/Account.tsx`: account shell and guest/account controls.
+- `src/features/SignIn.tsx`: native Amplify SRP, challenge/confirmation and password recovery forms.
+- `src/features/Register.tsx`: signup and account email verification.
+- `src/app/providers.tsx`: authenticated state and local/online progression choice; calls the API.
+- Private backend `ProgressController` → `ProgressService` → `ProgressRepository`: JWT-owned progression stored as private S3 JSON with conditional writes. The frontend never accesses S3 directly.

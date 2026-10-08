@@ -15,6 +15,11 @@ test('phone header keeps all actions on one row and menu below', async ({ page, 
   const nav = await page.locator('.nav').boundingBox();
   expect(nav!.y).toBeGreaterThan(bounds[0].y);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.locator('.menu-toggle').click();
+  await expect(page.locator('.menu-toggle')).toHaveAttribute('aria-expanded','false');
+  await expect(page.locator('.nav')).toHaveAttribute('inert','');
+  await expect(page.locator('.nav')).toHaveCSS('visibility','hidden');
+  expect((await page.locator('.nav').boundingBox())!.height).toBeLessThan(1);
  }
 });
 
