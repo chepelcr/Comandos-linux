@@ -13,6 +13,14 @@ const titles=new Set();
 for(const url of [...urls,...['account','settings','dashboard','login','register','verify-email','forgot-password','reset-password','set-password','auth/challenge'].map(path=>`${origin}/${path}/`)]){
  const path=new URL(url).pathname;
  const html=load(await readFile(`build${path}index.html`,'utf8'));
+ html('[href], [src]').each((_,element)=>{
+  for(const attribute of ['href','src']){
+   const value=html(element).attr(attribute);
+   if(!value)continue;
+   const host=new URL(value,origin).hostname;
+   assert.ok(!/^(localhost|127\.|0\.0\.0\.0$|\[::1\]$)/i.test(host),`No local build-server links: ${path}: ${value}`);
+  }
+ });
  assert.equal(html('link[rel="canonical"]').length,1,`One canonical: ${path}`);
  assert.equal(html('link[rel="canonical"]').attr('href'),url,`Correct canonical: ${path}`);
  assert.ok(html('main h1').text().trim(),`Readable content without JavaScript: ${path}`);

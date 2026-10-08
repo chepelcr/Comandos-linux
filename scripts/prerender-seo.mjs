@@ -41,6 +41,16 @@ try{
   const canonical=await page.locator('link[rel="canonical"]').getAttribute('href');
   if(canonical!==origin+(path==='/'?'/':path+'/'))throw Error(`Wrong canonical: ${path}: ${canonical}`);
   if(failures.length)throw Error(`Prerender failed at ${path}: ${failures.join('; ')}`);
+  // Vite adds absolute modulepreload URLs while rendering lazy routes. Never
+  // publish the temporary build server's address in the generated document.
+  await page.evaluate(base=>{
+   for(const element of document.querySelectorAll('[href], [src]')){
+    for(const attribute of ['href','src']){
+     const value=element.getAttribute(attribute);
+     if(value?.startsWith(base+'/'))element.setAttribute(attribute,value.slice(base.length));
+    }
+   }
+  },base);
   let html=await page.content();
   // These optional values are public verification codes, never AWS credentials.
   for(const [variable,name] of [['GOOGLE_SITE_VERIFICATION','google-site-verification'],['BING_SITE_VERIFICATION','msvalidate.01']]){
