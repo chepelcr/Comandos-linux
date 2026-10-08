@@ -27,7 +27,7 @@ operator reconciliation; they are never reported as a successful publication.
 
 Validation so far: public app 37 unit tests and 23 browser checks (3 viewport-specific
 skips), 44 lessons / 28 original examples / 18 source documents preserved; 60 public
-SEO pages; admin 6 tests; courses 39 tests; support 16 tests; existing backend 27 tests;
+SEO pages; admin 6 tests; courses 39 tests; support 18 tests; existing backend 27 tests;
 16 deployed student/staff email templates verified without mail delivery.
 
 Live checks passed: staff SRP login and invitation password-change flow;
