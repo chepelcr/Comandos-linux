@@ -1,10 +1,9 @@
-import lessons from '../data/lessons.json';
-import courses from '../data/courses.json';
-import rewards from '../data/rewards.json';
+import {lessons,courses,rewards} from '../repositories/curriculum';
 export type Progress = { version: 1; epoch: number; preferences: {language?: 'es'|'en'; theme?: 'light'|'dark'}; completed: string[]; exercises: string[]; bookmarks: string[]; lastLesson: string; updated: string };
 export const empty = (): Progress => ({ version: 1, epoch: 0, preferences: {}, completed: [], exercises: [], bookmarks: [], lastLesson: 'intro', updated: '' });
-const ids = new Set(lessons.map(l => l.id));
+
 export function sanitize(value: unknown): Progress {
+  const ids = new Set(lessons.map(l => l.id));
   const p = (value && typeof value === 'object' ? value : {}) as Partial<Progress>;
   const list = (v: unknown) => Array.isArray(v) ? [...new Set(v.filter((id): id is string => typeof id === 'string' && ids.has(id)))] : [];
   return { version: 1, epoch: typeof p.epoch === 'number' && Number.isInteger(p.epoch) && p.epoch >= 0 ? p.epoch : 0, preferences: { ...(p.preferences?.language && ['es','en'].includes(p.preferences.language) ? {language:p.preferences.language} : {}), ...(p.preferences?.theme && ['light','dark'].includes(p.preferences.theme) ? {theme:p.preferences.theme} : {}) }, completed: list(p.completed), exercises: list(p.exercises), bookmarks: list(p.bookmarks), lastLesson: typeof p.lastLesson === 'string' && ids.has(p.lastLesson) ? p.lastLesson : 'intro', updated: typeof p.updated === 'string' ? p.updated : '' };

@@ -5,7 +5,7 @@ course migration. Use Node 24, npm run dev, npm test, npm run lint and npm run b
 Build output is build/, never dist/. Course content and translations are JSON.
 
 Use .agents/skills/ui-ux-pro-max/SKILL.md for UI work and the tailored design system
-in design-system/comandos-linux/MASTER.md. Support Spanish/English, light/dark/system,
+in design-system/comandos-linux/MASTER.md. Support Spanish/English, light/dark,
 reduced motion and accessible keyboard controls. Use components/Select.tsx for menus.
 Persistent navigation/footer stay outside route and language transition wrappers.
 
@@ -14,8 +14,9 @@ authenticated progression uses the Express JWT API and private S3 JSON snapshots
 Never expose credentials, accept caller-provided account IDs, or overwrite competing
 local/cloud progression before the learner chooses. No SQL database is used.
 
-Keep the eight Cognito email templates prepared but custom delivery disabled.
-The user deferred SES production access. Do not request it or enable sending.
+SES production access is approved. Branded ES/EN student and staff Cognito emails
+are enabled; AWS manages identities and delivery. Preserve email verification.
+Admin accounts use a separate invitation-only pool, with MFA OFF by user request.
 
 All 28 original examples and 18 source documents are mapped to JSON. Exact original
 files live on codex/legacy-static-course; see docs/legacy-source.json. The Resources

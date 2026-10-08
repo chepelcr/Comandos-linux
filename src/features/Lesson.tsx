@@ -5,12 +5,13 @@ import { ArrowLeft, ArrowRight, Check, Bookmark, Share2 } from 'lucide-react';
 import { courses, lessons, localized, lessonPath } from '../app/content';
 import { useApp } from '../app/providers';
 import { complete } from '../services/progress';
-import exercises from '../data/lab-exercises.json';
+import {exercises,useCurriculum} from '../repositories/curriculum';
 import { useNavigate } from 'react-router-dom';
 import { Select } from '../components/Select';
 import { InlineLab } from '../components/InlineLab';
 import { CodeBlock } from '../components/ui';
 export default function Lesson() {
+ useCurriculum();
  const navigate=useNavigate();const { lessonId, courseId } = useParams(); const { t,i18n } = useTranslation(); const { progress,update } = useApp(); const [notice,setNotice] = useState('');
  const lesson = lessons.find(l => l.id === lessonId && l.course === courseId); const course = courses.find(c => c.id === courseId);
  if (!lesson || !course) return <div className="container page"><h1>{t('notFound')}</h1><Link to="/courses">{t('back')}</Link></div>;

@@ -12,7 +12,7 @@
   "ArtifactBucket": "linux-lab-artifacts-artifacts-4lpxfqlhnpdt",
   "ProgressFunction": "linux-lab-progress-ProgressFunction-XatMPX1eBZDF",
   "ArtifactKey": "progress/1140f09015d1c0dd556f96b7e6fc7a9f348eaf8ce7e85e33e04fe8fbcf3ee8ba.zip",
-  "updated": "2026-10-08T13:56:43.871Z",
+  "updated": "2026-10-08T19:48:12.201435+00:00",
   "LabFunction": "linux-lab-temporary-Function-ia7MicBC5UOO",
   "LabVpc": "vpc-09da2f876f02b1499",
   "LabSubnet": "subnet-0449d3ca1751980c1",
@@ -25,5 +25,17 @@
   "EmailFunction": "linux-lab-emails-Function-CryKg4xLBTUv",
   "EmailEnabled": true,
   "EmailRecipientPolicy": "aws-managed-production-delivery",
-  "EmailSender": "Linux Lab <linux-lab@jcampos.dev>"
+  "EmailSender": "Linux Lab <linux-lab@jcampos.dev>",
+  "AdminApp": "https://admin.linux.jcampos.dev",
+  "AdminRepository": "https://github.com/chepelcr/linux-lab-admin",
+  "AdminApi": "https://admin-api.linux.jcampos.dev",
+  "SupportApi": "https://support-api.linux.jcampos.dev",
+  "CoursesApi": "https://courses-api.linux.jcampos.dev",
+  "CoursesRepository": "https://github.com/chepelcr/linux-lab-courses-backend",
+  "SupportRepository": "https://github.com/chepelcr/linux-lab-support-backend",
+  "AdminMfa": "OFF",
+  "AdminEnrollment": "invitation-only",
+  "AdminPoolId": "us-east-1_dbfQve4Z0",
+  "AdminClientId": "3ir6bi7v3btoapi9qp6a5ej7gl",
+  "CurriculumPublication": "exact-release-pages-build-verify-finalize"
 }

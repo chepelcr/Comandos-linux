@@ -43,3 +43,21 @@ delivery requires an explicitly chosen test recipient.
 The frontend uses native Amplify Auth forms with SRP; hosted Cognito redirects are
 not part of the student flow. Backend Cognito and API templates own SRP client
 settings and anonymous OPTIONS preflight routes, while all data/lab methods require JWT.
+
+Administration and course publishing are independent private repositories:
+
+- Admin frontend: https://github.com/chepelcr/linux-lab-admin (`admin/`).
+- Staff operations/student support: https://github.com/chepelcr/linux-lab-support-backend (`admin-api/`).
+- Curriculum service: https://github.com/chepelcr/linux-lab-courses-backend (`courses-api/`).
+
+These directories are ignored, never bundled in the public course. Admin hosting uses
+private S3 + CloudFront at admin.linux.jcampos.dev. Its invitation-only Cognito pool
+is separate from students; MFA is off. The staff API and student support API each
+verify their own pool; course drafts are private. All repositories use narrow OIDC
+roles, and frontend workflows load public configuration from SSM before Vite builds.
+
+Owners stage a release, then dispatch the protected course Pages workflow with the
+exact release/publication IDs at the reviewed source commit. The workflow builds,
+deploys, verifies and activates the pointer. Preparing a revert produces a new
+candidate against reviewed current source; it never blindly activates an old bundle.
+Media is currently a private staff library; public promotion remains a separate gate.

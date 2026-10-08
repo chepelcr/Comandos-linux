@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import legal from '../data/legal.json';
+import {legal,useCurriculum} from '../repositories/curriculum';
 import { localized } from '../app/content';
 
 export default function Legal({ page }: { page: 'privacy' | 'terms' }) {
+ useCurriculum();
  const { t, i18n } = useTranslation();
  const content = legal[page];
  return <article className="container page legal-page">

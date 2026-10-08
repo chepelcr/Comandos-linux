@@ -7,7 +7,7 @@ export function transition(update: () => void | Promise<void>, options: MotionOp
  const run = async () => {
   if (options.isCurrent && !options.isCurrent()) return;
   const fullScreen = options.kind === 'language' || options.kind === 'theme';
-  const target = document.querySelector<HTMLElement>(fullScreen ? '.app-shell' : options.selector || '#main');
+  const target = document.querySelector<HTMLElement>(fullScreen ? '.app-shell,.auth-shell' : options.selector || '#main');
   if (!target || matchMedia('(prefers-reduced-motion: reduce)').matches || !target.animate) { await update(); return; }
   const root = document.documentElement;
   const style = getComputedStyle(root);

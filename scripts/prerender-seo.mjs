@@ -8,7 +8,7 @@ const output=resolve('build');
 const readJson=async file=>JSON.parse(await readFile(file,'utf8'));
 const [courses,workshops,lessons]=await Promise.all(['courses','workshops','lessons'].map(name=>readJson(`src/data/${name}.json`)));
 const paths=['/','/courses','/resources','/about','/privacy','/terms',...courses.map(item=>`/courses/${item.id}`),...workshops.map(item=>`/workshops/${item.id}`),...lessons.map(item=>`/learn/${item.course}/${item.id}`)];
-const privatePaths=['/account','/settings','/dashboard'];
+const privatePaths=['/account','/settings','/dashboard','/login','/register','/verify-email','/forgot-password','/reset-password','/set-password','/auth/challenge'];
 const template=await readFile(resolve(output,'index.html'));
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff':'font/woff','.woff2':'font/woff2'};
 const server=createServer(async(req,res)=>{
@@ -51,6 +51,17 @@ try{
   await mkdir(dirname(destination),{recursive:true});
   await writeFile(destination,html);
  }
+ // GitHub Pages cannot rewrite dynamic private ticket URLs. Boot only this narrow,
+ // non-indexable route from its 404 response; unknown public URLs retain a real 404.
+ const notFound=await readFile(resolve(output,'404.html'),'utf8');
+ const shell=template.toString();
+ const entry=shell.match(/<script[^>]+src="([^"]+)"[^>]*><\/script>/)?.[1];
+ const styles=[...shell.matchAll(/<link[^>]+(?:href="([^"]+)"[^>]+rel="stylesheet"|rel="stylesheet"[^>]+href="([^"]+)")[^>]*>/g)].map(match=>match[1]||match[2]);
+ if(!entry)throw Error('Missing application entry for private deep links');
+ const privateBoot=`<script>if(/^\\/support\\/[a-f0-9]{32}\\/?$/.test(location.pathname)){document.body.replaceChildren(Object.assign(document.createElement('div'),{id:'root'}));document.querySelectorAll('style').forEach(node=>node.remove());${JSON.stringify(styles)}.forEach(href=>{const link=document.createElement('link');link.rel='stylesheet';link.href=href;document.head.append(link)});import(${JSON.stringify(entry)});}</script>`;
+ await writeFile(resolve(output,'404.html'),notFound.replace('</body>',privateBoot+'</body>'));
+ await mkdir(resolve(output,'support'),{recursive:true});
+ await writeFile(resolve(output,'support/index.html'),await readFile(resolve(output,'login/index.html')));
  // Preserve existing bookmarked lab links without exposing duplicate indexable pages.
  for(const [path,target] of [['/practice','/learn/foundations/intro'],...lessons.map(item=>[`/practice/${item.id}`,`/learn/${item.course}/${item.id}`])]){
   const destination=resolve(output,'.'+path,'index.html');
@@ -64,6 +75,7 @@ try{
  await writeFile(resolve(output,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${xml}\n</urlset>\n`);
  await writeFile(resolve(output,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
  await writeFile(resolve(output,'.nojekyll'),'');
+ await writeFile(resolve(output,'curriculum-release.json'),await readFile('src/generated/curriculum-release.json')); 
  console.log(`Prerendered ${paths.length} public pages and ${privatePaths.length} noindex account pages; generated sitemap, robots.txt and social preview.`);
 }finally{
  await browser?.close();

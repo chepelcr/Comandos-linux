@@ -3,6 +3,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      release_id:
+        description: Exact prepared curriculum release (empty uses published/bundled content)
+        type: string
+        required: false
+      publication_id:
+        description: Prepared publication operation for this release
+        type: string
+        required: false
 permissions:
   contents: read
 concurrency:
@@ -31,11 +40,25 @@ jobs:
           aws-region: us-east-1
       - name: Load public frontend settings from SSM
         run: npm run config:ssm
+      - name: Pull the exact curriculum release before build
+        run: node scripts/curriculum-release.mjs pull
+        env:
+          COURSES_RELEASE_ID: ${{ inputs.release_id }}
+          COURSES_PUBLICATION_ID: ${{ inputs.publication_id }}
       - name: Build Vite with the SSM production settings
         run: npm run build
         env:
           GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
           BING_SITE_VERIFICATION: ${{ vars.BING_SITE_VERIFICATION }}
+      - name: Record the built artifact digest
+        if: inputs.release_id != ''
+        run: find build -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | cut -d ' ' -f1 > build-release/artifact.sha256
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: inputs.release_id != ''
+        with:
+          name: curriculum-proof
+          path: build-release/
+          if-no-files-found: error
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
           path: build
@@ -51,8 +74,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        if: inputs.release_id != ''
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+        if: inputs.release_id != ''
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        if: inputs.release_id != ''
+        with:
+          name: curriculum-proof
+          path: build-release/
+      - uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a
+        if: inputs.release_id != ''
+        with:
+          role-to-assume: ${{ vars.AWS_PAGES_ROLE_ARN }}
+          aws-region: us-east-1
+      - run: npm run config:ssm
+        if: inputs.release_id != ''
       - uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
         id: deployment
+      - name: Verify deployed release and activate its published pointer
+        if: inputs.release_id != ''
+        run: node scripts/curriculum-release.mjs finalize
+        env:
+          COURSES_RELEASE_ID: ${{ inputs.release_id }}
+          COURSES_PUBLICATION_ID: ${{ inputs.publication_id }}
       - name: Notify Bing and participating search engines
         continue-on-error: true
         run: node scripts/notify-indexnow.mjs

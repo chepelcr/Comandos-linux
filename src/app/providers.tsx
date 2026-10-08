@@ -3,13 +3,15 @@ import { Hub } from 'aws-amplify/utils';
 import { useTranslation } from 'react-i18next';
 import { points } from '../services/progress';
 import { config } from './config';
+import {loadCurriculum} from '../repositories/curriculum';
 import i18n, { stored, persist } from './i18n';
 import { empty, merge, sanitize, type Progress } from '../services/progress';
 import { currentStudent, freshToken, logout, type Student } from './auth';
-const AppContext = createContext({} as { user: Student | null; progress: Progress; update: (fn: (p: Progress) => Progress) => void; sync: () => Promise<void>; status: string; authError: string; signOut: () => void; closingSession: boolean; reset: () => Promise<void>; deleteAccount: () => Promise<void> });
+const AppContext = createContext({} as { user: Student | null; authReady: boolean; progressChoicePending: boolean; progress: Progress; update: (fn: (p: Progress) => Progress) => void; sync: () => Promise<void>; status: string; authError: string; signOut: () => void; closingSession: boolean; reset: () => Promise<void>; deleteAccount: () => Promise<void> });
 export const useApp = () => useContext(AppContext);
 function read(key: string) { try { return sanitize(JSON.parse(stored(key, '{}'))); } catch { return empty(); } }
 export function Providers({ children }: { children: ReactNode }) {
+  useEffect(()=>{void loadCurriculum();},[]);
   const { t } = useTranslation();
   const needsChoice=useRef(true);
   const syncing=useRef(false);
@@ -17,6 +19,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [choice,setChoice]=useState<{local:Progress;online:Progress}|null>(null);
   const [choosing,setChoosing]=useState(false);
   const [user, setUser] = useState<Student | null>(null);
+  const [authReady,setAuthReady]=useState(false);
   const [progress, setProgress] = useState(() => read('progress:guest'));
   const [status, setStatus] = useState('guest');
   const [authError, setAuthError] = useState('');
@@ -28,7 +31,9 @@ export function Providers({ children }: { children: ReactNode }) {
     let disposed = false;
     const load = async () => {
       const session = await currentStudent();
-      if (disposed || !session) return;
+      if (disposed) return;
+      setAuthReady(true);
+      if (!session) return;
       generation.current++;
       const accountKey = `progress:${session.profile.sub}`;
       const account = read(accountKey);
@@ -96,7 +101,7 @@ export function Providers({ children }: { children: ReactNode }) {
       latest.current=next;setProgress(next);persist(key,JSON.stringify(next));persist('progress:guest',JSON.stringify(empty()));needsChoice.current=false;setChoice(null);setStatus('saved');
     }catch{setStatus('choiceFailed');}finally{setChoosing(false);}
   };
-  return <AppContext value={{ user, progress, update, sync, status, authError, closingSession,
+  return <AppContext value={{ user, authReady, progressChoicePending:Boolean(choice), progress, update, sync, status, authError, closingSession,
     signOut: () => { if(signingOut.current)return;signingOut.current=true;setClosingSession(true);setAuthError('');void (async()=>{try{await logout();needsChoice.current=true;setChoice(null);generation.current++;setUser(null);setProgress(read('progress:guest'));setStatus('guest');setAuthError('');}catch(e){setAuthError(String(e));}finally{signingOut.current=false;setClosingSession(false);}})(); },
     reset: async () => { const next = user ? await request('DELETE') : undefined; clear(next); },
     deleteAccount: async () => { const {endActiveLab}=await import('../services/labs');await endActiveLab();await request('DELETE', { deleteAccount: true }); clear();const {signOut}=await import('aws-amplify/auth');await signOut(); setUser(null); setProgress(read('progress:guest')); },

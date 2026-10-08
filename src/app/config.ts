@@ -7,5 +7,8 @@ export const config = {
   redirect: env.VITE_AUTH_REDIRECT_URI || `${location.origin}${import.meta.env.BASE_URL}`,
   logout: env.VITE_AUTH_LOGOUT_URI || `${location.origin}${import.meta.env.BASE_URL}`,
   api: env.VITE_API_BASE_URL || '',
+  supportApi: (env.VITE_SUPPORT_API_BASE_URL || '').replace(/\/$/,''),
+  coursesApi: env.VITE_COURSES_API_BASE_URL || '',
+  coursesIdentity: env.VITE_COURSES_IDENTITY_POOL_ID || '',
 };
 export const authConfigured = Boolean(config.pool && config.client);

@@ -1,3 +1,4 @@
+import {useCurriculum} from '../repositories/curriculum';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +8,7 @@ import { courses, lessons, workshops, localized, lessonPath } from '../app/conte
 import { useApp } from '../app/providers';
 import { ProgressBar } from '../components/ui';
 export default function Courses() {
+ useCurriculum();
  const { t, i18n } = useTranslation(); const { courseId, workshopId } = useParams(); const { progress } = useApp(); const [query,setQuery] = useState('');
  const course = courses.find(c => c.id === courseId);
  const workshop = workshops.find(w => w.id === workshopId);

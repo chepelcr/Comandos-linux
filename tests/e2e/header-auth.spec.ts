@@ -23,21 +23,42 @@ test('phone header keeps all actions on one row and menu below', async ({ page, 
  }
 });
 
-test('sign-in, recovery and signup stay inside the course app', async ({ page }) => {
+test('focused auth pages use clean routes and stay outside course navigation', async ({ page }) => {
  await page.addInitScript(() => localStorage.setItem('locale', 'en'));
- await page.goto('/account');
+ await page.goto('/login');
  await expect(page.locator('#signin-email')).toBeVisible();
+ await expect(page.locator('.nav')).toHaveCount(0);
+ await expect(page.locator('.auth-footer')).toBeVisible();
  await expect(page.locator('#signin-password')).toHaveAttribute('autocomplete', 'current-password');
- await page.getByRole('button', { name: 'Forgot your password?', exact: true }).click();
+ await page.getByRole('link', { name: 'Forgot your password?', exact: true }).click();
+ await expect(page).toHaveURL(/\/forgot-password$/);
  await expect(page.getByRole('heading', { name: 'Reset password', exact: true })).toBeVisible();
  await expect(page.locator('#signin-password')).toHaveCount(0);
- await page.getByRole('button', { name: 'Back to sign in', exact: true }).click();
- await page.getByRole('button', { name: 'Create account', exact: true }).click();
+ await page.getByRole('link', { name: 'Back to sign in', exact: true }).click();
+ await page.getByRole('link', { name: 'Create account', exact: true }).click();
+ await expect(page).toHaveURL(/\/register$/);
  await expect(page.locator('#signup-email')).toBeVisible();
- await page.getByRole('button', { name: 'Cancel', exact: true }).click();
- await expect(page.locator('#signin-email')).toBeVisible();
- await expect(page).toHaveURL(/\/account$/);
+ await expect(page.locator('.motion-veil')).toHaveCount(0);
+ await expect(page.locator('#main')).not.toHaveAttribute('inert','');
+ await page.locator('#signup-password').fill('LongPassword9!');
+ await expect(page.getByText('Meets all requirements', {exact:true})).toBeVisible();
+ await expect(page.locator('#confirm-password')).toBeVisible();
+ await page.locator('[aria-label="Show password"]').first().click();
+ await expect(page.locator('#signup-password')).toHaveAttribute('type','text');
+ await expect(page.locator('#confirm-password')).toHaveAttribute('type','password');
+ await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content','noindex, follow');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
+
+test('guest support redirects to focused login and is absent from navigation',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('locale','en'));
+ await page.goto('/courses');
+ await expect(page.locator('.nav a[href="/support"]')).toHaveCount(0);
+ await page.goto('/support');
+ await expect(page).toHaveURL(/\/login$/);
+ await expect(page.locator('#signin-email')).toBeVisible();
+});
+
 
 
 test('mobile lesson footer follows the workspace and scrolls into view', async ({ page, isMobile }) => {

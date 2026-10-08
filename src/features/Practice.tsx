@@ -6,11 +6,12 @@ import { useApp } from '../app/providers';
 import { lessons,localized } from '../app/content';
 import { Select } from '../components/Select';
 import { workspace } from '../services/lab-storage';
-import exercises from '../data/lab-exercises.json';
+import {exercises,useCurriculum} from '../repositories/curriculum';
 import { CodeBlock } from '../components/ui';
 import { previewDocument } from '../services/lab-preview';
 type Reply={requestId?:string;error?:string;data?:string;status?:number;contentType?:string;verified?:boolean;id?:string};
 export default function Practice(){
+ useCurriculum();
  const {t,i18n}=useTranslation();const {lessonId}=useParams();const navigate=useNavigate();const lesson=lessons.some(l=>l.id===lessonId)?lessonId!:'intro';
  const [running,setRunning]=useState(false),[status,setStatus]=useState(''),[output,setOutput]=useState(''),[ready,setReady]=useState(false),[preview,setPreview]=useState(''),[busy,setBusy]=useState(false);
  const frame=useRef<HTMLIFrameElement>(null),previewFrame=useRef<HTMLIFrameElement>(null),file=useRef<HTMLInputElement>(null),pending=useRef(new Map<string,{resolve:(value:Reply)=>void;reject:(error:Error)=>void;timer:ReturnType<typeof setTimeout>}>()),restore=useRef<string|undefined>(undefined),nonce=useRef(crypto.randomUUID());

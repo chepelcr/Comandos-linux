@@ -42,6 +42,16 @@
       },
       {
         "title": {
+          "es": "Consultas de soporte",
+          "en": "Support requests"
+        },
+        "body": {
+          "es": "Si inicias sesión y solicitas soporte, guardamos tu consulta, respuestas, capturas de pantalla y su vínculo con tu cuenta en almacenamiento privado. El equipo autorizado puede acceder para ayudarte. No incluyas contraseñas ni secretos. Las consultas tienen un plazo de conservación de 365 días desde su última actualización y los adjuntos de 90 días desde su carga; los registros técnicos y las copias de seguridad tienen sus propios plazos. Puedes solicitar acceso o eliminación por el correo de contacto.",
+          "en": "When you sign in and request support, we store your request, replies, screenshots and account association privately. Authorized staff can access them to help you. Do not include passwords or secrets. Requests have a retention period of 365 days from their last update and attachments 90 days from upload; technical logs and backups follow their own retention periods. Contact us by email to request access or deletion."
+        }
+      },
+      {
+        "title": {
           "es": "Proveedores y ubicación",
           "en": "Providers and location"
         },

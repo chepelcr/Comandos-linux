@@ -2,8 +2,7 @@ import { matchPath } from 'react-router-dom';
 import { localized, lessons, courses, workshops } from './content';
 import es from '../locales/es.json';
 import en from '../locales/en.json';
-import legal from '../data/legal.json';
-import about from '../data/about.json';
+import {legal,about} from '../repositories/curriculum';
 
 export const siteOrigin = 'https://linux.jcampos.dev';
 export function pageMetadata(pathname: string, language: string) {
@@ -17,9 +16,9 @@ export function pageMetadata(pathname: string, language: string) {
  const lesson = lessonRoute && lessons.find(item=>item.id===lessonRoute.params.lessonId&&item.course===lessonRoute.params.courseId);
  const course = courses.find(item=>item.id===(lesson?lesson.course:courseRoute?.params.courseId));
  const workshop = workshopRoute && workshops.find(item=>item.id===workshopRoute.params.workshopId);
- const pages = {'/courses':'courses','/dashboard':'dashboard','/account':'account','/settings':'account','/resources':'resources','/about':'about','/privacy':'privacyPage','/terms':'terms','/practice':'practice'} as const;
+ const pages = {'/courses':'courses','/dashboard':'dashboard','/account':'account','/settings':'account','/resources':'resources','/about':'about','/privacy':'privacyPage','/terms':'terms','/practice':'practice','/login':'signIn','/register':'signUp','/verify-email':'verifyEmail','/forgot-password':'resetPassword','/reset-password':'resetPassword','/set-password':'newPassword','/auth/challenge':'verifySignIn','/support':'support'} as const;
  const key = pages[path as keyof typeof pages];
- let title = key ? t[key] : t.tagline;
+ let title = key ? t[key] : path.startsWith('/support/')?t.support:t.tagline;
  let description = t.heroDescription;
  let index = path==='/' || ['/courses','/resources','/about','/privacy','/terms'].includes(path);
  if(lessonRoute) {

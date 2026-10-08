@@ -22,3 +22,8 @@ course-projects/*/dist/
 # Independent private repositories; never vendor or submodule them.
 /backend/
 /emails/
+/admin/
+/admin-api/
+/courses-api/
+
+build-release/

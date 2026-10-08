@@ -511,3 +511,13 @@ The lab maps `InlineLab` (session actions and exercise checks) to `LabLoading`
 (indeterminate startup/connection animation), the authenticated check API and the
 backend `ExerciseResult` boundary. Student exercise snippets contain lesson commands;
 guest validator invocations stay behind the check button.
+
+
+## Planned admin, course management and dedicated authentication (2026-10-08)
+
+See [the reviewed planning document](admin-course-management-plan.md). This is a
+planning-only extension: separate private admin app and BE Builder-generated courses
+and support backends, S3 persistence, invitation-only staff with MFA OFF, versioned
+curriculum publication, and dedicated learner auth pages based on the Tsuru pattern
+with the existing 12-character Cognito policy, password strength and confirmation.
+No app code, new remote repositories or infrastructure are changed in this phase.
