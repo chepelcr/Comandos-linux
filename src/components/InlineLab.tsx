@@ -11,6 +11,7 @@ import { lessonPath,lessons,courses,localized } from '../app/content';
 import { config } from '../app/config';
 import { labRequest,LabRequestError } from '../services/labs';
 import { connectTerminal } from '../services/ssm-terminal';
+import { LabLoading } from './LabLoading';
 function LabTerminal({id}:{id:string}){
  const host=useRef<HTMLDivElement>(null);const {t}=useTranslation();const [status,setStatus]=useState('labConnecting');const [attempt,setAttempt]=useState(0);
  useEffect(()=>{
@@ -26,7 +27,7 @@ function LabTerminal({id}:{id:string}){
   })();
   return()=>{disposed=true;observer.disconnect();input.dispose();channel?.close();terminal.dispose();};
  },[id,attempt]);
- return <><div className="terminal-status" role="status">{t(status)}{status==='labConnectionLost'&&<button onClick={()=>{setStatus('labConnecting');setAttempt(n=>n+1);}}>{t('labReconnect')}</button>}</div><div ref={host} className="ec2-terminal" aria-label={t('terminal')} /></>;
+ return <>{status!=='labConnecting'&&<div className="terminal-status" role="status">{t(status)}{status==='labConnectionLost'&&<button onClick={()=>{setStatus('labConnecting');setAttempt(n=>n+1);}}>{t('labReconnect')}</button>}</div>}<div className="lab-terminal-shell" aria-busy={status==='labConnecting'}><div ref={host} className="ec2-terminal" aria-label={t('terminal')} />{status==='labConnecting'&&<LabLoading/>}</div></>;
 }
 export function InlineLab({route,lesson}:{route:string;lesson:string}){
  const [mobile,setMobile]=useState(()=>matchMedia('(max-width:800px)').matches);const [drawerOpen,setDrawerOpen]=useState(false);const dialog=useRef<HTMLDialogElement>(null);
@@ -45,7 +46,7 @@ export function InlineLab({route,lesson}:{route:string;lesson:string}){
  }catch{if(scope.current===expected)setCheckStatus('labCheckFailed');}finally{if(scope.current===expected)setChecking(false);}};
  const content=<><div className="inline-lab-heading"><div><span className="eyebrow">{t('practice')}</span><h2 id="inline-lab-title"><TerminalIcon size={20}/>{t('terminal')}</h2></div>{mobile&&<button className="icon-button" aria-label={t('labCloseDrawer')} onClick={()=>setDrawerOpen(false)}>×</button>}{session&&<button className="danger" disabled={busy} onClick={()=>{void end();}}><Square size={15}/>{t(busy?'labEnding':'labEnd')}</button>}</div>
  {session&&<p className="lab-deadline"><Clock size={15}/>{t('labRemaining',{minutes:Math.max(0,Math.ceil((Math.min(session.expiresAt,session.idleExpiresAt)-now)/60000))})}</p>}
- {session&&!same?<div className="lab-start-panel"><TerminalIcon size={36}/><h3>{t('labOtherRoute')}</h3><p>{t('labOtherRouteDescription')}</p><Link className="button secondary" to={lessonPath(firstLesson?.id||'intro')}>{otherPath?localized(otherPath.title,i18n.language):t('continue')}<ArrowUpRight size={16}/></Link></div>:same&&session.state==='running'?<LabTerminal id={session.id}/>:<div className="lab-start-panel"><TerminalIcon size={40}/><h3>{t('labStartTitle')}</h3>{mobile?<details className="lab-rules"><summary>{t('labSessionLimits')}</summary><p>{t('labSessionRules')}</p></details>:<p>{t('labSessionRules')}</p>}{!user?<Link className="button" to="/account">{t('labSignIn')}</Link>:<><button className="button" disabled={busy||Boolean(session)||!state.available} onClick={()=>{void start(route);}}><Play size={17}/>{t(busy?'labStarting':session?'labEnding':'labStart')}</button>{!state.available&&<p className="muted">{t('labPreparing')}</p>}</>}</div>}
+ {session&&!same?<div className="lab-start-panel"><TerminalIcon size={36}/><h3>{t('labOtherRoute')}</h3><p>{t('labOtherRouteDescription')}</p><Link className="button secondary" to={lessonPath(firstLesson?.id||'intro')}>{otherPath?localized(otherPath.title,i18n.language):t('continue')}<ArrowUpRight size={16}/></Link></div>:same&&session.state==='running'?<LabTerminal id={session.id}/>:busy&&!session||same&&session?.state==='starting'?<div className="lab-terminal-shell" aria-busy="true"><LabLoading/></div>:<div className="lab-start-panel"><TerminalIcon size={40}/><h3>{t('labStartTitle')}</h3>{mobile?<details className="lab-rules"><summary>{t('labSessionLimits')}</summary><p>{t('labSessionRules')}</p></details>:<p>{t('labSessionRules')}</p>}{!user?<Link className="button" to="/account">{t('labSignIn')}</Link>:<><button className="button" disabled={busy||Boolean(session)||!state.available} onClick={()=>{void start(route);}}><Play size={17}/>{t(busy?'labStarting':session?'labEnding':'labStart')}</button>{!state.available&&<p className="muted">{t('labPreparing')}</p>}</>}</div>}
  {same&&session?.state==='running'&&<div className="inline-lab-check"><button disabled={busy||checking} onClick={()=>{void check();}}>{t(checking?'loading':'labCheck')}</button><span role="status">{checkStatus&&t(checkStatus)}</span></div>}
  <p className="lab-session-note">{t('labEphemeral')}</p>{error&&<p className="error" role="alert">{t(error)}</p>}
  </>;

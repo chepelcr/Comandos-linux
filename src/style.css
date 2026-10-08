@@ -110,3 +110,19 @@ body,.panel,.course-card,.source-document{transition:background-color var(--moti
  .nav-links>a:first-child{margin-top:12px}
  .nav-links>a{flex-shrink:0}
 }
+
+/* Terminal-style indeterminate loader; connection readiness owns completion. */
+.lab-terminal-shell{position:relative;display:flex;flex-direction:column;flex:1;min-height:150px;background:#101521;overflow:hidden}
+.lab-terminal-shell .ec2-terminal{flex:1;min-height:0}
+.lab-loading{position:absolute;inset:0;z-index:1;background:#101521;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:32px 24px;font:13px/1.6 'JetBrains Mono',monospace;color:#e4e8f7}
+.lab-loading-prompt{color:#bbc7df}.lab-loading-prompt>span:first-child{color:#75dbab}
+.lab-loading-cursor{color:#75dbab;animation:lab-cursor 1.2s steps(1) infinite}
+.lab-loading-title,.lab-loading-hint{margin:0}.lab-loading-title{font-size:14px;font-weight:500}
+.lab-loading-hint{font:13px/1.6 'IBM Plex Sans',sans-serif;color:#bbc7df;max-width:32ch}
+.lab-loading-meter{display:flex;align-items:center;gap:8px;color:#75dbab;font-size:24px;max-width:340px;width:100%}
+.lab-loading-segments{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:3px;flex:1;min-width:0}
+.lab-loading-segments>span{height:16px;background:#75dbab;opacity:.2;animation:lab-segment 2.4s ease-in-out infinite}
+@keyframes lab-segment{0%,70%,100%{opacity:.2}35%{opacity:1}}
+@keyframes lab-cursor{0%,55%{opacity:1}56%,100%{opacity:0}}
+@media(max-width:800px){.lab-loading{padding:28px 20px}.lab-loading-meter{max-width:400px}}
+@media(prefers-reduced-motion:reduce){.lab-loading-cursor,.lab-loading-segments>span{animation:none!important}.lab-loading-segments>span{opacity:.55}}

@@ -197,5 +197,6 @@
   "passwordUpdated": "Contraseña actualizada. Inicia sesión con tu nueva contraseña.",
   "invalidCredentials": "El correo o la contraseña son incorrectos. Inténtalo de nuevo.",
   "authRateLimit": "Demasiados intentos. Espera un momento e inténtalo de nuevo.",
-  "authStepUnavailable": "Este método de inicio de sesión requiere ayuda. Contacta a la administración del curso."
+  "authStepUnavailable": "Este método de inicio de sesión requiere ayuda. Contacta a la administración del curso.",
+  "labLoadingHint": "Estamos preparando tu terminal Linux. Puede tardar un momento."
 }

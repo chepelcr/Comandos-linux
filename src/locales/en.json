@@ -197,5 +197,6 @@
   "passwordUpdated": "Password updated. Sign in with your new password.",
   "invalidCredentials": "The email or password is incorrect. Please try again.",
   "authRateLimit": "Too many attempts. Wait a moment and try again.",
-  "authStepUnavailable": "This sign-in method needs administrator assistance. Please contact the course administrator."
+  "authStepUnavailable": "This sign-in method needs administrator assistance. Please contact the course administrator.",
+  "labLoadingHint": "Preparing your Linux terminal. This can take a moment."
 }
