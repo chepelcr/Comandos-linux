@@ -1,0 +1,13 @@
+import { readdir,readFile } from 'node:fs/promises';
+const origin='https://linux.jcampos.dev';
+const filename=(await readdir('public')).find(name=>/^[a-f0-9]{32}\.txt$/.test(name));
+if(!filename)throw Error('Missing public IndexNow verification file');
+const key=(await readFile(`public/${filename}`,'utf8')).trim();
+const keyLocation=`${origin}/${filename}`;
+const [sitemap,verification]=await Promise.all([fetch(`${origin}/sitemap.xml`,{signal:AbortSignal.timeout(30000),cache:'no-store'}),fetch(keyLocation,{signal:AbortSignal.timeout(30000),cache:'no-store'})]);
+if(!sitemap.ok||!verification.ok||(await verification.text()).trim()!==key)throw Error('Deployed sitemap or ownership key is not available yet; retry notification later');
+const urlList=[...(await sitemap.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
+if(!urlList.length||urlList.some(url=>new URL(url).origin!==origin))throw Error('Invalid deployed sitemap');
+const response=await fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({host:new URL(origin).host,key,keyLocation,urlList}),signal:AbortSignal.timeout(30000)});
+if(![200,202].includes(response.status))throw Error(`IndexNow returned ${response.status}: ${await response.text()}`);
+console.log(`IndexNow accepted notification of ${urlList.length} public URLs (${response.status}). This does not guarantee indexing.`);

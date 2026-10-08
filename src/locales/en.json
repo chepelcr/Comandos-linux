@@ -200,5 +200,10 @@
   "authStepUnavailable": "This sign-in method needs administrator assistance. Please contact the course administrator.",
   "labLoadingHint": "Preparing your Linux terminal. This can take a moment.",
   "labCheckTimeout": "The check is taking longer than expected. Please try again in a moment.",
-  "labRecheck": "Check again"
+  "labRecheck": "Check again",
+  "terms": "Terms",
+  "lastUpdated": "Last updated",
+  "privacyConsent": "I consent to processing my data to create my account, sync progress and operate labs as described in the privacy policy.",
+  "termsConsent": "I accept the terms of use.",
+  "privacyPage": "Privacy"
 }

@@ -1,0 +1,148 @@
+{
+  "privacy": {
+    "title": {
+      "es": "Política de privacidad",
+      "en": "Privacy policy"
+    },
+    "intro": {
+      "es": "Cómo cuidamos los datos que acompañan tu aprendizaje.",
+      "en": "How we handle the data that supports your learning."
+    },
+    "updated": "2026-10-08",
+    "sections": [
+      {
+        "title": {
+          "es": "Responsable y contacto",
+          "en": "Controller and contact"
+        },
+        "body": {
+          "es": "Linux Lab es un curso de José Pablo Campos Solano, presentado por Pacific Code Labs. Para consultas o solicitudes sobre tus datos, escribe a chepelcr@outlook.com.",
+          "en": "Linux Lab is a course by José Pablo Campos Solano, presented by Pacific Code Labs. Contact chepelcr@outlook.com for privacy questions and data requests."
+        }
+      },
+      {
+        "title": {
+          "es": "Qué datos usamos y para qué",
+          "en": "What we use and why"
+        },
+        "body": {
+          "es": "Sin cuenta, guardamos el progreso, marcadores, puntos e idioma y tema en tu navegador. Con una cuenta, Amazon Cognito gestiona tu correo, contraseña y datos de autenticación; la API guarda tu progreso e identificador de cuenta en almacenamiento privado de Amazon S3. Usamos estos datos para identificarte, sincronizar tu aprendizaje y enviarte mensajes de verificación, recuperación y seguridad de la cuenta. No vendemos tus datos ni usamos publicidad o analítica de terceros en la aplicación.",
+          "en": "Without an account, progress, bookmarks, points, language and theme stay in your browser. With an account, Amazon Cognito manages your email, password and authentication data; the API stores your progress and account identifier in private Amazon S3 storage. We use this information to authenticate you, sync your learning, and send account verification, recovery and security messages. We do not sell your data or use advertising or third-party analytics in the application."
+        }
+      },
+      {
+        "title": {
+          "es": "Laboratorios temporales",
+          "en": "Temporary labs"
+        },
+        "body": {
+          "es": "Al iniciar un laboratorio se crea una máquina temporal vinculada a tu cuenta y ruta. Procesamos el estado, actividad y resultados de comprobación de ejercicios para operar el laboratorio y acreditar los ejercicios. Los archivos que crees viven en ese laboratorio temporal: termina al cerrar sesión o finalizarlo, tras 30 minutos de inactividad o al alcanzar 90 minutos de duración. No introduzcas datos personales, contraseñas reales ni secretos en los ejercicios.",
+          "en": "Starting a lab creates a temporary machine associated with your account and learning path. We process its status, activity and exercise-check results to operate it and verify exercises. Your files live in that temporary lab: it ends when you sign out or end it, after 30 minutes of inactivity, or after 90 minutes in total. Do not enter personal data, real passwords or secrets in exercises."
+        }
+      },
+      {
+        "title": {
+          "es": "Proveedores y ubicación",
+          "en": "Providers and location"
+        },
+        "body": {
+          "es": "GitHub Pages aloja el sitio y registra direcciones IP por seguridad según su política. AWS presta autenticación, correo, API, almacenamiento y laboratorios; los servicios de la aplicación están configurados en us-east-1, Estados Unidos. Estos proveedores pueden procesar datos técnicos de conexión y seguridad. Al seguir enlaces externos, se aplican las políticas del sitio de destino.",
+          "en": "GitHub Pages hosts the site and logs IP addresses for security under its policy. AWS provides authentication, email, API, storage and labs; application services are configured in us-east-1, United States. These providers may process technical connection and security data. External links are governed by the destination site’s policies."
+        }
+      },
+      {
+        "title": {
+          "es": "Almacenamiento local y conservación",
+          "en": "Local storage and retention"
+        },
+        "body": {
+          "es": "Usamos localStorage para preferencias y progreso y sessionStorage para la sesión de autenticación. Estos datos funcionales no son cookies publicitarias. El progreso local permanece hasta que lo reinicies o borres los datos del sitio; las copias en otros dispositivos se gestionan en cada dispositivo. Los datos de la cuenta y el progreso en línea se conservan mientras exista la cuenta y se eliminan mediante la opción de eliminar cuenta. Los registros técnicos tienen plazos propios de los servicios y pueden persistir tras eliminar la cuenta; puedes solicitar información sobre ellos por correo.",
+          "en": "We use localStorage for preferences and progress and sessionStorage for authentication. This functional storage is not advertising cookies. Local progress remains until you reset it or clear site data; copies on other devices must be managed on those devices. Account data and online progress are kept while the account exists and removed through the delete-account option. Technical logs follow service-specific retention periods and may remain after account deletion; contact us for information about them."
+        }
+      },
+      {
+        "title": {
+          "es": "Tus opciones y derechos",
+          "en": "Your choices and rights"
+        },
+        "body": {
+          "es": "Leer el curso no requiere una cuenta. Registrarte y sincronizar datos es voluntario; sin cuenta no podrás sincronizar ni iniciar laboratorios en línea. Desde Mi cuenta puedes exportar el progreso, reiniciarlo o eliminar la cuenta. Para acceso, corrección, eliminación, revocación del consentimiento u otras solicitudes, escribe al contacto indicado; podremos pedir información mínima para verificar tu identidad. Si retiras el consentimiento necesario para operar la cuenta, tendrás que dejar de usar las funciones de cuenta.",
+          "en": "Reading the course does not require an account. Registration and synchronization are optional; without an account you cannot sync or start online labs. My account lets you export progress, reset it or delete the account. For access, correction, deletion, withdrawal of consent or other requests, contact us; we may ask for minimal information to verify your identity. Withdrawing consent needed to operate the account requires discontinuing account features."
+        }
+      },
+      {
+        "title": {
+          "es": "Cambios y consultas",
+          "en": "Changes and questions"
+        },
+        "body": {
+          "es": "Actualizaremos esta página cuando cambie el tratamiento de datos y mostraremos la fecha de actualización. Si tienes dudas antes de registrarte, contáctanos.",
+          "en": "We will update this page when our processing changes and show the revision date. Contact us with any questions before registering."
+        }
+      }
+    ]
+  },
+  "terms": {
+    "title": {
+      "es": "Condiciones de uso",
+      "en": "Terms of use"
+    },
+    "intro": {
+      "es": "Un espacio para aprender, practicar y construir con responsabilidad.",
+      "en": "A place to learn, practice and build responsibly."
+    },
+    "updated": "2026-10-08",
+    "sections": [
+      {
+        "title": {
+          "es": "Curso y acceso",
+          "en": "Course and access"
+        },
+        "body": {
+          "es": "Linux Lab ofrece material educativo y ejercicios prácticos. Puedes leer el contenido sin cuenta; las cuentas permiten sincronizar progreso y acceder a laboratorios según disponibilidad. Los puntos y marcas de avance son indicadores de aprendizaje, no una certificación profesional.",
+          "en": "Linux Lab provides educational material and practical exercises. Reading is available without an account; accounts support progress synchronization and labs subject to availability. Points and completion marks are learning indicators, not a professional certification."
+        }
+      },
+      {
+        "title": {
+          "es": "Uso responsable",
+          "en": "Responsible use"
+        },
+        "body": {
+          "es": "Usa tu propia cuenta y protege sus credenciales. Practica únicamente en tu laboratorio o en sistemas donde tengas autorización. No uses el servicio para ataques, minería, evasión de límites, contenido ilegal o acceso a otras cuentas o infraestructura. Podemos suspender el acceso ante abuso o riesgos de seguridad.",
+          "en": "Use your own account and protect its credentials. Practice only in your lab or systems you are authorized to use. Do not use the service for attacks, mining, bypassing limits, illegal content or accessing other accounts or infrastructure. Access may be suspended for abuse or security risks."
+        }
+      },
+      {
+        "title": {
+          "es": "Archivos y disponibilidad",
+          "en": "Files and availability"
+        },
+        "body": {
+          "es": "Los laboratorios son temporales, están aislados y no tienen acceso a internet. Solo puedes mantener un laboratorio activo por cuenta. Finaliza el actual antes de cambiar de ruta. No son un servicio de alojamiento ni de copias de seguridad: guarda por tu cuenta el trabajo que necesites conservar. Pueden existir límites de capacidad, mantenimiento e interrupciones.",
+          "en": "Labs are temporary, isolated and have no internet access. Only one lab per account may be active. End it before switching learning paths. Labs are not a hosting or backup service: separately save work you need to keep. Capacity limits, maintenance and interruptions may occur."
+        }
+      },
+      {
+        "title": {
+          "es": "Materiales y servicios externos",
+          "en": "Materials and external services"
+        },
+        "body": {
+          "es": "Respeta las licencias y atribuciones de los ejemplos y recursos enlazados. Las marcas de terceros pertenecen a sus titulares y no implican patrocinio. Los ejercicios que usan GitHub u otros servicios están sujetos a sus propias condiciones. Revisa los comandos antes de ejecutarlos fuera del laboratorio.",
+          "en": "Respect the licenses and attribution of examples and linked resources. Third-party trademarks belong to their owners and do not imply endorsement. Exercises using GitHub or other services are subject to those services’ terms. Review commands before running them outside the lab."
+        }
+      },
+      {
+        "title": {
+          "es": "Privacidad y contacto",
+          "en": "Privacy and contact"
+        },
+        "body": {
+          "es": "La política de privacidad explica los datos necesarios para las funciones de cuenta y laboratorio. Para soporte, avisos de errores o solicitudes, escribe a chepelcr@outlook.com. Publicaremos aquí los cambios de estas condiciones.",
+          "en": "The privacy policy explains the data needed for account and lab features. For support, error reports or requests, contact chepelcr@outlook.com. Changes to these terms will be published here."
+        }
+      }
+    ]
+  }
+}

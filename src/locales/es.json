@@ -200,5 +200,10 @@
   "authStepUnavailable": "Este método de inicio de sesión requiere ayuda. Contacta a la administración del curso.",
   "labLoadingHint": "Estamos preparando tu terminal Linux. Puede tardar un momento.",
   "labCheckTimeout": "La comprobación está tardando más de lo esperado. Vuelve a intentarlo en un momento.",
-  "labRecheck": "Comprobar de nuevo"
+  "labRecheck": "Comprobar de nuevo",
+  "terms": "Condiciones",
+  "lastUpdated": "Última actualización",
+  "privacyConsent": "Consiento el tratamiento de mis datos para crear la cuenta, sincronizar mi progreso y operar los laboratorios, según la política de privacidad.",
+  "termsConsent": "Acepto las condiciones de uso.",
+  "privacyPage": "Privacidad"
 }

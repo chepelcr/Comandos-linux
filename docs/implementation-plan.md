@@ -75,7 +75,10 @@ lists, command bodies, and legacy-only details; matching counts alone is insuffi
 | `curso.html` | Learning resources page | `ResourceCard`; NetAcad, Microsoft, GitHub Education |
 | `perfil.html` | Welcome and instructor page | `WelcomeSection`, `InstructorCard`; biography and contact |
 | `compartir.html` | Route-aware sharing | `ShareButton`, `ShareDialog`; native share and clipboard fallback |
-| `footer.html` | Shared footer | `AppFooter`; credits/social destinations |
+| `footer.html` | Shared footer | `AppFooter`; credits/social destinations; privacy and terms links |
+| Route and lesson metadata | `src/app/seo.ts` | Shared page metadata, canonical URLs, social cards and JSON-LD |
+| Privacy and terms content | `src/data/legal.json`, `src/features/Legal.tsx` | Bilingual notices, contact, storage choices and signup consent |
+| Public route catalog | `scripts/prerender-seo.mjs`, `scripts/check-seo.mjs` | Static React HTML, robots.txt, sitemap and build validation |
 | `dist/js/script.js` | JSON content and feature services | All 28 examples, copy/download behavior, notifications |
 | `dist/js/load_page.js` | React composition and utilities | Remove HTML loader after parity; derive share URL from app config |
 | `dist/css/*` | Design token and component styles | Retire legacy styling after visual parity review |

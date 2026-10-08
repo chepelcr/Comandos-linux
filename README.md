@@ -13,8 +13,11 @@ AWS configuration. No AWS credentials or client secrets belong in frontend setti
 
 `npm test`, `npm run lint`, `npm run build`, and `npm run test:e2e` validate domain
 logic, content preservation, the production build, and desktop/mobile flows.
-Install Playwright Chromium before browser tests: `npx playwright install chromium`.
-The production output directory is `build/`.
+Install Playwright Chromium before production builds or browser tests: `npx playwright install chromium`.
+The production output directory is `build/`. Production builds prerender all public
+pages and validate SEO metadata, sitemap coverage and noindex account pages.
+See [SEO, privacy and search submission](docs/seo-and-privacy.md) for ownership
+verification, IndexNow and the bilingual privacy/terms pages.
 
 ## Course and accounts
 

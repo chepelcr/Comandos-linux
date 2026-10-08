@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "npm run course:package && npm run content:check && tsc -b && vite build",
+    "build": "npm run course:package && npm run content:check && tsc -b && vite build && npm run seo:prerender && npm run seo:check",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:e2e": "playwright test",
@@ -21,7 +21,10 @@
     "backend:bundle": "node scripts/bundle-backend.mjs",
     "lab:pack": "bash scripts/prepare-ec2-pack.sh",
     "lab:deploy": "npm run backend:bundle && node scripts/deploy-labs.mjs",
-    "course:package": "node scripts/package-course-starter.mjs"
+    "course:package": "node scripts/package-course-starter.mjs",
+    "seo:prerender": "node scripts/prerender-seo.mjs",
+    "seo:check": "node scripts/check-seo.mjs",
+    "seo:notify": "node scripts/notify-indexnow.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-ssm": "^3.1147.0",

@@ -167,3 +167,20 @@ No checker command was typed into the learner terminal. The frontend now disting
 API/timeout failures from incomplete work and retains a visible exercise checkmark.
 The backend accepts only recognized validator evidence for the active learning path,
 requires successful execution before verification, and rejects expired labs.
+
+
+## Crawlable pages, SEO and privacy (2026-10-08)
+
+The production build prerenders 60 public pages, including every one of the 44
+lessons, and 3 noindex account pages. The build checks complete sitemap coverage,
+unique public titles, self-referencing canonicals, useful descriptions, social
+metadata, JSON-LD and lesson HTML available without JavaScript. Legacy practice
+bookmarks receive static noindex redirects; unknown direct routes retain 404.
+
+All 27 unit tests and 21 desktop/mobile browser tests passed (3 device-specific
+skips), as did lint, build and content-preservation checks. Separate production-
+preview checks read a lesson and privacy notice with JavaScript disabled, checked
+privacy layouts at 375/801/1440px, switched language/theme, and confirmed signup
+starts with both required consent boxes unchecked. No live lab or student email
+was created by these checks. See seo-and-privacy.md for search-account submissions
+and owner review of policies/consent evidence.
