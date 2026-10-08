@@ -3,7 +3,8 @@ import { Hub } from 'aws-amplify/utils';
 import { useTranslation } from 'react-i18next';
 import { points } from '../services/progress';
 import { config } from './config';
-import {loadCurriculum} from '../repositories/curriculum';
+import {trackActivity} from '../services/activity';
+import {loadCurriculum,legal,useCurriculum} from '../repositories/curriculum';
 import i18n, { stored, persist } from './i18n';
 import { empty, merge, sanitize, type Progress } from '../services/progress';
 import { currentStudent, freshToken, logout, type Student } from './auth';
@@ -19,6 +20,8 @@ export function Providers({ children }: { children: ReactNode }) {
   const [choosing,setChoosing]=useState(false);
   const [user, setUser] = useState<Student | null>(null);
   const [authReady,setAuthReady]=useState(false);
+  const curriculumRevision=useCurriculum();
+  useEffect(()=>{if(authReady&&legal.privacy.sections.some(section=>section.title.en==='Course usage statistics'))return trackActivity(user?.profile.sub??null);},[authReady,user?.profile.sub,curriculumRevision]);
   useEffect(()=>{if(authReady)void loadCurriculum(user?.profile.sub??null);},[authReady,user?.profile.sub]);
   const [progress, setProgress] = useState(() => read('progress:guest'));
   const [status, setStatus] = useState('guest');

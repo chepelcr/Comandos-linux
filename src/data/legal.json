@@ -52,6 +52,16 @@
       },
       {
         "title": {
+          "es": "Estadísticas de uso del curso",
+          "en": "Course usage statistics"
+        },
+        "body": {
+          "es": "Usamos señales de actividad propias para operar y dimensionar el curso: visitantes invitados por identidad de navegador y cuentas autenticadas activas en los últimos cinco minutos, además de recuentos diarios. Los identificadores se transforman en resúmenes seudónimos; este registro no incluye correos, direcciones IP, páginas visitadas, texto ingresado ni comandos de terminal. Las pestañas ocultas o sin actividad reciente dejan de enviar señales. Respetamos las señales Do Not Track y Global Privacy Control; bloquearlas puede reducir la precisión de los recuentos. Los datos de presencia vencen tras un día y los diarios tras 30 días; las versiones anteriores vencen tras un día adicional y la eliminación de S3 es asíncrona. Los servicios de infraestructura conservan sus propios registros técnicos. Solo el personal propietario autorizado puede consultar estas estadísticas.",
+          "en": "We use first-party activity signals to operate and size the course: guest browser identities and signed-in accounts active within five minutes, plus daily counts. Identifiers are transformed into pseudonymous hashes; these records do not contain emails, IP addresses, visited pages, entered text or terminal commands. Hidden tabs or tabs without recent activity stop sending signals. We respect Do Not Track and Global Privacy Control; blocking activity signals can reduce count accuracy. Presence records expire after one day and daily records after 30 days; older versions expire after one additional day and S3 deletion is asynchronous. Infrastructure services retain their own technical logs. Only authorized Owner staff can view these statistics."
+        }
+      },
+      {
+        "title": {
           "es": "Proveedores y ubicación",
           "en": "Providers and location"
         },
