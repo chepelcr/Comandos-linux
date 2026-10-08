@@ -6,8 +6,8 @@ vi.mock('../src/services/public-content',()=>({signedPublicRequest:mocks.guest})
 vi.mock('aws-amplify/auth',()=>({fetchAuthSession:mocks.session}));
 import {trackActivity,sendActivity} from '../src/services/activity';
 describe('minimal activity signals',()=>{
- beforeEach(()=>{vi.useFakeTimers();vi.clearAllMocks();vi.spyOn(document,'visibilityState','get').mockReturnValue('visible');vi.stubGlobal('navigator',{doNotTrack:'0'});});
- afterEach(()=>{vi.useRealTimers();vi.restoreAllMocks();vi.unstubAllGlobals();});
+ beforeEach(()=>{vi.useFakeTimers();vi.clearAllMocks();vi.stubEnv('DEV',false);vi.spyOn(document,'visibilityState','get').mockReturnValue('visible');vi.stubGlobal('navigator',{doNotTrack:'0'});});
+ afterEach(()=>{vi.useRealTimers();vi.restoreAllMocks();vi.unstubAllGlobals();vi.unstubAllEnvs();});
  it('respects privacy signals without sending telemetry',async()=>{
   vi.stubGlobal('navigator',{doNotTrack:'1'});const stop=trackActivity(null);await vi.advanceTimersByTimeAsync(120000);expect(mocks.guest).not.toHaveBeenCalled();stop();
  });

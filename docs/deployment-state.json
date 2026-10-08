@@ -37,5 +37,24 @@
   "AdminEnrollment": "invitation-only",
   "AdminPoolId": "us-east-1_dbfQve4Z0",
   "AdminClientId": "3ir6bi7v3btoapi9qp6a5ej7gl",
-  "CurriculumPublication": "exact-release-pages-build-verify-finalize"
+  "CurriculumPublication": "exact-release-pages-build-verify-finalize",
+  "UsageMonitoring": {
+    "AdminEndpoint": "https://admin-api.linux.jcampos.dev/api/admin/diagnostics/metrics",
+    "Visibility": "Owner-only",
+    "ActiveWindowSeconds": 300,
+    "RefreshSeconds": 30,
+    "PresenceRetentionDays": 1,
+    "DailyRetentionDays": 30,
+    "Sources": [
+      "private-s3-activity",
+      "cognito-estimated-registrations",
+      "isolated-ec2-fleet"
+    ]
+  },
+  "CurriculumRelease": {
+    "releaseId": "release-43ec5c54-3cb6-4ec1-b144-e3241096a3fc",
+    "sequence": 2,
+    "digest": "9670ecad7ca293a0a31da9fe7da1a4d56a32a97402eb1b6f724fb42a78230d0d",
+    "sourceRef": "476549b1b71c744a75539dab0de0b83ff5765fec"
+  }
 }

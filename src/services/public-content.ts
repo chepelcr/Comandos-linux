@@ -1,9 +1,9 @@
-// Anonymous reads from the public API (public-api.<domain>, ujto-public-be).
+// Guest IAM requests to the courses API.
 //
 // The public gateway is AWS_IAM: a visitor gets short-lived GUEST credentials from a Cognito
 // identity pool (no user pool, no sign-up) and signs each GET with SigV4. Everything here is
 // plain fetch + WebCrypto (browser and Node 18+), no SDK. The guest role may only call
-// GET /api/public/*, so the pool id is safe to ship in a static site.
+// published GET endpoints and POST /api/public/activity; the pool id is public configuration.
 //
 // Sites render at once from cachedPublishedContent() (the last copy this browser saw) or their
 // bundled src/content/*.json, then call loadPublishedContent() in the background and re-render
@@ -11,7 +11,7 @@
 // the first paint).
 
 export interface PublicApiConfig {
-  /** Base URL, e.g. https://public-api.ujto.jcampos.dev */
+  /** Base URL, e.g. https://courses-api.linux.jcampos.dev */
   url: string;
   identityPoolId: string;
   region?: string;

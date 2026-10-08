@@ -13,7 +13,7 @@ export async function sendActivity(subject:string|null,signal:AbortSignal){
  }
 }
 export function trackActivity(subject:string|null){
- if(!config.coursesApi||navigator.doNotTrack==='1'||(navigator as Navigator&{globalPrivacyControl?:boolean}).globalPrivacyControl)return ()=>{};
+ if(import.meta.env.DEV||!config.coursesApi||navigator.doNotTrack==='1'||(navigator as Navigator&{globalPrivacyControl?:boolean}).globalPrivacyControl)return ()=>{};
  let lastActivity=Date.now(),pending=true,busy=false;const abort=new AbortController();
  const interacted=()=>{lastActivity=Date.now();pending=true;};
  const tick=async()=>{
