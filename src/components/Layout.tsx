@@ -1,11 +1,11 @@
 import { Suspense, useEffect, useState } from 'react';
-import { NavLink, Link, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Link, Outlet, useLocation, matchPath } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Terminal, Menu, X, Sun, Moon, UserRound } from 'lucide-react';
 import { useApp } from '../app/providers';
 import { stored, persist } from '../app/i18n';
 import studio from '../data/footer.json';
-import { localized } from '../app/content';
+import { localized, lessons, courses, workshops } from '../app/content';
 import { transition } from '../app/transitions';
 import { LanguageButton } from './LanguageButton';
 export default function Layout() {
@@ -15,7 +15,29 @@ export default function Layout() {
 
  useEffect(() => { document.documentElement.dataset.theme = theme; persist('theme', theme); }, [theme]);
  useEffect(() => { setOpen(false);document.getElementById('main')?.focus();window.scrollTo(0,0); }, [location.pathname]);
- useEffect(()=>{document.documentElement.lang=i18n.language;document.title=`${t('brand')} · ${t('tagline')}`;},[i18n.language,t]);
+ useEffect(()=>{
+  document.documentElement.lang=i18n.language;
+  const pathname=location.pathname;
+  const lessonRoute=matchPath('/learn/:courseId/:lessonId',pathname);
+  const courseRoute=matchPath('/courses/:courseId',pathname);
+  const workshopRoute=matchPath('/workshops/:workshopId',pathname);
+  let title:string;
+  if(lessonRoute){
+   const lesson=lessons.find(item=>item.id===lessonRoute.params.lessonId&&item.course===lessonRoute.params.courseId);
+   const course=courses.find(item=>item.id===lesson?.course);
+   title=lesson?[localized(lesson.title,i18n.language),...(course?[localized(course.title,i18n.language)]:[])].join(' · '):t('notFound');
+  }else if(courseRoute){
+   const course=courses.find(item=>item.id===courseRoute.params.courseId);
+   title=course?localized(course.title,i18n.language):t('notFound');
+  }else if(workshopRoute){
+   const workshop=workshops.find(item=>item.id===workshopRoute.params.workshopId);
+   title=workshop?localized(workshop.title,i18n.language):t('notFound');
+  }else{
+   const pages:Record<string,string>={'/courses':'courses','/dashboard':'dashboard','/account':'account','/settings':'account','/resources':'resources','/about':'about','/practice':'practice'};
+   title=t(pages[pathname.replace(/\/$/,'')]||'tagline');
+  }
+  document.title=pathname==='/'?`${t('brand')} · ${title}`:`${title} · ${t('brand')}`;
+ },[location.pathname,i18n.language,t]);
  const changeLocale=(locale:'es'|'en')=>{void transition(async()=>{persist('locale',locale);await i18n.changeLanguage(locale);update(p=>({...p,preferences:{...p.preferences,language:locale},updated:new Date().toISOString()}));},{kind:'language'});};
  const changeTheme=()=>{const value=theme==='light'?'dark':'light';void transition(()=>{setTheme(value);update(p=>({...p,preferences:{...p.preferences,theme:value},updated:new Date().toISOString()}));},{kind:'theme'});};
  useEffect(()=>{const apply=()=>setTheme(stored('theme','light')==='dark'?'dark':'light');window.addEventListener('theme-preference',apply);return()=>window.removeEventListener('theme-preference',apply);},[]);
