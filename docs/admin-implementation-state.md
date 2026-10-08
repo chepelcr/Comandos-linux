@@ -31,7 +31,8 @@ SEO pages; admin 6 tests; courses 39 tests; support 18 tests; existing backend 2
 16 deployed student/staff email templates verified without mail delivery.
 
 Live checks passed: staff SRP login and invitation password-change flow;
-loaded private dashboard; S3 curriculum manifest; staff directory;
+loaded private dashboard; S3 curriculum manifest; staff directory and learner details
+before the first progression save; dedicated student login and support deep-link reload;
 student/staff isolation; current-policy consent persistence; ticket creation; private
 notes and stale-write rejection; real S3 screenshot and private course-image uploads,
 checksum checks, image validation and attachment downloads. The first Owner invitation was accepted by Cognito

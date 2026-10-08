@@ -99,7 +99,12 @@ or published by the agent.
 | EC2 lifecycle / CAS lock / deadlines | backend/service/src/labs, infra/temporary-labs.yml |
 | Preloaded image builder | labs/ec2/bake.sh, scripts/prepare-ec2-pack.sh, build-ec2-image.mjs |
 | Dashboard / rewards | src/features/Dashboard.tsx, src/services/progress.ts, rewards.json |
-| Accounts / explicit sync choice | src/features/Account.tsx, Register.tsx, src/app/providers.tsx |
+| Accounts / explicit sync choice | src/features/Account.tsx, src/app/providers.tsx |
+| Dedicated login, registration and recovery | src/features/auth/AuthLayout.tsx, AuthPage.tsx, PasswordField.tsx |
+| Verified policy acknowledgements | src/features/auth/ConsentNotice.tsx, src/services/consent.ts; private backend consent module |
+| Signed-in learner support | src/features/Support.tsx, src/services/support.ts; private admin-api/ service |
+| Versioned curriculum and Pages publication | src/repositories/curriculum.ts, scripts/curriculum-release.mjs; private courses-api/ service |
+| Private staff administration | independent ignored admin/ repository; see docs/repositories.md |
 | Resources / curated author page | src/features/Resources.tsx, src/data/about.json |
 | Progress API / private S3 | backend/service/src/controllers, services, repositories; infra/progress-api.yml |
 | Cognito / public settings | infra/cognito.yml, ssm-frontend.yml |

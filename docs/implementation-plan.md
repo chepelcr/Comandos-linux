@@ -502,8 +502,12 @@ lesson lists with independent scrolling, including short/tablet-width viewports.
 ### Current account component mapping
 
 - `src/features/Account.tsx`: account shell and guest/account controls.
-- `src/features/SignIn.tsx`: native Amplify SRP, challenge/confirmation and password recovery forms.
-- `src/features/Register.tsx`: signup and account email verification.
+- `src/features/auth/AuthLayout.tsx` and `AuthContext.tsx`: dedicated authentication shell and memory-only flow state.
+- `src/features/auth/AuthPage.tsx`: native Amplify SRP, registration, email verification, challenges and recovery.
+- `src/features/auth/PasswordField.tsx` and `password.ts`: confirmation, requirements, strength and safe return paths.
+- `src/features/auth/ConsentNotice.tsx` and `src/services/consent.ts`: explicit policy acknowledgement after verified sign-in.
+- `src/features/Support.tsx` and `src/services/support.ts`: signed-in student tickets, replies and screenshots.
+- `src/repositories/curriculum.ts`: bundled/published content adapter with compatibility and monotonic version guards.
 - `src/app/providers.tsx`: authenticated state and local/online progression choice; calls the API.
 - Private backend `ProgressController` → `ProgressService` → `ProgressRepository`: JWT-owned progression stored as private S3 JSON with conditional writes. The frontend never accesses S3 directly.
 
@@ -513,10 +517,9 @@ backend `ExerciseResult` boundary. Student exercise snippets contain lesson comm
 guest validator invocations stay behind the check button.
 
 
-## Planned admin, course management and dedicated authentication (2026-10-08)
+## Admin, course management and dedicated authentication (2026-10-08)
 
-See [the reviewed planning document](admin-course-management-plan.md). This is a
-planning-only extension: separate private admin app and BE Builder-generated courses
+See [the reviewed planning document](admin-course-management-plan.md). Implementation and live verification are recorded in [admin-implementation-state.md](admin-implementation-state.md). The approved extension includes: separate private admin app and BE Builder-generated courses
 and support backends, S3 persistence, invitation-only staff with MFA OFF, versioned
 curriculum publication, and dedicated learner auth pages based on the Tsuru pattern
 with the existing 12-character Cognito policy, password strength and confirmation.
