@@ -126,3 +126,4 @@ body,.panel,.course-card,.source-document{transition:background-color var(--moti
 @keyframes lab-cursor{0%,55%{opacity:1}56%,100%{opacity:0}}
 @media(max-width:800px){.lab-loading{padding:28px 20px}.lab-loading-meter{max-width:400px}}
 @media(prefers-reduced-motion:reduce){.lab-loading-cursor,.lab-loading-segments>span{animation:none!important}.lab-loading-segments>span{opacity:.55}}
+.inline-lab-check>span{display:flex;align-items:center;gap:8px}.inline-lab-check.is-verified>span{color:var(--success)}.inline-lab-check>span svg{flex-shrink:0}

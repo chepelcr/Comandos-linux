@@ -91,7 +91,7 @@
   "labStatus": "Estado del laboratorio",
   "labCheck": "Comprobar ejercicio",
   "labVerified": "Resultado comprobado en Linux",
-  "labCheckUnavailable": "Este ejercicio requiere revisión con la lista de pasos.",
+  "labCheckUnavailable": "No pudimos comprobar el ejercicio. Tu trabajo sigue en el laboratorio; vuelve a intentarlo.",
   "labOutput": "Salida accesible de la terminal",
   "labUnsupported": "Este navegador no ofrece el aislamiento requerido. Prueba un navegador actualizado.",
   "labFiles": "Archivos del laboratorio",
@@ -198,5 +198,7 @@
   "invalidCredentials": "El correo o la contraseña son incorrectos. Inténtalo de nuevo.",
   "authRateLimit": "Demasiados intentos. Espera un momento e inténtalo de nuevo.",
   "authStepUnavailable": "Este método de inicio de sesión requiere ayuda. Contacta a la administración del curso.",
-  "labLoadingHint": "Estamos preparando tu terminal Linux. Puede tardar un momento."
+  "labLoadingHint": "Estamos preparando tu terminal Linux. Puede tardar un momento.",
+  "labCheckTimeout": "La comprobación está tardando más de lo esperado. Vuelve a intentarlo en un momento.",
+  "labRecheck": "Comprobar de nuevo"
 }

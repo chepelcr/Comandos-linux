@@ -503,3 +503,8 @@ lesson lists with independent scrolling, including short/tablet-width viewports.
 - `src/features/Register.tsx`: signup and account email verification.
 - `src/app/providers.tsx`: authenticated state and local/online progression choice; calls the API.
 - Private backend `ProgressController` → `ProgressService` → `ProgressRepository`: JWT-owned progression stored as private S3 JSON with conditional writes. The frontend never accesses S3 directly.
+
+The lab maps `InlineLab` (session actions and exercise checks) to `LabLoading`
+(indeterminate startup/connection animation), the authenticated check API and the
+backend `ExerciseResult` boundary. Student exercise snippets contain lesson commands;
+guest validator invocations stay behind the check button.

@@ -889,8 +889,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "sudo adduser deploy\nsudo usermod -aG sudo deploy\nmkdir -p ~/practice\nls -ld ~/practice",
@@ -919,8 +919,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "ssh-keygen -t ed25519 -f ~/.ssh/id_lab -N \"\"\ncat ~/.ssh/id_lab.pub >> ~/.ssh/authorized_keys\nchmod 600 ~/.ssh/authorized_keys\nssh -i ~/.ssh/id_lab student@127.0.0.1",
@@ -949,8 +949,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "sudo iptables -A INPUT -i lo -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT\nsudo iptables -L -n -v",
@@ -979,8 +979,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local\nsudo fail2ban-client start\nsudo fail2ban-client status",
@@ -1009,8 +1009,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "sudo apt update\nsudo apt install nodejs\nnode --version\nnpm --version",
@@ -1039,8 +1039,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "cd /home/student/linux-lab-notes\ncat package.json\nnpm ci --offline --no-audit --no-fund --cache /opt/course/npm-cache",
@@ -1069,8 +1069,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "cd /home/student/linux-lab-notes\nnpm run api &\ncurl http://127.0.0.1:3000/api/health\ncurl -X POST http://127.0.0.1:3000/api/notes -H \"Content-Type: application/json\" -d '{\"text\":\"Linux works\"}'",
@@ -1099,8 +1099,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "cd /home/student/linux-lab-notes\nnano frontend/src/main.jsx\nnpm run dev",
@@ -1129,8 +1129,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "cd /home/student/linux-lab-notes\nnpm test\nnpm run build\nnpm start",
@@ -1159,8 +1159,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "sudo cp /opt/course/notes.service /etc/systemd/system/\nsudo systemctl daemon-reload\nsudo systemctl enable --now notes\nsystemctl status notes\njournalctl -u notes -n 30",
@@ -1189,8 +1189,8 @@
         "en": "Execute this step in browser Linux. Use the lab starter and package pack."
       },
       {
-        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
-        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa el botón «Comprobar ejercicio» del laboratorio para validar el resultado.",
+        "en": "Inspect the actual files, responses and processes. Use the lab’s “Check exercise” button to validate your result."
       }
     ],
     "code": "openssl verify -CAfile /opt/course/tls/ca.crt /opt/course/tls/server.crt\ncurl --cacert /opt/course/tls/ca.crt https://lab.local",

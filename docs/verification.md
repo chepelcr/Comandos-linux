@@ -150,3 +150,20 @@ Mobile navigation now animates expansion and collapse, removes hidden links from
 keyboard focus immediately, and respects reduced motion. The profile sync failure
 was the same rejected OPTIONS preflight; native browser GET/POST /me now passes
 through the authenticated backend controller/service/S3 repository.
+
+## Exercise checks through the lab button
+
+Internal `course-check <lesson>` invocations were removed from all 40 student Linux
+exercise snippets; modern lesson instructions point to the Check exercise button.
+The content gate requires a guest validator mapping for every Linux lesson and
+rejects internal validator commands in student snippets. Original reference hashes
+remain unchanged.
+
+A disposable native-auth account launched its own temporary offline EC2 lab. The
+actual browser button rejected intro before `~/practice/system.txt` existed, verified
+it after the student shell wrote `uname -a` to the file, and rejected the next check
+after the file was removed. The lab was explicitly ended and the account deleted.
+No checker command was typed into the learner terminal. The frontend now distinguishes
+API/timeout failures from incomplete work and retains a visible exercise checkmark.
+The backend accepts only recognized validator evidence for the active learning path,
+requires successful execution before verification, and rejects expired labs.

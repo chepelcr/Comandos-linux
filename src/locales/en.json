@@ -91,7 +91,7 @@
   "labStatus": "Lab status",
   "labCheck": "Check exercise",
   "labVerified": "Result verified in Linux",
-  "labCheckUnavailable": "Review this exercise using the step checklist.",
+  "labCheckUnavailable": "We could not check the exercise. Your work is still in the lab; please try again.",
   "labOutput": "Accessible terminal output",
   "labUnsupported": "This browser does not provide the required isolation. Try an updated browser.",
   "labFiles": "Lab files",
@@ -198,5 +198,7 @@
   "invalidCredentials": "The email or password is incorrect. Please try again.",
   "authRateLimit": "Too many attempts. Wait a moment and try again.",
   "authStepUnavailable": "This sign-in method needs administrator assistance. Please contact the course administrator.",
-  "labLoadingHint": "Preparing your Linux terminal. This can take a moment."
+  "labLoadingHint": "Preparing your Linux terminal. This can take a moment.",
+  "labCheckTimeout": "The check is taking longer than expected. Please try again in a moment.",
+  "labRecheck": "Check again"
 }
