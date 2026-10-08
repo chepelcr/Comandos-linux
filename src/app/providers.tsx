@@ -11,7 +11,6 @@ const AppContext = createContext({} as { user: Student | null; authReady: boolea
 export const useApp = () => useContext(AppContext);
 function read(key: string) { try { return sanitize(JSON.parse(stored(key, '{}'))); } catch { return empty(); } }
 export function Providers({ children }: { children: ReactNode }) {
-  useEffect(()=>{void loadCurriculum();},[]);
   const { t } = useTranslation();
   const needsChoice=useRef(true);
   const syncing=useRef(false);
@@ -20,6 +19,7 @@ export function Providers({ children }: { children: ReactNode }) {
   const [choosing,setChoosing]=useState(false);
   const [user, setUser] = useState<Student | null>(null);
   const [authReady,setAuthReady]=useState(false);
+  useEffect(()=>{if(authReady)void loadCurriculum(user?.profile.sub??null);},[authReady,user?.profile.sub]);
   const [progress, setProgress] = useState(() => read('progress:guest'));
   const [status, setStatus] = useState('guest');
   const [authError, setAuthError] = useState('');

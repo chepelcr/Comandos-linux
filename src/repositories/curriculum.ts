@@ -15,11 +15,11 @@ import en from '../locales/en.json';
 import bundledRelease from '../generated/curriculum-release.json';
 import { config } from '../app/config';
 import i18n from '../app/i18n';
-import { signedPublicGet } from '../services/public-content';
+import { getPublishedCourses } from '../services/courses';
 export const bundledDocuments={'lessons':bundledLessons,'courses':bundledCourses,'workshops':bundledWorkshops,'lab-exercises':bundledExercises,'rewards':bundledRewards,'about':bundledAbout,'footer':bundledFooter,'legal':bundledLegal,'legacy-examples':legacyExamples,'source-documents':sourceDocuments,'source-translations':sourceTranslations,'locales-es':es,'locales-en':en};
 type Documents=typeof bundledDocuments;
 export let lessons=bundledLessons,courses=bundledCourses,workshops=bundledWorkshops,exercises=bundledExercises,rewards=bundledRewards,about=bundledAbout,studio=bundledFooter,legal=bundledLegal;
-const listeners=new Set<()=>void>();let revision=0,sequence=bundledRelease.sequence;let inflight:Promise<void>|undefined;
+const listeners=new Set<()=>void>();let revision=0,sequence=bundledRelease.sequence;let inflight:{subject:string|null;abort:AbortController;promise:Promise<void>}|undefined;
 const cacheKey='curriculum:published:v1';
 export function useCurriculum(){return useSyncExternalStore(callback=>{listeners.add(callback);return()=>{listeners.delete(callback);};},()=>revision,()=>0);}
 const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
@@ -57,13 +57,21 @@ function apply(value:unknown){
  i18n.addResourceBundle('es','translation',docs['locales-es'],true,true);i18n.addResourceBundle('en','translation',docs['locales-en'],true,true);
  revision++;for(const callback of listeners)callback();return true;
 }
-export function loadCurriculum(){
- if(inflight||!config.coursesApi||!config.coursesIdentity)return inflight;
- // A valid local copy is optional. Corrupt/older/incompatible data always falls back to bundled JSON.
+export function loadCurriculum(subject:string|null = null){
+ if(!config.coursesApi||(!subject&&!config.coursesIdentity))return;
+ if(inflight?.subject===subject)return inflight.promise;
+ // Abort the old transport when login/logout changes the reader identity.
+ inflight?.abort.abort();
  try{const raw=localStorage.getItem(cacheKey);if(raw)apply(JSON.parse(raw));}catch{/* Storage unavailable. */}
- inflight=(async()=>{const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),10000);try{
-  const response=await signedPublicGet({url:config.coursesApi,identityPoolId:config.coursesIdentity,region:config.region},'/api/public/courses',{signal:abort.signal});
-  if(!response.ok)return;const text=await response.text();if(text.length>5_000_000)return;const value:unknown=JSON.parse(text);
+ const abort=new AbortController();
+ const timer=setTimeout(()=>abort.abort(),10000);
+ const promise=(async()=>{try{
+  const response=await getPublishedCourses(subject,abort.signal);
+  if(!response.ok||abort.signal.aborted)return;
+  const text=await response.text();if(text.length>5_000_000||abort.signal.aborted)return;
+  const value:unknown=JSON.parse(text);
   if(apply(value))try{localStorage.setItem(cacheKey,text);}catch{/* Storage unavailable. */}
- }catch{/* Bundled/cached content keeps the course available. */}finally{clearTimeout(timer);inflight=undefined;}})();return inflight;
+ }catch{/* Bundled/cached published content keeps the course available. */}
+ finally{clearTimeout(timer);if(inflight?.abort===abort)inflight=undefined;}})();
+ inflight={subject,abort,promise};return promise;
 }

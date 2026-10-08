@@ -47,3 +47,9 @@ protected.
 A dynamic private support deep link boots from GitHub Pages’ noindex 404 response;
 GitHub Pages retains HTTP 404 for those dynamic URLs. Public missing pages keep a
 real 404. Ticket navigation and sign-in return paths remain clean path routes.
+
+### Student curriculum transport (2026-10-08)
+
+The courses service exposes `GET /api/student/courses` alongside guest-only `GET /api/public/courses` on `courses-api.linux.jcampos.dev`. Student reads use the existing learner Cognito pool, access tokens and exact app client; the service independently verifies JWTs. Anonymous preflight is permitted; anonymous data, staff tokens and ID tokens are rejected. Both readers receive the same activated release, with no draft/candidate access. Session restoration/login/logout selects the appropriate transport and cancels obsolete requests. Existing frontend SSM values cover both endpoints; publication behavior is unchanged by this authentication update.
+
+Verified this update with 42 frontend tests, 42 courses-service tests, production build/SEO checks and SAM lint. Deployed CloudFormation successfully. Live SRP checks verified student access, guest/student snapshot equality, anonymous/staff/ID-token rejection and browser preflight. Browser checks verified login selects the student endpoint, a restored session makes no guest curriculum request, and logout returns to guest IAM. Temporary QA users and their test progress were removed; no invitation email was sent.
