@@ -5,7 +5,7 @@
 - React/Vite/TypeScript production build, lint and backend type checks.
 - 44 bilingual lessons, all 28 original code hashes, 18 document mappings and all
   offline exercise / validator ID mappings. Mappings alone do not prove execution.
-- 29 unit/integration tests covering deduplicated XP, account isolation, reset epochs,
+- 31 unit/integration tests covering deduplicated XP, account isolation, reset epochs,
   local/cloud progress choice, failed-sync preservation and the isolated React preview.
   Added lab tests cover competing starts, account-wide ownership, logout during
   provisioning, failed termination, 30-minute idle and 90-minute absolute expiry,
@@ -34,12 +34,18 @@ available. The temporary builder stack was removed. An initial Lambda concurrenc
 quota failure was resolved by replacing reserved concurrency with four durable S3
 fleet slots. Conditional writes cap launches even when multiple users start at once;
 slots remain occupied until EC2 teardown is confirmed. Unit checks cover competing
-claims, retries and delayed release. Real-instance acceptance is in progress.
+claims, retries and delayed release. Real isolated instances booted, registered with SSM and delivered a student shell prompt.
+The client now handles empty AWS publication controls and agents that begin a
+Standard_Stream without a handshake. Regression tests cover both observed behaviors.
+Offline exercise and teardown acceptance is in progress.
 The real-account smoke script is
 backend/service/scripts/smoke-labs.mjs. No WebAssembly release or LAB_RELEASE is needed.
 
-Frontend publication, GitHub Pages source switch and production-domain smoke checks
-remain pending. The latest interface is available in the local Vite app.
+Frontend publication and the GitHub Pages workflow source switch passed. Both
+GitHub workflows succeeded for commit 6413b08. The Pages build retrieved ten public
+SSM settings before Vite compiled the artifact. Production checks passed at
+https://linux.jcampos.dev for language/theme round trips, deep links, the CI/CD
+path, account registration form and Cognito hosted sign-in configuration.
 
 Branded emails remain prepared and disabled by user choice. SES production access
 and branded delivery are deferred; Cognito default emails remain active.
