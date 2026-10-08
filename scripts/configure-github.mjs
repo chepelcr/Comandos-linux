@@ -12,4 +12,4 @@ for(const environment of ['github-pages','backend-production']){
 for(const [environment,values] of Object.entries({'github-pages':{AWS_PAGES_ROLE_ARN:config.RoleArn},'backend-production':{AWS_BACKEND_ROLE_ARN:config.BackendRoleArn,AWS_ARTIFACT_BUCKET:config.ArtifactBucket,AWS_PROGRESS_FUNCTION:config.ProgressFunction,...(config.LabFunction?{AWS_LAB_FUNCTION:config.LabFunction}:{})}})){
  for(const [name,value] of Object.entries(values))gh(['variable','set',name,'--repo',repo,'--env',environment,'--body',value]);
 }
-console.log('Configured public deployment metadata and main-only GitHub environments. Pages source is unchanged until deployment is requested.');
+console.log('Configured public deployment metadata and main-only GitHub environments.');

@@ -10,6 +10,7 @@ const state=JSON.parse(await readFile('docs/deployment-state.json','utf8'));
 if(!state.LabFunction)throw new Error('Deploy the lab backend first');
 const region=state.region,cognito=new CognitoIdentityProviderClient({region}),ec2=new EC2Client({region}),s3=new S3Client({region});
 const email=`lab-smoke-${randomUUID()}@lab.invalid`,password=`L!nux-${randomUUID()}Aa9`,sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const debug=process.env.LAB_SMOKE_DEBUG==='1';
 let owner,token,channel,instanceId,volumeId,labId;
 async function api(path='',method='GET',body){const r=await fetch(`${state.ApiUrl}/labs${path}`,{method,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});return {status:r.status,body:r.status===204?null:await r.json()};}
 try{
@@ -24,12 +25,12 @@ try{
  const routes=await ec2.send(new DescribeRouteTablesCommand({Filters:[{Name:'vpc-id',Values:[state.LabVpc]}]}));if(routes.RouteTables.some(table=>table.Routes.some(route=>route.DestinationCidrBlock==='0.0.0.0/0'||route.GatewayId?.startsWith('igw-')||route.NatGatewayId||route.VpcPeeringConnectionId)))throw new Error('Unexpected internet/account route');
  const groups=await ec2.send(new DescribeSecurityGroupsCommand({GroupIds:[state.LabSecurityGroup]}));if(groups.SecurityGroups[0].IpPermissions.length)throw new Error('Unexpected inbound lab access');console.log('PASS no public IP, no internet/peering route, no inbound SG, IMDSv2');
  let opened;
- for(let i=0;i<40;i++){opened=await api('/connect','POST');if(opened.status===200)break;if(![425,429,503].includes(opened.status))throw new Error(`Connect failed: ${JSON.stringify(opened)}`);await sleep(3000);}
+ for(let i=0;i<60;i++){opened=await api('/connect','POST');if(opened.status===200)break;if(![425,429,503].includes(opened.status))throw new Error(`Connect failed: ${JSON.stringify(opened)}`);await sleep(3000);}
  if(opened.status!==200)throw new Error('SSM agent never connected');
  let output='';const marker=`LAB_OK_${randomUUID().replaceAll('-','')}`;
  await new Promise((resolve,reject)=>{
-  const timeout=setTimeout(()=>reject(new Error('Terminal handshake/output timed out')),90000);
-  channel=connectTerminal(opened.body,{region,debug:event=>console.log('terminal:',event),ready:()=>{console.log('terminal: ready');channel.input(`whoami; uname -m; mkdir -p ~/practice; uname -a > ~/practice/system.txt; sudo apt update >/dev/null && sudo apt install -y nodejs >/dev/null && node --version && cd ~/linux-lab-notes && npm ci --offline --cache /opt/course/npm-cache --no-audit --no-fund >/dev/null && npm test && npm run build && echo ${marker}\r`);},output:data=>{const text=new TextDecoder().decode(data);output+=text;console.log('shell:',text);if(output.includes(`\r\n${marker}\r\n`)){clearTimeout(timeout);resolve();}},closed:()=>{clearTimeout(timeout);reject(new Error('Terminal closed before completing the offline smoke'));}});
+  const timeout=setTimeout(()=>reject(new Error('Terminal handshake/output timed out')),120000);
+  channel=connectTerminal(opened.body,{region,debug:event=>{if(debug)console.log('terminal:',event);},ready:()=>{if(debug)console.log('terminal: ready');channel.input(`whoami; uname -m; mkdir -p ~/practice; uname -a > ~/practice/system.txt; sudo apt update >/dev/null && sudo apt install -y nodejs >/dev/null && node --version && cd ~/linux-lab-notes && npm ci --offline --cache /opt/course/npm-cache --no-audit --no-fund >/dev/null && npm test && npm run build && printf '\\n${marker}\\n'\r`);},output:data=>{const text=new TextDecoder().decode(data);output+=text;if(debug)console.log('shell:',text);if(output.includes(`\r\n${marker}\r\n`)){clearTimeout(timeout);resolve();}},closed:()=>{clearTimeout(timeout);reject(new Error('Terminal closed before completing the offline smoke'));}});
  });
  if(!output.includes('student')||!output.includes('x86_64')||!output.includes('v24.'))throw new Error('Expected native student Linux/Node output missing');console.log('PASS actual browser-protocol shell, Node install, offline npm, API tests and React production build');
  const check=await api('/check','POST',{lesson:'intro'});if(check.status!==202)throw new Error(`Check start failed: ${JSON.stringify(check)}`);

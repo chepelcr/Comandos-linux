@@ -26,7 +26,7 @@
   disabled. This is separate from EC2 image and terminal acceptance.
 - Temporary EC2 CloudFormation template validated by AWS.
 
-## Current EC2 release gates
+## Executed EC2 acceptance
 
 The user superseded the browser-WASM plan with temporary isolated EC2 labs and
 confirmed one lab shared across all lessons in a learning path. The AWS image passed its offline bake checks and ami-0431b6741155b82d4 is
@@ -37,12 +37,20 @@ slots remain occupied until EC2 teardown is confirmed. Unit checks cover competi
 claims, retries and delayed release. Real isolated instances booted, registered with SSM and delivered a student shell prompt.
 The client now handles empty AWS publication controls and agents that begin a
 Standard_Stream without a handshake. Regression tests cover both observed behaviors.
-Offline exercise and teardown acceptance is in progress.
+Real-instance acceptance passed: Node 24 installation from the local APT repo,
+offline npm installation, the starter API tests, React production build and the
+observable introduction exercise validator. Cross-path starts returned 409. The
+instance had no public IP, internet/peering route or inbound security-group rule.
+Authenticated End terminated the shell and EC2 instance, and the encrypted root
+volume was deleted. The same End endpoint is awaited by logout. All temporary
+smoke accounts were removed and the active course-instance count returned to zero.
+This is representative EC2 acceptance, not an exhaustive execution of every legacy
+exercise. Idle/absolute deadlines and logout races are covered by lifecycle tests.
 The real-account smoke script is
 backend/service/scripts/smoke-labs.mjs. No WebAssembly release or LAB_RELEASE is needed.
 
 Frontend publication and the GitHub Pages workflow source switch passed. Both
-GitHub workflows succeeded for commit 6413b08. The Pages build retrieved ten public
+GitHub workflows succeeded for application commit 2fd85e7. The Pages build retrieved ten public
 SSM settings before Vite compiled the artifact. Production checks passed at
 https://linux.jcampos.dev for language/theme round trips, deep links, the CI/CD
 path, account registration form and Cognito hosted sign-in configuration.
