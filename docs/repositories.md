@@ -22,7 +22,7 @@ frontend release; COURSE_REF can pin a reviewed frontend commit. No personal Git
 token or cross-repository secret is required. Existing curriculum JSON stays public.
 
 The backend owns Cognito, S3, API, isolated-network and lifecycle CloudFormation.
-The email repository owns its resolver, eight SES templates and template deployment.
+The email repository owns its resolver, sixteen SES templates and template deployment.
 SES production access is approved. AWS manages sender identities and delivery.
 CustomMessage renders the ES/EN templates; Cognito verifies student email ownership.
 There is no application recipient allowlist or SES identity registration for students.
@@ -35,7 +35,7 @@ New private GitHub repositories use immutable OIDC subject prefixes. Trust polic
 match the prefix returned by GitHub's OIDC customization API, including owner/repo
 IDs, rather than assuming the older repository-name-only subject.
 
-Verification: frontend and backend tests plus email resolver suites cover all eight
+Verification: frontend and backend tests plus email resolver suites cover all sixteen
 template variants. Live verification invokes the resolver with synthetic recipients
 and checks Cognito CustomMessage/SES configuration without sending mail. Inbox
 delivery requires an explicitly chosen test recipient.
