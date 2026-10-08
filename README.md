@@ -31,31 +31,27 @@ are deduplicated, and reading completion is separate from exercise verification.
 The API uses private encrypted S3 JSON snapshots, ETag conditional writes and reset
 epochs. No database, public bucket or direct browser S3 access is required.
 
-## Backend and AWS
+## Backend, AWS and email repositories
 
-The Express backend under `backend/service` was scaffolded using the user-space
-BE Builder skill. Run `npm ci --prefix backend/service`,
-`npm run check --prefix backend/service`, and `npm run backend:bundle`.
-`scripts/deploy-infra.mjs --plan` shows the deployment order without changing AWS;
-run without `--plan` to deploy the accounts, private buckets, authenticated API,
-SSM public frontend settings and narrowly scoped GitHub OIDC roles.
-The configured profile is PACIFIC-PROD, region us-east-1.
-See [backend/README.md](backend/README.md) and public outputs in
-[docs/deployment-state.json](docs/deployment-state.json).
+Backend code and Cognito messages are independent **private repositories**:
+[linux-lab-backend](https://github.com/chepelcr/linux-lab-backend) and
+[linux-lab-cognito-templates](https://github.com/chepelcr/linux-lab-cognito-templates).
+Their local `backend/` and `emails/` checkouts are ignored by this frontend;
+[repository setup](docs/repositories.md) explains cloning and deployment boundaries.
+The backend owns Cognito, private S3 progression, temporary EC2 lifecycle and the
+CloudFormation templates. It has its own tests and GitHub deployment workflow.
 
-`AWS_PROFILE=PACIFIC-PROD npm run config:ssm` reads the public build configuration
-into the ignored `.env.production.local`. The GitHub Pages workflow does this before
-building and deploys a Pages artifact. It requires the public
-`AWS_PAGES_ROLE_ARN` environment variable in GitHub. The separate
-backend workflow uses the `backend-production` environment and its narrow role.
-Infrastructure changes use CloudFormation; the backend workflow updates code only.
-Clean path routes use the Pages 404/session-storage fallback and preserve deep links.
+`AWS_PROFILE=PACIFIC-PROD npm run config:ssm` loads ten public settings into the
+ignored `.env.production.local`. Pages does this before Vite builds the artifact.
+No AWS credentials or client secrets enter the frontend. Clean paths use the
+Pages 404/session-storage fallback. Backend and email CI use their own narrow
+OIDC roles and main-only deployment environments.
 
-## Email status
-
-Eight branded Cognito/SES templates are prepared in `emails/`. Custom delivery is
-disabled while SES is in its sandbox. The user deferred production access; Cognito's
-default emails remain active. See [emails/README.md](emails/README.md).
+Eight responsive ES/EN templates cover verification, recovery and invitations.
+Branded delivery is enabled only for explicitly verified SES **email identities**.
+Cognito's signup and message hooks enforce that restriction even though SES has
+production access. Unregistered or pending identities cannot register or receive
+course messages. The app explains the current enrollment restriction.
 
 ## Temporary Linux laboratories
 

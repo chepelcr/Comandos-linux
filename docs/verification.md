@@ -55,8 +55,9 @@ SSM settings before Vite compiled the artifact. Production checks passed at
 https://linux.jcampos.dev for language/theme round trips, deep links, the CI/CD
 path, account registration form and Cognito hosted sign-in configuration.
 
-Branded emails remain prepared and disabled by user choice. SES production access
-and branded delivery are deferred; Cognito default emails remain active.
+The subsequent user request enables branded email for explicit verified SES email
+identities only. Backend and email sources are now independent private repositories;
+see repositories.md. Current wiring and verification are recorded there.
 
 ## Sequential motion
 
@@ -107,3 +108,15 @@ or published by the agent.
 
 Original source preservation: docs/legacy-source.json and codex/legacy-static-course.
 The earlier browser runtime is abandoned and excluded from the frontend build.
+
+## Independent backend and email repositories
+
+Sources moved to private linux-lab-backend and linux-lab-cognito-templates repositories.
+Both are ignored local checkouts; the Pages build no longer installs backend packages.
+Frontend (19), backend (12) and email (four suites / eight templates) checks pass.
+Cognito DEVELOPER sending is enabled from Linux Lab <linux-lab@jcampos.dev>.
+PreSignUp and CustomMessage permit only explicit SES email identities with successful
+verification, irrespective of SES production-access status. Deployed resolver checks
+passed all eight variants and both eligibility branches. Actual unapproved signup
+was rejected before account creation; no mail was sent by these verification checks.
+The new repositories use immutable OIDC subjects from GitHub's repository metadata.

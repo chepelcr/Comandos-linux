@@ -1,7 +1,5 @@
 import { spawnSync } from 'node:child_process';
-import { copyFile } from 'node:fs/promises';
-await copyFile('src/data/courses.json','backend/service/src/data/courses.json');
-await copyFile('src/data/lessons.json','backend/service/src/data/lessons.json');
-await copyFile('src/data/rewards.json','backend/service/src/data/rewards.json');
-const result=spawnSync('npm',['run','package:lambda','--prefix','backend/service'],{stdio:'inherit'});
-if(result.status!==0)process.exit(result.status||1);
+import { fileURLToPath } from 'node:url';
+const result=spawnSync(process.execPath,['scripts/bundle-backend.mjs',...process.argv.slice(2)],{cwd:fileURLToPath(new URL('../backend',import.meta.url)),env:process.env,stdio:'inherit'});
+if(result.error)throw new Error('Clone the private backend first; see docs/repositories.md.');
+process.exit(result.status||0);

@@ -184,5 +184,6 @@
   "pagesPracticeNote": "Realiza esta ruta en tu computadora con internet y GitHub. El laboratorio Linux permanece aislado. Descarga el starter, revisa el código y publica desde tu cuenta.",
   "pagesStarter": "Descargar starter React",
   "pagesWorkflow": "Descargar workflow de Pages",
-  "pagesDocs": "Guía oficial de GitHub Pages"
+  "pagesDocs": "Guía oficial de GitHub Pages",
+  "registrationAvailability": "Por ahora, el registro está limitado a correos aprobados. Contacta a la administración del curso para habilitar el tuyo."
 }

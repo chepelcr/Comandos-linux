@@ -35,7 +35,7 @@ const temp='/tmp/linux-course-builder-parameters.json';await writeFile(temp,JSON
 let created=false;
 try{
  console.log('Creating a temporary image builder with no inbound ports.');
- run(['cloudformation','create-stack','--stack-name','linux-lab-image-builder','--template-body','file://infra/lab-image-builder.yml','--parameters',`file://${temp}`,'--capabilities','CAPABILITY_IAM']);created=true;
+ run(['cloudformation','create-stack','--stack-name','linux-lab-image-builder','--template-body','file://backend/infra/lab-image-builder.yml','--parameters',`file://${temp}`,'--capabilities','CAPABILITY_IAM']);created=true;
  run(['cloudformation','wait','stack-create-complete','--stack-name','linux-lab-image-builder']);
  const builder=run(['cloudformation','describe-stacks','--stack-name','linux-lab-image-builder','--query',"Stacks[0].Outputs[?OutputKey=='BuilderInstanceId'].OutputValue | [0]",'--output','text']);
  await writeFile('labs/output/image-builder-state.json',JSON.stringify({builder,baseImageId:base.ImageId,packKey:key,packSha256:digest},null,2));

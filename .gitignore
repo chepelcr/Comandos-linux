@@ -18,3 +18,7 @@ labs/.tools/
 build-backend/
 
 course-projects/*/dist/
+
+# Independent private repositories; never vendor or submodule them.
+/backend/
+/emails/

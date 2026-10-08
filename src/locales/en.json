@@ -184,5 +184,6 @@
   "pagesPracticeNote": "Follow this path on your own computer with internet and GitHub. The Linux lab remains isolated. Download the starter, review its code and publish from your account.",
   "pagesStarter": "Download React starter",
   "pagesWorkflow": "Download Pages workflow",
-  "pagesDocs": "Official GitHub Pages guide"
+  "pagesDocs": "Official GitHub Pages guide",
+  "registrationAvailability": "Registration is currently limited to approved email addresses. Contact the course administrator to enable yours."
 }

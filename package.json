@@ -12,7 +12,7 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "lint": "eslint src backend scripts tests",
+    "lint": "eslint src scripts tests",
     "content:migrate": "node scripts/migrate-content.mjs",
     "content:check": "node scripts/check-content.mjs",
     "config:ssm": "node scripts/load-ssm.mjs",

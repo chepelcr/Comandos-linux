@@ -19,5 +19,11 @@
   "LabSecurityGroup": "sg-092b602dc33c28fcf",
   "LabSessionsBucket": "linux-lab-temporary-sessionsbucket-oklmrkninchs",
   "LabImageId": "ami-0431b6741155b82d4",
-  "LabArtifactKey": "progress/1140f09015d1c0dd556f96b7e6fc7a9f348eaf8ce7e85e33e04fe8fbcf3ee8ba.zip"
+  "LabArtifactKey": "progress/1140f09015d1c0dd556f96b7e6fc7a9f348eaf8ce7e85e33e04fe8fbcf3ee8ba.zip",
+  "BackendRepository": "https://github.com/chepelcr/linux-lab-backend",
+  "EmailRepository": "https://github.com/chepelcr/linux-lab-cognito-templates",
+  "EmailFunction": "linux-lab-emails-Function-CryKg4xLBTUv",
+  "EmailEnabled": true,
+  "EmailRecipientPolicy": "explicit-verified-ses-email-identities",
+  "EmailSender": "Linux Lab <linux-lab@jcampos.dev>"
 }

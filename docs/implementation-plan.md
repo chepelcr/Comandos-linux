@@ -1,5 +1,9 @@
 # React course migration implementation plan
 
+Current repository boundaries supersede the original monorepo paths below:
+backend/ and emails/ are ignored independent private checkouts. See
+[repositories.md](repositories.md) for owners, CI and the verified-recipient email policy.
+
 Prepared October 7, 2026; revised after browser-Linux research. Status: planning complete; application migration, AWS
 templates, and deployment workflow remain implementation work. Workspace UI UX Pro
 Max skill, tailored design direction, and baseline inventory have been added.
