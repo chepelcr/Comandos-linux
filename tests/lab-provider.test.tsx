@@ -15,6 +15,13 @@ describe('persistent account lab UI',()=>{
   mocks.request.mockResolvedValue({available:true,session:{id:'lab',route:'modern',state:'running'}});
   container=document.createElement('div');document.body.append(container);root=createRoot(container);await render();await render();expect(container.textContent).toContain('modern');
  });
+ it('restores the existing server session after a full page remount without provisioning another instance',async()=>{
+  mocks.request.mockResolvedValue({available:true,session:{id:'lab',route:'modern',state:'running'}});
+  container=document.createElement('div');document.body.append(container);root=createRoot(container);await render();
+  await act(async()=>root!.unmount());root=createRoot(container);await render();
+  expect(container.textContent).toContain('modern');expect(mocks.request).toHaveBeenCalledTimes(2);
+  for(const call of mocks.request.mock.calls)expect(call).toEqual([]);
+ });
  it('only provisions a lab after the student explicitly starts it',async()=>{
   mocks.request.mockResolvedValue({available:true,session:null});
   container=document.createElement('div');document.body.append(container);root=createRoot(container);await render();await render();

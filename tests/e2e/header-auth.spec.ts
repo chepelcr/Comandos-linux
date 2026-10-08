@@ -43,6 +43,16 @@ test('focused auth pages use clean routes and stay outside course navigation', a
  await page.locator('#signup-password').fill('LongPassword9!');
  await expect(page.getByText('Meets all requirements', {exact:true})).toBeVisible();
  await expect(page.locator('#confirm-password')).toBeVisible();
+ await page.locator('#signup-email').fill('registration-check@example.invalid');
+ await page.locator('#confirm-password').fill('LongPassword9!');
+ const policies=page.locator('.registration-policies input[type=checkbox]');
+ await expect(policies).toHaveCount(2);
+ await expect(policies.first()).not.toBeChecked();
+ expect(await page.locator('form').evaluate(form=>(form as HTMLFormElement).checkValidity())).toBe(false);
+ await policies.first().check();
+ expect(await page.locator('form').evaluate(form=>(form as HTMLFormElement).checkValidity())).toBe(false);
+ await policies.last().check();
+ expect(await page.locator('form').evaluate(form=>(form as HTMLFormElement).checkValidity())).toBe(true);
  await page.locator('[aria-label="Show password"]').first().click();
  await expect(page.locator('#signup-password')).toHaveAttribute('type','text');
  await expect(page.locator('#confirm-password')).toHaveAttribute('type','password');

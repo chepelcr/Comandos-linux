@@ -8,7 +8,7 @@ const output=resolve('build');
 const readJson=async file=>JSON.parse(await readFile(file,'utf8'));
 const [courses,workshops,lessons]=await Promise.all(['courses','workshops','lessons'].map(name=>readJson(`src/data/${name}.json`)));
 const paths=['/','/courses','/resources','/about','/privacy','/terms',...courses.map(item=>`/courses/${item.id}`),...workshops.map(item=>`/workshops/${item.id}`),...lessons.map(item=>`/learn/${item.course}/${item.id}`)];
-const privatePaths=['/account','/settings','/dashboard','/login','/register','/verify-email','/forgot-password','/reset-password','/set-password','/auth/challenge'];
+const privatePaths=['/account','/account/policies','/settings','/dashboard','/login','/register','/verify-email','/forgot-password','/reset-password','/set-password','/auth/challenge'];
 const template=await readFile(resolve(output,'index.html'));
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.woff':'font/woff','.woff2':'font/woff2'};
 const server=createServer(async(req,res)=>{
