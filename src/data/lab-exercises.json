@@ -1,0 +1,442 @@
+[
+  {
+    "id": "intro",
+    "goal": {
+      "es": "Tu ruta desde el primer comando hasta una aplicación en producción.",
+      "en": "Your path from the first command to a deployed application."
+    },
+    "code": "mkdir -p ~/practice\npwd\nuname -a | tee ~/practice/system.txt\nls -la ~/practice\n\ncourse-check intro",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "apache",
+    "goal": {
+      "es": "Instala Apache, inspecciona su configuración y sirve una página local.",
+      "en": "Install Apache, inspect its configuration and serve a local page."
+    },
+    "code": "sudo apt update\nsudo apt install -y apache2\nsudo systemctl stop nginx\nsudo a2enmod rewrite\nsudo systemctl restart apache2\ncurl http://127.0.0.1/\nsudo apache2ctl -t\n\ncourse-check apache",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "php",
+    "goal": {
+      "es": "Instala PHP y sus extensiones y ejecuta una aplicación de ejemplo.",
+      "en": "Install PHP and its extensions and execute a sample application."
+    },
+    "code": "sudo apt update\nsudo apt install -y php php-cli libapache2-mod-php php-mysql php-xml php-mbstring php-curl php-zip php-gd php-intl php-bcmath php-gmp\nphp --version\nprintf '<?php echo \"Linux Lab PHP\"; ?>' | sudo tee /var/www/html/course.php\nsudo systemctl restart apache2\ncurl http://127.0.0.1/course.php\n\ncourse-check php",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "crear_usuario",
+    "goal": {
+      "es": "Crea un usuario y asigna sus grupos y permisos de administración.",
+      "en": "Create a user and assign groups and administrative permissions."
+    },
+    "code": "sudo adduser sysadmin\nsudo usermod -aG sudo sysadmin\nid sysadmin\ngroups sysadmin\n\ncourse-check crear_usuario",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "mysql",
+    "goal": {
+      "es": "Instala una base de datos, crea usuarios y practica consultas SQL.",
+      "en": "Install a database, create users and practice SQL queries."
+    },
+    "code": "sudo apt install -y mariadb-server\nsudo systemctl start mariadb\nsudo mariadb <<'SQL'\nCREATE DATABASE IF NOT EXISTS course;\nCREATE USER IF NOT EXISTS 'course'@'localhost' IDENTIFIED BY 'Only-In-This-Lab-42!';\nGRANT ALL PRIVILEGES ON course.* TO 'course'@'localhost';\nFLUSH PRIVILEGES;\nSHOW DATABASES;\nSQL\n# These credentials are only for the isolated practice guest.\n\ncourse-check mysql",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "vi",
+    "goal": {
+      "es": "Aprende los modos de edición, navegación, búsqueda y guardado de VI.",
+      "en": "Learn VI editing modes, navigation, search and saving."
+    },
+    "code": "mkdir -p ~/practice\nvi ~/practice/editor.txt\n# Press i, write a sentence, then Esc, :wq and Enter.\ncat ~/practice/editor.txt\n\ncourse-check vi",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "phpmyadmin",
+    "goal": {
+      "es": "Instala y configura la interfaz de administración de bases de datos.",
+      "en": "Install and configure the database administration interface."
+    },
+    "code": "sudo apt install -y phpmyadmin\nsudo a2enconf phpmyadmin\nsudo systemctl restart apache2\nsudo htpasswd -c /etc/phpmyadmin/.htpasswd student\nprintf 'AuthType Basic\\nAuthName \"Course database\"\\nAuthUserFile /etc/phpmyadmin/.htpasswd\\nRequire valid-user\\n' | sudo tee /usr/share/phpmyadmin/.htaccess\n# In /etc/apache2/conf-available/phpmyadmin.conf,\n# add AllowOverride All inside the phpmyadmin Directory block.\nsudo nano /etc/apache2/conf-available/phpmyadmin.conf\nsudo systemctl reload apache2\ncurl -I http://127.0.0.1/phpmyadmin/\n\ncourse-check phpmyadmin",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "compresion",
+    "goal": {
+      "es": "Crea, inspecciona y extrae archivos con tar, gzip, zip y otras herramientas.",
+      "en": "Create, inspect and extract archives with tar, gzip, zip and other tools."
+    },
+    "code": "mkdir -p ~/practice/archive\nprintf 'Linux archive exercise\\n' > ~/practice/archive/hello.txt\ncd ~/practice\nzip -r archive.zip archive\ntar -czf archive.tar.gz archive\nmkdir -p restored\ntar -xzf archive.tar.gz -C restored\ncmp archive/hello.txt restored/archive/hello.txt\n\ncourse-check compresion",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "permisos",
+    "goal": {
+      "es": "Practica usuarios, grupos, propietarios y permisos numéricos y simbólicos.",
+      "en": "Practice users, groups, ownership and numeric and symbolic permissions."
+    },
+    "code": "mkdir -p ~/practice\nprintf '#!/bin/bash\\necho Linux works\\n' > ~/practice/run.sh\nchmod 750 ~/practice/run.sh\nls -l ~/practice/run.sh\n~/practice/run.sh\n\ncourse-check permisos",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "cli",
+    "goal": {
+      "es": "Explora la terminal, la ayuda y los comandos básicos del sistema.",
+      "en": "Explore the terminal, help and basic system commands."
+    },
+    "code": "mkdir -p ~/practice\ntype bash\nuname -srm | tee ~/practice/kernel.txt\nhistory 5\n\ncourse-check cli",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "obtener",
+    "goal": {
+      "es": "Descarga el sitio desde el servidor local de archivos y verifica el resultado.",
+      "en": "Download the website from the local fixture server and verify the result."
+    },
+    "code": "mkdir -p ~/practice\nwget -O ~/practice/nextcloud-lab.tar.gz http://127.0.0.1:8080/nextcloud-lab.tar.gz\ntar -tzf ~/practice/nextcloud-lab.tar.gz | head -n 10\nsudo mkdir -p /var/www/html\nsudo tar -xzf ~/practice/nextcloud-lab.tar.gz -C /var/www/html\nsudo chown -R www-data:www-data /var/www/html/nextcloud\n\ncourse-check obtener",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "firewall",
+    "goal": {
+      "es": "Configura reglas dentro del entorno aislado y comprueba el tráfico permitido.",
+      "en": "Configure rules inside the isolated environment and check allowed traffic."
+    },
+    "code": "sudo apt update\nsudo apt install -y nmap rkhunter chkrootkit iptables-persistent\nwget -O ~/practice/firewall.sh http://127.0.0.1:8080/firewall.sh\nsudo bash ~/practice/firewall.sh\nsudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT\nsudo netfilter-persistent save\nsudo iptables -L -n -v\nnmap 127.0.0.1\n\ncourse-check firewall",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "ingreso",
+    "goal": {
+      "es": "Configura SSH y restringe el inicio de sesión del usuario root.",
+      "en": "Configure SSH and restrict root user login."
+    },
+    "code": "printf 'PermitRootLogin no\\n' | sudo tee /etc/ssh/sshd_config.d/course.conf\nsudo sshd -t\nsudo systemctl restart ssh\nsudo sshd -T | sed -n '/permitrootlogin/p'\n\ncourse-check ingreso",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "fuerza",
+    "goal": {
+      "es": "Configura fail2ban y analiza intentos de autenticación locales.",
+      "en": "Configure fail2ban and analyze local authentication attempts."
+    },
+    "code": "sudo apt install -y fail2ban\nprintf '[sshd]\\nenabled=true\\nbackend=systemd\\n' | sudo tee /etc/fail2ban/jail.d/course.conf\nsudo systemctl restart fail2ban\nsudo fail2ban-client status sshd\njournalctl -u ssh -n 10\n\ncourse-check fuerza",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "paquetes",
+    "goal": {
+      "es": "Instala y elimina paquetes con apt usando un repositorio precargado.",
+      "en": "Install and remove packages with apt using a preloaded repository."
+    },
+    "code": "sudo apt update\nsudo apt install -y nodejs\napt-cache policy nodejs\ndpkg -s nodejs\nnode --version\nnpm --version\n\ncourse-check paquetes",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "gestion_archivos",
+    "goal": {
+      "es": "Navega, crea, copia y mueve archivos y carpetas desde la terminal.",
+      "en": "Navigate, create, copy and move files and directories in the terminal."
+    },
+    "code": "mkdir -p ~/practice/files\nprintf 'Hello Linux\\n' > ~/practice/files/hello.txt\ncp ~/practice/files/hello.txt ~/practice/files/copy.txt\nmv ~/practice/files/copy.txt ~/practice/files/moved.txt\nfind ~/practice/files -type f\n\ncourse-check gestion_archivos",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "ssh",
+    "goal": {
+      "es": "Conecta con el servidor SSH del laboratorio usando claves de práctica.",
+      "en": "Connect to the lab SSH server using practice keys."
+    },
+    "code": "mkdir -p ~/.ssh\nssh-keygen -t ed25519 -f ~/.ssh/id_lab -N \"\"\ncat ~/.ssh/id_lab.pub >> ~/.ssh/authorized_keys\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/authorized_keys\nssh -i ~/.ssh/id_lab student@127.0.0.1 'uname -s; whoami'\n\ncourse-check ssh",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "descargar",
+    "goal": {
+      "es": "Descarga y extrae el archivo de la aplicación desde el laboratorio local.",
+      "en": "Download and extract the application archive from the local lab."
+    },
+    "code": "mkdir -p ~/practice\nwget -c -O ~/practice/nextcloud-lab.tar.gz http://127.0.0.1:8080/nextcloud-lab.tar.gz\nscp -i ~/.ssh/id_lab student@127.0.0.1:/home/student/practice/nextcloud-lab.tar.gz ~/practice/scp-nextcloud.tar.gz\ncmp ~/practice/nextcloud-lab.tar.gz ~/practice/scp-nextcloud.tar.gz\nsudo mkdir -p /var/www/html\nsudo tar -xzf ~/practice/nextcloud-lab.tar.gz -C /var/www/html\nsudo chown -R www-data:www-data /var/www/html/nextcloud\n\ncourse-check descargar",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "configurar",
+    "goal": {
+      "es": "Configura el servidor web, la aplicación y su conexión a la base de datos.",
+      "en": "Configure the web server, application and database connection."
+    },
+    "code": "# Complete the PHP, database and download exercises first.\nsudo cp /opt/course/config/nextcloud.apache /etc/apache2/sites-available/nextcloud.conf\nprintf 'Listen 8081\\n' | sudo tee /etc/apache2/conf-available/course-port.conf\nsudo a2enconf course-port\nsudo a2ensite nextcloud\nsudo a2enmod rewrite headers env dir mime setenvif\nsudo systemctl restart apache2\nsudo -u www-data php /var/www/html/nextcloud/occ maintenance:install --database mysql --database-name course --database-user course --database-pass 'Only-In-This-Lab-42!' --admin-user student --admin-pass 'Only-In-This-Lab-42!' --data-dir /var/www/nextcloud-data\nsudo -u www-data php /var/www/html/nextcloud/occ config:system:set trusted_domains 1 --value=cloud.lab\ncurl http://127.0.0.1:8081/status.php\n\ncourse-check configurar",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "ssl",
+    "goal": {
+      "es": "Practica certificados del laboratorio y conserva la guía de HTTPS público.",
+      "en": "Practice lab certificates and retain the public HTTPS reference guide."
+    },
+    "code": "# Local TLS uses the preloaded course CA instead of public ACME.\nsudo a2enmod ssl\nsudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/course-ssl.conf\nsudo sed -i 's@/etc/ssl/certs/ssl-cert-snakeoil.pem@/opt/course/tls/server.crt@;s@/etc/ssl/private/ssl-cert-snakeoil.key@/opt/course/tls/server.key@' /etc/apache2/sites-available/course-ssl.conf\nsudo a2ensite course-ssl\nsudo systemctl restart apache2\ncurl --cacert /opt/course/tls/ca.crt https://localhost/\n# Public certbot instructions remain in the original reference.\n\ncourse-check ssl",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_instalacion",
+    "goal": {
+      "es": "Instala Git y verifica su versión; consulta las instrucciones para otros sistemas.",
+      "en": "Install Git and verify its version; review instructions for other operating systems."
+    },
+    "code": "sudo apt update\nsudo apt install -y git\ngit --version\n\ncourse-check git_instalacion",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_configuracion",
+    "goal": {
+      "es": "Define tu nombre, correo, editor y rama inicial para el repositorio.",
+      "en": "Set your name, email, editor and initial branch for the repository."
+    },
+    "code": "git config --global user.name \"Linux Student\"\ngit config --global user.email learner@lab.invalid\ngit config --global init.defaultBranch main\ngit config --list\n\ncourse-check git_configuracion",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_ssh",
+    "goal": {
+      "es": "Genera una clave y autentícate contra un repositorio SSH del laboratorio.",
+      "en": "Generate a key and authenticate to a lab SSH repository."
+    },
+    "code": "mkdir -p ~/.ssh\nssh-keygen -t ed25519 -f ~/.ssh/id_lab -N \"\"\ncat ~/.ssh/id_lab.pub >> ~/.ssh/authorized_keys\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/authorized_keys\neval \"$(ssh-agent -s)\"\nssh-add ~/.ssh/id_lab\nssh -i ~/.ssh/id_lab student@127.0.0.1 'git --version'\n\ncourse-check git_ssh",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_basicos",
+    "goal": {
+      "es": "Inicializa un repositorio, prepara cambios y crea y consulta commits.",
+      "en": "Initialize a repository, stage changes and create and inspect commits."
+    },
+    "code": "mkdir -p ~/practice/repo\ncd ~/practice/repo\ngit init -b main\nprintf '# My Linux course\\n' > README.md\ngit add README.md\ngit commit -m \"Add course README\"\ngit status\ngit log --oneline --graph\n\ncourse-check git_basicos",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_remotos",
+    "goal": {
+      "es": "Clona un repositorio local y practica push, pull y sincronización.",
+      "en": "Clone a local repository and practice push, pull and synchronization."
+    },
+    "code": "cd ~/practice/repo\ngit remote add origin /opt/course/remote.git\ngit remote -v\ngit push -u origin main\ngit clone /opt/course/remote.git ~/practice/clone\ngit -C ~/practice/clone log --oneline\n\ncourse-check git_remotos",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_ramas",
+    "goal": {
+      "es": "Crea ramas, cambia entre ellas y fusiona cambios de forma controlada.",
+      "en": "Create branches, switch between them and merge changes in a controlled workflow."
+    },
+    "code": "cd ~/practice/repo\ngit switch -c feature/notes\nprintf 'A branch keeps work separate.\\n' > branch.txt\ngit add branch.txt\ngit commit -m \"Add branch exercise\"\ngit switch main\ngit merge feature/notes\ngit branch -d feature/notes\ngit log --oneline --graph\n\ncourse-check git_ramas",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_utiles",
+    "goal": {
+      "es": "Explora diff, restore, stash, blame y los archivos gitignore.",
+      "en": "Explore diff, restore, stash, blame and gitignore files."
+    },
+    "code": "cd ~/practice/repo\nprintf 'Temporary change\\n' >> README.md\ngit diff\ngit stash push -m \"Practice stash\"\ngit stash show -p > ~/practice/stash.diff\ngit stash pop\ngit restore README.md\ngit blame README.md\ngit status\n\ncourse-check git_utiles",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_errores",
+    "goal": {
+      "es": "Resuelve conflictos y practica correcciones de commits con un historial de ejemplo.",
+      "en": "Resolve conflicts and practice commit corrections using a fixture history."
+    },
+    "code": "mkdir -p ~/practice/conflicts\ncd ~/practice/conflicts\ngit init -b main\nprintf 'Base\\n' > answer.txt\ngit add answer.txt\ngit commit -m \"Base\"\ngit switch -c alternative\nprintf 'Alternative\\n' > answer.txt\ngit commit -am \"Alternative answer\"\ngit switch main\nprintf 'Main\\n' > answer.txt\ngit commit -am \"Main answer\"\ngit merge alternative\n# Inspect <<<<<<<, ======= and >>>>>>> in answer.txt, then resolve:\nprintf 'Combined answer\\n' > answer.txt\ngit add answer.txt\ngit commit -m \"Resolve conflict\"\ngit log --oneline --graph\n\ncourse-check git_errores",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "git_opcionales",
+    "goal": {
+      "es": "Configura alias, colores, editor y firma de commits con claves del laboratorio.",
+      "en": "Configure aliases, colors, editor and commit signing with lab keys."
+    },
+    "code": "git config --global core.editor nano\ngit config --global color.ui auto\ngit config --global alias.st status\ncd ~/practice/repo\ngit config gpg.format ssh\ngit config user.signingkey ~/.ssh/id_lab\nprintf 'learner@lab.invalid %s\\n' \"$(cat ~/.ssh/id_lab.pub)\" > ~/practice/allowed_signers\ngit config gpg.ssh.allowedSignersFile ~/practice/allowed_signers\nprintf 'Signed locally\\n' > signed.txt\ngit add signed.txt\ngit -c commit.gpgsign=true commit -m \"Sign course checkpoint\"\ngit log -1 --show-signature\n\ncourse-check git_opcionales",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-linux-user",
+    "goal": {
+      "es": "Crea un usuario y prepara el directorio del proyecto.",
+      "en": "Create a user and prepare the project directory."
+    },
+    "code": "sudo adduser deploy\nsudo usermod -aG sudo deploy\nmkdir -p ~/practice\nls -ld ~/practice\n\ncourse-check modern-linux-user",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-linux-access",
+    "goal": {
+      "es": "Genera claves de práctica y prueba acceso local antes de restringir root.",
+      "en": "Generate practice keys and test local access before restricting root."
+    },
+    "code": "ssh-keygen -t ed25519 -f ~/.ssh/id_lab -N \"\"\ncat ~/.ssh/id_lab.pub >> ~/.ssh/authorized_keys\nchmod 600 ~/.ssh/authorized_keys\nssh -i ~/.ssh/id_lab student@127.0.0.1\n\ncourse-check modern-linux-access",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-linux-firewall",
+    "goal": {
+      "es": "Inspecciona el tráfico y permite el puerto de tu aplicación dentro del laboratorio.",
+      "en": "Inspect traffic and allow the application port inside the lab."
+    },
+    "code": "sudo iptables -A INPUT -i lo -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT\nsudo iptables -L -n -v\n\ncourse-check modern-linux-firewall",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-linux-protection",
+    "goal": {
+      "es": "Configura fail2ban y examina los registros del servicio SSH.",
+      "en": "Configure fail2ban and inspect SSH service logs."
+    },
+    "code": "sudo apt install -y fail2ban\nprintf '[sshd]\\nenabled=true\\nbackend=systemd\\n' | sudo tee /etc/fail2ban/jail.d/course.conf\nsudo systemctl restart fail2ban\nsudo fail2ban-client status sshd\njournalctl -u ssh -n 10\n\ncourse-check modern-linux-protection",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-node-install",
+    "goal": {
+      "es": "Instala el runtime desde el repositorio local. No necesitas internet.",
+      "en": "Install the runtime from the local repository. No internet needed."
+    },
+    "code": "sudo apt update\nsudo apt install nodejs\nnode --version\nnpm --version\n\ncourse-check modern-node-install",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-project-setup",
+    "goal": {
+      "es": "Explora el starter e instala sus dependencias desde la caché precargada.",
+      "en": "Explore the starter and install dependencies from the preloaded cache."
+    },
+    "code": "cd /home/student/linux-lab-notes\ncat package.json\nnpm ci --offline --no-audit --no-fund --cache /opt/course/npm-cache\n\ncourse-check modern-project-setup",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-node-api",
+    "goal": {
+      "es": "Ejecuta la API, comprueba su salud y crea una nota con validación.",
+      "en": "Run the API, check its health and create a note with validation."
+    },
+    "code": "cd /home/student/linux-lab-notes\nnpm run api &\ncurl http://127.0.0.1:3000/api/health\ncurl -X POST http://127.0.0.1:3000/api/notes -H \"Content-Type: application/json\" -d '{\"text\":\"Linux works\"}'\n\ncourse-check modern-node-api",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-react-ui",
+    "goal": {
+      "es": "Edita componentes y estado, conecta con la API y abre la vista previa.",
+      "en": "Edit components and state, connect to the API and open the preview."
+    },
+    "code": "cd /home/student/linux-lab-notes\nnano frontend/src/main.jsx\n# Change the heading and save with Ctrl+O, Enter, Ctrl+X.\nnpm run build\n# Start the API in a second shell or background it, then use Preview your app.\nnpm run api &\n\ncourse-check modern-react-ui",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-production-build",
+    "goal": {
+      "es": "Ejecuta las pruebas, construye React y sirve los archivos con Node.",
+      "en": "Run tests, build React and serve the files with Node."
+    },
+    "code": "cd /home/student/linux-lab-notes\nnpm test\nnpm run build\n# Stop an earlier foreground API with Ctrl+C before starting this one.\nnpm start &\ncurl http://127.0.0.1:3000/api/health\n\ncourse-check modern-production-build",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-linux-service",
+    "goal": {
+      "es": "Configura el servicio para ejecutarse sin root e inspecciona reinicios y logs.",
+      "en": "Configure the service to run without root and inspect restarts and logs."
+    },
+    "code": "sudo cp /opt/course/notes.service /etc/systemd/system/\nsudo systemctl daemon-reload\nsudo systemctl enable --now notes\nsystemctl status notes\njournalctl -u notes -n 30\n\ncourse-check modern-linux-service",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "modern-local-tls",
+    "goal": {
+      "es": "Usa una autoridad de certificación local y diferencia certificados de práctica y públicos.",
+      "en": "Use a local certificate authority and distinguish practice certificates from public ones."
+    },
+    "code": "sudo cp /opt/course/config/notes.nginx /etc/nginx/sites-available/notes\nsudo ln -sf /etc/nginx/sites-available/notes /etc/nginx/sites-enabled/notes\nsudo nginx -t\nsudo systemctl start nginx\nopenssl verify -CAfile /opt/course/tls/ca.crt /opt/course/tls/server.crt\ncurl --cacert /opt/course/tls/ca.crt https://notes.lab/api/health\n\ncourse-check modern-local-tls",
+    "environment": "linux",
+    "language": "bash"
+  },
+  {
+    "id": "pages-repository",
+    "goal": {
+      "es": "Prepara una aplicación React y conéctala con un repositorio propio.",
+      "en": "Prepare a React application and connect it to your own repository."
+    },
+    "code": "node --version\nnpm ci\nnpm test\nnpm run dev\n# Ctrl+C, then / luego:\ngit init -b main\ngit config user.name \"Your Name\"\ngit config user.email \"your-github-email@example.com\"\ngit add .\ngit commit -m \"Prepare my React app for Pages\"\ngit remote add origin https://github.com/OWNER/my-linux-notes.git",
+    "environment": "github",
+    "language": "bash"
+  },
+  {
+    "id": "pages-configuration",
+    "goal": {
+      "es": "Elige GitHub Actions y comprueba las rutas de tu sitio.",
+      "en": "Select GitHub Actions and check your site paths."
+    },
+    "code": "PAGES_BASE_PATH=/my-linux-notes npm run build\nnpm run preview\n# Open / Abre: http://127.0.0.1:4173/my-linux-notes/\n# Root site / Sitio en la raíz:\nPAGES_BASE_PATH=\"\" npm run build",
+    "environment": "github",
+    "language": "bash"
+  },
+  {
+    "id": "pages-workflow",
+    "goal": {
+      "es": "Prueba cada cambio y despliega únicamente desde main.",
+      "en": "Test every change and deploy only from main."
+    },
+    "code": "name: Check and deploy to GitHub Pages\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: pages-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  check:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7\n        with:\n          node-version: '24'\n          cache: npm\n      - run: npm ci\n      - run: npm test\n      - run: npm run build\n  deploy:\n    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'\n    needs: check\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      pages: write\n      id-token: write\n    environment:\n      name: github-pages\n      url: ${{ steps.deployment.outputs.page_url }}\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7\n        with:\n          node-version: '24'\n          cache: npm\n      - run: npm ci\n      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6\n        id: pages\n      - run: npm run build\n        env:\n          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}\n      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5\n        with:\n          path: dist\n      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5\n        id: deployment\n",
+    "environment": "github",
+    "language": "yaml"
+  },
+  {
+    "id": "pages-release",
+    "goal": {
+      "es": "Comprueba el sitio publicado y practica un cambio con pull request.",
+      "en": "Check the published site and practice a pull-request change."
+    },
+    "code": "git switch -c feature/heading\n# Edit src/main.jsx / Edita src/main.jsx\nnpm test\nnpm run build\ngit add src/main.jsx\ngit commit -m \"Personalize my notes heading\"\ngit push -u origin feature/heading\n# Open a pull request on GitHub / Abre un pull request en GitHub",
+    "environment": "github",
+    "language": "bash"
+  }
+]

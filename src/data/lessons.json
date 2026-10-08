@@ -1,0 +1,1365 @@
+[
+  {
+    "id": "intro",
+    "course": "foundations",
+    "title": {
+      "es": "Bienvenido a Linux",
+      "en": "Welcome to Linux"
+    },
+    "summary": {
+      "es": "Tu ruta desde el primer comando hasta una aplicación en producción.",
+      "en": "Your path from the first command to a deployed application."
+    },
+    "steps": [
+      {
+        "es": "Linux está presente en servidores, redes y servicios en la nube. Aquí aprenderás con práctica.",
+        "en": "Linux powers servers, networks and cloud services. Here you learn through practice."
+      },
+      {
+        "es": "Explora la terminal, lee la guía y completa los ejercicios. Tu progreso se guarda automáticamente en este dispositivo.",
+        "en": "Explore the terminal, read the guide and complete exercises. Your progress is saved automatically on this device."
+      },
+      {
+        "es": "El laboratorio ejecuta Linux real en tu navegador. Los archivos y paquetes del curso están precargados; los servicios externos se reemplazan por recursos locales.",
+        "en": "The lab runs real Linux in your browser. Course files and packages are preloaded; external services are replaced with local resources."
+      }
+    ],
+    "code": "pwd\nls -la\nuname -a",
+    "minutes": 5,
+    "optional": false
+  },
+  {
+    "id": "apache",
+    "course": "legacy",
+    "title": {
+      "es": "Servidor Apache",
+      "en": "Apache web server"
+    },
+    "summary": {
+      "es": "Instala Apache, inspecciona su configuración y sirve una página local.",
+      "en": "Install Apache, inspect its configuration and serve a local page."
+    },
+    "steps": [
+      {
+        "es": "Instala Apache, inspecciona su configuración y sirve una página local.",
+        "en": "Install Apache, inspect its configuration and serve a local page."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# LAMP\n# Un servidor  \"LAMP\" es un conjunto de un sistema operativo mas software\n# adicional de código abierto, que permiten a dicho servidor alojar\n# sitios web dinámicos y/o aplicaciones web.\n# LAMP es un acrónimo que representa el sistema operativo GNU/Linux, el servidor\n# web Apache, con los datos del sitio almacenados en una base de datos\n# MySQL/MariaDB y PHP que procesa el contenido dinámico.(Javascript, llamada a\n# bases de datos, etc)\n# \n# \n# \n# Instalación de webserver\nsudo apt install apache2\nsudo a2enmod rewrite\nsudo systemctl restart apache2\n# Accedemos en un browser \nhttp://ip_server_remoto (Se puede usar comando \"ip a\" para ver su IP si la olvido)",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "php",
+    "course": "legacy",
+    "title": {
+      "es": "PHP",
+      "en": "PHP runtime"
+    },
+    "summary": {
+      "es": "Instala PHP y sus extensiones y ejecuta una aplicación de ejemplo.",
+      "en": "Install PHP and its extensions and execute a sample application."
+    },
+    "steps": [
+      {
+        "es": "Instala PHP y sus extensiones y ejecuta una aplicación de ejemplo.",
+        "en": "Install PHP and its extensions and execute a sample application."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# \n# Agregar el repositorio de php\nsudo add-apt-repository ppa:ondrej/php\n# \n# Instalamos php y las dependencias recomendadas para que php pueda\n# interactuar con el webserver y la base de datos \nsudo apt install php8.1\nsudo apt install php8.1-fpm libapache2-mod-fcgid\nsudo apt install -y php8.1-mysql php8.1-dom php8.1-simplexml php8.1-ssh2 php8.1-xml php8.1-xmlreader php8.1-curl php8.1-ftp php8.1-gd  php8.1-iconv php8.1-imagick php8.1-mbstring php8.1-posix php8.1-sockets php8.1-tokenizer\nsudo apt install -y php8.1-mysqli php8.1-pdo  php8.1-sqlite3 php8.1-ctype php8.1-fileinfo php8.1-zip php8.1-exif\nsudo apt install php8.1-{cli,fpm,common,intl,tidy,soap,bcmath,xmlrpc}",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "crear_usuario",
+    "course": "foundations",
+    "title": {
+      "es": "Crear usuario",
+      "en": "Create a Linux user"
+    },
+    "summary": {
+      "es": "Crea un usuario y asigna sus grupos y permisos de administración.",
+      "en": "Create a user and assign groups and administrative permissions."
+    },
+    "steps": [
+      {
+        "es": "Crea un usuario y asigna sus grupos y permisos de administración.",
+        "en": "Create a user and assign groups and administrative permissions."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Procedemos a crear un usuario y lo agregamos al grupo sudo\nadduser sysadmin && usermod -a -G sudo sysadmin",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "mysql",
+    "course": "legacy",
+    "title": {
+      "es": "Servidor MySQL",
+      "en": "MariaDB and MySQL"
+    },
+    "summary": {
+      "es": "Instala una base de datos, crea usuarios y practica consultas SQL.",
+      "en": "Install a database, create users and practice SQL queries."
+    },
+    "steps": [
+      {
+        "es": "Instala una base de datos, crea usuarios y practica consultas SQL.",
+        "en": "Install a database, create users and practice SQL queries."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Instalación de servidor de base de datos\nsudo apt install mariadb-server\n# Si no se ha corrido todavía, Lo primero que debemos hacer es correr el\n# siguiente comando en la terminal:\nsudo mysql_secure_installation\n# \n# Si todavía no se ha configurado el password del usuario root de mysql\n# se procede a configurarlo  y se da si a todas las otras opciones solicitadas.\n# \n# Una vez completado el comando anterior se procede a ingresar a la consola de mysql,\n# la opción -u indica el usuario y -p para\n# solicitar el password interactivamente.\nsudo mysql -u root -p\n# Usamos el password de ubuntu_sysadmin o el que acabamos de crear para la base de datos\n# \n# Cambiar contraseña de un usuario\nALTER USER 'user'@'localhost' IDENTIFIED BY 'new_password';\n# \n# agregar un nuevo usuario\nCREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';\n# \n# dar permisos al usuario\nGRANT ALL PRIVILEGES ON *.* TO 'new_user'@'localhost' WITH GRANT OPTION;\n# \n# recargar privilegios\nFLUSH PRIVILEGES;\n# \n# salir\nexit;",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "vi",
+    "course": "foundations",
+    "title": {
+      "es": "Editor de texto VI",
+      "en": "VI and Vim editors"
+    },
+    "summary": {
+      "es": "Aprende los modos de edición, navegación, búsqueda y guardado de VI.",
+      "en": "Learn VI editing modes, navigation, search and saving."
+    },
+    "steps": [
+      {
+        "es": "Aprende los modos de edición, navegación, búsqueda y guardado de VI.",
+        "en": "Learn VI editing modes, navigation, search and saving."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Crear un nuevo archivo con VI.\nvi [nombreArchivo]\n# \n# Tutorial de vim en español (Otros idiomas disponibles).\nvimtutor es\n# \n# Atajos del teclado\ni: Entrar al modo de edición en el cursor\nI: Entrar al modo edición al inicio de la linea.\n# \na: Insertar justo después del cursor.\nA: Insertar al final de la linea\n# \nO: Insertar una linea hacia arriba.\n# \nj: Una linea hacia abajo.\nk: Una linea hacia arriba.\no: Insertar una linea al final del documento.\n# \nl: Carácter a la derecha.\nh: Carácter a la izquierda.\nw: Inicio de la palabra de adelante\nb: Inicio de la palabra anterior.\n# \nG: Ir a una linea específica.\ngg: Ir al inicio del texto\nGG: Ir al final del documento.\n# \ny: Copiar.\nyy: Copiar toda la linea\n3yy: Copiar tres lineas\nyw: Copiar la palabra actual.\ny3w: Copiar las siguientes tres palabras.\ny^: Copiar del punto actual al inicio de la linea.\n# \ncc: Change (replace) a line of the document.\np | P: Pegar (p pega con un espacio entre palabras | P pega sin espacio)\nx: Borrar letra por letra.\n# \nd: Cortar o borrar.\ndd: Borrar toda la linea\n3dd: Borrar tres lineas\ndw: Cortar la palabra actual.\nd3w: Cortar las siguientes tres palabras.\nd^: Cortar del punto actual al inicio de la linea.\n# \nu: Deshacer el último cambio.\nr + Letra: Reemplazar una letra específica.\n# \n/Palabra: Buscar en el documento\nn:Ir al resultado siguiente.\n# \n$: Ir al final de la linea.\n^: Ir al inicio de la linea.\n# \n:w = Guardar.\nZZ | :wq = Guardar y salir.\n:q = Salir sin hacer cambios al documento\n:q!: Salir sin guardar.\n# \n:set nu = Ver números de linea\n:colorscheme: Cambiar el color de vi.\n# \n:sp nombreArchivo: Abrir mas de dos archivos a la vez en la pantalla.\n:vsp nombreArchivo: Abrir mas de dos archivos pero con la separación vertical.\n# \nv: Modo de selección de texto.\nSHFT + v: Seleccionar lineas completas.\nCTRL + v: Seleccionar un bloque de lineas.\n# \n<>: Tab hacia la izquierda o derecha.\nCRTL + g: Ver información de la ubicación del cursor.\nCTRL + w: Cambiar de un archivo a otro.\nesc: Salir de cualquier modo.\n# \n# Ver el editor de texto por defecto.\necho $EDITOR\n# \n# Editor de texto que permite usar las flechas para moverse por los documentos.\nnano\n# \n# #Variables para el editor predeterminado al final del archivo .bashrc",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "phpmyadmin",
+    "course": "legacy",
+    "title": {
+      "es": "Administrador de MySQL",
+      "en": "PHPMyAdmin"
+    },
+    "summary": {
+      "es": "Instala y configura la interfaz de administración de bases de datos.",
+      "en": "Install and configure the database administration interface."
+    },
+    "steps": [
+      {
+        "es": "Instala y configura la interfaz de administración de bases de datos.",
+        "en": "Install and configure the database administration interface."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Instalar phpmyadmin\nsudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl\n# \n# modificar la seguridad de phpmyadmin\nsudo vi /etc/apache2/conf-available/phpmyadmin.conf\n# \n# Agregar \"AllowOverride All\" en el <Directory /usr/share/phpmyadmin>\n<Directory /usr/share/phpmyadmin>\n    Options FollowSymLinks\n    DirectoryIndex index.php\n    AllowOverride All\n# \n# Reiniciar el servicio\nsudo systemctl restart apache2\n# \n# Crear el archivo de configuración de inicio\nsudo vi /usr/share/phpmyadmin/.htaccess\n# \n# Agregar estas lineas\nAuthType Basic  -> Tipo de autenticación\nAuthName \"Restricted Files\"\nAuthUserFile /etc/phpmyadmin/.htpasswd\nRequire valid-user\n# \n# Crear el archivo de contraseña\nsudo htpasswd -c /etc/phpmyadmin/.htpasswd [username]\n# \n# Agregar usuarios adicionales\nsudo htpasswd /etc/phpmyadmin/.htpasswd [additionaluser]",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "compresion",
+    "course": "foundations",
+    "title": {
+      "es": "Compresión de archivos",
+      "en": "File compression"
+    },
+    "summary": {
+      "es": "Crea, inspecciona y extrae archivos con tar, gzip, zip y otras herramientas.",
+      "en": "Create, inspect and extract archives with tar, gzip, zip and other tools."
+    },
+    "steps": [
+      {
+        "es": "Crea, inspecciona y extrae archivos con tar, gzip, zip y otras herramientas.",
+        "en": "Create, inspect and extract archives with tar, gzip, zip and other tools."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "gzip nombreArchivo: Comprime un archivo en formato .gz sustituyendo el archivo original.\ngzip nombreArchivo > /Ruta_especifica: Comprime un archivo en una ubicación específica.\n   -c: Conserva el archivo original.\n   -r: Compresión recursiva (Solo archivos individuales)\n   -v: Muestra la taza de compresión en la salida.\n   -rl: Permite consultar la taza de compresión de un archivo.\n# \ngunzip -l archivo.gz: Permite ver la taza de compresión de un archivo.\n# \nzcat: Permite ver el contenido de un archivo comprimido.\n   -f: Permite ver el contenido de un archivo no comprimido.\n# \ngunzip | bunzip2 [nombreArchivo/Carpeta] = gzip -d [nombreArchivo/Carpeta]: Descomprime un archivo.\n# \nbzip2 [nombreArchivo/carpeta]: Comprime archivos o carpetas (.bz2)\n   -l: Muestra el radio de compresión.\n   -v: Ver la compresión en la terminal.\n   -d: Aplica la descompresión.\n# \nbzcat: Ver el contenido de un archivo comprimido .bz2\n# \nxz [nombreArchivo/Carpeta]: Crea un archivo comprimido .xz\n# \nunxz [nombreArchivo/Carpeta]: Descomprimir un archivo\n# \ntar -cf  NombreArchivo/Carpeta.tar [NombreArchivo/Carpeta]\n   -c: Crear un archivo\n   -v: Mostrar lo que está haciendo.\n   -f NombreArchivo/Carpeta.tar: Especificar el nombre del archivo tar.\n   -t: Mostrar el contenido del archivo tar.\n   -z: Crear un archivo tar comprimido (.gz).\n   -j: Crear un archivo tar comprimido (.bz2).\n   -x: Extraer los datos de un archivo\n   -r: Añadir un archivo/carpeta a un archivo existente.\n   -C Carpeta_Destino: Permite elegir la carpeta donde se extraen los archivos.\n# \nzip [nombreArchivo].zip [nombreCarpeta]/*: Comprime los archivos de una carpeta.\n   -r: Indica que se debe usar recursividad.\n# \nunzip -l [nombreArchivo].zip: Lista los archivos dentro de un zip.\n# \nunzip [nombreArchivo].zip: Extrae los archivos comprimidos.",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "permisos",
+    "course": "foundations",
+    "title": {
+      "es": "Manejo de permisos",
+      "en": "Ownership and permissions"
+    },
+    "summary": {
+      "es": "Practica usuarios, grupos, propietarios y permisos numéricos y simbólicos.",
+      "en": "Practice users, groups, ownership and numeric and symbolic permissions."
+    },
+    "steps": [
+      {
+        "es": "Practica usuarios, grupos, propietarios y permisos numéricos y simbólicos.",
+        "en": "Practice users, groups, ownership and numeric and symbolic permissions."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Ver id de usuario y grupos a los que pertenece el usuario activo.\nid\n# \n# Grupos a los que pertenece el usuario activo o un usuario específico.\ngroups\n# \n# Ver los grupos que tiene el sistema.\ncat etc/group\n# \n# Permite cambiar de usuario.\nsu [opciones] [usuario]\n\t- | -l | --login: Cargar todo el entorno del usuario\n# \n# Cambiar el dueño de un archivo o carpeta.\nchown [usuario]:[grupo] [opciones] [nombreArchivo/Carpeta]\n\t-R: Cambia los permisos de manera recursiva.\n# \n# Cambiar el grupo dueño de un archivo\nchgrp [grupo] [nombreArchivo/Carpeta]\n# \n# Ver las propiedades de los archivos listados\nls -l\n# \n[-][rwx][r-x][r-x] [USUARIO] [GRUPO] [FECHA] [NOMBRE_ ARCHIVO]\n\tPrimer campo: tipo de archivo\n\tSegundo campo: Permisos de usuario (u)\n\tTercer campo: Permisos de grupo (g)\n\tCuarto espacio: Otros (o)\nlectura: r = 4\nEscritura: w = 2\nEjecución: x = 1\nTotal: rwx = 7\n# \nGroup Symbol\t\tOperation Symbol\t\t\t        Permission Symbol   \t    Value\nu (user owner)\t\t+ (add the permission)\t\t\t        r (read)                  4\ng (group owner)\t\t= (specify the exact permission)\tw (write)                 2\no (others)\t\t\t- (remove the permission)\t\t        x (execute)               1\na (all)\t\t\t\t\t\t\t\t\t                s (setgid)\n\t\t\t\t\t\t\t\t\t                        t (sticky bit)\n# \n# Cambiar permisos a un archivo o directorio.\nchmod MODE FILE...\n# \n# Quitar los permisos de lectura para otros usuarios.\nchmod o-r FILE...\n# \n# Agregar permisos de lectura y escritura a otros usuarios.\nchmod o+rw FILE...\n# \n# Asignar permisos de setgid para el grupo a una carpeta.\nchmod g+s [DIRECTORY...]\n# \n# Asignar propiedad de sticky bit a otros usuarios.\nchmod o+t [DIRECTORY...]\n# \n# Cambiar los permisos a un directorio.\nchmod [[#u][#g][#o]] = [###] DIRECTORY...\n# \n# Solo los miembros del grupo y el usuario dueño pueden ver el archivo.\nchmod 770 DIRECTORY...",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "cli",
+    "course": "foundations",
+    "title": {
+      "es": "Linea de comandos CLI",
+      "en": "Command-line fundamentals"
+    },
+    "summary": {
+      "es": "Explora la terminal, la ayuda y los comandos básicos del sistema.",
+      "en": "Explore the terminal, help and basic system commands."
+    },
+    "steps": [
+      {
+        "es": "Explora la terminal, la ayuda y los comandos básicos del sistema.",
+        "en": "Explore the terminal, help and basic system commands."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Terminal CLI (Command Line Interface)\n# \n#  - crtl + r: Buscar comandos anteriores\n#  - ctrl + a: Inicio de linea.\n#  - ctrl + e: Final de la linea.\n# \n# Cambiar de usuario en la linea de comandos.\nsudo su\n# \n# Despliega información del sistema.\nuname -a\n#       -s: Muestra el kernel.\n#       -p: Muestra el tipo de procesador.\n#       -i: Muestra la plataforma del hardware.\n#       -m: Muestra la arquitectura.\n#       -r: Muestra la versión del kernel.\n# \n# Muestra el tipo de comando.\ntype [comando]\n# \n# Muestra la ubicación del ejecutable del comando.\n#  which [comando]\n# \n# Historial de comandos\nhistory\n# \n# Muestra los últimos cinco comandos de la lista del historial\nhistory 5\n# \n# Ejecuta el último comando otra vez\n!!\n# \n# Ejecuta el quinto comando desde la parte inferior de la lista de historial\n!-5\n# \n# Ejecuta el comando ls más reciente\n!ls\n# \n# Limpiar el historial.\nhistory -c",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "obtener",
+    "course": "legacy",
+    "title": {
+      "es": "Descargar página de ejemplo",
+      "en": "Download a sample website"
+    },
+    "summary": {
+      "es": "Descarga el sitio desde el servidor local de archivos y verifica el resultado.",
+      "en": "Download the website from the local fixture server and verify the result."
+    },
+    "steps": [
+      {
+        "es": "Descarga el sitio desde el servidor local de archivos y verifica el resultado.",
+        "en": "Download the website from the local fixture server and verify the result."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Moverse hacia la carpeta /let/www/html\ncd /let/www/html\n# Descargar nextcloud a esta ubicación y descomprimir\nsudo wget -c https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip\n# Listamos el contenido de la carpeta para ver el archivo descargado\n# \nls -l\n# \nsudo unzip nextcloud-21.0.1.zip\n# \n# \n# Otorgar permisos a las carpetas\nsudo chown -R www-data:www-data /let/www/html\nsudo chmod -R 775 /let/www/html\n",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "firewall",
+    "course": "security",
+    "title": {
+      "es": "Firewall",
+      "en": "Linux firewall"
+    },
+    "summary": {
+      "es": "Configura reglas dentro del entorno aislado y comprueba el tráfico permitido.",
+      "en": "Configure rules inside the isolated environment and check allowed traffic."
+    },
+    "steps": [
+      {
+        "es": "Configura reglas dentro del entorno aislado y comprueba el tráfico permitido.",
+        "en": "Configure rules inside the isolated environment and check allowed traffic."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Utilizaremos el comando iptables para crear un firewall básico de seguridad.\n# \n# Lo primero que haremos antes de instalar es verificar que el sistema está\n# actualizado\nsudo apt update\n# Si ahy actualizaciones pendientes las revisamos y las instalamos\nsudo apt upgrade\n# \n# Nótese que apt update compara las versiones de los programas instalados en\n# nuestro server con respecto al las disponibles en los repositorios\n# configurados en el archivo /etc/apt/sources.list o en los archivos dentro de\n# la carpeta /etc/apt/sources.list.d/\n# \n# Instalamos nmap que es una herramienta de monitores de puertos de red y mucho mas\nsudo apt install nmap\n# Se instala chkrootkit y rkhunter para monitorear el server de posibles rootkits\nsudo apt install rkhunter chkrootkit\n# Instalamos iptables\nsudo apt install iptables\n# Listamos las reglas instaladas por defecto \nsudo iptables -L -n -v\n# \n# Nos aseguramos de estar en $HOME ejecutando cd sin argumentos\ncd\n# \n# Descargamos el script con los comandos para implementar el firewall \nwget -c https://linux.jcampos.dev/public/files/firewall-iptables.sh\n# \n# Lo ejecutamos como superusuario\nsudo bash firewall-iptables.sh\n# \n# Instalamos iptables-persistent para guardar las reglas actuales\nsudo apt install iptables-persistent\n# \n# Nos preguntará si guardamos las reglas actuales a los archivos \n# /etc/iptables/rules.v4 y /etc/iptables/rules.v6, le decimos que si\n# \n# Ejecutamos el siguiente comando para que las reglas sean permanentes\nsudo netfilter-persistent save\n# \n",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "ingreso",
+    "course": "security",
+    "title": {
+      "es": "Ingreso remoto",
+      "en": "Secure remote access"
+    },
+    "summary": {
+      "es": "Configura SSH y restringe el inicio de sesión del usuario root.",
+      "en": "Configure SSH and restrict root user login."
+    },
+    "steps": [
+      {
+        "es": "Configura SSH y restringe el inicio de sesión del usuario root.",
+        "en": "Configure SSH and restrict root user login."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Nos aseguramos de que el usuario root no se pueda conectar remotamente, esto con el\n# objetivo de eliminar superficies de ataque ya que el usuario root existe en\n# todos los linux y es común que sea sujeto de ataques de fuerza bruta\n# \nsudo vi /etc/ssh/sshd_config\n# Modificamos la directiva deseada\nPermitRootLogin no\n# \n# guardamos y cerramos el archivo con :wq! y reiniciamos el servicio de ssh\nsudo systemctl restart ssh\n# \n# Si perdemos la conexión simplemente volvemos a iniciar sesión como se hizo\n# anteriormente\n",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "fuerza",
+    "course": "security",
+    "title": {
+      "es": "Ataques de fuerza bruta",
+      "en": "Brute-force protection"
+    },
+    "summary": {
+      "es": "Configura fail2ban y analiza intentos de autenticación locales.",
+      "en": "Configure fail2ban and analyze local authentication attempts."
+    },
+    "steps": [
+      {
+        "es": "Configura fail2ban y analiza intentos de autenticación locales.",
+        "en": "Configure fail2ban and analyze local authentication attempts."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Instalamos fail2ban para agregar una capa extra de protección contra ataques\n# de fuerza bruta y DOS -  DDOS.\nsudo apt install fail2ban\nsudo cp -a /etc/fail2ban/jail.conf /etc/fail2ban/jail.local\n# En /etc/fail2ban/jail.local realizamos nuestras personalizaciones si queremos\n# En nuestro casi dejaremos las personalizaciones por defecto. Si se hace algún cambio \n# en el archivo jail.conf se debe reiniciar el servicio. \n# \n# Reiniciamos el servicio de fail2ban\nsudo systemctl restart fail2ban\n# \n# fail2ban se puede configurar no solo para proteger accesos a través de ssh pero\n# si se desea saber más, puede leer el manual del comando.\nman fail2ban\n",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "paquetes",
+    "course": "foundations",
+    "title": {
+      "es": "Gestión de paquetes",
+      "en": "Package management"
+    },
+    "summary": {
+      "es": "Instala y elimina paquetes con apt usando un repositorio precargado.",
+      "en": "Install and remove packages with apt using a preloaded repository."
+    },
+    "steps": [
+      {
+        "es": "Instala y elimina paquetes con apt usando un repositorio precargado.",
+        "en": "Install and remove packages with apt using a preloaded repository."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Administración de paquetes.\napt-get\n \n# Obtener una lista actualizada de estos repositorios de Internet.\nsudo apt-get update\n \n# Buscar palabras clave dentro de los repositorios.\nsudo apt-cache search [keyword]\n \n# Instalar un paquete.\nsudo apt-get install [package]\n \n# Actualizar todos los paquetes posibles.\nsudo apt-get upgrade\n \n# Eliminar todos los archivos de un paquete de software.\nsudo apt-get remove [package]\n   --purge: Elimina los archivos de configuración de un paquete de software.",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "gestion_archivos",
+    "course": "foundations",
+    "title": {
+      "es": "Gestión de archivos",
+      "en": "Files and directories"
+    },
+    "summary": {
+      "es": "Navega, crea, copia y mueve archivos y carpetas desde la terminal.",
+      "en": "Navigate, create, copy and move files and directories in the terminal."
+    },
+    "steps": [
+      {
+        "es": "Navega, crea, copia y mueve archivos y carpetas desde la terminal.",
+        "en": "Navigate, create, copy and move files and directories in the terminal."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Dirige por defecto al directorio home del usuario\ncd\n# \n# Vuelve a la carpeta anterior.\ncd ..\n# \n# navegar a una ruta especifica.\ncd /ruta\n# \n# Lista los archivos y carpetas del directorio actual\nls\n# \n# Lista el contenido de carpeta en lugar del actual\nls /carpeta\n        -a: Permite ver los archivos ocultos.\n        -l: Incluye datos de quién es el dueño de un archivo, el tamaño y la última vez que se modificó el contenido.\n        -lh: Muestra el tamaño del archivo en megabytes o gigabytes\n        -ld /carpeta: lista el directorio /carpeta sin los archivos que tiene dentro.\n        -R: Listado recursivo\n        -S: Ordenar los archivos por tamaño.\n        -t: Ordena los archivos por fecha de modificación.\n        -t --full time: Muestra la fecha y hora completas.\n        -r: Lista los archivos de los menos a los mas pesados.\n        -d: el comando no muestra el contenido de un directorio, sino más bien el nombre del directorio.\n        -l /etc/ppp | tail -5 | nl: tail -5: Capta las ultimas 5 lineas del comando ls, y nl las enumera del 1 al 5.\n        -r: Ordenar los archivos de menor a mayor.\n# \n# Muestra el tipo de archivo.\nfile [archivo]\n# \n# Copia un archivo de un directorio a otro.\ncp [fuente] [destino]\n        -v: Muestra un mensaje si el archivo se copia correctamente.\n        -i: Pregunta antes de sobrescribir un archivo.\n        -r: Copia los archivos y los directorios.\n        -ra: Mantiene los atributos de los archivos.\n# \n# Mueve un archivo de un directorio a otro.\nmv [fuente] [destino]\n        -i: Movimiento interactivo: pregunta si un archivo debe sobrescribirse.\n        -n: No sobrescribir el contenido de los archivos de destino.\n        -v: Verbose: muestra el movimiento resultante.\n# \n# Renombra un archivo.\nmv [nombreArchivo] [nuevoNombre]\n# \n# Crea un archivo vacío.\ntouch [nombreArchivo]\n# \n# Elimina un archivo.\nrm [nombreArchivo]\n        -i: Pregunta antes de eliminar un archivo.\n        -r [nombreDirectorio]: Elimina un directorio.\n        -rf: Elimina una carpeta con contenido.\n        -p: Remover un directorio con otro dentro.\n# \n# Crea un directorio.\nmkdir [nombreDirectorio]\n        -p: Crea una carpeta dentro de otra que no existe.\n        -m: Crea una carpeta con permisos de solo lectura.\n        -v: Muestra el nombre del directorio que se crea.\n# \n# Elimina un directorio si esta vacío.\nrmdir [nombreDirectorio]\n        -i: Pregunta antes de eliminar un directorio.\n        -p: Elimina un directorio con otro dentro.\n        -v: Muestra el nombre del directorio que se elimina.\n# \n# Crear un directorio.\nmkdir [nombreDirectorio]\n        -p: Crea una carpeta dentro de otra que no existe.\n        -m: Crea una carpeta con permisos de solo lectura.\n        -v: Muestra el nombre del directorio que se crea.\n# \n# Ver archivos en el directorio etc que empiecen con la letra t.\necho /etc/t*\n# \n# Buscar archivos con extensiones de tres letras\necho /etc/*.???\n# \n# Mostrar todos los archivos que comiencen con cualquier letra entre a y d.\necho /etc/[a-d]*\n# \n# \n# Enviar mensaje por consola\necho The service costs $100 and the path is $PATH\n        The service costs $100 and the path is /usr/bin/custom:/home/sysadmin/bin:...\n# \n# Todos los archivos\necho *\n# \n# Todos los archivos que tienen tres caracteres\necho ???\n# \n# Archivos que empiezan con P, T O M\necho [PTM]\n# \n# [!, ^]: Para negar\n# Mostrar cualquier archivo que no comienza con D o P.\necho /etc/[^DP]*\n",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "ssh",
+    "course": "foundations",
+    "title": {
+      "es": "Ingreso remoto SSH",
+      "en": "SSH connections"
+    },
+    "summary": {
+      "es": "Conecta con el servidor SSH del laboratorio usando claves de práctica.",
+      "en": "Connect to the lab SSH server using practice keys."
+    },
+    "steps": [
+      {
+        "es": "Conecta con el servidor SSH del laboratorio usando claves de práctica.",
+        "en": "Connect to the lab SSH server using practice keys."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Conectarse al servidor SSH con un usuario específico\n# \nssh [user]@[IP]\n#\n#\n# alternativamente \n#\nssh -l [user] [IP]",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "descargar",
+    "course": "legacy",
+    "title": {
+      "es": "Descargar archivos",
+      "en": "Application download"
+    },
+    "summary": {
+      "es": "Descarga y extrae el archivo de la aplicación desde el laboratorio local.",
+      "en": "Download and extract the application archive from the local lab."
+    },
+    "steps": [
+      {
+        "es": "Descarga y extrae el archivo de la aplicación desde el laboratorio local.",
+        "en": "Download and extract the application archive from the local lab."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Moverse hacia la carpeta /var/www/html\ncd /var/www/html\n# Descargar nextcloud a esta ubicación y descomprimir\nsudo scp [user]@[host]:nombre_archivo.zip\n#\n# O mediante wget\nsudo wget -c https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip\n#\n# Listamos el contenido de la carpeta para ver el archivo descargado\n#\nls -l\n#\nsudo unzip nombre_archivo.zip\n#\nsudo unzip nextcloud-21.0.1.zip\n#\n# Otorgar permisos a las carpetas\nsudo chown -R www-data:www-data /var/www/html; sudo chmod -R 775 /var/www/html",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "configurar",
+    "course": "legacy",
+    "title": {
+      "es": "Configurar aplicación web",
+      "en": "Configure Nextcloud"
+    },
+    "summary": {
+      "es": "Configura el servidor web, la aplicación y su conexión a la base de datos.",
+      "en": "Configure the web server, application and database connection."
+    },
+    "steps": [
+      {
+        "es": "Configura el servidor web, la aplicación y su conexión a la base de datos.",
+        "en": "Configure the web server, application and database connection."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Lo primero que hacemos es crear el virtual host para nuestro server usando como\n# plantilla el virtualhost por defecto para http\n# Primero accedemos a /etc/apache2/apache2.conf\nsudo vim /etc/apache2/apache2.conf\n# y cambiamos\n#\n#\n#\n<Directory /var/www/>\n        Options FollowSymLinks Indexes\n        AllowOverride None\n        Require all granted\n</Directory>\n# \n# a \n#\n<Directory /var/www/>\n        Options FollowSymLinks\n        AllowOverride None\n        Require all granted\n</Directory>\n#\n# Nótese que lo único que hacemos es remover la directiva Indexes a la carpeta /var/www/\n#\n# Luego copiamos el virtualhost que viene por defecto para realizar nuestras personalizaciones\n#\nsudo cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/nextcloud.conf\n#\n# Se procede a cambiar la directiva DocumentRoot a /var/www/html/nextcloud en /etc/apache2/sites-available/nextcloud.conf\nsudo vi /etc/apache2/sites-available/nextcloud.conf\n# Debemos cambiar la directiva DocumentRoot y agregar las directiva <Directory > </Directory> para que queden de la siguiente manera:\n#\n\tDocumentRoot /var/www/html/nextcloud\n\tErrorLog ${APACHE_LOG_DIR}/nextcloud.error\n\tCustomLog ${APACHE_LOG_DIR}/nextcloud.access combined\n\n        <Directory /var/www/html/nextcloud/>\n\t\tRequire all granted\n\t\tOptions FollowSymlinks MultiViews\n\t\tAllowOverride All\n\n\t\t<IfModule mod_dav.c>\n\t\t\tDav off\n\t\t</IfModule>\n\n\t\tSetEnv HOME /var/www/html/nextcloud\n\t\tSetEnv HTTP_HOME /var/www/html/nextcloud\n\t\tSatisfy Any\n\t</Directory>\n# Guardar archivo con las teclas Escape mas  :wq!\n#\n#\n# Deshabilitamos el sitio activado por defecto\nsudo a2dissite 000-default.conf\nsudo rm /var/www/html/index.html\n#\n# Activamos nuestro sitio y activamos los modulos requeridos\nsudo a2ensite nextcloud.conf\na2enmod rewrite headers env dir mime setenvif ssl\n# Reiniciamos el servicio de apache\nsudo systemctl restart apache2\n#\n# Ahora procedemos a realizar la configuración de nextcloud, necesitaremos la base de datos con el usuario autorizado a usarla y la contraseña y deberemos\n# configurar un usuario administrativo para nextcloud, para esto volvemos a acceder a nuestro server a travez del navegador:\n# http://IP-SERVER-REMOTO\n#",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "ssl",
+    "course": "legacy",
+    "title": {
+      "es": "SSL",
+      "en": "HTTPS and certificates"
+    },
+    "summary": {
+      "es": "Practica certificados del laboratorio y conserva la guía de HTTPS público.",
+      "en": "Practice lab certificates and retain the public HTTPS reference guide."
+    },
+    "steps": [
+      {
+        "es": "Practica certificados del laboratorio y conserva la guía de HTTPS público.",
+        "en": "Practice lab certificates and retain the public HTTPS reference guide."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Configuración de HTTPS\nsudo apt install openssl; sudo a2enmod ssl; systemctl restart apache2\n# Configuración de apache para permitir la reescritura de direcciones\nsudo vi /etc/apache2/apache2.conf\n#\n# Agregar las siguientes lineas al final del archivo\n#\n<Directory /var/www/html>\n\tAllowOverride All\n</Directory>\n#\n# Instalar el core de snap\nsudo snap install core; sudo snap refresh core\n#\n# Instalar certbot\nsudo snap install --classic certbot\n#\n# Agregar certbot a la linea de comandos\nsudo ln -s /snap/bin/certbot /usr/bin/certbot\n#\n# Instalar certificado\nsudo certbot --apache\n#\n# Es posible renovar el certificado, pero este proceso se realiza automáticamente\nsudo certbot renew --dry-run\n#\n# Ya se ha configurado el servidor en https",
+    "minutes": 12,
+    "optional": true,
+    "original": true
+  },
+  {
+    "id": "git_instalacion",
+    "course": "git",
+    "title": {
+      "es": "Instalación de Git",
+      "en": "Install Git"
+    },
+    "summary": {
+      "es": "Instala Git y verifica su versión; consulta las instrucciones para otros sistemas.",
+      "en": "Install Git and verify its version; review instructions for other operating systems."
+    },
+    "steps": [
+      {
+        "es": "Instala Git y verifica su versión; consulta las instrucciones para otros sistemas.",
+        "en": "Install Git and verify its version; review instructions for other operating systems."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Instalación de Git\n# \n# En macOS (usando Homebrew)\nbrew install git\n# \n# O descarga desde https://git-scm.com/download/mac\n# \n# En Ubuntu/Debian\nsudo apt update\nsudo apt install git\n# \n# En Windows\n# Descarga Git Bash desde https://git-scm.com/download/win\n# \n# Verificar instalación\ngit --version\n# Debería mostrar algo como: git version 2.43.0",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_configuracion",
+    "course": "git",
+    "title": {
+      "es": "Configuración inicial",
+      "en": "Configure Git"
+    },
+    "summary": {
+      "es": "Define tu nombre, correo, editor y rama inicial para el repositorio.",
+      "en": "Set your name, email, editor and initial branch for the repository."
+    },
+    "steps": [
+      {
+        "es": "Define tu nombre, correo, editor y rama inicial para el repositorio.",
+        "en": "Set your name, email, editor and initial branch for the repository."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Configuración inicial (obligatoria antes de tu primer commit)\n# \n# Tu nombre completo (aparecerá en cada commit)\ngit config --global user.name \"Tu Nombre Completo\"\n# \n# Tu email (DEBE ser el mismo que usas en GitHub)\ngit config --global user.email \"tu@email.com\"\n# \n# Establecer la rama principal como \"main\" (estándar moderno)\ngit config --global init.defaultBranch main\n# \n# Ver toda tu configuración\ngit config --list\n# \n# ¿Qué significa --global?\n# Aplica la configuración a todos tus proyectos.\n# Sin esta bandera, solo aplicaría al proyecto actual.",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_ssh",
+    "course": "git",
+    "title": {
+      "es": "Autenticación SSH",
+      "en": "SSH authentication"
+    },
+    "summary": {
+      "es": "Genera una clave y autentícate contra un repositorio SSH del laboratorio.",
+      "en": "Generate a key and authenticate to a lab SSH repository."
+    },
+    "steps": [
+      {
+        "es": "Genera una clave y autentícate contra un repositorio SSH del laboratorio.",
+        "en": "Generate a key and authenticate to a lab SSH repository."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Conectar tu computadora con GitHub (Autenticación SSH)\n# SSH te permite comunicarte con GitHub sin escribir tu contraseña cada vez.\n# \n# Paso 1: Generar tu clave SSH\nssh-keygen -t ed25519 -C \"tu@email.com\"\n# Presiona Enter para usar la ubicación por defecto (~/.ssh/id_ed25519)\n# Puedes dejar la contraseña vacía o agregar una para mayor seguridad\n# \n# Paso 2: Iniciar el agente SSH\neval \"$(ssh-agent -s)\"\n# \n# Paso 3: Agregar tu clave privada al agente\nssh-add ~/.ssh/id_ed25519\n# \n# Paso 4: Copiar tu clave pública\ncat ~/.ssh/id_ed25519.pub\n# Copia TODO el texto (empieza con ssh-ed25519 y termina con tu email)\n# \n# Paso 5: Agregar la clave en GitHub\n# Ve a GitHub > Settings > SSH and GPG keys > New SSH key\n# Title: Un nombre descriptivo (ej: \"Mi MacBook\")\n# Key type: Authentication Key\n# Key: Pega tu clave pública\n# \n# Paso 6: Verificar la conexión\nssh -T git@github.com\n# Si todo está bien, verás:\n# Hi tu-usuario! You have successfully authenticated...",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_basicos",
+    "course": "git",
+    "title": {
+      "es": "Comandos básicos",
+      "en": "Your first commit"
+    },
+    "summary": {
+      "es": "Inicializa un repositorio, prepara cambios y crea y consulta commits.",
+      "en": "Initialize a repository, stage changes and create and inspect commits."
+    },
+    "steps": [
+      {
+        "es": "Inicializa un repositorio, prepara cambios y crea y consulta commits.",
+        "en": "Initialize a repository, stage changes and create and inspect commits."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Comandos básicos de Git\n# \n# Inicializa Git en la carpeta actual (crea la carpeta oculta .git)\ngit init\n# \n# Descarga una copia completa de un repositorio de GitHub\ngit clone git@github.com:usuario/repositorio.git\n# \n# Muestra qué archivos han cambiado\ngit status\n# \n# Agregar un archivo específico al staging\ngit add nombre-archivo.txt\n# \n# Agregar todos los archivos modificados\ngit add .\n# \n# Agregar todos los archivos de una carpeta\ngit add carpeta/\n# \n# Hacer un commit (una \"fotografía\" de tu código)\ngit commit -m \"Descripción breve de los cambios\"\n# \n# Buenos mensajes de commit:\n# ✓ \"Agrega función de login con validación\"\n# ✓ \"Corrige error en cálculo de promedio\"\n# ✗ \"Cambios\"\n# ✗ \"asdfgh\"\n# \n# Ver historial de commits (compacto)\ngit log --oneline\n# \n# Ver historial con gráfico de ramas\ngit log --oneline --graph",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_remotos",
+    "course": "git",
+    "title": {
+      "es": "Sincronización con GitHub",
+      "en": "Remote repositories"
+    },
+    "summary": {
+      "es": "Clona un repositorio local y practica push, pull y sincronización.",
+      "en": "Clone a local repository and practice push, pull and synchronization."
+    },
+    "steps": [
+      {
+        "es": "Clona un repositorio local y practica push, pull y sincronización.",
+        "en": "Clone a local repository and practice push, pull and synchronization."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Sincronización con GitHub\n# \n# Primero, crea un repositorio vacío en GitHub (sin README ni .gitignore)\n# \n# Agrega GitHub como repositorio remoto llamado \"origin\"\ngit remote add origin git@github.com:tu-usuario/tu-repositorio.git\n# \n# Verifica que se agregó correctamente\ngit remote -v\n# \n# Subir tus cambios a GitHub (primera vez)\ngit push -u origin main\n# \n# Subir cambios (después de la primera vez)\ngit push\n# \n# Descargar y fusionar cambios del repositorio remoto\ngit pull origin main\n# \n# O simplemente (si ya configuraste upstream)\ngit pull",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_ramas",
+    "course": "git",
+    "title": {
+      "es": "Trabajar con ramas",
+      "en": "Branches and merges"
+    },
+    "summary": {
+      "es": "Crea ramas, cambia entre ellas y fusiona cambios de forma controlada.",
+      "en": "Create branches, switch between them and merge changes in a controlled workflow."
+    },
+    "steps": [
+      {
+        "es": "Crea ramas, cambia entre ellas y fusiona cambios de forma controlada.",
+        "en": "Create branches, switch between them and merge changes in a controlled workflow."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Trabajar con ramas (branches)\n# Las ramas te permiten trabajar en nuevas funcionalidades\n# sin afectar el código principal.\n# \n# Ver todas las ramas (* indica la rama actual)\ngit branch\n# \n# Crear una nueva rama\ngit branch nombre-rama\n# \n# Cambiar a otra rama\ngit switch nombre-rama\n# \n# Crear y cambiar en un solo comando\ngit switch -c nombre-nueva-rama\n# \n# Fusionar una rama con la actual\ngit merge nombre-rama\n# \n# Eliminar una rama (después de fusionarla)\ngit branch -d nombre-rama\n# \n# Flujo típico:\n# 1. Creas una rama: git switch -c nueva-funcion\n# 2. Haces tus cambios y commits\n# 3. Regresas a main: git switch main\n# 4. Fusionas tu rama: git merge nueva-funcion\n# 5. Eliminas la rama: git branch -d nueva-funcion",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_utiles",
+    "course": "git",
+    "title": {
+      "es": "Comandos útiles",
+      "en": "Everyday Git tools"
+    },
+    "summary": {
+      "es": "Explora diff, restore, stash, blame y los archivos gitignore.",
+      "en": "Explore diff, restore, stash, blame and gitignore files."
+    },
+    "steps": [
+      {
+        "es": "Explora diff, restore, stash, blame y los archivos gitignore.",
+        "en": "Explore diff, restore, stash, blame and gitignore files."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Comandos útiles adicionales\n# \n# Ver diferencias en archivos modificados (antes de add)\ngit diff\n# \n# Ver diferencias en el staging (después de add)\ngit diff --staged\n# \n# Descartar cambios en un archivo (volver a la última versión)\ngit checkout -- nombre-archivo.txt\n# \n# Quitar un archivo del staging (después de git add)\ngit restore --staged nombre-archivo.txt\n# \n# Guardar cambios temporalmente sin hacer commit\ngit stash\n# \n# Recuperar los cambios guardados\ngit stash pop\n# \n# Ver quién modificó cada línea de un archivo\ngit blame nombre-archivo.txt\n# \n# Ejemplo de archivo .gitignore:\n# node_modules/\n# vendor/\n# .DS_Store\n# .env\n# *.log\n# .idea/\n# .vscode/",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_errores",
+    "course": "git",
+    "title": {
+      "es": "Errores comunes",
+      "en": "Troubleshoot Git"
+    },
+    "summary": {
+      "es": "Resuelve conflictos y practica correcciones de commits con un historial de ejemplo.",
+      "en": "Resolve conflicts and practice commit corrections using a fixture history."
+    },
+    "steps": [
+      {
+        "es": "Resuelve conflictos y practica correcciones de commits con un historial de ejemplo.",
+        "en": "Resolve conflicts and practice commit corrections using a fixture history."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Errores comunes y soluciones\n# \n# Error: \"Permission denied (publickey)\"\n# Solución: Tu clave SSH no está configurada. Revisa el paso de SSH.\n# \n# Error: \"failed to push some refs\"\n# Solución: Hay cambios en GitHub que no tienes. Ejecuta:\ngit pull\n# \n# Error: \"merge conflict\"\n# Solución: Dos personas modificaron la misma línea.\n# Abre el archivo, busca los marcadores <<<<<<<\n# Edita manualmente y haz un nuevo commit.\n# \n# Hice commit pero olvidé un archivo\ngit add archivo-olvidado.txt\ngit commit --amend --no-edit\n# \n# Quiero deshacer el último commit (manteniendo los cambios)\ngit reset --soft HEAD~1",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "git_opcionales",
+    "course": "git",
+    "title": {
+      "es": "Configuraciones opcionales",
+      "en": "Git customization"
+    },
+    "summary": {
+      "es": "Configura alias, colores, editor y firma de commits con claves del laboratorio.",
+      "en": "Configure aliases, colors, editor and commit signing with lab keys."
+    },
+    "steps": [
+      {
+        "es": "Configura alias, colores, editor y firma de commits con claves del laboratorio.",
+        "en": "Configure aliases, colors, editor and commit signing with lab keys."
+      },
+      {
+        "es": "Lee el ejemplo de referencia. En el laboratorio utiliza los archivos, repositorios y servidores locales precargados.",
+        "en": "Read the reference example. In the lab use the preloaded files, repositories and local servers."
+      },
+      {
+        "es": "Ejecuta los comandos paso a paso, inspecciona el resultado y registra lo que aprendiste antes de completar la lección.",
+        "en": "Execute commands step by step, inspect the result and record what you learned before completing the lesson."
+      }
+    ],
+    "code": "# Configuraciones opcionales recomendadas\n# \n# Editor por defecto para mensajes de commit\ngit config --global core.editor \"code --wait\"  # VS Code\ngit config --global core.editor \"nano\"          # Nano\n# \n# Colores en la terminal\ngit config --global color.ui auto\n# \n# Alias útiles (atajos)\ngit config --global alias.st status\ngit config --global alias.co checkout\ngit config --global alias.br branch\ngit config --global alias.cm \"commit -m\"\n# \n# Con estos alias puedes escribir:\n# git st  en lugar de  git status\n# git co  en lugar de  git checkout\n# \n# Firma de commits (opcional - agrega insignia \"Verified\")\ngit config --global gpg.format ssh\ngit config --global user.signingkey ~/.ssh/id_ed25519.pub\ngit config --global commit.gpgsign true\n# Luego agrega la misma clave SSH en GitHub como Signing Key",
+    "minutes": 12,
+    "optional": false,
+    "original": true
+  },
+  {
+    "id": "modern-linux-user",
+    "course": "modern",
+    "title": {
+      "es": "Tu usuario de trabajo",
+      "en": "Your deployment user"
+    },
+    "summary": {
+      "es": "Crea un usuario y prepara el directorio del proyecto.",
+      "en": "Create a user and prepare the project directory."
+    },
+    "steps": [
+      {
+        "es": "Crea un usuario y prepara el directorio del proyecto.",
+        "en": "Create a user and prepare the project directory."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "sudo adduser deploy\nsudo usermod -aG sudo deploy\nmkdir -p ~/practice\nls -ld ~/practice",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-linux-access",
+    "course": "modern",
+    "title": {
+      "es": "Acceso seguro con SSH",
+      "en": "Secure SSH access"
+    },
+    "summary": {
+      "es": "Genera claves de práctica y prueba acceso local antes de restringir root.",
+      "en": "Generate practice keys and test local access before restricting root."
+    },
+    "steps": [
+      {
+        "es": "Genera claves de práctica y prueba acceso local antes de restringir root.",
+        "en": "Generate practice keys and test local access before restricting root."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "ssh-keygen -t ed25519 -f ~/.ssh/id_lab -N \"\"\ncat ~/.ssh/id_lab.pub >> ~/.ssh/authorized_keys\nchmod 600 ~/.ssh/authorized_keys\nssh -i ~/.ssh/id_lab student@127.0.0.1",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-linux-firewall",
+    "course": "modern",
+    "title": {
+      "es": "Protege los puertos",
+      "en": "Protect application ports"
+    },
+    "summary": {
+      "es": "Inspecciona el tráfico y permite el puerto de tu aplicación dentro del laboratorio.",
+      "en": "Inspect traffic and allow the application port inside the lab."
+    },
+    "steps": [
+      {
+        "es": "Inspecciona el tráfico y permite el puerto de tu aplicación dentro del laboratorio.",
+        "en": "Inspect traffic and allow the application port inside the lab."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "sudo iptables -A INPUT -i lo -j ACCEPT\nsudo iptables -A INPUT -p tcp --dport 3000 -j ACCEPT\nsudo iptables -L -n -v",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-linux-protection",
+    "course": "modern",
+    "title": {
+      "es": "Logs y protección",
+      "en": "Logs and protection"
+    },
+    "summary": {
+      "es": "Configura fail2ban y examina los registros del servicio SSH.",
+      "en": "Configure fail2ban and inspect SSH service logs."
+    },
+    "steps": [
+      {
+        "es": "Configura fail2ban y examina los registros del servicio SSH.",
+        "en": "Configure fail2ban and inspect SSH service logs."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local\nsudo fail2ban-client start\nsudo fail2ban-client status",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-node-install",
+    "course": "modern",
+    "title": {
+      "es": "Instala Node.js y npm",
+      "en": "Install Node.js and npm"
+    },
+    "summary": {
+      "es": "Instala el runtime desde el repositorio local. No necesitas internet.",
+      "en": "Install the runtime from the local repository. No internet needed."
+    },
+    "steps": [
+      {
+        "es": "Instala el runtime desde el repositorio local. No necesitas internet.",
+        "en": "Install the runtime from the local repository. No internet needed."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "sudo apt update\nsudo apt install nodejs\nnode --version\nnpm --version",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-project-setup",
+    "course": "modern",
+    "title": {
+      "es": "Prepara el proyecto",
+      "en": "Prepare the project"
+    },
+    "summary": {
+      "es": "Explora el starter e instala sus dependencias desde la caché precargada.",
+      "en": "Explore the starter and install dependencies from the preloaded cache."
+    },
+    "steps": [
+      {
+        "es": "Explora el starter e instala sus dependencias desde la caché precargada.",
+        "en": "Explore the starter and install dependencies from the preloaded cache."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "cd /home/student/linux-lab-notes\ncat package.json\nnpm ci --offline --no-audit --no-fund --cache /opt/course/npm-cache",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-node-api",
+    "course": "modern",
+    "title": {
+      "es": "Tu API con Express",
+      "en": "Your Express API"
+    },
+    "summary": {
+      "es": "Ejecuta la API, comprueba su salud y crea una nota con validación.",
+      "en": "Run the API, check its health and create a note with validation."
+    },
+    "steps": [
+      {
+        "es": "Ejecuta la API, comprueba su salud y crea una nota con validación.",
+        "en": "Run the API, check its health and create a note with validation."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "cd /home/student/linux-lab-notes\nnpm run api &\ncurl http://127.0.0.1:3000/api/health\ncurl -X POST http://127.0.0.1:3000/api/notes -H \"Content-Type: application/json\" -d '{\"text\":\"Linux works\"}'",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-react-ui",
+    "course": "modern",
+    "title": {
+      "es": "Construye la interfaz React",
+      "en": "Build the React interface"
+    },
+    "summary": {
+      "es": "Edita componentes y estado, conecta con la API y abre la vista previa.",
+      "en": "Edit components and state, connect to the API and open the preview."
+    },
+    "steps": [
+      {
+        "es": "Edita componentes y estado, conecta con la API y abre la vista previa.",
+        "en": "Edit components and state, connect to the API and open the preview."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "cd /home/student/linux-lab-notes\nnano frontend/src/main.jsx\nnpm run dev",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-production-build",
+    "course": "modern",
+    "title": {
+      "es": "Build de producción",
+      "en": "Production build"
+    },
+    "summary": {
+      "es": "Ejecuta las pruebas, construye React y sirve los archivos con Node.",
+      "en": "Run tests, build React and serve the files with Node."
+    },
+    "steps": [
+      {
+        "es": "Ejecuta las pruebas, construye React y sirve los archivos con Node.",
+        "en": "Run tests, build React and serve the files with Node."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "cd /home/student/linux-lab-notes\nnpm test\nnpm run build\nnpm start",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-linux-service",
+    "course": "modern",
+    "title": {
+      "es": "Opera tu servicio Linux",
+      "en": "Operate your Linux service"
+    },
+    "summary": {
+      "es": "Configura el servicio para ejecutarse sin root e inspecciona reinicios y logs.",
+      "en": "Configure the service to run without root and inspect restarts and logs."
+    },
+    "steps": [
+      {
+        "es": "Configura el servicio para ejecutarse sin root e inspecciona reinicios y logs.",
+        "en": "Configure the service to run without root and inspect restarts and logs."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "sudo cp /opt/course/notes.service /etc/systemd/system/\nsudo systemctl daemon-reload\nsudo systemctl enable --now notes\nsystemctl status notes\njournalctl -u notes -n 30",
+    "minutes": 15,
+    "optional": false,
+    "original": false
+  },
+  {
+    "id": "modern-local-tls",
+    "course": "modern",
+    "title": {
+      "es": "HTTPS en el laboratorio",
+      "en": "Lab HTTPS"
+    },
+    "summary": {
+      "es": "Usa una autoridad de certificación local y diferencia certificados de práctica y públicos.",
+      "en": "Use a local certificate authority and distinguish practice certificates from public ones."
+    },
+    "steps": [
+      {
+        "es": "Usa una autoridad de certificación local y diferencia certificados de práctica y públicos.",
+        "en": "Use a local certificate authority and distinguish practice certificates from public ones."
+      },
+      {
+        "es": "Ejecuta este paso en el Linux del navegador. Usa el starter y los paquetes del laboratorio.",
+        "en": "Execute this step in browser Linux. Use the lab starter and package pack."
+      },
+      {
+        "es": "Comprueba los archivos, respuestas y procesos reales. Usa course-check para los controles disponibles.",
+        "en": "Inspect actual files, responses and processes. Use course-check for available checks."
+      }
+    ],
+    "code": "openssl verify -CAfile /opt/course/tls/ca.crt /opt/course/tls/server.crt\ncurl --cacert /opt/course/tls/ca.crt https://lab.local",
+    "minutes": 15,
+    "optional": true,
+    "original": false
+  },
+  {
+    "id": "pages-repository",
+    "course": "cicd",
+    "title": {
+      "es": "Tu repositorio de despliegue",
+      "en": "Your deployment repository"
+    },
+    "summary": {
+      "es": "Prepara una aplicación React y conéctala con un repositorio propio.",
+      "en": "Prepare a React application and connect it to your own repository."
+    },
+    "steps": [
+      {
+        "es": "Completa primero los fundamentos de Git. Esta ruta se realiza en tu computadora con internet y tu cuenta de GitHub; el laboratorio Linux aislado no tiene acceso a GitHub.",
+        "en": "Complete Git foundations first. Follow this path on your own computer with internet and your GitHub account; the isolated Linux lab cannot access GitHub."
+      },
+      {
+        "es": "Descarga y extrae pages-notes.zip. El proyecto incluye React, Vite, pruebas, lockfile, el script de construcción y .github/workflows/pages.yml. Abre una terminal dentro de la carpeta extraída.",
+        "en": "Download and extract pages-notes.zip. The project includes React, Vite, tests, a lockfile, the build script and .github/workflows/pages.yml. Open a terminal inside the extracted directory."
+      },
+      {
+        "es": "Instala Node.js 24 en tu computadora y ejecuta npm ci, npm test y npm run dev. Crea una nota y recarga la página: se conserva en ese navegador. Detén el servidor con Ctrl+C.",
+        "en": "Install Node.js 24 on your computer and run npm ci, npm test and npm run dev. Add a note and reload: it stays in that browser. Stop the server with Ctrl+C."
+      },
+      {
+        "es": "En github.com/new crea un repositorio público llamado my-linux-notes sin README ni archivos iniciales. También puedes usar uno propio vacío; reemplaza OWNER y my-linux-notes en los comandos.",
+        "en": "At github.com/new create a public repository named my-linux-notes without a README or initial files. You can also use your own empty repository; replace OWNER and my-linux-notes in the commands."
+      },
+      {
+        "es": "Si el repositorio ya tiene contenido, clónalo y copia dentro los archivos del starter, incluida la carpeta oculta .github. Conserva sus archivos existentes y resuelve cualquier diferencia antes de confirmar.",
+        "en": "If your repository already has content, clone it and copy the starter files into it, including the hidden .github directory. Preserve existing files and review differences before committing."
+      },
+      {
+        "es": "Configura tu identidad de Git, confirma los archivos y conecta origin. Usa la autenticación HTTPS de GitHub o tus claves SSH; no guardes contraseñas ni tokens en los archivos. Primero configura Pages en la siguiente lección y después haz push.",
+        "en": "Configure your Git identity, commit the files and connect origin. Use GitHub HTTPS authentication or your SSH keys; keep passwords and tokens out of files. Configure Pages in the next lesson before pushing."
+      }
+    ],
+    "code": "node --version\nnpm ci\nnpm test\nnpm run dev\n# Ctrl+C, then / luego:\ngit init -b main\ngit config user.name \"Your Name\"\ngit config user.email \"your-github-email@example.com\"\ngit add .\ngit commit -m \"Prepare my React app for Pages\"\ngit remote add origin https://github.com/OWNER/my-linux-notes.git",
+    "minutes": 15,
+    "optional": false
+  },
+  {
+    "id": "pages-configuration",
+    "course": "cicd",
+    "title": {
+      "es": "Configura GitHub Pages",
+      "en": "Configure GitHub Pages"
+    },
+    "summary": {
+      "es": "Elige GitHub Actions y comprueba las rutas de tu sitio.",
+      "en": "Select GitHub Actions and check your site paths."
+    },
+    "steps": [
+      {
+        "es": "Abre tu repositorio en GitHub y entra a Settings → Pages. En Build and deployment selecciona Source: GitHub Actions. Necesitas permisos de administración sobre ese repositorio.",
+        "en": "Open your repository on GitHub and go to Settings → Pages. Under Build and deployment select Source: GitHub Actions. You need administration access to that repository."
+      },
+      {
+        "es": "Comprueba en Settings → Actions → General que GitHub Actions esté habilitado y que las acciones oficiales de actions estén permitidas. El workflow solicita solamente los permisos necesarios en el trabajo de despliegue.",
+        "en": "In Settings → Actions → General check that GitHub Actions is enabled and official actions from actions are allowed. The workflow requests the required permissions only in the deployment job."
+      },
+      {
+        "es": "Un proyecto normal publica en https://OWNER.github.io/my-linux-notes/. Un repositorio OWNER.github.io publica en la raíz. La acción configure-pages obtiene automáticamente la ruta real y la pasa al script mediante PAGES_BASE_PATH.",
+        "en": "A normal project publishes at https://OWNER.github.io/my-linux-notes/. An OWNER.github.io repository publishes at the root. configure-pages obtains the actual path automatically and passes it to the script as PAGES_BASE_PATH."
+      },
+      {
+        "es": "Prueba localmente la ruta de subdirectorio antes de publicar. El script genera assets con /my-linux-notes/ para que JavaScript y CSS no den 404. En PowerShell usa $env:PAGES_BASE_PATH=\"/my-linux-notes\"; npm run build.",
+        "en": "Test the subdirectory path locally before publishing. The script emits assets under /my-linux-notes/ so JavaScript and CSS load correctly. In PowerShell use $env:PAGES_BASE_PATH=\"/my-linux-notes\"; npm run build."
+      },
+      {
+        "es": "GitHub Pages sirve archivos estáticos. Este starter guarda notas localmente y no necesita Express ni credenciales AWS. La API Node del taller anterior requiere otro servidor; no la publiques como si Pages pudiera ejecutarla.",
+        "en": "GitHub Pages serves static files. This starter saves notes locally and needs neither Express nor AWS credentials. The earlier workshop’s Node API requires another server; Pages cannot run it."
+      },
+      {
+        "es": "Si agregas un dominio propio, configúralo en Settings → Pages y en DNS. La ruta base vuelve a ser la raíz; configure-pages la detecta. Espera la verificación del dominio y activa Enforce HTTPS cuando esté disponible.",
+        "en": "If you add a custom domain, configure it in Settings → Pages and DNS. The base path becomes the root; configure-pages detects it. Wait for domain verification and enable Enforce HTTPS when available."
+      }
+    ],
+    "code": "PAGES_BASE_PATH=/my-linux-notes npm run build\nnpm run preview\n# Open / Abre: http://127.0.0.1:4173/my-linux-notes/\n# Root site / Sitio en la raíz:\nPAGES_BASE_PATH=\"\" npm run build",
+    "minutes": 12,
+    "optional": false
+  },
+  {
+    "id": "pages-workflow",
+    "course": "cicd",
+    "title": {
+      "es": "Tu pipeline de CI/CD",
+      "en": "Your CI/CD pipeline"
+    },
+    "summary": {
+      "es": "Prueba cada cambio y despliega únicamente desde main.",
+      "en": "Test every change and deploy only from main."
+    },
+    "steps": [
+      {
+        "es": "Abre .github/workflows/pages.yml. Los push a main y los pull requests ejecutan la integración continua: instalación reproducible, pruebas y construcción. Una prueba fallida impide el despliegue.",
+        "en": "Open .github/workflows/pages.yml. Pushes to main and pull requests run continuous integration: reproducible installation, tests and a build. A failed test prevents deployment."
+      },
+      {
+        "es": "El trabajo deploy depende de check y solo se ejecuta desde main, nunca desde un pull request. workflow_dispatch permite iniciarlo manualmente desde Actions. Si tu rama principal tiene otro nombre, actualiza branches y refs/heads/main juntos.",
+        "en": "The deploy job depends on check and runs only from main, never from a pull request. workflow_dispatch enables manual runs from Actions. If your default branch has another name, update branches and refs/heads/main together."
+      },
+      {
+        "es": "configure-pages lee la configuración, npm run build ejecuta scripts/build-pages.mjs y upload-pages-artifact empaqueta dist. deploy-pages publica ese artefacto en el entorno github-pages. No necesitas crear una rama gh-pages.",
+        "en": "configure-pages reads the settings, npm run build runs scripts/build-pages.mjs and upload-pages-artifact packages dist. deploy-pages publishes that artifact to the github-pages environment. You do not need a gh-pages branch."
+      },
+      {
+        "es": "contents: read permite descargar el código; pages: write e id-token: write permiten el despliegue autenticado. Estos dos últimos se limitan al trabajo deploy. No agregues un token personal ni claves de AWS.",
+        "en": "contents: read permits checkout; pages: write and id-token: write permit authenticated deployment. Those last two are limited to the deploy job. Do not add a personal token or AWS keys."
+      },
+      {
+        "es": "Las acciones están fijadas a un commit para que el workflow sea reproducible. Revisa futuras actualizaciones antes de cambiar esas versiones. El lockfile se confirma en Git y npm ci lo respeta.",
+        "en": "Actions are pinned to commits to keep the workflow reproducible. Review future updates before changing those versions. Commit the lockfile; npm ci follows it."
+      },
+      {
+        "es": "Después de configurar Pages, ejecuta git push -u origin main. Abre Actions, selecciona el workflow y sigue check y deploy. El entorno muestra el enlace real de tu publicación.",
+        "en": "After configuring Pages, run git push -u origin main. Open Actions, select the workflow and follow check and deploy. The environment shows the actual deployment link."
+      }
+    ],
+    "code": "name: Check and deploy to GitHub Pages\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: pages-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  check:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7\n        with:\n          node-version: '24'\n          cache: npm\n      - run: npm ci\n      - run: npm test\n      - run: npm run build\n  deploy:\n    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'\n    needs: check\n    runs-on: ubuntu-latest\n    permissions:\n      contents: read\n      pages: write\n      id-token: write\n    environment:\n      name: github-pages\n      url: ${{ steps.deployment.outputs.page_url }}\n    steps:\n      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7\n      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7\n        with:\n          node-version: '24'\n          cache: npm\n      - run: npm ci\n      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6\n        id: pages\n      - run: npm run build\n        env:\n          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}\n      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5\n        with:\n          path: dist\n      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5\n        id: deployment\n",
+    "minutes": 15,
+    "optional": false
+  },
+  {
+    "id": "pages-release",
+    "course": "cicd",
+    "title": {
+      "es": "Verifica y mejora tu publicación",
+      "en": "Verify and improve your release"
+    },
+    "summary": {
+      "es": "Comprueba el sitio publicado y practica un cambio con pull request.",
+      "en": "Check the published site and practice a pull-request change."
+    },
+    "steps": [
+      {
+        "es": "Desde Actions abre el enlace del despliegue y confirma que la página, estilos y botones carguen. Agrega una nota, márcala y recarga. Los datos se guardan en este navegador y origen; no se sincronizan entre dispositivos.",
+        "en": "From Actions open the deployment link and check that the page, styles and buttons load. Add a note, check it and reload. Data stays in this browser and origin; it does not sync across devices."
+      },
+      {
+        "es": "Crea una rama feature/heading y cambia el título en src/main.jsx. Confirma y sube esa rama, después abre un pull request hacia main. Comprueba que check se ejecute sin desplegar esos cambios.",
+        "en": "Create a feature/heading branch and change the heading in src/main.jsx. Commit and push that branch, then open a pull request into main. Check that check runs without deploying those changes."
+      },
+      {
+        "es": "Revisa el diff y los resultados. Al fusionar el pull request se dispara un nuevo despliegue desde main. Comprueba el nuevo título en el sitio publicado.",
+        "en": "Review the diff and results. Merging the pull request triggers a new deployment from main. Check the new heading on the published site."
+      },
+      {
+        "es": "Si JavaScript o CSS dan 404, revisa PAGES_BASE_PATH y el resultado de configure-pages. Si aparece Not Found en el workflow, revisa Settings → Pages → GitHub Actions. Un 403 suele requerir revisar permisos y reglas del entorno github-pages.",
+        "en": "If JavaScript or CSS return 404, inspect PAGES_BASE_PATH and configure-pages output. If the workflow reports Not Found, review Settings → Pages → GitHub Actions. For a 403, review permissions and github-pages environment rules."
+      },
+      {
+        "es": "Si npm ci falla, compara package.json y package-lock.json y actualiza el lockfile localmente con npm install antes de confirmar ambos archivos. Si las pruebas fallan, corrige el problema antes de reintentar.",
+        "en": "If npm ci fails, compare package.json and package-lock.json and update the lockfile locally with npm install before committing both files. If tests fail, fix the problem before retrying."
+      },
+      {
+        "es": "Para deshacer una publicación defectuosa, usa git revert sobre el commit que la introdujo y haz push a main. La reversión atraviesa las mismas pruebas. Marca la lectura como completada cuando hayas revisado el resultado; el curso no afirma verificar remotamente tu repositorio.",
+        "en": "To undo a faulty release, use git revert on the commit that introduced it and push to main. The revert passes through the same checks. Mark the reading complete after reviewing the result; the course does not claim to verify your remote repository."
+      }
+    ],
+    "code": "git switch -c feature/heading\n# Edit src/main.jsx / Edita src/main.jsx\nnpm test\nnpm run build\ngit add src/main.jsx\ngit commit -m \"Personalize my notes heading\"\ngit push -u origin feature/heading\n# Open a pull request on GitHub / Abre un pull request en GitHub",
+    "minutes": 12,
+    "optional": false
+  }
+]

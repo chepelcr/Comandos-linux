@@ -1,0 +1,13 @@
+[Unit]
+Description=Linux Lab Notes
+After=network.target
+[Service]
+User=student
+WorkingDirectory=/home/student/linux-lab-notes
+Environment=PORT=3000
+Environment=DATA_DIR=/home/student/notes-data
+ExecStart=/usr/bin/node /home/student/linux-lab-notes/api/server.mjs
+Restart=on-failure
+NoNewPrivileges=true
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+services:
+  linux:
+    build: .
+    platform: linux/amd64
+    network_mode: none
+    stdin_open: true
+    tty: true
+    cap_add: [NET_ADMIN]

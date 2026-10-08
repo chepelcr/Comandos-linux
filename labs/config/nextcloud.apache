@@ -1,0 +1,12 @@
+<VirtualHost *:8081>
+    ServerName cloud.lab
+    DocumentRoot /var/www/html/nextcloud
+    <Directory /var/www/html/nextcloud>
+        Require all granted
+        Options FollowSymLinks
+        AllowOverride All
+        <IfModule mod_dav.c>
+            Dav off
+        </IfModule>
+    </Directory>
+</VirtualHost>

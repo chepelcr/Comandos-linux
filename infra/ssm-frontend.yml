@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Public Linux Lab frontend configuration only
+Parameters:
+  Prefix:
+    Type: String
+    Default: /linux-lab/prod/frontend
+  UserPoolId:
+    Type: String
+  ClientId:
+    Type: String
+  CognitoDomain:
+    Type: String
+  ApiUrl:
+    Type: String
+  AppUrl:
+    Type: String
+Resources:
+  Setting0:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_AWS_REGION
+      Type: String
+      Value: !Ref AWS::Region
+  Setting1:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_COGNITO_USER_POOL_ID
+      Type: String
+      Value: !Ref UserPoolId
+  Setting2:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_COGNITO_CLIENT_ID
+      Type: String
+      Value: !Ref ClientId
+  Setting3:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_COGNITO_DOMAIN
+      Type: String
+      Value: !Ref CognitoDomain
+  Setting4:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_AUTH_REDIRECT_URI
+      Type: String
+      Value: !Ref AppUrl
+  Setting5:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_AUTH_LOGOUT_URI
+      Type: String
+      Value: !Ref AppUrl
+  Setting6:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_API_BASE_URL
+      Type: String
+      Value: !Ref ApiUrl
+  Setting7:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_APP_URL
+      Type: String
+      Value: !Ref AppUrl
+  Setting8:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_BASE_PATH
+      Type: String
+      Value: '/'
+  Setting9:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Sub ${Prefix}/VITE_DEFAULT_LOCALE
+      Type: String
+      Value: 'es'

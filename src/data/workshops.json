@@ -1,0 +1,73 @@
+[
+  {
+    "id": "modern",
+    "title": {
+      "es": "Taller React + Node",
+      "en": "React + Node workshop"
+    },
+    "lessons": [
+      "modern-linux-user",
+      "modern-linux-access",
+      "modern-linux-firewall",
+      "modern-linux-protection",
+      "modern-node-install",
+      "modern-project-setup",
+      "modern-node-api",
+      "modern-react-ui",
+      "modern-production-build",
+      "modern-linux-service",
+      "modern-local-tls"
+    ]
+  },
+  {
+    "id": "legacy",
+    "title": {
+      "es": "Taller original Linux/PHP",
+      "en": "Original Linux/PHP workshop"
+    },
+    "lessons": [
+      "crear_usuario",
+      "ingreso",
+      "firewall",
+      "fuerza",
+      "apache",
+      "mysql",
+      "php",
+      "phpmyadmin",
+      "descargar",
+      "configurar",
+      "ssl"
+    ]
+  },
+  {
+    "id": "git",
+    "title": {
+      "es": "Taller Git y GitHub",
+      "en": "Git and GitHub workshop"
+    },
+    "lessons": [
+      "git_instalacion",
+      "git_configuracion",
+      "git_ssh",
+      "git_basicos",
+      "git_remotos",
+      "git_ramas",
+      "git_utiles",
+      "git_errores",
+      "git_opcionales"
+    ]
+  },
+  {
+    "id": "cicd",
+    "title": {
+      "es": "Taller CI/CD y GitHub Pages",
+      "en": "CI/CD and GitHub Pages workshop"
+    },
+    "lessons": [
+      "pages-repository",
+      "pages-configuration",
+      "pages-workflow",
+      "pages-release"
+    ]
+  }
+]

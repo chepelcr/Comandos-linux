@@ -1,0 +1,9 @@
+{
+  "imageId": "ami-0431b6741155b82d4",
+  "baseImageId": "ami-0dc94268e09c4cabe",
+  "packKey": "labs/images/908bc6c6c1fdca437c267180d3339f11d825cca36941d5afa6e1630cdcc84014.tar.gz",
+  "packSha256": "908bc6c6c1fdca437c267180d3339f11d825cca36941d5afa6e1630cdcc84014",
+  "region": "us-east-1",
+  "verifiedOffline": true,
+  "createdAt": "2026-10-08T06:20:53.556Z"
+}

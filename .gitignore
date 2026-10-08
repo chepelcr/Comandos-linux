@@ -2,3 +2,19 @@
 .idea/
 
 *.DS_Store
+
+__pycache__/
+*.py[cod]
+node_modules/
+build/
+.env.local
+.env.production.local
+playwright-report/
+test-results/
+*.tsbuildinfo
+public/lab/runtime/
+labs/output/
+labs/.tools/
+build-backend/
+
+course-projects/*/dist/

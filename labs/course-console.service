@@ -1,0 +1,15 @@
+[Unit]
+Description=Linux Lab student console
+After=systemd-user-sessions.service course-agent.service
+[Service]
+ExecStart=-/sbin/agetty --autologin student --noclear --keep-baud console 115200,38400,9600 vt100
+Type=idle
+Restart=always
+RestartSec=1
+StandardInput=tty-force
+StandardOutput=tty
+TTYPath=/dev/console
+TTYReset=yes
+TTYVHangup=yes
+[Install]
+WantedBy=multi-user.target

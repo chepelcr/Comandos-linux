@@ -1,0 +1,198 @@
+[
+  {
+    "id": "apache",
+    "legacyIndex": 0,
+    "title": "Servidor Apache",
+    "code": "# LAMP\n# Un servidor  \"LAMP\" es un conjunto de un sistema operativo mas software\n# adicional de código abierto, que permiten a dicho servidor alojar\n# sitios web dinámicos y/o aplicaciones web.\n# LAMP es un acrónimo que representa el sistema operativo GNU/Linux, el servidor\n# web Apache, con los datos del sitio almacenados en una base de datos\n# MySQL/MariaDB y PHP que procesa el contenido dinámico.(Javascript, llamada a\n# bases de datos, etc)\n# \n# \n# \n# Instalación de webserver\nsudo apt install apache2\nsudo a2enmod rewrite\nsudo systemctl restart apache2\n# Accedemos en un browser \nhttp://ip_server_remoto (Se puede usar comando \"ip a\" para ver su IP si la olvido)",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "php",
+    "legacyIndex": 1,
+    "title": "PHP",
+    "code": "# \n# Agregar el repositorio de php\nsudo add-apt-repository ppa:ondrej/php\n# \n# Instalamos php y las dependencias recomendadas para que php pueda\n# interactuar con el webserver y la base de datos \nsudo apt install php8.1\nsudo apt install php8.1-fpm libapache2-mod-fcgid\nsudo apt install -y php8.1-mysql php8.1-dom php8.1-simplexml php8.1-ssh2 php8.1-xml php8.1-xmlreader php8.1-curl php8.1-ftp php8.1-gd  php8.1-iconv php8.1-imagick php8.1-mbstring php8.1-posix php8.1-sockets php8.1-tokenizer\nsudo apt install -y php8.1-mysqli php8.1-pdo  php8.1-sqlite3 php8.1-ctype php8.1-fileinfo php8.1-zip php8.1-exif\nsudo apt install php8.1-{cli,fpm,common,intl,tidy,soap,bcmath,xmlrpc}",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "crear_usuario",
+    "legacyIndex": 2,
+    "title": "Crear usuario",
+    "code": "# Procedemos a crear un usuario y lo agregamos al grupo sudo\nadduser sysadmin && usermod -a -G sudo sysadmin",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "mysql",
+    "legacyIndex": 3,
+    "title": "Servidor MySQL",
+    "code": "# Instalación de servidor de base de datos\nsudo apt install mariadb-server\n# Si no se ha corrido todavía, Lo primero que debemos hacer es correr el\n# siguiente comando en la terminal:\nsudo mysql_secure_installation\n# \n# Si todavía no se ha configurado el password del usuario root de mysql\n# se procede a configurarlo  y se da si a todas las otras opciones solicitadas.\n# \n# Una vez completado el comando anterior se procede a ingresar a la consola de mysql,\n# la opción -u indica el usuario y -p para\n# solicitar el password interactivamente.\nsudo mysql -u root -p\n# Usamos el password de ubuntu_sysadmin o el que acabamos de crear para la base de datos\n# \n# Cambiar contraseña de un usuario\nALTER USER 'user'@'localhost' IDENTIFIED BY 'new_password';\n# \n# agregar un nuevo usuario\nCREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';\n# \n# dar permisos al usuario\nGRANT ALL PRIVILEGES ON *.* TO 'new_user'@'localhost' WITH GRANT OPTION;\n# \n# recargar privilegios\nFLUSH PRIVILEGES;\n# \n# salir\nexit;",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "vi",
+    "legacyIndex": 4,
+    "title": "Editor de texto VI",
+    "code": "# Crear un nuevo archivo con VI.\nvi [nombreArchivo]\n# \n# Tutorial de vim en español (Otros idiomas disponibles).\nvimtutor es\n# \n# Atajos del teclado\ni: Entrar al modo de edición en el cursor\nI: Entrar al modo edición al inicio de la linea.\n# \na: Insertar justo después del cursor.\nA: Insertar al final de la linea\n# \nO: Insertar una linea hacia arriba.\n# \nj: Una linea hacia abajo.\nk: Una linea hacia arriba.\no: Insertar una linea al final del documento.\n# \nl: Carácter a la derecha.\nh: Carácter a la izquierda.\nw: Inicio de la palabra de adelante\nb: Inicio de la palabra anterior.\n# \nG: Ir a una linea específica.\ngg: Ir al inicio del texto\nGG: Ir al final del documento.\n# \ny: Copiar.\nyy: Copiar toda la linea\n3yy: Copiar tres lineas\nyw: Copiar la palabra actual.\ny3w: Copiar las siguientes tres palabras.\ny^: Copiar del punto actual al inicio de la linea.\n# \ncc: Change (replace) a line of the document.\np | P: Pegar (p pega con un espacio entre palabras | P pega sin espacio)\nx: Borrar letra por letra.\n# \nd: Cortar o borrar.\ndd: Borrar toda la linea\n3dd: Borrar tres lineas\ndw: Cortar la palabra actual.\nd3w: Cortar las siguientes tres palabras.\nd^: Cortar del punto actual al inicio de la linea.\n# \nu: Deshacer el último cambio.\nr + Letra: Reemplazar una letra específica.\n# \n/Palabra: Buscar en el documento\nn:Ir al resultado siguiente.\n# \n$: Ir al final de la linea.\n^: Ir al inicio de la linea.\n# \n:w = Guardar.\nZZ | :wq = Guardar y salir.\n:q = Salir sin hacer cambios al documento\n:q!: Salir sin guardar.\n# \n:set nu = Ver números de linea\n:colorscheme: Cambiar el color de vi.\n# \n:sp nombreArchivo: Abrir mas de dos archivos a la vez en la pantalla.\n:vsp nombreArchivo: Abrir mas de dos archivos pero con la separación vertical.\n# \nv: Modo de selección de texto.\nSHFT + v: Seleccionar lineas completas.\nCTRL + v: Seleccionar un bloque de lineas.\n# \n<>: Tab hacia la izquierda o derecha.\nCRTL + g: Ver información de la ubicación del cursor.\nCTRL + w: Cambiar de un archivo a otro.\nesc: Salir de cualquier modo.\n# \n# Ver el editor de texto por defecto.\necho $EDITOR\n# \n# Editor de texto que permite usar las flechas para moverse por los documentos.\nnano\n# \n# #Variables para el editor predeterminado al final del archivo .bashrc",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "phpmyadmin",
+    "legacyIndex": 5,
+    "title": "Administrador de MySQL",
+    "code": "# Instalar phpmyadmin\nsudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl\n# \n# modificar la seguridad de phpmyadmin\nsudo vi /etc/apache2/conf-available/phpmyadmin.conf\n# \n# Agregar \"AllowOverride All\" en el <Directory /usr/share/phpmyadmin>\n<Directory /usr/share/phpmyadmin>\n    Options FollowSymLinks\n    DirectoryIndex index.php\n    AllowOverride All\n# \n# Reiniciar el servicio\nsudo systemctl restart apache2\n# \n# Crear el archivo de configuración de inicio\nsudo vi /usr/share/phpmyadmin/.htaccess\n# \n# Agregar estas lineas\nAuthType Basic  -> Tipo de autenticación\nAuthName \"Restricted Files\"\nAuthUserFile /etc/phpmyadmin/.htpasswd\nRequire valid-user\n# \n# Crear el archivo de contraseña\nsudo htpasswd -c /etc/phpmyadmin/.htpasswd [username]\n# \n# Agregar usuarios adicionales\nsudo htpasswd /etc/phpmyadmin/.htpasswd [additionaluser]",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "paquetes",
+    "legacyIndex": 13,
+    "title": "Gestión de paquetes",
+    "code": "# Administración de paquetes.\napt-get\n \n# Obtener una lista actualizada de estos repositorios de Internet.\nsudo apt-get update\n \n# Buscar palabras clave dentro de los repositorios.\nsudo apt-cache search [keyword]\n \n# Instalar un paquete.\nsudo apt-get install [package]\n \n# Actualizar todos los paquetes posibles.\nsudo apt-get upgrade\n \n# Eliminar todos los archivos de un paquete de software.\nsudo apt-get remove [package]\n   --purge: Elimina los archivos de configuración de un paquete de software.",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "compresion",
+    "legacyIndex": 6,
+    "title": "Compresión de archivos",
+    "code": "gzip nombreArchivo: Comprime un archivo en formato .gz sustituyendo el archivo original.\ngzip nombreArchivo > /Ruta_especifica: Comprime un archivo en una ubicación específica.\n   -c: Conserva el archivo original.\n   -r: Compresión recursiva (Solo archivos individuales)\n   -v: Muestra la taza de compresión en la salida.\n   -rl: Permite consultar la taza de compresión de un archivo.\n# \ngunzip -l archivo.gz: Permite ver la taza de compresión de un archivo.\n# \nzcat: Permite ver el contenido de un archivo comprimido.\n   -f: Permite ver el contenido de un archivo no comprimido.\n# \ngunzip | bunzip2 [nombreArchivo/Carpeta] = gzip -d [nombreArchivo/Carpeta]: Descomprime un archivo.\n# \nbzip2 [nombreArchivo/carpeta]: Comprime archivos o carpetas (.bz2)\n   -l: Muestra el radio de compresión.\n   -v: Ver la compresión en la terminal.\n   -d: Aplica la descompresión.\n# \nbzcat: Ver el contenido de un archivo comprimido .bz2\n# \nxz [nombreArchivo/Carpeta]: Crea un archivo comprimido .xz\n# \nunxz [nombreArchivo/Carpeta]: Descomprimir un archivo\n# \ntar -cf  NombreArchivo/Carpeta.tar [NombreArchivo/Carpeta]\n   -c: Crear un archivo\n   -v: Mostrar lo que está haciendo.\n   -f NombreArchivo/Carpeta.tar: Especificar el nombre del archivo tar.\n   -t: Mostrar el contenido del archivo tar.\n   -z: Crear un archivo tar comprimido (.gz).\n   -j: Crear un archivo tar comprimido (.bz2).\n   -x: Extraer los datos de un archivo\n   -r: Añadir un archivo/carpeta a un archivo existente.\n   -C Carpeta_Destino: Permite elegir la carpeta donde se extraen los archivos.\n# \nzip [nombreArchivo].zip [nombreCarpeta]/*: Comprime los archivos de una carpeta.\n   -r: Indica que se debe usar recursividad.\n# \nunzip -l [nombreArchivo].zip: Lista los archivos dentro de un zip.\n# \nunzip [nombreArchivo].zip: Extrae los archivos comprimidos.",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "permisos",
+    "legacyIndex": 7,
+    "title": "Manejo de permisos",
+    "code": "# Ver id de usuario y grupos a los que pertenece el usuario activo.\nid\n# \n# Grupos a los que pertenece el usuario activo o un usuario específico.\ngroups\n# \n# Ver los grupos que tiene el sistema.\ncat etc/group\n# \n# Permite cambiar de usuario.\nsu [opciones] [usuario]\n\t- | -l | --login: Cargar todo el entorno del usuario\n# \n# Cambiar el dueño de un archivo o carpeta.\nchown [usuario]:[grupo] [opciones] [nombreArchivo/Carpeta]\n\t-R: Cambia los permisos de manera recursiva.\n# \n# Cambiar el grupo dueño de un archivo\nchgrp [grupo] [nombreArchivo/Carpeta]\n# \n# Ver las propiedades de los archivos listados\nls -l\n# \n[-][rwx][r-x][r-x] [USUARIO] [GRUPO] [FECHA] [NOMBRE_ ARCHIVO]\n\tPrimer campo: tipo de archivo\n\tSegundo campo: Permisos de usuario (u)\n\tTercer campo: Permisos de grupo (g)\n\tCuarto espacio: Otros (o)\nlectura: r = 4\nEscritura: w = 2\nEjecución: x = 1\nTotal: rwx = 7\n# \nGroup Symbol\t\tOperation Symbol\t\t\t        Permission Symbol   \t    Value\nu (user owner)\t\t+ (add the permission)\t\t\t        r (read)                  4\ng (group owner)\t\t= (specify the exact permission)\tw (write)                 2\no (others)\t\t\t- (remove the permission)\t\t        x (execute)               1\na (all)\t\t\t\t\t\t\t\t\t                s (setgid)\n\t\t\t\t\t\t\t\t\t                        t (sticky bit)\n# \n# Cambiar permisos a un archivo o directorio.\nchmod MODE FILE...\n# \n# Quitar los permisos de lectura para otros usuarios.\nchmod o-r FILE...\n# \n# Agregar permisos de lectura y escritura a otros usuarios.\nchmod o+rw FILE...\n# \n# Asignar permisos de setgid para el grupo a una carpeta.\nchmod g+s [DIRECTORY...]\n# \n# Asignar propiedad de sticky bit a otros usuarios.\nchmod o+t [DIRECTORY...]\n# \n# Cambiar los permisos a un directorio.\nchmod [[#u][#g][#o]] = [###] DIRECTORY...\n# \n# Solo los miembros del grupo y el usuario dueño pueden ver el archivo.\nchmod 770 DIRECTORY...",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "cli",
+    "legacyIndex": 8,
+    "title": "Linea de comandos CLI",
+    "code": "# Terminal CLI (Command Line Interface)\n# \n#  - crtl + r: Buscar comandos anteriores\n#  - ctrl + a: Inicio de linea.\n#  - ctrl + e: Final de la linea.\n# \n# Cambiar de usuario en la linea de comandos.\nsudo su\n# \n# Despliega información del sistema.\nuname -a\n#       -s: Muestra el kernel.\n#       -p: Muestra el tipo de procesador.\n#       -i: Muestra la plataforma del hardware.\n#       -m: Muestra la arquitectura.\n#       -r: Muestra la versión del kernel.\n# \n# Muestra el tipo de comando.\ntype [comando]\n# \n# Muestra la ubicación del ejecutable del comando.\n#  which [comando]\n# \n# Historial de comandos\nhistory\n# \n# Muestra los últimos cinco comandos de la lista del historial\nhistory 5\n# \n# Ejecuta el último comando otra vez\n!!\n# \n# Ejecuta el quinto comando desde la parte inferior de la lista de historial\n!-5\n# \n# Ejecuta el comando ls más reciente\n!ls\n# \n# Limpiar el historial.\nhistory -c",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "obtener",
+    "legacyIndex": 9,
+    "title": "Descargar página de ejemplo",
+    "code": "# Moverse hacia la carpeta /let/www/html\ncd /let/www/html\n# Descargar nextcloud a esta ubicación y descomprimir\nsudo wget -c https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip\n# Listamos el contenido de la carpeta para ver el archivo descargado\n# \nls -l\n# \nsudo unzip nextcloud-21.0.1.zip\n# \n# \n# Otorgar permisos a las carpetas\nsudo chown -R www-data:www-data /let/www/html\nsudo chmod -R 775 /let/www/html\n",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "firewall",
+    "legacyIndex": 10,
+    "title": "Firewall",
+    "code": "# Utilizaremos el comando iptables para crear un firewall básico de seguridad.\n# \n# Lo primero que haremos antes de instalar es verificar que el sistema está\n# actualizado\nsudo apt update\n# Si ahy actualizaciones pendientes las revisamos y las instalamos\nsudo apt upgrade\n# \n# Nótese que apt update compara las versiones de los programas instalados en\n# nuestro server con respecto al las disponibles en los repositorios\n# configurados en el archivo /etc/apt/sources.list o en los archivos dentro de\n# la carpeta /etc/apt/sources.list.d/\n# \n# Instalamos nmap que es una herramienta de monitores de puertos de red y mucho mas\nsudo apt install nmap\n# Se instala chkrootkit y rkhunter para monitorear el server de posibles rootkits\nsudo apt install rkhunter chkrootkit\n# Instalamos iptables\nsudo apt install iptables\n# Listamos las reglas instaladas por defecto \nsudo iptables -L -n -v\n# \n# Nos aseguramos de estar en $HOME ejecutando cd sin argumentos\ncd\n# \n# Descargamos el script con los comandos para implementar el firewall \nwget -c https://linux.jcampos.dev/public/files/firewall-iptables.sh\n# \n# Lo ejecutamos como superusuario\nsudo bash firewall-iptables.sh\n# \n# Instalamos iptables-persistent para guardar las reglas actuales\nsudo apt install iptables-persistent\n# \n# Nos preguntará si guardamos las reglas actuales a los archivos \n# /etc/iptables/rules.v4 y /etc/iptables/rules.v6, le decimos que si\n# \n# Ejecutamos el siguiente comando para que las reglas sean permanentes\nsudo netfilter-persistent save\n# \n",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "ingreso",
+    "legacyIndex": 11,
+    "title": "Ingreso remoto",
+    "code": "# Nos aseguramos de que el usuario root no se pueda conectar remotamente, esto con el\n# objetivo de eliminar superficies de ataque ya que el usuario root existe en\n# todos los linux y es común que sea sujeto de ataques de fuerza bruta\n# \nsudo vi /etc/ssh/sshd_config\n# Modificamos la directiva deseada\nPermitRootLogin no\n# \n# guardamos y cerramos el archivo con :wq! y reiniciamos el servicio de ssh\nsudo systemctl restart ssh\n# \n# Si perdemos la conexión simplemente volvemos a iniciar sesión como se hizo\n# anteriormente\n",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "fuerza",
+    "legacyIndex": 12,
+    "title": "Ataques de fuerza bruta",
+    "code": "# Instalamos fail2ban para agregar una capa extra de protección contra ataques\n# de fuerza bruta y DOS -  DDOS.\nsudo apt install fail2ban\nsudo cp -a /etc/fail2ban/jail.conf /etc/fail2ban/jail.local\n# En /etc/fail2ban/jail.local realizamos nuestras personalizaciones si queremos\n# En nuestro casi dejaremos las personalizaciones por defecto. Si se hace algún cambio \n# en el archivo jail.conf se debe reiniciar el servicio. \n# \n# Reiniciamos el servicio de fail2ban\nsudo systemctl restart fail2ban\n# \n# fail2ban se puede configurar no solo para proteger accesos a través de ssh pero\n# si se desea saber más, puede leer el manual del comando.\nman fail2ban\n",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "gestion_archivos",
+    "legacyIndex": 14,
+    "title": "Gestión de archivos",
+    "code": "# Dirige por defecto al directorio home del usuario\ncd\n# \n# Vuelve a la carpeta anterior.\ncd ..\n# \n# navegar a una ruta especifica.\ncd /ruta\n# \n# Lista los archivos y carpetas del directorio actual\nls\n# \n# Lista el contenido de carpeta en lugar del actual\nls /carpeta\n        -a: Permite ver los archivos ocultos.\n        -l: Incluye datos de quién es el dueño de un archivo, el tamaño y la última vez que se modificó el contenido.\n        -lh: Muestra el tamaño del archivo en megabytes o gigabytes\n        -ld /carpeta: lista el directorio /carpeta sin los archivos que tiene dentro.\n        -R: Listado recursivo\n        -S: Ordenar los archivos por tamaño.\n        -t: Ordena los archivos por fecha de modificación.\n        -t --full time: Muestra la fecha y hora completas.\n        -r: Lista los archivos de los menos a los mas pesados.\n        -d: el comando no muestra el contenido de un directorio, sino más bien el nombre del directorio.\n        -l /etc/ppp | tail -5 | nl: tail -5: Capta las ultimas 5 lineas del comando ls, y nl las enumera del 1 al 5.\n        -r: Ordenar los archivos de menor a mayor.\n# \n# Muestra el tipo de archivo.\nfile [archivo]\n# \n# Copia un archivo de un directorio a otro.\ncp [fuente] [destino]\n        -v: Muestra un mensaje si el archivo se copia correctamente.\n        -i: Pregunta antes de sobrescribir un archivo.\n        -r: Copia los archivos y los directorios.\n        -ra: Mantiene los atributos de los archivos.\n# \n# Mueve un archivo de un directorio a otro.\nmv [fuente] [destino]\n        -i: Movimiento interactivo: pregunta si un archivo debe sobrescribirse.\n        -n: No sobrescribir el contenido de los archivos de destino.\n        -v: Verbose: muestra el movimiento resultante.\n# \n# Renombra un archivo.\nmv [nombreArchivo] [nuevoNombre]\n# \n# Crea un archivo vacío.\ntouch [nombreArchivo]\n# \n# Elimina un archivo.\nrm [nombreArchivo]\n        -i: Pregunta antes de eliminar un archivo.\n        -r [nombreDirectorio]: Elimina un directorio.\n        -rf: Elimina una carpeta con contenido.\n        -p: Remover un directorio con otro dentro.\n# \n# Crea un directorio.\nmkdir [nombreDirectorio]\n        -p: Crea una carpeta dentro de otra que no existe.\n        -m: Crea una carpeta con permisos de solo lectura.\n        -v: Muestra el nombre del directorio que se crea.\n# \n# Elimina un directorio si esta vacío.\nrmdir [nombreDirectorio]\n        -i: Pregunta antes de eliminar un directorio.\n        -p: Elimina un directorio con otro dentro.\n        -v: Muestra el nombre del directorio que se elimina.\n# \n# Crear un directorio.\nmkdir [nombreDirectorio]\n        -p: Crea una carpeta dentro de otra que no existe.\n        -m: Crea una carpeta con permisos de solo lectura.\n        -v: Muestra el nombre del directorio que se crea.\n# \n# Ver archivos en el directorio etc que empiecen con la letra t.\necho /etc/t*\n# \n# Buscar archivos con extensiones de tres letras\necho /etc/*.???\n# \n# Mostrar todos los archivos que comiencen con cualquier letra entre a y d.\necho /etc/[a-d]*\n# \n# \n# Enviar mensaje por consola\necho The service costs $100 and the path is $PATH\n        The service costs $100 and the path is /usr/bin/custom:/home/sysadmin/bin:...\n# \n# Todos los archivos\necho *\n# \n# Todos los archivos que tienen tres caracteres\necho ???\n# \n# Archivos que empiezan con P, T O M\necho [PTM]\n# \n# [!, ^]: Para negar\n# Mostrar cualquier archivo que no comienza con D o P.\necho /etc/[^DP]*\n",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "ssh",
+    "legacyIndex": 15,
+    "title": "Ingreso remoto SSH",
+    "code": "# Conectarse al servidor SSH con un usuario específico\n# \nssh [user]@[IP]\n#\n#\n# alternativamente \n#\nssh -l [user] [IP]",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "descargar",
+    "legacyIndex": 16,
+    "title": "Descargar archivos",
+    "code": "# Moverse hacia la carpeta /var/www/html\ncd /var/www/html\n# Descargar nextcloud a esta ubicación y descomprimir\nsudo scp [user]@[host]:nombre_archivo.zip\n#\n# O mediante wget\nsudo wget -c https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip\n#\n# Listamos el contenido de la carpeta para ver el archivo descargado\n#\nls -l\n#\nsudo unzip nombre_archivo.zip\n#\nsudo unzip nextcloud-21.0.1.zip\n#\n# Otorgar permisos a las carpetas\nsudo chown -R www-data:www-data /var/www/html; sudo chmod -R 775 /var/www/html",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "configurar",
+    "legacyIndex": 17,
+    "title": "Configurar aplicación web",
+    "code": "# Lo primero que hacemos es crear el virtual host para nuestro server usando como\n# plantilla el virtualhost por defecto para http\n# Primero accedemos a /etc/apache2/apache2.conf\nsudo vim /etc/apache2/apache2.conf\n# y cambiamos\n#\n#\n#\n<Directory /var/www/>\n        Options FollowSymLinks Indexes\n        AllowOverride None\n        Require all granted\n</Directory>\n# \n# a \n#\n<Directory /var/www/>\n        Options FollowSymLinks\n        AllowOverride None\n        Require all granted\n</Directory>\n#\n# Nótese que lo único que hacemos es remover la directiva Indexes a la carpeta /var/www/\n#\n# Luego copiamos el virtualhost que viene por defecto para realizar nuestras personalizaciones\n#\nsudo cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/nextcloud.conf\n#\n# Se procede a cambiar la directiva DocumentRoot a /var/www/html/nextcloud en /etc/apache2/sites-available/nextcloud.conf\nsudo vi /etc/apache2/sites-available/nextcloud.conf\n# Debemos cambiar la directiva DocumentRoot y agregar las directiva <Directory > </Directory> para que queden de la siguiente manera:\n#\n\tDocumentRoot /var/www/html/nextcloud\n\tErrorLog ${APACHE_LOG_DIR}/nextcloud.error\n\tCustomLog ${APACHE_LOG_DIR}/nextcloud.access combined\n\n        <Directory /var/www/html/nextcloud/>\n\t\tRequire all granted\n\t\tOptions FollowSymlinks MultiViews\n\t\tAllowOverride All\n\n\t\t<IfModule mod_dav.c>\n\t\t\tDav off\n\t\t</IfModule>\n\n\t\tSetEnv HOME /var/www/html/nextcloud\n\t\tSetEnv HTTP_HOME /var/www/html/nextcloud\n\t\tSatisfy Any\n\t</Directory>\n# Guardar archivo con las teclas Escape mas  :wq!\n#\n#\n# Deshabilitamos el sitio activado por defecto\nsudo a2dissite 000-default.conf\nsudo rm /var/www/html/index.html\n#\n# Activamos nuestro sitio y activamos los modulos requeridos\nsudo a2ensite nextcloud.conf\na2enmod rewrite headers env dir mime setenvif ssl\n# Reiniciamos el servicio de apache\nsudo systemctl restart apache2\n#\n# Ahora procedemos a realizar la configuración de nextcloud, necesitaremos la base de datos con el usuario autorizado a usarla y la contraseña y deberemos\n# configurar un usuario administrativo para nextcloud, para esto volvemos a acceder a nuestro server a travez del navegador:\n# http://IP-SERVER-REMOTO\n#",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "ssl",
+    "legacyIndex": 18,
+    "title": "SSL",
+    "code": "# Configuración de HTTPS\nsudo apt install openssl; sudo a2enmod ssl; systemctl restart apache2\n# Configuración de apache para permitir la reescritura de direcciones\nsudo vi /etc/apache2/apache2.conf\n#\n# Agregar las siguientes lineas al final del archivo\n#\n<Directory /var/www/html>\n\tAllowOverride All\n</Directory>\n#\n# Instalar el core de snap\nsudo snap install core; sudo snap refresh core\n#\n# Instalar certbot\nsudo snap install --classic certbot\n#\n# Agregar certbot a la linea de comandos\nsudo ln -s /snap/bin/certbot /usr/bin/certbot\n#\n# Instalar certificado\nsudo certbot --apache\n#\n# Es posible renovar el certificado, pero este proceso se realiza automáticamente\nsudo certbot renew --dry-run\n#\n# Ya se ha configurado el servidor en https",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_instalacion",
+    "legacyIndex": 19,
+    "title": "Instalación de Git",
+    "code": "# Instalación de Git\n# \n# En macOS (usando Homebrew)\nbrew install git\n# \n# O descarga desde https://git-scm.com/download/mac\n# \n# En Ubuntu/Debian\nsudo apt update\nsudo apt install git\n# \n# En Windows\n# Descarga Git Bash desde https://git-scm.com/download/win\n# \n# Verificar instalación\ngit --version\n# Debería mostrar algo como: git version 2.43.0",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_configuracion",
+    "legacyIndex": 20,
+    "title": "Configuración inicial",
+    "code": "# Configuración inicial (obligatoria antes de tu primer commit)\n# \n# Tu nombre completo (aparecerá en cada commit)\ngit config --global user.name \"Tu Nombre Completo\"\n# \n# Tu email (DEBE ser el mismo que usas en GitHub)\ngit config --global user.email \"tu@email.com\"\n# \n# Establecer la rama principal como \"main\" (estándar moderno)\ngit config --global init.defaultBranch main\n# \n# Ver toda tu configuración\ngit config --list\n# \n# ¿Qué significa --global?\n# Aplica la configuración a todos tus proyectos.\n# Sin esta bandera, solo aplicaría al proyecto actual.",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_ssh",
+    "legacyIndex": 21,
+    "title": "Autenticación SSH",
+    "code": "# Conectar tu computadora con GitHub (Autenticación SSH)\n# SSH te permite comunicarte con GitHub sin escribir tu contraseña cada vez.\n# \n# Paso 1: Generar tu clave SSH\nssh-keygen -t ed25519 -C \"tu@email.com\"\n# Presiona Enter para usar la ubicación por defecto (~/.ssh/id_ed25519)\n# Puedes dejar la contraseña vacía o agregar una para mayor seguridad\n# \n# Paso 2: Iniciar el agente SSH\neval \"$(ssh-agent -s)\"\n# \n# Paso 3: Agregar tu clave privada al agente\nssh-add ~/.ssh/id_ed25519\n# \n# Paso 4: Copiar tu clave pública\ncat ~/.ssh/id_ed25519.pub\n# Copia TODO el texto (empieza con ssh-ed25519 y termina con tu email)\n# \n# Paso 5: Agregar la clave en GitHub\n# Ve a GitHub > Settings > SSH and GPG keys > New SSH key\n# Title: Un nombre descriptivo (ej: \"Mi MacBook\")\n# Key type: Authentication Key\n# Key: Pega tu clave pública\n# \n# Paso 6: Verificar la conexión\nssh -T git@github.com\n# Si todo está bien, verás:\n# Hi tu-usuario! You have successfully authenticated...",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_basicos",
+    "legacyIndex": 22,
+    "title": "Comandos básicos",
+    "code": "# Comandos básicos de Git\n# \n# Inicializa Git en la carpeta actual (crea la carpeta oculta .git)\ngit init\n# \n# Descarga una copia completa de un repositorio de GitHub\ngit clone git@github.com:usuario/repositorio.git\n# \n# Muestra qué archivos han cambiado\ngit status\n# \n# Agregar un archivo específico al staging\ngit add nombre-archivo.txt\n# \n# Agregar todos los archivos modificados\ngit add .\n# \n# Agregar todos los archivos de una carpeta\ngit add carpeta/\n# \n# Hacer un commit (una \"fotografía\" de tu código)\ngit commit -m \"Descripción breve de los cambios\"\n# \n# Buenos mensajes de commit:\n# ✓ \"Agrega función de login con validación\"\n# ✓ \"Corrige error en cálculo de promedio\"\n# ✗ \"Cambios\"\n# ✗ \"asdfgh\"\n# \n# Ver historial de commits (compacto)\ngit log --oneline\n# \n# Ver historial con gráfico de ramas\ngit log --oneline --graph",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_remotos",
+    "legacyIndex": 23,
+    "title": "Sincronización con GitHub",
+    "code": "# Sincronización con GitHub\n# \n# Primero, crea un repositorio vacío en GitHub (sin README ni .gitignore)\n# \n# Agrega GitHub como repositorio remoto llamado \"origin\"\ngit remote add origin git@github.com:tu-usuario/tu-repositorio.git\n# \n# Verifica que se agregó correctamente\ngit remote -v\n# \n# Subir tus cambios a GitHub (primera vez)\ngit push -u origin main\n# \n# Subir cambios (después de la primera vez)\ngit push\n# \n# Descargar y fusionar cambios del repositorio remoto\ngit pull origin main\n# \n# O simplemente (si ya configuraste upstream)\ngit pull",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_ramas",
+    "legacyIndex": 24,
+    "title": "Trabajar con ramas",
+    "code": "# Trabajar con ramas (branches)\n# Las ramas te permiten trabajar en nuevas funcionalidades\n# sin afectar el código principal.\n# \n# Ver todas las ramas (* indica la rama actual)\ngit branch\n# \n# Crear una nueva rama\ngit branch nombre-rama\n# \n# Cambiar a otra rama\ngit switch nombre-rama\n# \n# Crear y cambiar en un solo comando\ngit switch -c nombre-nueva-rama\n# \n# Fusionar una rama con la actual\ngit merge nombre-rama\n# \n# Eliminar una rama (después de fusionarla)\ngit branch -d nombre-rama\n# \n# Flujo típico:\n# 1. Creas una rama: git switch -c nueva-funcion\n# 2. Haces tus cambios y commits\n# 3. Regresas a main: git switch main\n# 4. Fusionas tu rama: git merge nueva-funcion\n# 5. Eliminas la rama: git branch -d nueva-funcion",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_utiles",
+    "legacyIndex": 25,
+    "title": "Comandos útiles",
+    "code": "# Comandos útiles adicionales\n# \n# Ver diferencias en archivos modificados (antes de add)\ngit diff\n# \n# Ver diferencias en el staging (después de add)\ngit diff --staged\n# \n# Descartar cambios en un archivo (volver a la última versión)\ngit checkout -- nombre-archivo.txt\n# \n# Quitar un archivo del staging (después de git add)\ngit restore --staged nombre-archivo.txt\n# \n# Guardar cambios temporalmente sin hacer commit\ngit stash\n# \n# Recuperar los cambios guardados\ngit stash pop\n# \n# Ver quién modificó cada línea de un archivo\ngit blame nombre-archivo.txt\n# \n# Ejemplo de archivo .gitignore:\n# node_modules/\n# vendor/\n# .DS_Store\n# .env\n# *.log\n# .idea/\n# .vscode/",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_errores",
+    "legacyIndex": 26,
+    "title": "Errores comunes",
+    "code": "# Errores comunes y soluciones\n# \n# Error: \"Permission denied (publickey)\"\n# Solución: Tu clave SSH no está configurada. Revisa el paso de SSH.\n# \n# Error: \"failed to push some refs\"\n# Solución: Hay cambios en GitHub que no tienes. Ejecuta:\ngit pull\n# \n# Error: \"merge conflict\"\n# Solución: Dos personas modificaron la misma línea.\n# Abre el archivo, busca los marcadores <<<<<<<\n# Edita manualmente y haz un nuevo commit.\n# \n# Hice commit pero olvidé un archivo\ngit add archivo-olvidado.txt\ngit commit --amend --no-edit\n# \n# Quiero deshacer el último commit (manteniendo los cambios)\ngit reset --soft HEAD~1",
+    "source": "dist/js/script.js"
+  },
+  {
+    "id": "git_opcionales",
+    "legacyIndex": 27,
+    "title": "Configuraciones opcionales",
+    "code": "# Configuraciones opcionales recomendadas\n# \n# Editor por defecto para mensajes de commit\ngit config --global core.editor \"code --wait\"  # VS Code\ngit config --global core.editor \"nano\"          # Nano\n# \n# Colores en la terminal\ngit config --global color.ui auto\n# \n# Alias útiles (atajos)\ngit config --global alias.st status\ngit config --global alias.co checkout\ngit config --global alias.br branch\ngit config --global alias.cm \"commit -m\"\n# \n# Con estos alias puedes escribir:\n# git st  en lugar de  git status\n# git co  en lugar de  git checkout\n# \n# Firma de commits (opcional - agrega insignia \"Verified\")\ngit config --global gpg.format ssh\ngit config --global user.signingkey ~/.ssh/id_ed25519.pub\ngit config --global commit.gpgsign true\n# Luego agrega la misma clave SSH en GitHub como Signing Key",
+    "source": "dist/js/script.js"
+  }
+]

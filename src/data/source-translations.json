@@ -1,0 +1,151 @@
+{
+  "body": [
+    "Examples",
+    "The following examples show commands you can use in Linux."
+  ],
+  "compartir": [
+    "Enter the workshop"
+  ],
+  "conceptos_basicos": [
+    "Basic concepts",
+    "What is Linux?",
+    "Command line interface (CLI)",
+    "SSH connection",
+    "Create a user",
+    "Package installation"
+  ],
+  "contenido": [
+    "Connect to the server",
+    "1. Create a user on the server",
+    "2. Disable root login",
+    "Server security",
+    "3. Configure the firewall",
+    "4. Protect against brute-force attacks",
+    "Configure services",
+    "5. Configure Apache",
+    "6. Configure MySQL",
+    "7. Configure PHP",
+    "8. Configure PHPMyAdmin",
+    "Website installation",
+    "9. Download the website",
+    "10. Configure the website",
+    "11. Install an SSL certificate (optional)"
+  ],
+  "curso": [
+    "Student resources",
+    "Linux Unhatched",
+    "Certifications",
+    "GitHub Developer Pack for Students"
+  ],
+  "ejemplos": [
+    "Tools",
+    "Apache server",
+    "PHP",
+    "MySQL",
+    "PHPMyAdmin",
+    "Git and GitHub"
+  ],
+  "footer": [
+    "2024",
+    "José Pablo Campos Solano"
+  ],
+  "git_contenido": [
+    "Initial configuration",
+    "1. Install Git",
+    "2. Initial configuration",
+    "3. SSH authentication with GitHub",
+    "Git commands",
+    "4. Basic commands",
+    "5. Sync with GitHub",
+    "6. Work with branches",
+    "Advanced commands",
+    "7. More useful commands",
+    "8. Common errors and solutions",
+    "9. Optional configuration"
+  ],
+  "git_taller": [
+    "Git and GitHub — Student guide"
+  ],
+  "index": [
+    "Basic Linux Commands"
+  ],
+  "introduccion": [
+    "What is Linux?",
+    "Linux is an operating system used on many devices, from desktop and laptop computers to web servers and mobile devices such as Android phones.",
+    "It is software that lets you install and run other programs, such as word processors and web browsers.",
+    "Learning Linux is useful because it is used in many technologies, including web servers, mobile devices, public cloud computing and networking."
+  ],
+  "nav": [
+    "Basic Linux commands",
+    "Resources",
+    "Workshop",
+    "Start",
+    "Share"
+  ],
+  "old_index": [
+    "Basic Linux Commands",
+    "Basic Linux commands",
+    "Utilities",
+    "Examples",
+    "Information security",
+    "Information",
+    "Utilities",
+    "Command line interface (CLI)",
+    "Manage directories and files in Linux",
+    "Create a user in Linux",
+    "Install packages",
+    "File and directory permissions",
+    "Tools",
+    "VI text editor",
+    "File compression",
+    "Examples",
+    "Apache server",
+    "PHP",
+    "MySQL",
+    "PHPMyAdmin",
+    "Download Nextcloud",
+    "Security",
+    "Disable remote login",
+    "Firewall",
+    "Brute-force attacks",
+    "Basic Linux commands",
+    "Start",
+    "Basic Linux commands",
+    "Utilities",
+    "Examples",
+    "Information security",
+    "Information"
+  ],
+  "perfil": [
+    "Linux workshop",
+    "Let’s go!",
+    "Who am I?",
+    "José Pablo Campos Solano",
+    "Email:",
+    "chepelcr@outlook.com",
+    "Occupation:",
+    "Web developer",
+    "Biography:",
+    "I develop web applications and AWS cloud infrastructure. In 2022 I completed my Business Informatics degree at the University of Costa Rica, and in 2023 I became an AWS Certified Solutions Architect.",
+    "Start the workshop"
+  ],
+  "seguridad": [
+    "Information security",
+    "Remote login",
+    "Brute force",
+    "Firewall"
+  ],
+  "taller": [
+    "Linux workshop for running PHP web applications"
+  ],
+  "terminal_ejemplo": [
+    "Copy"
+  ],
+  "utilidades": [
+    "Utilities",
+    "File management",
+    "Assign permissions",
+    "VI text editor",
+    "File compression"
+  ]
+}

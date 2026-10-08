@@ -1,0 +1,13 @@
+import { SSMClient, GetParametersCommand } from '@aws-sdk/client-ssm';
+import { writeFile } from 'node:fs/promises';
+const keys=['VITE_AWS_REGION','VITE_COGNITO_USER_POOL_ID','VITE_COGNITO_CLIENT_ID','VITE_COGNITO_DOMAIN','VITE_AUTH_REDIRECT_URI','VITE_AUTH_LOGOUT_URI','VITE_API_BASE_URL','VITE_APP_URL','VITE_BASE_PATH','VITE_DEFAULT_LOCALE'];
+const prefix=process.env.SSM_FRONTEND_PREFIX || '/linux-lab/prod/frontend';
+const names=keys.map(key=>`${prefix}/${key}`);
+const {Parameters,InvalidParameters}=await new SSMClient({region:process.env.AWS_REGION||'us-east-1'}).send(new GetParametersCommand({Names:names,WithDecryption:false}));
+if(InvalidParameters?.length || Parameters?.length!==keys.length)throw new Error('Required frontend parameters are missing');
+const values=Object.fromEntries(Parameters.map(p=>[p.Name.split('/').at(-1),p.Value]));
+for(const key of keys)if(!values[key] || /[\r\n]/.test(values[key]))throw new Error(`Invalid public config: ${key}`);
+for(const key of ['VITE_COGNITO_DOMAIN','VITE_AUTH_REDIRECT_URI','VITE_AUTH_LOGOUT_URI','VITE_API_BASE_URL','VITE_APP_URL'])if(new URL(values[key]).protocol!=='https:')throw new Error(`${key} must use HTTPS`);
+if(!['es','en'].includes(values.VITE_DEFAULT_LOCALE))throw new Error('Invalid locale');
+await writeFile('.env.production.local',keys.map(key=>`${key}=${JSON.stringify(values[key])}`).join('\n')+'\n',{mode:0o600});
+console.log(`Loaded ${keys.length} public frontend settings. No credentials are bundled.`);

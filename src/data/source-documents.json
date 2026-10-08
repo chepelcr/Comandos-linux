@@ -1,0 +1,705 @@
+[
+  {
+    "id": "body",
+    "source": "body.html",
+    "sha256": "1977291fdb0d75d1849256f7f29a044c8931afc95486c5c2b9152454f225ae43",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Ejemplos"
+      },
+      {
+        "type": "text",
+        "text": "A continuación, se presentan ejemplos de comandos que se pueden utilizar en Linux."
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "compartir",
+    "source": "compartir.html",
+    "sha256": "8478ba7d0bb7fa295624ceef5241116dfbe458c16e4eb3ca4655e2d75e921b3b",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Ingresar al taller"
+      }
+    ],
+    "links": [],
+    "images": [
+      {
+        "src": "images/comandos.png",
+        "alt": "Código QR de la página"
+      }
+    ]
+  },
+  {
+    "id": "conceptos_basicos",
+    "source": "conceptos_basicos.html",
+    "sha256": "f685a42ac56d8e288221ec8ba6025a2d95d62e7999dcc0eae21df1c25aba466a",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Conceptos básicos"
+      },
+      {
+        "type": "heading",
+        "text": "¿Que es Linux?"
+      },
+      {
+        "type": "heading",
+        "text": "Linea de Comandos CLI"
+      },
+      {
+        "type": "heading",
+        "text": "Conexión SSH"
+      },
+      {
+        "type": "heading",
+        "text": "Crear usuario"
+      },
+      {
+        "type": "heading",
+        "text": "Instalación de Paquetes"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "contenido",
+    "source": "contenido.html",
+    "sha256": "fc9e5706edb3ef16e486a1f1afc24ad3d0494c38fb31c2bac7fa043a7e52b011",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Conexión al servidor"
+      },
+      {
+        "type": "text",
+        "text": "1. Crear usuario en el servidor"
+      },
+      {
+        "type": "text",
+        "text": "2. Desactivar ingreso como usuario root"
+      },
+      {
+        "type": "heading",
+        "text": "Seguridad del servidor"
+      },
+      {
+        "type": "text",
+        "text": "3. Configurar firewall"
+      },
+      {
+        "type": "text",
+        "text": "4. Proteger contra ataques de fuerza bruta"
+      },
+      {
+        "type": "heading",
+        "text": "Configuración de servicios"
+      },
+      {
+        "type": "text",
+        "text": "5. Configurar servidor Apache"
+      },
+      {
+        "type": "text",
+        "text": "6. Configurar MySQL"
+      },
+      {
+        "type": "text",
+        "text": "7. Configurar PHP"
+      },
+      {
+        "type": "text",
+        "text": "8. Configurar PHPMyAdmin"
+      },
+      {
+        "type": "heading",
+        "text": "Instalación de sitio web"
+      },
+      {
+        "type": "text",
+        "text": "9. Descargar sitio web"
+      },
+      {
+        "type": "text",
+        "text": "10. Configurar sitio web"
+      },
+      {
+        "type": "text",
+        "text": "11. Instalar certificado SSL (Opcional)"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "curso",
+    "source": "curso.html",
+    "sha256": "67c955987552e06d1a87ab19f778889199145791846809ad8bd9e71e1c200054",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Material para estudiantes"
+      },
+      {
+        "type": "heading",
+        "text": "Linux Unhatched"
+      },
+      {
+        "type": "heading",
+        "text": "Certificaciones"
+      },
+      {
+        "type": "heading",
+        "text": "GitHub Developer Pack for Students"
+      }
+    ],
+    "links": [
+      {
+        "label": "",
+        "href": "https://www.netacad.com/es/courses/os-it/ndg-linux-unhatched"
+      },
+      {
+        "label": "",
+        "href": "https://learn.microsoft.com/es-mx/training/student-hub/certifications"
+      },
+      {
+        "label": "",
+        "href": "https://education.github.com/students"
+      }
+    ],
+    "images": [
+      {
+        "src": "images/NDG_logo.png",
+        "alt": "NDG"
+      },
+      {
+        "src": "images/microsoft.png",
+        "alt": "Microsoft"
+      },
+      {
+        "src": "images/github-student.png",
+        "alt": "GitHub"
+      }
+    ]
+  },
+  {
+    "id": "ejemplos",
+    "source": "ejemplos.html",
+    "sha256": "04a3fa6420d047f95912bb20719563164b773ec0b15cf24b23092511a0b0a7a2",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Herramientas"
+      },
+      {
+        "type": "text",
+        "text": "Servidor Apache"
+      },
+      {
+        "type": "text",
+        "text": "PHP"
+      },
+      {
+        "type": "text",
+        "text": "MySQL"
+      },
+      {
+        "type": "text",
+        "text": "PHPMyAdmin"
+      },
+      {
+        "type": "text",
+        "text": "Git y GitHub"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "footer",
+    "source": "footer.html",
+    "sha256": "d0c118bab7281f20d169251b7a2310bd61c5bfd51241ea46361ce284d742e688",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "2024"
+      },
+      {
+        "type": "text",
+        "text": "José Pablo Campos Solano"
+      }
+    ],
+    "links": [
+      {
+        "label": "",
+        "href": "https://www.facebook.com/jpgrowing"
+      },
+      {
+        "label": "",
+        "href": "https://www.twitch.tv/jp_growing"
+      },
+      {
+        "label": "",
+        "href": "https://twitter.com/chepelcr"
+      },
+      {
+        "label": "",
+        "href": "https://www.linkedin.com/in/jose-pablo-campos/"
+      },
+      {
+        "label": "",
+        "href": "https://github.com/chepelcr"
+      }
+    ],
+    "images": [
+      {
+        "src": "images/linux.png",
+        "alt": "Linux"
+      }
+    ]
+  },
+  {
+    "id": "git_contenido",
+    "source": "git_contenido.html",
+    "sha256": "f8e8115a41f053d87971c4b7baca2e777e84105e115c97b6ff6c53a14052f855",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Configuración inicial"
+      },
+      {
+        "type": "text",
+        "text": "1. Instalación de Git"
+      },
+      {
+        "type": "text",
+        "text": "2. Configuración inicial"
+      },
+      {
+        "type": "text",
+        "text": "3. Autenticación SSH con GitHub"
+      },
+      {
+        "type": "heading",
+        "text": "Comandos de Git"
+      },
+      {
+        "type": "text",
+        "text": "4. Comandos básicos"
+      },
+      {
+        "type": "text",
+        "text": "5. Sincronización con GitHub"
+      },
+      {
+        "type": "text",
+        "text": "6. Trabajar con ramas"
+      },
+      {
+        "type": "heading",
+        "text": "Comandos avanzados"
+      },
+      {
+        "type": "text",
+        "text": "7. Comandos útiles adicionales"
+      },
+      {
+        "type": "text",
+        "text": "8. Errores comunes y soluciones"
+      },
+      {
+        "type": "text",
+        "text": "9. Configuraciones opcionales"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "git_taller",
+    "source": "git_taller.html",
+    "sha256": "1cbcc7438d1a653cd74514977f28c3e81f99f1d08421d2f1b7e98888269be8fd",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Git y GitHub - Guía para Estudiantes"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "index",
+    "source": "index.html",
+    "sha256": "f56914860a23b2f39a7cb696e7c94df2a3e7d6bc0a1c95a87e164d44471220c2",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "Comandos Básicos de Linux"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "introduccion",
+    "source": "introduccion.html",
+    "sha256": "e41626a7faa864fc6d95276ee49db118bfe5f6e9de537606995e45f618078b56",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "¿Que es Linux?"
+      },
+      {
+        "type": "text",
+        "text": "Linux es un sistema operativo utilizado en una amplia gama de dispositivos, desde computadoras de escritorio y portátiles hasta servidores web y dispositivos móviles como Android."
+      },
+      {
+        "type": "text",
+        "text": "Es un software que permite instalar y ejecutar otros programas, como procesadores de texto o navegadores web."
+      },
+      {
+        "type": "text",
+        "text": "Aprender Linux es útil porque se utiliza en numerosas tecnologías, incluyendo servidores web, dispositivos móviles, tecnología de nube pública y redes."
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "nav",
+    "source": "nav.html",
+    "sha256": "57e87ef809638164f005da4446324050731346900b2cd148a54020491a5f1834",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "Comandos básicos de Linux"
+      },
+      {
+        "type": "text",
+        "text": "Recursos"
+      },
+      {
+        "type": "text",
+        "text": "Taller"
+      },
+      {
+        "type": "text",
+        "text": "Iniciar"
+      },
+      {
+        "type": "text",
+        "text": "Compartir"
+      }
+    ],
+    "links": [
+      {
+        "label": "Comandos básicos de Linux",
+        "href": "#"
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "old_index",
+    "source": "old_index.html",
+    "sha256": "6df70eadb62a466e8f94ed68ead632633539aa35c1b593609a5fbb8317698361",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "Comandos Basicos de Linux"
+      },
+      {
+        "type": "text",
+        "text": "Comandos básicos de Linux"
+      },
+      {
+        "type": "text",
+        "text": "Utilidades"
+      },
+      {
+        "type": "text",
+        "text": "Ejemplos"
+      },
+      {
+        "type": "text",
+        "text": "Seguridad Informática"
+      },
+      {
+        "type": "text",
+        "text": "Información"
+      },
+      {
+        "type": "heading",
+        "text": "Utilidades"
+      },
+      {
+        "type": "text",
+        "text": "Linea de Comandos CLI"
+      },
+      {
+        "type": "text",
+        "text": "Gestion de carpetas y archivos en Linux"
+      },
+      {
+        "type": "text",
+        "text": "Crear un usuario en Linux"
+      },
+      {
+        "type": "text",
+        "text": "Instalación de paquetes"
+      },
+      {
+        "type": "text",
+        "text": "Permisos de archivos y carpetas"
+      },
+      {
+        "type": "text",
+        "text": "Herramientas"
+      },
+      {
+        "type": "text",
+        "text": "Editor de texto VI"
+      },
+      {
+        "type": "text",
+        "text": "Compresión de archivos"
+      },
+      {
+        "type": "heading",
+        "text": "Ejemplos"
+      },
+      {
+        "type": "text",
+        "text": "Servidor Apache"
+      },
+      {
+        "type": "text",
+        "text": "PHP"
+      },
+      {
+        "type": "text",
+        "text": "MySQL"
+      },
+      {
+        "type": "text",
+        "text": "PHPMyAdmin"
+      },
+      {
+        "type": "text",
+        "text": "Descargar Nextcloud"
+      },
+      {
+        "type": "heading",
+        "text": "Seguridad"
+      },
+      {
+        "type": "text",
+        "text": "Desactivar ingreso remoto"
+      },
+      {
+        "type": "text",
+        "text": "Firewall"
+      },
+      {
+        "type": "text",
+        "text": "Ataques de fuerza bruta"
+      },
+      {
+        "type": "heading",
+        "text": "Comandos básicos de Linux"
+      },
+      {
+        "type": "text",
+        "text": "Iniciar"
+      },
+      {
+        "type": "text",
+        "text": "Comandos básicos de Linux"
+      },
+      {
+        "type": "text",
+        "text": "Utilidades"
+      },
+      {
+        "type": "text",
+        "text": "Ejemplos"
+      },
+      {
+        "type": "text",
+        "text": "Seguridad Informática"
+      },
+      {
+        "type": "text",
+        "text": "Información"
+      }
+    ],
+    "links": [
+      {
+        "label": "Comandos básicos de Linux",
+        "href": "#"
+      },
+      {
+        "label": "Comandos básicos de Linux",
+        "href": "#"
+      }
+    ],
+    "images": [
+      {
+        "src": "images/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "images/comandos.png",
+        "alt": "Acceso"
+      }
+    ]
+  },
+  {
+    "id": "perfil",
+    "source": "perfil.html",
+    "sha256": "369914dc74e1fb01d71a19f7f40c16b9669d93ed23facc32980a5d6ae9556255",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Taller de Linux"
+      },
+      {
+        "type": "text",
+        "text": "Vamos!"
+      },
+      {
+        "type": "heading",
+        "text": "¿Quién soy Yo?"
+      },
+      {
+        "type": "heading",
+        "text": "José Pablo Campos Solano"
+      },
+      {
+        "type": "text",
+        "text": "Correo electrónico:"
+      },
+      {
+        "type": "text",
+        "text": "chepelcr@outlook.com"
+      },
+      {
+        "type": "text",
+        "text": "Ocupación:"
+      },
+      {
+        "type": "text",
+        "text": "Desarrollador Web"
+      },
+      {
+        "type": "text",
+        "text": "Biografía:"
+      },
+      {
+        "type": "text",
+        "text": "Soy un desarrollador de aplicaciones web e infraestructura en la nube de AWS. En 2022 finalicé mis estudios en Bachillerato en Informática Empresarial en la Universidad de Costa Rica, y en 2023 me certifiqué como Arquitecto de Soluciones de AWS."
+      },
+      {
+        "type": "text",
+        "text": "Iniciar taller"
+      }
+    ],
+    "links": [],
+    "images": [
+      {
+        "src": "images/linux.jpg",
+        "alt": "Imagen de bienvenida"
+      },
+      {
+        "src": "images/perfil.jpg",
+        "alt": "Foto de perfil"
+      }
+    ]
+  },
+  {
+    "id": "seguridad",
+    "source": "seguridad.html",
+    "sha256": "7ad1f517cf3df69bc2abcc888d1c11d79b1547ca446d7267e465c78499abd4c2",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Seguridad Informática"
+      },
+      {
+        "type": "heading",
+        "text": "Ingreso remoto"
+      },
+      {
+        "type": "heading",
+        "text": "Fuerza bruta"
+      },
+      {
+        "type": "heading",
+        "text": "Firewall"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "taller",
+    "source": "taller.html",
+    "sha256": "a7ea6c331de32be2025c603b9430696a3d276f0653fd0b6b8ea5eb634729e5bd",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Taller de Linux para ejecución de aplicaciones web en PHP"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "terminal_ejemplo",
+    "source": "terminal_ejemplo.html",
+    "sha256": "feb3615e674083cc7fca1b2f869d8bc2b20d17930dcb291f3d5d61aa6b859e11",
+    "blocks": [
+      {
+        "type": "text",
+        "text": "Copiar"
+      }
+    ],
+    "links": [],
+    "images": []
+  },
+  {
+    "id": "utilidades",
+    "source": "utilidades.html",
+    "sha256": "bba748c45fbf00a92eaf7f42b2696527d6278a73f2878a1cc3d1b325a6b43539",
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Utilidades"
+      },
+      {
+        "type": "text",
+        "text": "Gestión de archivos"
+      },
+      {
+        "type": "text",
+        "text": "Asignar permisos"
+      },
+      {
+        "type": "text",
+        "text": "Editor de texto VI"
+      },
+      {
+        "type": "text",
+        "text": "Compresión de archivos"
+      }
+    ],
+    "links": [],
+    "images": []
+  }
+]

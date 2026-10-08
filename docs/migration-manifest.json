@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "documents": [
+    {
+      "source": "body.html",
+      "sha256": "1977291fdb0d75d1849256f7f29a044c8931afc95486c5c2b9152454f225ae43",
+      "blockCount": 2,
+      "destination": "source-documents#body",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "compartir.html",
+      "sha256": "8478ba7d0bb7fa295624ceef5241116dfbe458c16e4eb3ca4655e2d75e921b3b",
+      "blockCount": 1,
+      "destination": "source-documents#compartir",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "conceptos_basicos.html",
+      "sha256": "f685a42ac56d8e288221ec8ba6025a2d95d62e7999dcc0eae21df1c25aba466a",
+      "blockCount": 6,
+      "destination": "source-documents#conceptos_basicos",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "contenido.html",
+      "sha256": "fc9e5706edb3ef16e486a1f1afc24ad3d0494c38fb31c2bac7fa043a7e52b011",
+      "blockCount": 15,
+      "destination": "source-documents#contenido",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "curso.html",
+      "sha256": "67c955987552e06d1a87ab19f778889199145791846809ad8bd9e71e1c200054",
+      "blockCount": 4,
+      "destination": "source-documents#curso",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "ejemplos.html",
+      "sha256": "04a3fa6420d047f95912bb20719563164b773ec0b15cf24b23092511a0b0a7a2",
+      "blockCount": 6,
+      "destination": "source-documents#ejemplos",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "footer.html",
+      "sha256": "d0c118bab7281f20d169251b7a2310bd61c5bfd51241ea46361ce284d742e688",
+      "blockCount": 2,
+      "destination": "source-documents#footer",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "git_contenido.html",
+      "sha256": "f8e8115a41f053d87971c4b7baca2e777e84105e115c97b6ff6c53a14052f855",
+      "blockCount": 12,
+      "destination": "source-documents#git_contenido",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "git_taller.html",
+      "sha256": "1cbcc7438d1a653cd74514977f28c3e81f99f1d08421d2f1b7e98888269be8fd",
+      "blockCount": 1,
+      "destination": "source-documents#git_taller",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "index.html",
+      "sha256": "f56914860a23b2f39a7cb696e7c94df2a3e7d6bc0a1c95a87e164d44471220c2",
+      "blockCount": 1,
+      "destination": "source-documents#index",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "introduccion.html",
+      "sha256": "e41626a7faa864fc6d95276ee49db118bfe5f6e9de537606995e45f618078b56",
+      "blockCount": 4,
+      "destination": "source-documents#introduccion",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "nav.html",
+      "sha256": "57e87ef809638164f005da4446324050731346900b2cd148a54020491a5f1834",
+      "blockCount": 5,
+      "destination": "source-documents#nav",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "old_index.html",
+      "sha256": "6df70eadb62a466e8f94ed68ead632633539aa35c1b593609a5fbb8317698361",
+      "blockCount": 32,
+      "destination": "source-documents#old_index",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "perfil.html",
+      "sha256": "369914dc74e1fb01d71a19f7f40c16b9669d93ed23facc32980a5d6ae9556255",
+      "blockCount": 11,
+      "destination": "source-documents#perfil",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "seguridad.html",
+      "sha256": "7ad1f517cf3df69bc2abcc888d1c11d79b1547ca446d7267e465c78499abd4c2",
+      "blockCount": 4,
+      "destination": "source-documents#seguridad",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "taller.html",
+      "sha256": "a7ea6c331de32be2025c603b9430696a3d276f0653fd0b6b8ea5eb634729e5bd",
+      "blockCount": 1,
+      "destination": "source-documents#taller",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "terminal_ejemplo.html",
+      "sha256": "feb3615e674083cc7fca1b2f869d8bc2b20d17930dcb291f3d5d61aa6b859e11",
+      "blockCount": 1,
+      "destination": "source-documents#terminal_ejemplo",
+      "disposition": "structured-json-original-reference"
+    },
+    {
+      "source": "utilidades.html",
+      "sha256": "bba748c45fbf00a92eaf7f42b2696527d6278a73f2878a1cc3d1b325a6b43539",
+      "blockCount": 5,
+      "destination": "source-documents#utilidades",
+      "disposition": "structured-json-original-reference"
+    }
+  ],
+  "examples": [
+    {
+      "id": "apache",
+      "legacyIndex": 0,
+      "sha256": "e2d98aed26516e48ae0a127cf15845828b573f0c9080a476fba68712d288307a",
+      "destination": "lessons#apache"
+    },
+    {
+      "id": "php",
+      "legacyIndex": 1,
+      "sha256": "5a3bf6f85b401f3a9194016d149b698aca94a926a74e8e9675f107cdcea66137",
+      "destination": "lessons#php"
+    },
+    {
+      "id": "crear_usuario",
+      "legacyIndex": 2,
+      "sha256": "491824e73af274796d60e032a6434ed3ef4a2095b23c6065ffd4fc7fb74ffa94",
+      "destination": "lessons#crear_usuario"
+    },
+    {
+      "id": "mysql",
+      "legacyIndex": 3,
+      "sha256": "74864103920c9bfb55403a6c8c30a14cd4f0ee7ec7f7652ecb8a71120b22be2d",
+      "destination": "lessons#mysql"
+    },
+    {
+      "id": "vi",
+      "legacyIndex": 4,
+      "sha256": "efe0f135a04e178fd725c2b0f95b54685df7a0bc9a72ef61117f8c0cc02f74bb",
+      "destination": "lessons#vi"
+    },
+    {
+      "id": "phpmyadmin",
+      "legacyIndex": 5,
+      "sha256": "038ef2b87cf4efbda87a649ce2f0b14c75d1f4b38abd2564073b43d059fb4f4e",
+      "destination": "lessons#phpmyadmin"
+    },
+    {
+      "id": "paquetes",
+      "legacyIndex": 13,
+      "sha256": "22145002f2d311bc8bafbcc4155f4b02def3559cbf2da90ab7732d49edc9c34e",
+      "destination": "lessons#paquetes"
+    },
+    {
+      "id": "compresion",
+      "legacyIndex": 6,
+      "sha256": "4806d35ab71a347d56ebdaccd5937cd1ab5dbacbc97fa70da8dab8a0062f413f",
+      "destination": "lessons#compresion"
+    },
+    {
+      "id": "permisos",
+      "legacyIndex": 7,
+      "sha256": "bd7dcb94e7fad4e54577249b23e0a30be09ae3740adb1d1e456cd211afab6941",
+      "destination": "lessons#permisos"
+    },
+    {
+      "id": "cli",
+      "legacyIndex": 8,
+      "sha256": "12f4378e37972b0eda4b0f9d9da3e9c1c68cd5c5fcf2edde55c757a96a3a2800",
+      "destination": "lessons#cli"
+    },
+    {
+      "id": "obtener",
+      "legacyIndex": 9,
+      "sha256": "e5d5df45fcbb206a52cb4edc8ac0cb8f09defdc4bc74268f6e669aef41d4e1ca",
+      "destination": "lessons#obtener"
+    },
+    {
+      "id": "firewall",
+      "legacyIndex": 10,
+      "sha256": "e71a36094c30313b7de5993a565b93cf201603ede6c846fa3ed7dc167577b5c5",
+      "destination": "lessons#firewall"
+    },
+    {
+      "id": "ingreso",
+      "legacyIndex": 11,
+      "sha256": "9683357a6b98136eec38afdbb0eea78078e976b2d422d62e52cc2b715ecf1e8f",
+      "destination": "lessons#ingreso"
+    },
+    {
+      "id": "fuerza",
+      "legacyIndex": 12,
+      "sha256": "9da3dd930f8f62adc313643263ab276f9d689d5ac8781eb8deca9584c2422020",
+      "destination": "lessons#fuerza"
+    },
+    {
+      "id": "gestion_archivos",
+      "legacyIndex": 14,
+      "sha256": "7715c490d2f60925beee4d864fa5a788c7dc20edc92b4ba40243f3ec7e34196b",
+      "destination": "lessons#gestion_archivos"
+    },
+    {
+      "id": "ssh",
+      "legacyIndex": 15,
+      "sha256": "37a4b94a5c046559814156eff565e720acb905dc7f18d82052719ecf046a4ec3",
+      "destination": "lessons#ssh"
+    },
+    {
+      "id": "descargar",
+      "legacyIndex": 16,
+      "sha256": "1a87e9823c3bc405135f0895336204a3e42db16f44ec03374781be66ddcdb86c",
+      "destination": "lessons#descargar"
+    },
+    {
+      "id": "configurar",
+      "legacyIndex": 17,
+      "sha256": "ab23e6e5629db622d41b2ae5aa69ae5a052f4ed2090292d20af9cedf45a9e99f",
+      "destination": "lessons#configurar"
+    },
+    {
+      "id": "ssl",
+      "legacyIndex": 18,
+      "sha256": "c0cd3098ae5ca9e590ee11c1b49a74183b578ab4c872b07559e6cf466548b7ad",
+      "destination": "lessons#ssl"
+    },
+    {
+      "id": "git_instalacion",
+      "legacyIndex": 19,
+      "sha256": "eafbdc026e5f28b274c796cbe226fb11a1820b2c47cf6dda23abb6ab4cd269f9",
+      "destination": "lessons#git_instalacion"
+    },
+    {
+      "id": "git_configuracion",
+      "legacyIndex": 20,
+      "sha256": "1fa93d06a1f672e32c9932506c15f33d90ffccf59fd1fe55bffa5b98f134c8d3",
+      "destination": "lessons#git_configuracion"
+    },
+    {
+      "id": "git_ssh",
+      "legacyIndex": 21,
+      "sha256": "acade82ed5b74a0977d66467d89f29163ab0d855751648a90b974a395a515da7",
+      "destination": "lessons#git_ssh"
+    },
+    {
+      "id": "git_basicos",
+      "legacyIndex": 22,
+      "sha256": "6fce906476e0e801c45769aba1a04246f4a9e2798e6086cc963e592b854dd236",
+      "destination": "lessons#git_basicos"
+    },
+    {
+      "id": "git_remotos",
+      "legacyIndex": 23,
+      "sha256": "64a8baf435670e92633f47ee9ac0aaba859f5053560a428f3f8f93a9df28b952",
+      "destination": "lessons#git_remotos"
+    },
+    {
+      "id": "git_ramas",
+      "legacyIndex": 24,
+      "sha256": "bd00b53976ac8162a629aad556e3c188637db9676b9fdf9bd2eff0da93fab484",
+      "destination": "lessons#git_ramas"
+    },
+    {
+      "id": "git_utiles",
+      "legacyIndex": 25,
+      "sha256": "1c68a4e73056cc41389df726c61b3d237450084ecf88fac959a15ffabb71e7bd",
+      "destination": "lessons#git_utiles"
+    },
+    {
+      "id": "git_errores",
+      "legacyIndex": 26,
+      "sha256": "982f125fd208e0526a1e25aa1ad0859b3544a5332d863e5d75498fc9d7781ea7",
+      "destination": "lessons#git_errores"
+    },
+    {
+      "id": "git_opcionales",
+      "legacyIndex": 27,
+      "sha256": "7aeee4c2d79bbc05fc4af5d1e42f7df1d578edc30cb3076abccd3464417dcb7d",
+      "destination": "lessons#git_opcionales"
+    }
+  ]
+}

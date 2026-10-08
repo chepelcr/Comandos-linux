@@ -1,0 +1,7 @@
+server {
+    listen 443 ssl;
+    server_name notes.lab localhost;
+    ssl_certificate /opt/course/tls/server.crt;
+    ssl_certificate_key /opt/course/tls/server.key;
+    location / { proxy_pass http://127.0.0.1:3000; }
+}

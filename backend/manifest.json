@@ -1,0 +1,20 @@
+{
+  "framework":"express",
+  "mode":"standalone",
+  "project":{
+    "name":"linux-lab-progress",
+    "description":"Account-owned course progress and preferences API",
+    "version":"1.0.0",
+    "service_implementation":"crud",
+    "scope_key":"learner_id",
+    "api_prefix":"/api/learners/{learnerId}",
+    "cors_origins":["https://linux.jcampos.dev","http://localhost:5173","http://127.0.0.1:5173"]
+  },
+  "entities":[{
+    "name":"Progress",
+    "route":"progress",
+    "fields":{"completed":"list[str]","exercises":"list[str]","bookmarks":"list[str]","last_lesson":"str(100)","revision":"int","preferences":"json"},
+    "app_type":"api"
+  }],
+  "deployment":{"enabled":true,"api_gateway":true,"prefix":"linux-lab","region":"us-east-1","environments":["prod"],"require_auth":true,"lambda_memory_mb":256,"lambda_timeout_seconds":15}
+}

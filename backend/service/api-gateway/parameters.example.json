@@ -1,0 +1,8 @@
+{
+  "environment": "prod",
+  "region": "us-east-1",
+  "apiDomain": "api.example.com",
+  "hostedZoneId": "Z0000000000000000000",
+  "cognitoPoolId": "us-east-1_example",
+  "lambdaFunctionName": "linux-lab-${Environment}-linux-lab-progress-lambda"
+}

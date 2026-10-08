@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Temporary AMI builder only; no student terminals use this network
+Parameters:
+  BaseImageId: {Type: AWS::EC2::Image::Id}
+  UserData: {Type: String, NoEcho: true, Description: Base64 bootstrap with a temporary signed course-pack URL}
+Resources:
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties: {CidrBlock: 10.247.0.0/24, EnableDnsSupport: true, EnableDnsHostnames: true}
+  Gateway: {Type: 'AWS::EC2::InternetGateway'}
+  Attachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: {VpcId: !Ref Vpc, InternetGatewayId: !Ref Gateway}
+  Subnet:
+    Type: AWS::EC2::Subnet
+    Properties: {VpcId: !Ref Vpc, CidrBlock: 10.247.0.0/26, MapPublicIpOnLaunch: true}
+  Routes:
+    Type: AWS::EC2::RouteTable
+    Properties: {VpcId: !Ref Vpc}
+  Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties: {SubnetId: !Ref Subnet, RouteTableId: !Ref Routes}
+  Route:
+    Type: AWS::EC2::Route
+    DependsOn: Attachment
+    Properties: {RouteTableId: !Ref Routes, DestinationCidrBlock: 0.0.0.0/0, GatewayId: !Ref Gateway}
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Image builder - no inbound ports
+      VpcId: !Ref Vpc
+      SecurityGroupEgress: [{IpProtocol: '-1', CidrIp: 0.0.0.0/0}]
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement: [{Effect: Allow, Principal: {Service: ec2.amazonaws.com}, Action: sts:AssumeRole}]
+      Policies:
+        - PolicyName: AgentChannelsOnly
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement: [{Effect: Allow, Action: [ssm:UpdateInstanceInformation, ssmmessages:CreateControlChannel, ssmmessages:CreateDataChannel, ssmmessages:OpenControlChannel, ssmmessages:OpenDataChannel], Resource: '*'}]
+  Profile:
+    Type: AWS::IAM::InstanceProfile
+    Properties: {Roles: [!Ref Role]}
+  Builder:
+    Type: AWS::EC2::Instance
+    DependsOn: Route
+    Properties:
+      ImageId: !Ref BaseImageId
+      InstanceType: t3.small
+      CreditSpecification: {CPUCredits: standard}
+      SubnetId: !Ref Subnet
+      SecurityGroupIds: [!Ref SecurityGroup]
+      IamInstanceProfile: !Ref Profile
+      MetadataOptions: {HttpTokens: required}
+      InstanceInitiatedShutdownBehavior: terminate
+      BlockDeviceMappings: [{DeviceName: /dev/xvda, Ebs: {VolumeSize: 24, VolumeType: gp3, Encrypted: true, DeleteOnTermination: true}}]
+      Tags: [{Key: Name, Value: linux-course-image-builder}, {Key: Application, Value: linux-course-image-builder}]
+      UserData: !Ref UserData
+Outputs:
+  BuilderInstanceId: {Value: !Ref Builder}

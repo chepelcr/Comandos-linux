@@ -1,0 +1,122 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "One standalone Lambda for linux-lab-progress",
+  "Parameters": {
+    "Environment": {
+      "Type": "String",
+      "Default": "prod",
+      "AllowedValues": [
+        "prod"
+      ]
+    }
+  },
+  "Resources": {
+    "LambdaRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Fn::Sub": "linux-lab-${Environment}-linux-lab-progress-role"
+        },
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        ],
+        "Policies": [
+          {
+            "PolicyName": "runtime-access",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "ssm:GetParameter",
+                    "ssm:GetParameters",
+                    "secretsmanager:GetSecretValue",
+                    "kms:Decrypt"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "LambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "DependsOn": [
+        "LambdaLogGroup"
+      ],
+      "Properties": {
+        "FunctionName": {
+          "Fn::Sub": "linux-lab-${Environment}-linux-lab-progress-lambda"
+        },
+        "PackageType": "Zip",
+        "Runtime": "nodejs20.x",
+        "Handler": "lambda.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaRole",
+            "Arn"
+          ]
+        },
+        "Architectures": [
+          "x86_64"
+        ],
+        "MemorySize": 256,
+        "Timeout": 15,
+        "Environment": {
+          "Variables": {
+            "NODE_ENV": "production",
+            "SSM_BASE_PATH": {
+              "Fn::Sub": "/linux-lab/${Environment}/linux-lab-progress"
+            }
+          }
+        },
+        "Code": {
+          "ZipFile": "exports.handler=async()=>({statusCode:200,body:\"Deploy lambda-package.zip\"});"
+        }
+      }
+    },
+    "LambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Sub": "/aws/lambda/linux-lab-${Environment}-linux-lab-progress-lambda"
+        },
+        "RetentionInDays": 7
+      }
+    }
+  },
+  "Outputs": {
+    "LambdaFunctionArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaFunction",
+          "Arn"
+        ]
+      }
+    },
+    "LambdaFunctionName": {
+      "Value": {
+        "Ref": "LambdaFunction"
+      }
+    }
+  }
+}

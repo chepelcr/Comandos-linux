@@ -1,0 +1,5 @@
+{
+  "name": "linux-lab-notes", "private": true, "version": "1.0.0", "type": "module",
+  "workspaces": ["frontend", "api"],
+  "scripts": { "dev": "npm run dev -w frontend", "api": "npm start -w api", "build": "npm run build -w frontend", "start": "npm start -w api", "test": "node --test api/test.mjs" }
+}

@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: GitHub Pages build may read only the public frontend parameters
+Parameters:
+  Repository:
+    Type: String
+    Default: chepelcr/Comandos-linux
+  Prefix:
+    Type: String
+    Default: /linux-lab/prod/frontend
+  OidcProviderArn:
+    Type: String
+    Description: Existing GitHub OIDC provider ARN, reused to avoid account-wide conflicts
+Resources:
+  BuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: linux-lab-pages-config
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !Ref OidcProviderArn
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: !Sub repo:${Repository}:environment:github-pages
+      Policies:
+        - PolicyName: PublicFrontendSettings
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: ssm:GetParameters
+                Resource: !Sub arn:${AWS::Partition}:ssm:${AWS::Region}:${AWS::AccountId}:parameter${Prefix}/VITE_*
+Outputs:
+  RoleArn:
+    Value: !GetAtt BuildRole.Arn

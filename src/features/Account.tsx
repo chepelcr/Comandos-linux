@@ -1,0 +1,11 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ShieldCheck, ArrowRight, Download } from 'lucide-react';
+import { authConfigured } from '../app/config';
+import { useApp } from '../app/providers';
+import Register from './Register';
+export default function Account() {
+ const { t } = useTranslation(); const app = useApp(); const [error,setError]=useState(''); const [register,setRegister]=useState(false);
+ const action = (fn: () => Promise<void>, confirm: string) => { if (window.confirm(t(confirm))) void fn().catch(e => setError(String(e))); };
+ return <div className="container page account-page"><span className="course-icon"><ShieldCheck size={28}/></span><h1>{t('accountTitle')}</h1><p className="lead">{t('accountDescription')}</p>{app.user ? <><div className="panel"><h2>{app.user.profile.email || app.user.profile.sub}</h2><p role="status">{t(app.status)}</p><button className="button secondary" onClick={() => { void app.sync(); }}>{t('sync')}</button><button className="button secondary" disabled={app.closingSession} onClick={app.signOut}>{t(app.closingSession?'signingOut':'signOut')}</button></div></> : <div className="panel">{authConfigured ? register ? <Register cancel={()=>setRegister(false)}/> : <div className="actions"><button className="button" onClick={() => setRegister(true)}>{t('signUp')}<ArrowRight size={18}/></button><button className="button secondary" onClick={() => app.signIn()}>{t('signIn')}</button></div> : <p>{t('authUnavailable')}</p>}<p className="muted">{t('guest')}</p></div>}<p><ShieldCheck size={17}/> {t('privacy')}</p><div className="account-controls"><button className="button secondary" onClick={() => { const url=URL.createObjectURL(new Blob([JSON.stringify(app.progress,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='linux-lab-progress.json';a.click();URL.revokeObjectURL(url); }}><Download size={17}/>{t('export')}</button><button className="danger" onClick={() => action(app.reset,'resetConfirm')}>{t('reset')}</button>{app.user && <button className="danger" onClick={() => action(app.deleteAccount,'deleteConfirm')}>{t('deleteAccount')}</button>}</div><p className="error" role="alert">{error || app.authError}</p></div>;
+}

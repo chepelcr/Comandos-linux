@@ -1,0 +1,28 @@
+{
+  "include": [
+    "src/**/*",
+    "scripts/**/*.ts",
+    "lambda.cts", "lab-lambda.cts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts"
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "ESNext",
+    "target": "ES2022",
+    "strict": true,
+    "lib": [
+      "ES2022"
+    ],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ]
+  }
+}

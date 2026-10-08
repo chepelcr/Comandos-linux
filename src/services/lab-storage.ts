@@ -1,0 +1,4 @@
+const database=()=>new Promise<IDBDatabase>((resolve,reject)=>{const request=indexedDB.open('linux-lab-workspaces',1);request.onupgradeneeded=()=>request.result.createObjectStore('workspaces');request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
+export async function workspace(key:string,value?:string|null):Promise<string|undefined>{
+ const db=await database();try{return await new Promise((resolve,reject)=>{const tx=db.transaction('workspaces',value===undefined?'readonly':'readwrite');const store=tx.objectStore('workspaces');const request=value===undefined?store.get(key):value===null?store.delete(key):store.put(value,key);let result:string|undefined;request.onsuccess=()=>{result=typeof request.result==='string'?request.result:undefined;};tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}finally{db.close();}
+}

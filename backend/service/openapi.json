@@ -1,0 +1,448 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Linux Lab progress",
+    "version": "1.0.0",
+    "description": "Owner is derived from Cognito access token. Exercise results are client reported; XP is computed by the server."
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "ProgressInput": {
+        "type": "object",
+        "required": [
+          "completed",
+          "exercises",
+          "bookmarks",
+          "lastLesson",
+          "epoch"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "completed": {
+            "type": "array",
+            "maxItems": 200,
+            "items": {
+              "type": "string"
+            }
+          },
+          "exercises": {
+            "type": "array",
+            "maxItems": 200,
+            "items": {
+              "type": "string"
+            }
+          },
+          "bookmarks": {
+            "type": "array",
+            "maxItems": 200,
+            "items": {
+              "type": "string"
+            }
+          },
+          "lastLesson": {
+            "type": "string"
+          },
+          "epoch": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "preferences": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "enum": [
+                  "es",
+                  "en"
+                ]
+              },
+              "theme": {
+                "enum": [
+                  "light",
+                  "dark",
+                  "system"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "LabSession": {
+        "type": "object",
+        "required": [
+          "id",
+          "route",
+          "state",
+          "startedAt",
+          "expiresAt",
+          "idleExpiresAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "route": {
+            "type": "string",
+            "enum": [
+              "foundations",
+              "modern",
+              "git",
+              "security",
+              "legacy"
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "starting",
+              "running",
+              "ending"
+            ]
+          },
+          "startedAt": {
+            "type": "integer",
+            "description": "Unix milliseconds; enforced by the server"
+          },
+          "lastInputAt": {
+            "type": "integer",
+            "description": "Unix milliseconds; enforced by the server"
+          },
+          "expiresAt": {
+            "type": "integer",
+            "description": "Unix milliseconds; enforced by the server"
+          },
+          "idleExpiresAt": {
+            "type": "integer",
+            "description": "Unix milliseconds; enforced by the server"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/me": {
+      "get": {
+        "summary": "Read your progress",
+        "operationId": "getMyProgress",
+        "responses": {
+          "200": {
+            "description": "Current progress"
+          },
+          "401": {
+            "description": "Verified access token required"
+          },
+          "409": {
+            "description": "Stale reset epoch or concurrent write"
+          }
+        }
+      },
+      "post": {
+        "summary": "Merge your offline progress",
+        "operationId": "postMyProgress",
+        "responses": {
+          "200": {
+            "description": "Current progress"
+          },
+          "401": {
+            "description": "Verified access token required"
+          },
+          "409": {
+            "description": "Stale reset epoch or concurrent write"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgressInput"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Reset your progress, or delete your account and data",
+        "operationId": "deleteMyProgress",
+        "responses": {
+          "200": {
+            "description": "Current progress"
+          },
+          "401": {
+            "description": "Verified access token required"
+          },
+          "409": {
+            "description": "Stale reset epoch or concurrent write"
+          },
+          "204": {
+            "description": "Account deleted"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deleteAccount": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/labs": {
+      "get": {
+        "summary": "Get the verified account\u2019s active learning-path lab",
+        "responses": {
+          "200": {
+            "description": "Lab availability and nullable active session"
+          },
+          "401": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          }
+        }
+      },
+      "post": {
+        "summary": "Start one lab for a mapped learning path; other active paths return 409",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "route"
+                ],
+                "properties": {
+                  "route": {
+                    "type": "string",
+                    "enum": [
+                      "foundations",
+                      "modern",
+                      "git",
+                      "security",
+                      "legacy"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Account-owned lab; null after termination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "session": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/LabSession"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          },
+          "429": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          },
+          "503": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Terminate the account lab before logout; retain credentials while HTTP 202 is pending",
+        "responses": {
+          "200": {
+            "description": "Account-owned lab; null after termination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "session": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/LabSession"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Account-owned lab; null after termination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "session": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/LabSession"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No configured lab service"
+          },
+          "401": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          }
+        }
+      }
+    },
+    "/labs/activity": {
+      "post": {
+        "summary": "Record learning-workspace interaction without extending the absolute deadline",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Activity recorded"
+          },
+          "409": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          },
+          "410": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          }
+        }
+      }
+    },
+    "/labs/connect": {
+      "post": {
+        "summary": "Open a short-lived SSM terminal channel for the account\u2019s existing lab",
+        "responses": {
+          "200": {
+            "description": "In-memory WSS streamUrl and session token; no AWS access keys"
+          },
+          "409": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          },
+          "425": {
+            "description": "EC2/SSM is still booting; retry shortly"
+          }
+        }
+      }
+    },
+    "/labs/check": {
+      "post": {
+        "summary": "Validate a mapped exercise within the active learning path",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "lesson"
+                ],
+                "properties": {
+                  "lesson": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Validation command ID"
+          },
+          "400": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          },
+          "409": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          }
+        }
+      }
+    },
+    "/labs/check/{command}": {
+      "get": {
+        "summary": "Poll a validation command only on the account\u2019s own instance",
+        "parameters": [
+          {
+            "name": "command",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pending, or verified exercise result"
+          },
+          "400": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          },
+          "409": {
+            "description": "Request rejected; retry or end the current lab as indicated."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+import { z } from 'zod';
+import lessons from '../data/lessons.json';
+import rewards from '../data/rewards.json';
+const ids = new Set(lessons.map(l=>l.id));
+const list=z.array(z.string().refine(id=>ids.has(id),'Unknown lesson')).max(200).transform(items=>[...new Set(items)]);
+export const progressInput=z.object({completed:list,exercises:list,bookmarks:list,lastLesson:z.string().refine(id=>ids.has(id)),epoch:z.number().int().nonnegative().default(0),preferences:z.object({language:z.enum(['es','en']).optional(),theme:z.enum(['light','dark']).optional()}).strict().default({})}).strict();
+export type ProgressInput=z.infer<typeof progressInput>;
+export type ProgressRecord=ProgressInput & {userId:string;version:1;revision:number;updated:string;points:number};
+export const blank=(userId:string,epoch=0):ProgressRecord=>({userId,version:1,completed:[],exercises:[],bookmarks:[],lastLesson:'intro',epoch,revision:0,updated:'',points:0,preferences:{}});
+export const calculatePoints=(p:ProgressInput)=>p.completed.length*rewards.lesson+p.exercises.length*rewards.exercise+[...new Set(lessons.map(l=>l.course))].filter(c=>lessons.filter(l=>l.course===c&&!l.optional).every(l=>p.completed.includes(l.id))).length*rewards.module;

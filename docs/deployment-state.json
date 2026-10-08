@@ -1,0 +1,23 @@
+{
+  "region": "us-east-1",
+  "account": "947999370977",
+  "UserPoolId": "us-east-1_g104T7mlc",
+  "Issuer": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_g104T7mlc",
+  "ClientId": "4ovrf9ha8ss1uhrof5785h1jgh",
+  "Domain": "https://linux-lab-947999370977.auth.us-east-1.amazoncognito.com",
+  "ApiUrl": "https://gcqbairnw5.execute-api.us-east-1.amazonaws.com",
+  "ProgressBucketName": "linux-lab-progress-progressbucket-7hk71vwfb0wr",
+  "RoleArn": "arn:aws:iam::947999370977:role/linux-lab-pages-config",
+  "BackendRoleArn": "arn:aws:iam::947999370977:role/linux-lab-backend-code",
+  "ArtifactBucket": "linux-lab-artifacts-artifacts-4lpxfqlhnpdt",
+  "ProgressFunction": "linux-lab-progress-ProgressFunction-XatMPX1eBZDF",
+  "ArtifactKey": "progress/1140f09015d1c0dd556f96b7e6fc7a9f348eaf8ce7e85e33e04fe8fbcf3ee8ba.zip",
+  "updated": "2026-10-08T13:56:43.871Z",
+  "LabFunction": "linux-lab-temporary-Function-ia7MicBC5UOO",
+  "LabVpc": "vpc-09da2f876f02b1499",
+  "LabSubnet": "subnet-0449d3ca1751980c1",
+  "LabSecurityGroup": "sg-092b602dc33c28fcf",
+  "LabSessionsBucket": "linux-lab-temporary-sessionsbucket-oklmrkninchs",
+  "LabImageId": "ami-0431b6741155b82d4",
+  "LabArtifactKey": "progress/1140f09015d1c0dd556f96b7e6fc7a9f348eaf8ce7e85e33e04fe8fbcf3ee8ba.zip"
+}

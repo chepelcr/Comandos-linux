@@ -1,0 +1,16 @@
+version = 0.1
+
+# Used by the generated deploy-api.sh (cd api-gateway && sam deploy --config-env <env>).
+# DomainName, HostedZoneId and CognitoPoolId are resolved at deploy time
+# (environment -> manifest -> SSM -> Route 53) and passed as --parameter-overrides,
+# which replace the parameter_overrides below.
+
+[prod]
+[prod.global.parameters]
+stack_name          = "linux-lab-prod-linux-lab-progress-api"
+s3_bucket           = "linux-lab-prod-sam-deployments"
+s3_prefix           = "linux-lab-progress-api"
+region              = "us-east-1"
+confirm_changeset   = false
+capabilities        = "CAPABILITY_IAM"
+parameter_overrides = "Environment=prod"

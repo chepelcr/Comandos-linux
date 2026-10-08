@@ -1,0 +1,12 @@
+{
+  "name": "José Pablo Campos Solano",
+  "photo": "images/perfil.jpg",
+  "email": "chepelcr@outlook.com",
+  "role": {"es":"Desarrollador web e infraestructura en AWS", "en":"Web developer and AWS infrastructure engineer"},
+  "bio": {"es":"Soy José Pablo, desarrollador de aplicaciones web e infraestructura en la nube de AWS. En 2022 finalicé el Bachillerato en Informática Empresarial en la Universidad de Costa Rica y en 2023 me certifiqué como Arquitecto de Soluciones de AWS.","en":"I’m José Pablo, a web application and AWS cloud infrastructure developer. I completed my Business Informatics degree at the University of Costa Rica in 2022 and became an AWS Certified Solutions Architect in 2023."},
+  "title":{"es":"Aprender haciendo, un comando a la vez.","en":"Learn by doing, one command at a time."},
+  "mission":{"es":"Creé este curso para conectar los fundamentos de Linux con el trabajo de desarrollo: entender el sistema, trabajar con Git y desplegar una aplicación con React y Node.js. Cada ruta combina explicaciones, ejemplos y práctica para que puedas construir con confianza.","en":"I created this course to connect Linux fundamentals with development work: understanding the system, working with Git, and deploying a React and Node.js application. Each path combines explanations, examples, and practice to help you build with confidence."},
+  "access":{"es":"Puedes leer las lecciones y guardar tu progreso en este dispositivo sin una cuenta. Al crear una cuenta podrás sincronizar tus avances y acceder a los laboratorios temporales. El taller original de Apache, PHP, MariaDB y Nextcloud sigue disponible como una ruta adicional.","en":"You can read lessons and save your progress on this device without an account. Create an account to sync your progress and access temporary labs. The original Apache, PHP, MariaDB, and Nextcloud workshop remains available as an additional learning path."},
+  "contact":{"es":"Conversemos","en":"Get in touch"},
+  "cv":{"url":"https://jcampos.dev","label":{"es":"Ver mi CV","en":"View my CV"}}
+}

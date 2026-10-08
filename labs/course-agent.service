@@ -1,0 +1,8 @@
+[Unit]
+Description=Local course files and browser bridge
+After=local-fs.target
+[Service]
+ExecStart=/usr/bin/python3 /opt/course/agent.py
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
