@@ -1,0 +1,19 @@
+{
+  "progress": "Progreso de creación de cuenta",
+  "details": "Perfil",
+  "password": "Contraseña",
+  "policies": "Políticas",
+  "verify": "Verificar",
+  "detailsTitle": "Cuéntanos sobre ti",
+  "detailsDescription": "Agrega tus datos. Iniciarás sesión con tu correo electrónico.",
+  "passwordTitle": "Protege tu cuenta",
+  "passwordDescription": "Elige una contraseña segura y repítela para confirmar.",
+  "policiesTitle": "Revisa las políticas de tu cuenta",
+  "policiesDescription": "Ambas aceptaciones son obligatorias antes de crear tu cuenta y enviarte el código de verificación.",
+  "name": "Nombre completo",
+  "username": "Nombre de usuario",
+  "usernameHelp": "De 3 a 30 letras, números, guiones, puntos o guiones bajos. Es tu nombre de perfil; inicia sesión con tu correo.",
+  "detailsError": "Ingresa tu nombre, correo y un nombre de usuario válido.",
+  "continue": "Continuar",
+  "previous": "Atrás"
+}

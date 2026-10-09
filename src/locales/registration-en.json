@@ -1,0 +1,19 @@
+{
+  "progress": "Account creation progress",
+  "details": "Profile",
+  "password": "Password",
+  "policies": "Policies",
+  "verify": "Verify",
+  "detailsTitle": "Tell us about yourself",
+  "detailsDescription": "Add your details. You will sign in with your email.",
+  "passwordTitle": "Protect your account",
+  "passwordDescription": "Choose a strong password and enter it again to confirm.",
+  "policiesTitle": "Review your account policies",
+  "policiesDescription": "Both acknowledgements are required before we create your account and send your verification code.",
+  "name": "Full name",
+  "username": "Username",
+  "usernameHelp": "3–30 letters, numbers, underscores, dots or hyphens. This is your profile name; use your email to sign in.",
+  "detailsError": "Enter your name, email and a valid username.",
+  "continue": "Continue",
+  "previous": "Back"
+}

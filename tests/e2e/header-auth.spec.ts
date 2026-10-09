@@ -40,11 +40,18 @@ test('focused auth pages use clean routes and stay outside course navigation', a
  await expect(page.locator('#signup-email')).toBeVisible();
  await expect(page.locator('.motion-veil')).toHaveCount(0);
  await expect(page.locator('#main')).not.toHaveAttribute('inert','');
+ await page.locator('#signup-name').fill('Test Student');
+ await page.locator('#signup-email').fill('registration-check@example.invalid');
+ await page.locator('#signup-username').fill('test_student');
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
  await page.locator('#signup-password').fill('LongPassword9!');
  await expect(page.getByText('Meets all requirements', {exact:true})).toBeVisible();
  await expect(page.locator('#confirm-password')).toBeVisible();
- await page.locator('#signup-email').fill('registration-check@example.invalid');
  await page.locator('#confirm-password').fill('LongPassword9!');
+ await page.locator('[aria-label="Show password"]').first().click();
+ await expect(page.locator('#signup-password')).toHaveAttribute('type','text');
+ await expect(page.locator('#confirm-password')).toHaveAttribute('type','password');
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
  const policies=page.locator('.registration-policies input[type=checkbox]');
  await expect(policies).toHaveCount(2);
  await expect(policies.first()).not.toBeChecked();
@@ -53,9 +60,6 @@ test('focused auth pages use clean routes and stay outside course navigation', a
  expect(await page.locator('form').evaluate(form=>(form as HTMLFormElement).checkValidity())).toBe(false);
  await policies.last().check();
  expect(await page.locator('form').evaluate(form=>(form as HTMLFormElement).checkValidity())).toBe(true);
- await page.locator('[aria-label="Show password"]').first().click();
- await expect(page.locator('#signup-password')).toHaveAttribute('type','text');
- await expect(page.locator('#confirm-password')).toHaveAttribute('type','password');
  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content','noindex, follow');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
@@ -80,4 +84,33 @@ test('mobile lesson footer follows the workspace and scrolls into view', async (
  await expect(footer).toBeInViewport();
  expect((await footer.boundingBox())!.y).toBeLessThan(page.viewportSize()!.height);
  expect(await footer.evaluate(el=>getComputedStyle(el).position)).toBe('static');
+});
+
+test('registration creates an account only after details, matching passwords and both policies, then verifies email',async({page})=>{
+ await page.addInitScript(()=>localStorage.setItem('locale','en'));
+ const signups:Record<string,unknown>[]=[];
+ await page.route('https://cognito-idp.us-east-1.amazonaws.com/**',async route=>{
+  const action=route.request().headers()['x-amz-target']?.split('.').at(-1);
+  if(action==='SignUp'){
+   signups.push(route.request().postDataJSON());
+   await route.fulfill({contentType:'application/x-amz-json-1.1',body:JSON.stringify({UserConfirmed:false,UserSub:'00000000-0000-4000-8000-000000000001',CodeDeliveryDetails:{Destination:'s***@example.invalid',DeliveryMedium:'EMAIL',AttributeName:'email'}})});
+  }else if(action==='ConfirmSignUp')await route.fulfill({contentType:'application/x-amz-json-1.1',body:'{}'});
+  else await route.continue();
+ });
+ await page.goto('/register');
+ await expect(page.locator('.registration-steps [aria-current=step]')).toContainText('Profile');
+ await expect(page.locator('#signup-password')).toHaveCount(0);
+ await page.locator('#signup-name').fill('Test Student');await page.locator('#signup-email').fill('student@example.invalid');await page.locator('#signup-username').fill('test_student');
+ await page.getByRole('button',{name:'Continue',exact:true}).click();
+ await expect(page.locator('.registration-steps [aria-current=step]')).toContainText('Password');
+ await page.locator('#signup-password').fill('LongPassword9!');await page.locator('#confirm-password').fill('DifferentPassword9!');await page.getByRole('button',{name:'Continue',exact:true}).click();
+ await expect(page.locator('[role=alert]')).toContainText(/passwords do not match/i);expect(signups).toHaveLength(0);
+ await page.locator('#confirm-password').fill('LongPassword9!');await page.getByRole('button',{name:'Continue',exact:true}).click();
+ await expect(page.locator('.registration-steps [aria-current=step]')).toContainText('Policies');
+ await page.getByRole('button',{name:'Create account',exact:true}).click();expect(signups).toHaveLength(0);
+ for(const checkbox of await page.locator('.registration-policies input[type=checkbox]').all())await checkbox.check();
+ await page.getByRole('button',{name:'Create account',exact:true}).click();await expect(page).toHaveURL(/\/verify-email$/);
+ expect(signups).toHaveLength(1);expect(signups[0].UserAttributes).toEqual(expect.arrayContaining([{Name:'name',Value:'Test Student'},{Name:'email',Value:'student@example.invalid'},{Name:'preferred_username',Value:'test_student'}]));
+ await expect(page.locator('.registration-steps [aria-current=step]')).toContainText('Verify');await expect(page.locator('.motion-veil')).toHaveCount(0);await expect(page.locator('#main')).not.toHaveAttribute('inert','');await page.locator('#signin-code').fill('123456');await page.locator('form button.button').click();
+ await expect(page).toHaveURL(/\/login$/);
 });
